@@ -16,7 +16,7 @@
 
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="hexo,mac," />
 
 
 
@@ -55,7 +55,7 @@
 下面以我的博客为例，luhaoaimama1.github.io">
 <meta property="og:image" content="https://camo.githubusercontent.com/60dd124e56fa642adc6f8f125c79702db25cc48c/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f303036744e63373967773166616f6139746d37676e6a33313276306f723432312e6a7067">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgw1fb6xpz8l44j30ko0fijt6.jpg">
-<meta property="og:updated_time" content="2016-12-30T14:06:13.000Z">
+<meta property="og:updated_time" content="2016-12-30T14:27:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下Hexo搭建博客攻略">
 <meta name="twitter:description" content="Hexo是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。
@@ -296,6 +296,7 @@
 <blockquote>
 <p><a href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="external">主题地址</a></p>
 </blockquote>
+<p>注意这个主题的tags增加<code>检索能力</code>。原因-源码:<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> tag <span class="keyword">in</span> page.tags %&#125;</span><span class="xml"><span class="tag"><span class="string"></span></span></span><span class="template-variable">&#123;&#123; tag.name &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">,</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> /&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>###这里我总结下新手所遇到的问题</p>
 <h4 id="更改中文"><a href="#更改中文" class="headerlink" title="更改中文"></a>更改中文</h4><p>打开主题文件夹下的_config.yml ,添加</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">_language:</span> <span class="built_in">zh</span>-CN</div></pre></td></tr></table></figure>
@@ -336,6 +337,8 @@
         <div class="post-tags">
           
             <a href="/tags/hexo/">hexo</a>
+          
+            <a href="/tags/mac/">mac</a>
           
         </div>
 

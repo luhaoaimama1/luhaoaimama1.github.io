@@ -964,6 +964,7 @@
 <blockquote>
 <p><a href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="external">主题地址</a></p>
 </blockquote>
+<p>注意这个主题的tags增加<code>检索能力</code>。原因-源码:<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> tag <span class="keyword">in</span> page.tags %&#125;</span><span class="xml"><span class="tag"><span class="string"></span></span></span><span class="template-variable">&#123;&#123; tag.name &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">,</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> /&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>###这里我总结下新手所遇到的问题</p>
 <h4 id="更改中文"><a href="#更改中文" class="headerlink" title="更改中文"></a>更改中文</h4><p>打开主题文件夹下的_config.yml ,添加</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">_language:</span> <span class="built_in">zh</span>-CN</div></pre></td></tr></table></figure>
