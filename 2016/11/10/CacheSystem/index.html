@@ -11,8 +11,12 @@
 
 
 
+  <meta name="description" content="Android-View的drawing缓存系统"/>
 
 
+
+
+  <meta name="keywords" content="android," />
 
 
 
@@ -26,15 +30,19 @@
 
 
 
-<link rel="canonical" href="https://luhaoaimama1.github.io/archives/2016/08/"/>
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/11/10/CacheSystem/"/>
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zone">
-<meta property="og:url" content="https://luhaoaimama1.github.io/archives/2016/08/index.html">
+<meta name="description" content="主要讲述关于View中关键词Drawing的方法~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-View的drawing缓存系统">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2016/11/10/CacheSystem/index.html">
 <meta property="og:site_name" content="Zone">
+<meta property="og:description" content="主要讲述关于View中关键词Drawing的方法~">
+<meta property="og:updated_time" content="2016-12-30T13:25:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zone">
+<meta name="twitter:title" content="Android-View的drawing缓存系统">
+<meta name="twitter:description" content="主要讲述关于View中关键词Drawing的方法~">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -60,11 +68,7 @@
 
 
 
-    <title>
-  
-    归档 · Zone
-  
-</title>
+    <title> Android-View的drawing缓存系统 · Zone </title>
   </head>
 
   <body>
@@ -185,56 +189,113 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <h2 class="archive-name"> All </h2>
-          <span class="archive-post-counter">
-            目前共计 12 篇日志
-          </span>
-        </div>
-      
-    
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android-View的drawing缓存系统
+        
+      </h1>
 
-    
-      
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2016</h2>
-          </div>
-        
-      
-      
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-28
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/08/28/Xfermode/" class="archive-post-link">
-            Android-PorterDuffXfermode的正确使用方式
-          </a>
+      <div class="post-meta">
+        <span class="post-time">
+          2016年11月10日
         </span>
       </div>
-    
-  </section>
+    </header>
 
-  
-  <nav class="pagination">
     
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View中方法"><span class="toc-text">View中方法</span></a></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <p>主要讲述关于View中关键词Drawing的方法~</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>可视区域</strong>：如果view，上半显示，下半超出屏幕不显示，那么可视区域是<strong>上半</strong>，而不是整个</p>
+</blockquote>
+<h1 id="View中方法"><a href="#View中方法" class="headerlink" title="View中方法"></a>View中方法</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">setDrawingCacheEnabled(boolean enabled)</td>
+<td style="text-align:center">是否开启缓存，如果开启 绘制会快点,关闭的话 缓存会清除</td>
+</tr>
+<tr>
+<td style="text-align:center">isDrawingCacheEnabled()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">getDrawingCache(boolean autoScale)</td>
+<td style="text-align:center">包含buildDrawingCache</td>
+</tr>
+<tr>
+<td style="text-align:center">buildDrawingCache(boolean autoScale)</td>
+<td style="text-align:center">autoScale false(<strong>常用</strong>)为view大小,true会缩放；getDrawingCacheBackgroundColor会修改位图的config</td>
+</tr>
+<tr>
+<td style="text-align:center">destroyDrawingCache()</td>
+<td style="text-align:center">清除缓存</td>
+</tr>
+</tbody>
+</table>
+<p>获取cache通常会占用一定的内存，所以通常不需要的时候有必要对其进行清理，通过destroyDrawingCache或setDrawingCacheEnabled(false)实现。</p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/android/">android</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/11/20/Rebound/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/11/05/CoordinateSystem/">
+        <span class="next-text nav-default">Android-CoordinateSystem</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/10/CacheSystem/"
+           data-title="Android-View的drawing缓存系统" data-url="https://luhaoaimama1.github.io/2016/11/10/CacheSystem/">
+      </div>
+    
+  </div>
+
         </div>  
       </main>
 

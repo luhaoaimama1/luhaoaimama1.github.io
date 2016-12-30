@@ -527,6 +527,173 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Android-View的drawing缓存系统]]></title>
+      <url>https://luhaoaimama1.github.io/2016/11/10/CacheSystem/</url>
+      <content type="html"><![CDATA[<p>主要讲述关于View中关键词Drawing的方法~</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>可视区域</strong>：如果view，上半显示，下半超出屏幕不显示，那么可视区域是<strong>上半</strong>，而不是整个</p>
+</blockquote>
+<h1 id="View中方法"><a href="#View中方法" class="headerlink" title="View中方法"></a>View中方法</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">setDrawingCacheEnabled(boolean enabled)</td>
+<td style="text-align:center">是否开启缓存，如果开启 绘制会快点,关闭的话 缓存会清除</td>
+</tr>
+<tr>
+<td style="text-align:center">isDrawingCacheEnabled()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">getDrawingCache(boolean autoScale)</td>
+<td style="text-align:center">包含buildDrawingCache</td>
+</tr>
+<tr>
+<td style="text-align:center">buildDrawingCache(boolean autoScale)</td>
+<td style="text-align:center">autoScale false(<strong>常用</strong>)为view大小,true会缩放；getDrawingCacheBackgroundColor会修改位图的config</td>
+</tr>
+<tr>
+<td style="text-align:center">destroyDrawingCache()</td>
+<td style="text-align:center">清除缓存</td>
+</tr>
+</tbody>
+</table>
+<p>获取cache通常会占用一定的内存，所以通常不需要的时候有必要对其进行清理，通过destroyDrawingCache或setDrawingCacheEnabled(false)实现。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-CoordinateSystem]]></title>
+      <url>https://luhaoaimama1.github.io/2016/11/05/CoordinateSystem/</url>
+      <content type="html"><![CDATA[<p>主要讲述关于View中坐标系系统~</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>可视区域</strong>：如果view，上半显示，下半超出屏幕不显示，那么可视区域是<strong>上半</strong>，而不是整个；</p>
+</blockquote>
+<h1 id="View中方法"><a href="#View中方法" class="headerlink" title="View中方法"></a>View中方法</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">坐标系</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">getX/Y</td>
+<td style="text-align:center">parent</td>
+<td style="text-align:center">mLeft/mTop + getTranslationX/Y()</td>
+</tr>
+<tr>
+<td style="text-align:center">getWidth,getHeight</td>
+<td style="text-align:center">自己</td>
+<td style="text-align:center">获取宽高</td>
+</tr>
+<tr>
+<td style="text-align:center">getLeft,getTop,getRight,getBottom</td>
+<td style="text-align:center">parent</td>
+<td style="text-align:center">view到parent某一方向的距离</td>
+</tr>
+<tr>
+<td style="text-align:center">getLocalVisibleRect</td>
+<td style="text-align:center">自己</td>
+<td style="text-align:center">可视区域</td>
+</tr>
+<tr>
+<td style="text-align:center">getGlobalVisibleRect</td>
+<td style="text-align:center">srceen</td>
+<td style="text-align:center">可视区域</td>
+</tr>
+<tr>
+<td style="text-align:center">getDrawingRect</td>
+<td style="text-align:center">自己</td>
+<td style="text-align:center">自身滚动后的Rect</td>
+</tr>
+<tr>
+<td style="text-align:center">getHitRect</td>
+<td style="text-align:center">parent</td>
+<td style="text-align:center">相当于getLeft/Top等值放入Rect</td>
+</tr>
+<tr>
+<td style="text-align:center">getLocationOnScreen</td>
+<td style="text-align:center">srceen</td>
+<td style="text-align:center">获取左上角的点在srceen的位置</td>
+</tr>
+<tr>
+<td style="text-align:center">getLocationInWindow</td>
+<td style="text-align:center">window(Activity为Dialog的时候和 screen不一样大)</td>
+<td style="text-align:center">获取左上角的点在window的位置</td>
+</tr>
+<tr>
+<td style="text-align:center">getWindowVisibleDisplayFrame</td>
+<td style="text-align:center">screen</td>
+<td style="text-align:center">获取到程序显示的区域，包括标题栏，但不包括状态栏。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Event中方法"><a href="#Event中方法" class="headerlink" title="Event中方法"></a>Event中方法</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">坐标系</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">getX/Y</td>
+<td style="text-align:center">自己</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">getRawX/Y</td>
+<td style="text-align:center">Srceen</td>
+</tr>
+</tbody>
+</table>
+<h1 id="View的滑动方法"><a href="#View的滑动方法" class="headerlink" title="View的滑动方法"></a>View的滑动方法</h1><blockquote>
+<p>坐标系均为  <strong>自己</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">View的滑动方法</th>
+<th style="text-align:center">效果及描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">offsetLeftAndRight/offsetTopAndBottom(int offset)</td>
+<td style="text-align:center">水平/竖直方向挪动View,getLeft()/getTop会变的.<code>注意:requestLayout后一些值丢失</code></td>
+</tr>
+<tr>
+<td style="text-align:center">scrollTo(int x, int y)</td>
+<td style="text-align:center">将View中内容滑动到相应的位置，x，y为正则向xy轴反方向移动。</td>
+</tr>
+<tr>
+<td style="text-align:center">scrollBy(int x, int y)</td>
+<td style="text-align:center">在scrollTo()的基础上继续滑动xy。</td>
+</tr>
+<tr>
+<td style="text-align:center">setScrollX/setScrollY(int value)</td>
+<td style="text-align:center">实质为scrollTo()，只是只改变X/Y轴滑动。</td>
+</tr>
+<tr>
+<td style="text-align:center">getScrollX()/getScrollY()</td>
+<td style="text-align:center">获取当前滑动位置偏移量。</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android-NestedScrolling Child与Parent的实例学习]]></title>
       <url>https://luhaoaimama1.github.io/2016/10/26/NestedScrolling/</url>
       <content type="html"><![CDATA[<p>遵守约定：就是google写了一套约定规范 这样大家都照规定写就可以兼容了；<br><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external">zone-sdk项目</a>运行后:-&gt;onTouch事件传递与其辅助类的研究-&gt;即可看到;</p>
