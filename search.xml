@@ -936,6 +936,69 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Android疑难问题汇总]]></title>
+      <url>https://luhaoaimama1.github.io/2016/07/13/Java%E7%96%91%E9%9A%BE%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
+      <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
+<a id="more"></a>
+<ul>
+<li>当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递? <blockquote>
+<p>答:是值传递。Java 编程语言只有值传递参数。当一个对象实例作为一个参数被传递到方法中时，参数的值就是该对象的引用一个副本。指向同一个对象,对象的内容可以在被调用的方法中改变，但对象的引用(不是引用的副本)是永远不会改变的。<br>参考:<a href="http://guhanjie.iteye.com/blog/1683637" target="_blank" rel="external">http://guhanjie.iteye.com/blog/1683637</a></p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[几何原理图]]></title>
+      <url>https://luhaoaimama1.github.io/2016/07/06/%E5%87%A0%E4%BD%95%E5%8E%9F%E7%90%86%E5%9B%BE/</url>
+      <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
+<a id="more"></a>
+<h1 id="圆角矩形"><a href="#圆角矩形" class="headerlink" title="圆角矩形"></a>圆角矩形</h1><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb959ssrczj30a408q3yk.jpg" width="200"></p>
+<h1 id="心的制作"><a href="#心的制作" class="headerlink" title="心的制作"></a>心的制作</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb95a213lag308w08w77l" alt=""></p>
+<h1 id="Path-‘s-CornerPathEffect"><a href="#Path-‘s-CornerPathEffect" class="headerlink" title="Path ‘s CornerPathEffect"></a>Path ‘s CornerPathEffect</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb95a6vun5j311m0gkdg7.jpg" alt=""></p>
+<blockquote>
+<p><a href="http://blog.csdn.net/harvic880925/article/details/51010839" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/51010839</a></p>
+</blockquote>
+<h1 id="手绘lineTo的优化技巧"><a href="#手绘lineTo的优化技巧" class="headerlink" title="手绘lineTo的优化技巧)"></a>手绘lineTo的优化技巧)</h1><blockquote>
+<p>仅仅扩充思维即可  不如直接用CornerPathEffect来的实在;</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20160328210009658" alt=""></p>
+<blockquote>
+<p><a href="http://blog.csdn.net/harvic880925/article/details/50995587" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/50995587</a></p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-奇淫技巧]]></title>
+      <url>https://luhaoaimama1.github.io/2016/06/19/%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/</url>
+      <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
+<a id="more"></a>
+<h1 id="view-bringToFront"><a href="#view-bringToFront" class="headerlink" title="view.bringToFront();"></a>view.bringToFront();</h1><blockquote>
+<p>把这个view放在最前面显示,会更改位置；</p>
+</blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">I/System.<span class="keyword">ou</span><span class="variable">t:</span>  before <span class="built_in">index</span>:<span class="number">0</span></div><div class="line">I/System.<span class="keyword">ou</span><span class="variable">t:</span> after <span class="built_in">index</span>:<span class="number">2</span></div></pre></td></tr></table></figure>
+<h1 id="颜色过渡"><a href="#颜色过渡" class="headerlink" title="颜色过渡"></a>颜色过渡</h1><blockquote>
+<p>注意容易犯错 的float </p>
+</blockquote>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">ArgbEvaluator</span>().<span class="title">evaluate</span>((float) <span class="title">i</span> / (float) <span class="title">total</span>, <span class="title">startColor</span>, <span class="title">endColor</span>);</span></div></pre></td></tr></table></figure>
+<h1 id="资源xml格式"><a href="#资源xml格式" class="headerlink" title="资源xml格式"></a>资源xml格式</h1><blockquote>
+<p>因为简单啊</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">bitmap</span></span></div><div class="line">  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">  <span class="attr">android:src</span>=<span class="string">"@drawable/rebound_icon"</span></div><div class="line">  <span class="attr">android:tileMode</span>=<span class="string">"repeat"</span></div><div class="line">  <span class="attr">android:dither</span>=<span class="string">"true"</span> /&gt;</div></pre></td></tr></table></figure>
+<h1 id="通过字符串查找资源名称"><a href="#通过字符串查找资源名称" class="headerlink" title="通过字符串查找资源名称"></a>通过字符串查找资源名称</h1><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">getResources</span>()<span class="selector-class">.getIdentifier</span>(<span class="string">"d"</span> + (i % <span class="number">11</span> + <span class="number">1</span>), <span class="string">"drawable"</span>, context.getPackageName());</div></pre></td></tr></table></figure>
+<h1 id="gif加载"><a href="#gif加载" class="headerlink" title="gif加载"></a>gif加载</h1><ul>
+<li>帧动画</li>
+<li>第三方库</li>
+<li>Movie类去实现</li>
+</ul>
+<h1 id="泛型推断"><a href="#泛型推断" class="headerlink" title="泛型推断"></a>泛型推断</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb95xxkb3ej312e0dit9w.jpg" alt=""></p>
+<h1 id="matrix"><a href="#matrix" class="headerlink" title="matrix"></a>matrix</h1><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Matrix</span> <span class="keyword">matrix</span> = <span class="keyword">new</span> <span class="keyword">Matrix</span>();  </div><div class="line"><span class="comment">// 生成倒影图  而不是用rotation</span></div><div class="line"><span class="keyword">matrix</span>.setScale(<span class="number">1</span>F, <span class="number">-1</span>F);</div></pre></td></tr></table></figure>
+<h1 id="自定义ViewGroup获取dispatchDraw里的图形方法"><a href="#自定义ViewGroup获取dispatchDraw里的图形方法" class="headerlink" title="自定义ViewGroup获取dispatchDraw里的图形方法"></a>自定义ViewGroup获取dispatchDraw里的图形方法</h1><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">       <span class="comment">//canvas 在这里面绘的图才可以在界面显示出来</span></div><div class="line">       Bitmap  maskBitmap= BitmapUtils.createBitmapAndGcIfNecessary(getWidth(),getHeight());</div><div class="line">       canvas.save();</div><div class="line">       canvas.translate(<span class="number">300</span>,<span class="number">0</span>);</div><div class="line">       <span class="keyword">super</span>.dispatchDraw(<span class="keyword">new</span> Canvas(maskBitmap));<span class="comment">//这部只是为了 子布局的绘制 绘制在bitmap上</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android-Canvas]]></title>
       <url>https://luhaoaimama1.github.io/2016/05/18/Canvas/</url>
       <content type="html"><![CDATA[<p>以我个人主观推断的Canvas工作原理</p>
