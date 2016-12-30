@@ -4,9 +4,9 @@
   <subtitle>just do it</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://luhaoaimama1.github.io/"/>
   <updated>2016-12-30T04:39:31.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://luhaoaimama1.github.io/</id>
   
   <author>
     <name>Zone</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Mac下Hexo搭建博客攻略</title>
-    <link href="http://yoursite.com/2016/12/28/hexo/"/>
-    <id>http://yoursite.com/2016/12/28/hexo/</id>
+    <link href="https://luhaoaimama1.github.io/2016/12/28/hexo/"/>
+    <id>https://luhaoaimama1.github.io/2016/12/28/hexo/</id>
     <published>2016-12-28T05:19:37.000Z</published>
     <updated>2016-12-30T04:39:31.000Z</updated>
     
@@ -62,7 +62,7 @@
 <p>如果想同步到github在<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo d</span></div></pre></td></tr></table></figure></p>
 <p>需要输入用户名密码 完成同步后</p>
 <blockquote>
-<p>到这里就可以打开 bolg了<a href="https://luhaoaimama1.github.io/" target="_blank" rel="external">https://luhaoaimama1.github.io/</a></p>
+<p>到这里就可以打开 bolg了<a href="https://luhaoaimama1.github.io/">https://luhaoaimama1.github.io/</a></p>
 </blockquote>
 <h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>Hexo 中有很多主题，可以在<a href="https://hexo.io/themes/" target="_blank" rel="external">官网</a>查看。下面列举更换主题的一般套路：</p>
 <h4 id="下载主题资源"><a href="#下载主题资源" class="headerlink" title="下载主题资源"></a>下载主题资源</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd /Users/fuzhipeng/themes</div><div class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/tufu</span>9441/hexo-blog themes/<span class="keyword">next</span></div></pre></td></tr></table></figure>
@@ -126,7 +126,7 @@
     </summary>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://luhaoaimama1.github.io/tags/hexo/"/>
     
   </entry>
   
