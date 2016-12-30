@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Android-事件传递的学习"/>
+
+
+
+
+  <meta name="keywords" content="android," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Zone">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+
+
+
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/09/17/EventPass/"/>
+
+
+<meta name="description" content="研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-事件传递的学习">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2016/09/17/EventPass/index.html">
+<meta property="og:site_name" content="Zone">
+<meta property="og:description" content="研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent">
+<meta property="og:updated_time" content="2016-12-30T12:14:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-事件传递的学习">
+<meta name="twitter:description" content="研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?luhaoaimama1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+    <title> Android-事件传递的学习 · Zone </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/message">
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/github">
+            项目
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">Zone</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      
+      <a class="mobile-menu-item" href="/">
+        首页
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/archives/">
+        归档
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/categories">
+        分类
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/about">
+        关于
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/message">
+        留言
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/github">
+        项目
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android-事件传递的学习
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年9月17日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dispatchTouchEvent"><span class="toc-text">dispatchTouchEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View总结"><span class="toc-text">View总结:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewGroup总结："><span class="toc-text">ViewGroup总结：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码探究"><span class="toc-text">源码探究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#View-onTouchEvent-伪代码"><span class="toc-text">View onTouchEvent 伪代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ViewGroup"><span class="toc-text">ViewGroup</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method之requestDisallowInterceptTouchEvent"><span class="toc-text">Method之requestDisallowInterceptTouchEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始测试："><span class="toc-text">开始测试：</span></a></li></ol></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <p>研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent</p>
+<a id="more"></a>
+<h1 id="dispatchTouchEvent"><a href="#dispatchTouchEvent" class="headerlink" title="dispatchTouchEvent"></a>dispatchTouchEvent</h1><h2 id="View总结"><a href="#View总结" class="headerlink" title="View总结:"></a>View总结:</h2><blockquote>
+<p>onTouchListener &gt; onTouchEvent &gt; onLongClickListener &gt; onClickListener</p>
+<p>上述伪代码总结为下； 基本关键点已经还原~</p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">     <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</div><div class="line">     <span class="keyword">if</span> (onTouchListener != <span class="keyword">null</span>)</div><div class="line">         result = onTouch();</div><div class="line">     <span class="keyword">if</span> (!result) &#123;</div><div class="line">         result = onTouchEvent(e) &#123;</div><div class="line">             <span class="comment">// 检查各种 clickable 如果有一个会 是true就会走</span></div><div class="line">             <span class="keyword">if</span> (((viewFlags &amp; CLICKABLE) == CLICKABLE ||</div><div class="line">                     (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE) ||</div><div class="line">                     (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE) &#123;</div><div class="line">                 </div><div class="line">                 <span class="keyword">case</span>:down</div><div class="line">                 mHasPerformedLongPress = <span class="keyword">false</span>;<span class="comment">//设置标识</span></div><div class="line">                 postDelay（mPendingCheckForTap, ViewConfiguration.getLongPressTimeout()）</div><div class="line">                 <span class="comment">//mPendingCheckForTap线程执行后更改为true; 并执行onLongClickListener</span></div><div class="line">                 </div><div class="line">                 <span class="keyword">case</span>:up</div><div class="line">                 <span class="keyword">if</span> (!mHasPerformedLongPress) &#123;</div><div class="line">                     removeLongPressCallback();  <span class="comment">// 移除长按</span></div><div class="line">                     执行onClickListener</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">             <span class="keyword">return</span> <span class="keyword">true</span>;                        <span class="comment">// ◀︎表示事件被消费</span></div><div class="line">         &#125;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ViewGroup总结："><a href="#ViewGroup总结：" class="headerlink" title="ViewGroup总结："></a>ViewGroup总结：</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">     <span class="keyword">boolean</span> handled=<span class="keyword">false</span>,intercepted= <span class="keyword">false</span>;</div><div class="line">      <span class="comment">//--------拦截判断--------</span></div><div class="line">     <span class="comment">//disallowIntercept与requestDisallowInterceptTouchEvent(boolean)设置的值有关；</span></div><div class="line">     <span class="keyword">if</span>(disallowIntercept)</div><div class="line">       intercepted = onInterceptTouchEvent(ev)</div><div class="line">     <span class="keyword">else</span></div><div class="line">       intercepted=<span class="keyword">false</span>;</div><div class="line">     <span class="comment">//--------拦截结束--------</span></div><div class="line">     <span class="keyword">if</span> (!intercepted) &#123;</div><div class="line">     <span class="comment">//不拦截的话</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = childrenCount - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">                 <span class="comment">//如果有上一个dispatch返回true了 这个直接跳出for循环；</span></div><div class="line">                 <span class="keyword">if</span> (newTouchTarget != <span class="keyword">null</span>) </div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                 <span class="comment">//dispatchTransformedTouchEvent:这个就是会调用child.dispatchTouchEvent</span></div><div class="line">                 <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="keyword">false</span>, child, idBitsToAssign)) &#123;</div><div class="line">                   <span class="comment">//addTouchTarget方法里会给mFirstTouchTarget赋值；</span></div><div class="line">                   newTouchTarget = addTouchTarget(child, idBitsToAssign);</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">                 &#125;</div><div class="line">            &#125;</div><div class="line">     &#125;</div><div class="line">   <span class="keyword">if</span> (mFirstTouchTarget == <span class="keyword">null</span>) &#123; </div><div class="line">       <span class="comment">//dispatchTransformedTouchEvent 因为传递null的view最后会走 super(就是view).dispatchTouchEvent()方法</span></div><div class="line">       handled = dispatchTransformedTouchEvent(ev, canceled, <span class="keyword">null</span>,</div><div class="line">               TouchTarget.ALL_POINTER_IDS);</div><div class="line">   &#125; </div><div class="line">       </div><div class="line"><span class="keyword">return</span> handled;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="源码探究"><a href="#源码探究" class="headerlink" title="源码探究"></a>源码探究</h1><p>View dispatchTouchEvent<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> boolean <span class="title">dispatchTouchEvent</span>(<span class="params">MotionEvent <span class="keyword">event</span></span>) </span>&#123;</div><div class="line">    boolean result = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (onFilterTouchEventForSecurity(<span class="keyword">event</span>)) &#123;</div><div class="line">              <span class="comment">//noinspection SimplifiableIfStatement</span></div><div class="line">              ListenerInfo li = mListenerInfo;</div><div class="line">              <span class="keyword">if</span> (li != <span class="literal">null</span> &amp;&amp; li.mOnTouchListener != <span class="literal">null</span></div><div class="line">                      &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED</div><div class="line">                      &amp;&amp; li.mOnTouchListener.onTouch(<span class="keyword">this</span>, <span class="keyword">event</span>)) &#123;</div><div class="line">                   <span class="comment">//如果 不是ENABLED 并且 setOnTouchListener</span></div><div class="line">                  result = <span class="literal">true</span>;</div><div class="line">              &#125;</div><div class="line">  </div><div class="line">              <span class="keyword">if</span> (!result &amp;&amp; onTouchEvent(<span class="keyword">event</span>)) &#123;</div><div class="line">              <span class="comment">// 如果设置了setOnTouchListener 会截断(就跳过去了)onTouchEvent </span></div><div class="line">                  result = <span class="literal">true</span>;</div><div class="line">              &#125;</div><div class="line">      &#125;</div><div class="line">    <span class="keyword">return</span> result; </div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="View-onTouchEvent-伪代码"><a href="#View-onTouchEvent-伪代码" class="headerlink" title="View onTouchEvent 伪代码"></a>View onTouchEvent 伪代码</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> action = event.getAction();</div><div class="line">  	<span class="comment">// 检查各种 clickable 如果有一个会 是true就会走</span></div><div class="line">    <span class="keyword">if</span> (((viewFlags &amp; CLICKABLE) == CLICKABLE ||</div><div class="line">            (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE) ||</div><div class="line">            (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE) &#123;</div><div class="line">        <span class="keyword">switch</span> (action) &#123;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</div><div class="line">                ...</div><div class="line">                <span class="keyword">if</span>(!mHasPerformedLongPress)&#123;</div><div class="line">                <span class="comment">//longClick线程执行的时候会修改mHasPerformedLongPress=true;</span></div><div class="line">                <span class="comment">//所以longClick 和 click不会同时触发；</span></div><div class="line">                    removeLongPressCallback();  <span class="comment">// 移除长按</span></div><div class="line">                    ...</div><div class="line">                    performClick();             <span class="comment">// 检查单击</span></div><div class="line">                &#125;</div><div class="line">                ...</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">                mHasPerformedLongPress=<span class="keyword">false</span>;</div><div class="line">                ...</div><div class="line">                checkForLongClick(<span class="number">0</span>);       <span class="comment">// 检测长按 这是个延时线程如果没有被移除 就会执行；</span></div><div class="line">                ...</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            ...</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;                        <span class="comment">// ◀︎表示事件被消费</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>摘自GcsSloop:<a href="http://www.gcssloop.com/customview/dispatch-touchevent-source" target="_blank" rel="external">http://www.gcssloop.com/customview/dispatch-touchevent-source</a></p>
+</blockquote>
+<h3 id="ViewGroup"><a href="#ViewGroup" class="headerlink" title="ViewGroup"></a>ViewGroup</h3><blockquote>
+<p>extend View</p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">   ...</div><div class="line">   <span class="keyword">boolean</span> handled = <span class="keyword">false</span>;</div><div class="line">   ... </div><div class="line">   <span class="comment">//--------拦截判断--------</span></div><div class="line">   <span class="keyword">final</span> <span class="keyword">boolean</span> intercepted;</div><div class="line">         <span class="keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN</div><div class="line">                 || mFirstTouchTarget != <span class="keyword">null</span>) &#123;</div><div class="line">              <span class="comment">//disallowIntercept与requestDisallowInterceptTouchEvent(boolean)方法有关；</span></div><div class="line">             <span class="keyword">final</span> <span class="keyword">boolean</span> disallowIntercept = (mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT) != <span class="number">0</span>;</div><div class="line">             <span class="keyword">if</span> (!disallowIntercept) &#123;</div><div class="line">                 intercepted = onInterceptTouchEvent(ev);</div><div class="line">                 ev.setAction(action); <span class="comment">// restore action in case it was changed</span></div><div class="line">             &#125; <span class="keyword">else</span> &#123;</div><div class="line">                 intercepted = <span class="keyword">false</span>;</div><div class="line">             &#125;</div><div class="line">         &#125; <span class="keyword">else</span> &#123;</div><div class="line">             <span class="comment">// There are no touch targets and this action is not an initial down</span></div><div class="line">             <span class="comment">// so this view group continues to intercept touches.</span></div><div class="line">             intercepted = <span class="keyword">true</span>;</div><div class="line">         &#125;  </div><div class="line">     <span class="comment">//--------拦截结束--------</span></div><div class="line">     </div><div class="line">     <span class="keyword">if</span> (!canceled &amp;&amp; !intercepted) &#123;</div><div class="line">       <span class="comment">//没被拦截的情况</span></div><div class="line">       ...</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = childrenCount - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">           ...</div><div class="line">            <span class="comment">//如果有上一个dispatch返回true了 这个直接跳出for循环；</span></div><div class="line">            <span class="keyword">if</span> (newTouchTarget != <span class="keyword">null</span>) &#123;</div><div class="line">                   <span class="comment">// Child is already receiving touch within its bounds.</span></div><div class="line">                   <span class="comment">// Give it the new pointer in addition to the ones it is handling.</span></div><div class="line">                   newTouchTarget.pointerIdBits |= idBitsToAssign;</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="keyword">false</span>, child, idBitsToAssign)) &#123;</div><div class="line">              <span class="comment">// Child wants to receive touch within its bounds.</span></div><div class="line">              mLastTouchDownTime = ev.getDownTime();</div><div class="line">              <span class="keyword">if</span> (preorderedList != <span class="keyword">null</span>) &#123;</div><div class="line">                  <span class="comment">// childIndex points into presorted list, find original index</span></div><div class="line">                  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; childrenCount; j++) &#123;</div><div class="line">                      <span class="keyword">if</span> (children[childIndex] == mChildren[j]) &#123;</div><div class="line">                          mLastTouchDownIndex = j;</div><div class="line">                          <span class="keyword">break</span>;</div><div class="line">                      &#125;</div><div class="line">                  &#125;</div><div class="line">              &#125; <span class="keyword">else</span> &#123;</div><div class="line">                  mLastTouchDownIndex = childIndex;</div><div class="line">              &#125;</div><div class="line">              mLastTouchDownX = ev.getX();</div><div class="line">              mLastTouchDownY = ev.getY();</div><div class="line">              <span class="comment">//addTouchTarget方法里会给mFirstTouchTarget赋值；</span></div><div class="line">              newTouchTarget = addTouchTarget(child, idBitsToAssign);</div><div class="line">              alreadyDispatchedToNewTouchTarget = <span class="keyword">true</span>;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">       &#125;</div><div class="line">        ...</div><div class="line">     &#125;</div><div class="line">     </div><div class="line">     <span class="comment">// Dispatch to touch targets.</span></div><div class="line">     <span class="keyword">if</span> (mFirstTouchTarget == <span class="keyword">null</span>) &#123; </div><div class="line">         <span class="comment">// No touch targets so treat this as an ordinary view.</span></div><div class="line">         <span class="comment">//dispatchTransformedTouchEvent 因为传递null的view最后会走 super(就是view).dispatchTouchEvent()方法</span></div><div class="line">         handled = dispatchTransformedTouchEvent(ev, canceled, <span class="keyword">null</span>,</div><div class="line">                 TouchTarget.ALL_POINTER_IDS);</div><div class="line">     &#125; </div><div class="line">    ...</div><div class="line">    <span class="keyword">return</span> handled; </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h1 id="Method之requestDisallowInterceptTouchEvent"><a href="#Method之requestDisallowInterceptTouchEvent" class="headerlink" title="Method之requestDisallowInterceptTouchEvent"></a>Method之requestDisallowInterceptTouchEvent</h1><blockquote>
+<p>通过日志进行研究</p>
+</blockquote>
+<ul>
+<li>已知:<ul>
+<li>ReParent(就是ViewGroup): onTouchEvent,dispatchTouchEvent,onInterceptTouchEvent </li>
+<li>ViewChild(就是View): onTouchEvent,dispatchTouchEvent</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>return 的都是super.</p>
+</blockquote>
+<h2 id="开始测试："><a href="#开始测试：" class="headerlink" title="开始测试："></a>开始测试：</h2><ul>
+<li><p>第一次 修改child  onTouchEvent return true </p>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 即使我消耗了,其父dispatch,onInterceptTouchEvent也会相继走,</p>
+<p>而不是直接跳到目标View执行 dispatchTouchEvent,onTouchEvent 与传言不符~</p>
+</blockquote>
+</li>
+<li><p>第二次 child dispatchTouchEvent return true </p>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div></pre></td></tr></table></figure>
+<blockquote>
+<p>为啥没走  ReParent-&gt;onTouchEvent ACTION_DOWN 因为 addTouchTarget(child, idBitsToAssign)是dispatchTouchEvent return true就执行 </p>
+<p>会找到对应的目标;所以下面代码不走 </p>
+</blockquote>
+  <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">源码</div><div class="line"><span class="keyword">if</span> (mFirstTouchTarget == <span class="literal">null</span>) </div><div class="line">        <span class="comment">// No touch targets so treat this as an ordinary view.</span></div><div class="line">        handled = dispatchTransformedTouchEvent(ev, canceled, <span class="literal">null</span>,</div><div class="line">                TouchTarget.ALL_POINTER_IDS);</div></pre></td></tr></table></figure>
+</li>
+<li><p>第三次：  child dispatchTouchEvent return true  但是我没有触碰到child </p>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onTouchEvent ACTION_DOWN</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 第二次的源码是正确执行的;</p>
+</blockquote>
+</li>
+<li><p><code>requestDisallowInterceptTouchEvent探究1</code></p>
+<blockquote>
+<p>把代码改回 child onTouchEvent return true dispatchTouchEvent return super.dispatchTouchEvent</p>
+</blockquote>
+<p>  测试源码</p>
+  <figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">case</span> MotionEvent.ACTION_DOWN :</div><div class="line">    downX =event.getX();</div><div class="line">    <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild-&gt;onTouchEvent ACTION_DOWN"</span>);</div><div class="line">    break;</div><div class="line"><span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">    <span class="keyword">if</span>(Math.abs(event.getX()<span class="params">-downX</span>)&gt;<span class="number">200</span>)&#123;</div><div class="line">        <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild- &gt;200!!! 请求拦截"</span>);</div><div class="line">        getParent().requestDisallowInterceptTouchEvent(<span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild- &lt;200!!! 父亲不拦截"</span>);</div><div class="line">        getParent().requestDisallowInterceptTouchEvent(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild-&gt;onTouchEvent ACTION_MOVE"</span>);</div><div class="line">    break;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">ViewChild- &lt;<span class="number">200</span>!!! 父亲不拦截</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line"></div><div class="line">ViewChild- &gt;<span class="number">200</span>!!! 请求拦截</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line"></div><div class="line">ViewChild- &lt;<span class="number">200</span>!!! 父亲不拦截</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p><code>requestDisallowInterceptTouchEvent 探究2</code></p>
+<blockquote>
+<p>把ReParent onInterceptTouchEvent return true</p>
+</blockquote>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onTouchEvent ACTION_DOWN</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 requestDisallowInterceptTouchEvent代码如果不走是不能让他停止拦截的；</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/android/">android</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/10/26/NestedScrolling/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android-NestedScrolling Child与Parent的实例学习</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/08/28/Xfermode/">
+        <span class="next-text nav-default">Android-PorterDuffXfermode的正确使用方式</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/17/EventPass/"
+           data-title="Android-事件传递的学习" data-url="https://luhaoaimama1.github.io/2016/09/17/EventPass/">
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2016
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luhaoaimama1"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+
+  </body>
+</html>

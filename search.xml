@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Mac下Hexo搭建博客攻略]]></title>
       <url>https://luhaoaimama1.github.io/2016/12/28/hexo/</url>
-      <content type="html"><![CDATA[<h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>是基于<code>NodeJs</code>的静态博客框架，简单、轻量，其生成的静态网页可以托管在<code>Github</code>和<code>Heroku</code>上。</p>
+      <content type="html"><![CDATA[<p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>是基于<code>NodeJs</code>的静态博客框架，简单、轻量，其生成的静态网页可以托管在<code>Github</code>和<code>Heroku</code>上。</p>
 <ul>
 <li>超快速度</li>
 <li>支持MarkDown</li>
@@ -69,7 +69,7 @@
 <p>如果其内容翻译的不满意可以到/themes/maupassant/languages下打开其对应语言的文件进行更改</p>
 <h4 id="作为新手关于页面的文章应该在哪里？"><a href="#作为新手关于页面的文章应该在哪里？" class="headerlink" title="作为新手关于页面的文章应该在哪里？"></a>作为新手关于页面的文章应该在哪里？</h4><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> about</div></pre></td></tr></table></figure>
 <p>这个about是主题文件夹下的_config.yml</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNbRwgw1fb6xpz8l44j30ko0fijt6.jpg" alt=""></p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwgw1fb6xpz8l44j30ko0fijt6.jpg" width="400"></p>
 <p>最终生成在source目录下 一个<strong>about</strong>文件夹和一个<strong>index.md</strong>文件；</p>
 <blockquote>
 <p>index.md里的内容就是about了</p>
@@ -93,7 +93,821 @@
 <blockquote>
 <p>看这篇文章即可！</p>
 </blockquote>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a><strong>参考文献</strong></h2><p><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">Hexo官方文档，对于制作主题，选择主题，安装hexo很有帮助</a><br><a href="http://www.jianshu.com/p/ecd51e8ef2fa" target="_blank" rel="external">简书：HEXO+Github搭建属于自己的博客</a><br><a href="https://github.com/limedroid/HexoLearning" target="_blank" rel="external">HexoLearning：HEXO+Github搭建属于自己的博客</a><br><a href="https://camo.githubusercontent.com/60dd124e56fa642adc6f8f125c79702db25cc48c/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f303036744e63373967773166616f6139746d37676e6a33313276306f723432312e6a7067" target="_blank" rel="external">我选的主题地址</a><br><a href="http://www.ahonn.me/2016/12/15/create-a-hexo-theme-from-scratch/" target="_blank" rel="external">从零开始制作 Hexo 主题</a></p>
+<h2 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h2><p><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">Hexo官方文档，对于制作主题，选择主题，安装hexo很有帮助</a><br><a href="http://www.jianshu.com/p/ecd51e8ef2fa" target="_blank" rel="external">简书：HEXO+Github搭建属于自己的博客</a><br><a href="https://github.com/limedroid/HexoLearning" target="_blank" rel="external">HexoLearning：HEXO+Github搭建属于自己的博客</a><br><a href="https://camo.githubusercontent.com/60dd124e56fa642adc6f8f125c79702db25cc48c/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f303036744e63373967773166616f6139746d37676e6a33313276306f723432312e6a7067" target="_blank" rel="external">我选的主题地址</a><br><a href="http://www.ahonn.me/2016/12/15/create-a-hexo-theme-from-scratch/" target="_blank" rel="external">从零开始制作 Hexo 主题</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-drawText()详解]]></title>
+      <url>https://luhaoaimama1.github.io/2016/12/18/drawText/</url>
+      <content type="html"><![CDATA[<ul>
+<li>全局声明<ul>
+<li>canvas.drawText(string, <strong>baseLineX</strong>, <strong>baseLineY</strong>, paint)</li>
+<li>baseLineY=基线的Y;</li>
+<li>baseLineX=基线的X;</li>
+<li>本篇以textSize=100为例</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>API:canvas.drawText(String text,int start,int end,float x,float y, paint); //截取字符串 然后绘制     </p>
+</blockquote>
+<a id="more"></a>
+<p><a id="way0"></a></p>
+<h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><p><img src="http://img.blog.csdn.net/20151229092331153?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<ul>
+<li>除了基线以外，如上图所示，另外还有四条线(通过FontMetrics可以获取到)，分别是ascent,descent,top,bottom，他们的意义分别是：<ul>
+<li>top: 可绘制的最高高度所在线</li>
+<li>ascent: 系统建议的，绘制单个字符时，字符应当的最高高度所在线</li>
+<li>descent:系统建议的，绘制单个字符时，字符应当的最低高度所在线</li>
+<li>bottom: 可绘制的最低高度所在线</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[ascent,descent]与[top,bottom]的区别就是安全区与最大区域，但由于制式的不同，每个字体的显示区域并不一定一致，当遇到不一致时，就会裁剪。</p>
+</blockquote>
+<p><a id="way1"></a></p>
+<h1 id="获取FontMetrics"><a href="#获取FontMetrics" class="headerlink" title="获取FontMetrics"></a>获取FontMetrics</h1><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">paint.getFontMetricsInt()<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>FontMetricsInt: top=-106 ascent=-93 descent=24 bottom=28 leading=0</p>
+<p><a id="way2"></a></p>
+<h1 id="归纳重点"><a href="#归纳重点" class="headerlink" title="归纳重点"></a>归纳重点</h1><ul>
+<li>TextSize的含义<ul>
+<li>经测试 平时paint.setTextSize的值=descent+bounds.top;</li>
+</ul>
+</li>
+<li>一个字的高度<ul>
+<li>一个字的高度 并不是textSize  而是top与bottom差值(代表绘制一个TextSize大小的字所需要的空间);<blockquote>
+<p>例如EditText里的字和光标发现高度不一致,光标比字高那么一点</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><a id="way3"></a></p>
+<h1 id="测量宽度"><a href="#测量宽度" class="headerlink" title="测量宽度:"></a>测量宽度:</h1><p>通过paint(包括了 textSize),所以给定内容即可测量其宽度</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> <span class="built_in">width</span> = (<span class="keyword">int</span>) paint.measureText(content);</div></pre></td></tr></table></figure>
+<p><a id="way4"></a></p>
+<h1 id="测量所绘制的矩形范围"><a href="#测量所绘制的矩形范围" class="headerlink" title="测量所绘制的矩形范围:"></a>测量所绘制的矩形范围:</h1><p>通过paint(包括了 textSize),所以给定内容即可测量其宽度</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Rect bounds = <span class="built_in">new</span> Rect();</div><div class="line">paint.getTextBounds(<span class="built_in">content</span>, <span class="number">0</span>, <span class="built_in">content</span>.<span class="built_in">length</span>(), bounds);</div></pre></td></tr></table></figure>
+<p>bounds：Rect(4, -75 - 347, 21)</p>
+<blockquote>
+<p>注意:这里仅仅是显示一个矩形范围,默认这里是baseLineX=0,baseLineY=0,LEFT模式;</p>
+</blockquote>
+<p><a id="way5"></a></p>
+<h1 id="setTextAlign"><a href="#setTextAlign" class="headerlink" title="setTextAlign"></a>setTextAlign</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb921d86qhj30jk0eq3ze.jpg" width="400"></p>
+<ul>
+<li>Left(默认模式):baseLineX在 绘制矩形bounds的左边</li>
+<li>Center:baseLineX在 绘制矩形bounds的中间</li>
+<li>Right:baseLineX在 绘制矩形bounds的右边</li>
+</ul>
+<p><a id="way6"></a></p>
+<h1 id="如何把这个bounds移动到对应的字符显示位置呢"><a href="#如何把这个bounds移动到对应的字符显示位置呢" class="headerlink" title="如何把这个bounds移动到对应的字符显示位置呢?"></a>如何把这个bounds移动到对应的字符显示位置呢?</h1><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">canvas.drawText(<span class="keyword">string</span>, baseLineX, baseLineY, paint);</div><div class="line"><span class="keyword">int</span> <span class="built_in">width</span> = (<span class="keyword">int</span>) paint.measureText(content);</div><div class="line"><span class="built_in">switch</span> (paint.getTextAlign()) &#123;</div><div class="line">            <span class="built_in">case</span> LEFT:</div><div class="line">                bounds.offset(baseLineX, baseLineY);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="built_in">case</span> RIGHT:</div><div class="line">                bounds.offset(baseLineX- <span class="built_in">width</span>, baseLineY);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            <span class="built_in">case</span> CENTER:</div><div class="line">                bounds.offset(baseLineX- <span class="built_in">width</span>/ <span class="number">2</span>, baseLineY);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这里的代码其实就是系统做的逻辑; </p>
+<p>从默认的baseLineX=0,baseLineY=0,LEFT模式。转变到现在的值</p>
+</blockquote>
+<p><a id="way7"></a></p>
+<h1 id="drawText的工具封装"><a href="#drawText的工具封装" class="headerlink" title="drawText的工具封装"></a><a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Lib/src/and/utils/view/DrawUtils.java" target="_blank" rel="external">drawText的工具封装</a></h1><blockquote>
+<p>在内部类Text里</p>
+</blockquote>
+<p>范例:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">DrawUtils</span><span class="selector-class">.Text</span><span class="selector-class">.with</span>(<span class="selector-tag">canvas</span>, <span class="selector-tag">content</span>, 0, <span class="selector-tag">y</span>, <span class="selector-tag">paint</span>)</div><div class="line">                       <span class="selector-class">.align</span>(<span class="selector-tag">align</span>)</div><div class="line">                       <span class="selector-class">.drawBound</span>(<span class="selector-tag">paintBounds</span>)</div><div class="line">                       <span class="selector-class">.show</span>(<span class="selector-tag">showType</span>);</div></pre></td></tr></table></figure></p>
+<h1 id="Demo演示图-点击可进入代码"><a href="#Demo演示图-点击可进入代码" class="headerlink" title="Demo演示图-点击可进入代码"></a><a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/animal/viewa/DrawTextView.java" target="_blank" rel="external">Demo演示图-点击可进入代码</a></h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb921xmxlsj30fm0rgmyg.jpg" width="400"></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/harvic880925/article/details/50423762" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/50423762</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[深入理解Java虚拟机总结]]></title>
+      <url>https://luhaoaimama1.github.io/2016/12/05/JVM/</url>
+      <content type="html"><![CDATA[<h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><ul>
+<li>各种基本类型:boolean、byte、char、short、int、float、long、double;</li>
+<li>对象引用:reference类型 不等于对象本身,可能是对象的句柄也可能对象的引用指针</li>
+<li>局部变量默认没有初始值,不赋值是不可以使用的。和类变量(默认是有的)不一样;</li>
+<li>额外了解:插入式注解处理器:需要继承AbstractProcessor;</li>
+</ul>
+<a id="more"></a>
+<h1 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb913k1wc0j30f50a53zv.jpg" alt=""></p>
+<blockquote>
+<p>本地方法栈和虚拟机栈有的虚拟机是不分的;</p>
+</blockquote>
+<p><a id="way1-1"></a></p>
+<h2 id="jvm各个区域的概要"><a href="#jvm各个区域的概要" class="headerlink" title="jvm各个区域的概要"></a>jvm各个区域的概要</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb91bux68qj31f016w41s.jpg" alt=""></p>
+<p><a id="way1-2"></a></p>
+<h2 id="对象访问定位"><a href="#对象访问定位" class="headerlink" title="对象访问定位"></a>对象访问定位</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb913u4clkj317k0h6abh.jpg" alt=""></p>
+<blockquote>
+<p>句柄优势:reference本身不需要修改,只会改变句柄中的实例数据指针</p>
+<p>直接指针访问优势:最大好处速度快。节省了一次指针定位的开销;</p>
+<p>HotSpot采用此方式</p>
+</blockquote>
+<p><a id="way1-3"></a></p>
+<h2 id="对象的布局"><a href="#对象的布局" class="headerlink" title="对象的布局"></a>对象的布局</h2><p>3个区域:对象头(Header)、实例数据(Instance Data)和对齐填充(Padding)</p>
+<blockquote>
+<p>header:(官方称 Mark Word)运行时数据,入哈希码(HashCode)、GC分代年龄 锁状态标识</p>
+<p>Instance Data:类型指针,既对象只想他的类元数据的指针;</p>
+<p>Padding:因为对象的大小必须是8字节的整数倍。如果数据没有对齐。需要Padding来补全</p>
+</blockquote>
+<p>#垃圾收集器与内存分配策略</p>
+<ul>
+<li>主要思考的问题:<ul>
+<li>标记-那些内存(那些死,那些活着)需要回收?</li>
+<li>什么时候回收?</li>
+<li>如何回收?</li>
+</ul>
+</li>
+</ul>
+<p><a id="way2-1"></a></p>
+<h1 id="标记概要"><a href="#标记概要" class="headerlink" title="标记概要"></a>标记概要</h1><h2 id="标记算法"><a href="#标记算法" class="headerlink" title="标记算法"></a>标记算法</h2><p>1)引用计数法(不能用):每当一个地方引用它时,计数器+1,引用失效时,计数器-1,任何时刻计数器为0的对象就是不可能在被使用</p>
+<blockquote>
+<p>java没有用 最主要的原因很难解决对象之间互相循环引用的问题;</p>
+</blockquote>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReferenceCountingGC</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Object instance=<span class="literal">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        ReferenceCountingGC objA=  <span class="keyword">new</span> <span class="type">ReferenceCountingGC</span>();</div><div class="line">        ReferenceCountingGC objB=  <span class="keyword">new</span> <span class="type">ReferenceCountingGC</span>();</div><div class="line">        objA.instance=objB;</div><div class="line">        objB.instance=objA;</div><div class="line">        objA=<span class="literal">null</span>;</div><div class="line">        objB=<span class="literal">null</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2)可达性分析算法:<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb9143ha08j30cx08zmx7.jpg" alt=""></p>
+<ul>
+<li>Java 语言中,可作为GC Roots的对象包括下面几种;<ul>
+<li>虚拟机栈中(栈帧中的本地变量表)的引用对象</li>
+<li>方法区中类静态属性引用对象</li>
+<li>方法区中类常量引用对象</li>
+<li>本地方法栈JNI引用的对象</li>
+</ul>
+</li>
+</ul>
+<p><a id="way2-2"></a></p>
+<h2 id="四种引用"><a href="#四种引用" class="headerlink" title="四种引用"></a>四种引用</h2><ul>
+<li>引用分为四种 强,软,弱,虚四种 强度依次减弱<ul>
+<li>强引用:类似Object obj=new Object() 这类引用,只要强引用还在,垃圾收集器就永远不会回收被引用的对象;</li>
+<li>软引用:用来描述一些还有用但并未必须的对象。内存溢出异常之前,会把这些对象列入回收范围之内进行二次回收。如果回收后还没有足够的内存这回OOM;</li>
+<li>弱引用:用来描述非必须的对象。若引用关联的对象只能活到下一次垃圾回收之前;</li>
+<li>虚引用:唯一目的对象被回收时收到一个系统通知</li>
+</ul>
+</li>
+</ul>
+<p><a id="way2-3"></a></p>
+<h2 id="不可达对象的最后历程"><a href="#不可达对象的最后历程" class="headerlink" title="不可达对象的最后历程"></a>不可达对象的最后历程</h2><blockquote>
+<p>总结:finalize()方法不执行或者只能执行一次</p>
+</blockquote>
+<p>不可达对象,也并非”非死不可” 这时候是在缓刑阶段。要真正宣告死亡,至少要经理两次标记过程。<br>如果对象进行可达性分析后发现没有GC Roots相关联的引用链,会被第一次标记并且进行一次筛选,筛选条件是此对象是否有必要执行finalize()方法。<br>对象没有覆盖finalize方法(逃脱命运的最后机会),或者<strong>finalize()方法被虚拟机掉用过(只能执行一次)</strong>,虚拟机将这两种情况都视为”没有必要执行”<br>如果被判定有必要执行,那么对象会放置叫一个F-Queue的队列之中,并且稍后虚拟机自动建立Finalize线程去执行它既finalize方法<br>但并不承诺会等待他运行结束,怕死循环或者运行缓慢。finalize方法是逃脱命运的最后机会,如果没有逃脱就真的被回收了;</p>
+<h1 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h1><p><a id="way3-1"></a></p>
+<h2 id="标记-清除算法-基础算法-剩下的都是基于它的不足而进行改进的"><a href="#标记-清除算法-基础算法-剩下的都是基于它的不足而进行改进的" class="headerlink" title="标记-清除算法(基础算法,剩下的都是基于它的不足而进行改进的)"></a>标记-清除算法(基础算法,剩下的都是基于它的不足而进行改进的)</h2><p>标记:标记所有需要回收的对象</p>
+<p>清除:统一回收所有被标记的对象</p>
+<blockquote>
+<p>不足1:效率问题,标记和清除效率都不高;<br>不足2:空间问题,产生大量的不连续的内存碎片</p>
+</blockquote>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb914owdnxj30ii0c2t9t.jpg" alt=""><br><a id="way3-2"></a></p>
+<h2 id="复制-Copying-算法"><a href="#复制-Copying-算法" class="headerlink" title="复制(Copying)算法"></a>复制(Copying)算法</h2><p>内存容量划分两个大小相等的两块,每次使用其中的一块。这块用完了复制存活的对象到另一块,在把这块清理掉</p>
+<blockquote>
+<p>不足:代价太高 把内存缩小为原来的一半;</p>
+</blockquote>
+<p>现代的商用虚拟街都采用这种算法来回收新生代;因为新生代都是 <strong>朝生暮死</strong> 所以不需要1:1来划分<br>而将内存分为一块较大的Eden 和两个较小的Survivor 默认大小比;8:1, 每次新生代中可用的内存空间是整个新生代容量的90=(Eden+Survivor),<br>“浪费” 10 因为没办法保证回收只有不多于10的存活,Survivor空间不够需要老年代进行 担保;<br><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb915j8lkhj30ik0bi0tt.jpg" alt=""><br><a id="way3-3"></a></p>
+<h2 id="标记-整理-Mark-Compact-算法-老年代常用"><a href="#标记-整理-Mark-Compact-算法-老年代常用" class="headerlink" title="标记-整理(Mark-Compact)算法(老年代常用)"></a>标记-整理(Mark-Compact)算法(老年代常用)</h2><p>标记和以前一样,后续步骤不是直接回收,而是存活对象向一端移动,然后清理边界以外的内存;<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb915o8c50j30in0bcab3.jpg" alt=""><br><a id="way3-4"></a></p>
+<h2 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h2><p>根据对象存活周期将内存划分不同的几块。一般堆分为 新生代 和老年代。这样根据年代的特点采用最适当的收集算法</p>
+<p>新生代:少量存活 选择复制算法</p>
+<p>老年代:存活率高,没有额外空间担保,必须使用 标记清理 或者标记整理;</p>
+<blockquote>
+<p>GC会产生停顿(Sun也叫它 “Stop The World”),OoMap 存放着GC Roots,不是每条指令都生成一个。</p>
+<p>不是任何时都能停下来进行 GC ,只有在 “特定的位置” 才可以GC 这个位置也叫安全点(Safepoint)</p>
+<p>安全点的选定基本上是以程序”是否具有让程序长时间执行的特征”为标准选定的</p>
+</blockquote>
+<p>关于安全点另一个需要考虑的就是如何在GC发生的时让所有线程都”跑”到最近的安全点上在停下来;有两种方案</p>
+<p>抢先式中断(Preemptive Suspension)(现在几乎都这种方案):不需要线程的执行代码主动配合,GC发生时候先把线程全部中断,如果有线程不在安全点,就回复线程让它跑到安全点。</p>
+<p>主动式中断(Voluntary Suspension):当GC需要中断线程的时候,不对线程造作,仅仅简单地设置一个标志位,各个线程执行的时候主动去轮询这个标志位,发现中断标志位真就挂起,轮询标志的地方安全点重合。<br>而对于不执行的线程,任何时间都是安全的也称为安全区;</p>
+<h1 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h1><p><a id="way4-1"></a></p>
+<h2 id="7种垃圾收集器的介绍"><a href="#7种垃圾收集器的介绍" class="headerlink" title="7种垃圾收集器的介绍"></a>7种垃圾收集器的介绍</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb9166bymyj30e00b5wfn.jpg" alt=""><br><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb9160tldaj31kw0jgacz.jpg" alt=""></p>
+<blockquote>
+<p>G1收集器因为没有商用的就不写了;</p>
+</blockquote>
+<p>Serial:单线程收集器，在进行垃圾收集时，必须要暂停其他所有的工作线程，直到它收集结束。</p>
+<blockquote>
+<ol>
+<li><p>需要STW（Stop The World），停顿时间长。</p>
+</li>
+<li><p>简单高效，对于单个CPU环境而言，Serial收集器由于没有线程交互开销，可以获取最高的单线程收集效率。</p>
+</li>
+</ol>
+</blockquote>
+<p>ParNew:是Serial的多线程版本，除了使用多线程进行垃圾收集外，其他行为与Serial完全一样</p>
+<blockquote>
+<p>Tips：1.Server模式下虚拟机的首选新生收集器，与CMS进行搭配使用。</p>
+</blockquote>
+<p>Parallel Scavenge:目标是达到一个可控制的吞吐量，吞吐量 = 运行用户代码时间 / (运行用户代码时间 + 垃圾收集时间)，高吞吐量可以高效率地利用CPU时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务，并且虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或者最大的吞吐量，这种调节方式称为GC自适应调节策略。<br>Serial Old:老年代的单线程收集器，使用标记 - 整理算法，<br>Parallel Old:老年代的多线程收集器，使用标记 - 整理算法，吞吐量优先，适合于Parallel Scavenge搭配使用</p>
+<ul>
+<li>CMS（Conrrurent Mark Sweep）收集器是以获取最短回收停顿时间为目标的收集器。使用标记 - 清除算法，收集过程分为如下四步：<ul>
+<li>初始标记，标记GCRoots能直接关联到的对象，时间很短。</li>
+<li>并发标记，进行GCRoots Tracing（可达性分析）过程，时间很长。</li>
+<li>重新标记，修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，时间较长。</li>
+<li>并发清除，回收内存空间，时间很长。<blockquote>
+<p>其中，并发标记与并发清除两个阶段耗时最长，但是可以与用户线程并发执行<br>Tips：1. 对CPU资源非常敏感，可能会导致应用程序变慢，吞吐率下降。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>无法处理浮动垃圾，因为在并发清理阶段用户线程还在运行，自然就会产生新的垃圾，而在此次收集中无法收集他们，只能留到下次收集，这部分垃圾为浮动垃圾，同时，由于用户线程并发执行，所以需要预留一部分老年代空间提供并发收集时程序运行使用。</p>
+</li>
+<li><p>由于采用的标记 - 清除算法，会产生大量的内存碎片，不利于大对象的分配，可能会提前触发一次Full GC。虚拟机提供了-XX:+UseCMSCompactAtFullCollection参数来进行碎片的合并整理过程，这样会使得停顿时间变长，虚拟机还提供了一个参数配置，-XX:+CMSFullGCsBeforeCompaction，用于设置执行多少次不压缩的Full GC后，接着来一次带压缩的GC。</p>
+</li>
+</ol>
+</blockquote>
+<p><a id="way4-2"></a></p>
+<h2 id="理解一下GC日志"><a href="#理解一下GC日志" class="headerlink" title="理解一下GC日志"></a>理解一下GC日志</h2><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="name">GC</span> (<span class="name">System.gc</span>()) [<span class="name">PSYoungGen:</span> <span class="number">6270</span>K-&gt;584K(<span class="name">9216K</span>)] <span class="number">11390</span>K-&gt;5712K(<span class="name">19456K</span>), <span class="number">0.0011969</span> secs] [<span class="name">Times:</span> user=0.00 sys=0.00, real=0.00 secs]</div></pre></td></tr></table></figure>
+<ol>
+<li>[GC (System.gc())]与[Full GC (System.gc())]，说明垃圾收集的停顿类型，不是区分新生代GC和老年代GC的，如果有Full，则表示此次GC发生了Stop The World。</li>
+<li>PSYoungGen: 6270K-&gt;584K(9216K)，表示，新生代：该内存区域GC前已使用容量 -&gt; 该内存区域GC后已使用容量（该内存区域总容量）</li>
+<li>11390K-&gt;5712K(19456K)，表示，GC前Java堆已使用的容量 -&gt; GC后Java堆已使用的容量（Java堆总容量）</li>
+<li>0.0011969 secs，表示GC所占用的时间，单位为秒。</li>
+<li>[Times: user=0.00 sys=0.00, real=0.00 secs]，表示GC的更具体的时间，user代表用户态消耗的CPU时间，sys代表内核态消耗的CPU时间，real代表操作从开始到结束所经过的墙钟时间。CPU时间与墙钟时间的区别是，墙钟时间包括各种非运算的等待耗时，如等待磁盘IO，等待线程阻塞，CPU时间则不包含这些耗时。当系统有多CPU或者多核时，多线程操作会叠加这些CPU时间，所以读者看到user或者sys时间超过real时间也是很正常的</li>
+</ol>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb916pqo7bj30lm09taas.jpg" alt=""></p>
+<ul>
+<li>GC类型<ul>
+<li>Minor GC:指发生在新生代的垃圾收集动作，非常频繁，速度较快。</li>
+<li>Major GC:指发生在老年代的GC，出现Major GC，经常会伴随一次Minor GC，同时Minor GC也会引起Major GC，一般在GC日志中统称为GC，不频繁。</li>
+<li>Full GC:指发生在老年代和新生代的GC，速度很慢，需要Stop The World。</li>
+</ul>
+</li>
+</ul>
+<p>大对象直接进入老年代:大对象就是大量连续内存空间的Java对象,典型的就是很长的字符串及数组。并且内存超过虚拟机设置大对象的值;</p>
+<p>长期存活的对象进入老年代:jvm给每个对象定义一个对象年龄计数器。如果eden出生并经过第一次Minor GC后仍然存活并且能被Survivor容纳的话,将被移动到Survivor空间并将对象年龄设为1.对象在Survivor区每”熬过”一次Minor GC则年龄+1,当年龄达到一定程度(默认15岁),下一次将会被晋升老年代。</p>
+<p>动态对象年龄判定:为了更好的适应内存状况。如果在Survivor空间中相同年龄的所有对象大小的综合大于Survivor的一半,那么大于等于这个年龄的将被一起带入老年代</p>
+<blockquote>
+<p>Tips:研究代码对象到底怎么回收请看Page:93(深入理解JVM虚拟机第二版)</p>
+</blockquote>
+<p><a id="way4-3"></a></p>
+<h2 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb9170p4unj30b5087gm9.jpg" alt=""></p>
+<p><a id="way4-4"></a></p>
+<h2 id="虚拟机参数设置"><a href="#虚拟机参数设置" class="headerlink" title="虚拟机参数设置;"></a>虚拟机参数设置;</h2><p>代码的运行参数设置为： -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8<br><img src="http://images2015.cnblogs.com/blog/616953/201602/616953-20160226111115693-1490327308.png" alt=""></p>
+<h1 id="类的初始化过程"><a href="#类的初始化过程" class="headerlink" title="类的初始化过程"></a>类的初始化过程</h1><p><img src="http://images0.cnblogs.com/blog2015/544748/201505/251937420687138.jpg" alt=""></p>
+<p><a id="way5-1"></a></p>
+<h2 id="非法向前引用"><a href="#非法向前引用" class="headerlink" title="非法向前引用"></a>非法向前引用</h2><p>编译器手机的顺序是由语句在源文件中出现的顺序决定的,静态语句块中只能访问到定义在静态语句之前的变量,定义它之后的变量,可以赋值,但不能访问</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span>&#123;</div><div class="line">    <span class="keyword">static</span>&#123;</div><div class="line">         i=<span class="number">0</span>;</div><div class="line">         system.<span class="keyword">out</span>.print(i);<span class="comment">//非法向前引用</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i=<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><clinit>(类构造器方法):如果类或者接口没有静态语句块,也没有对变量的赋值,那么编译器可以不为这个类生成<clinit>方法并且他被加锁了 </clinit></clinit></p>
+<p>Tips:如果在此方法中耗时很长,就可能造成多个进程阻塞;</p>
+</blockquote>
+<p><a id="way5-2"></a></p>
+<h2 id="类什么时候才被初始化"><a href="#类什么时候才被初始化" class="headerlink" title="类什么时候才被初始化"></a>类什么时候才被初始化</h2><ul>
+<li>只有这6中情况才会导致类的类的初始化<ul>
+<li>1创建类的实例，也就是new一个对象</li>
+<li>2访问某个类或接口的静态变量，或者对该静态变量赋值</li>
+<li>3调用类的静态方法</li>
+<li>4反射（Class.forName(“com.lyj.load”)）</li>
+<li>5初始化一个类的子类（会首先初始化子类的父类）</li>
+<li>6JVM启动时标明的启动类，即文件名和类名相同的那个类</li>
+</ul>
+</li>
+<li>类的初始化步骤：<ul>
+<li>1如果这个类还没有被加载和链接，那先进行加载和链接</li>
+<li>2假如这个类存在直接父类，并且这个类还没有被初始化（注意：在一个类加载器中，类只能初始化一次），那就初始化直接的父类（不适用于接口）</li>
+<li>3加入类中存在初始化语句（如static变量和static块），那就依次执行这些初始化语句。</li>
+</ul>
+</li>
+</ul>
+<p><a id="way5-3"></a>         </p>
+<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><p>Java虚拟器角度仅仅有两种不同的类加载器:</p>
+<p>一种启动类加载器(Bootstrap ClassLoader):C++语言实现是虚拟器自身的一部分;</p>
+<p>另一种是所有其他的类加载器(java语言,JVM之外 继承ClassLoader)</p>
+<blockquote>
+<p>更详细:</p>
+</blockquote>
+<p>!<img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb917dq0h0j30hs0cd775.jpg" alt=""></p>
+<p>Bootstrap ClassLoader:负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class，由C++实现，不是ClassLoader子类</p>
+<p>Extension ClassLoader:负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/*.jar或-Djava.ext.dirs指定目录下的jar包</p>
+<p>App ClassLoader:负责记载classpath中指定的jar包及目录中class</p>
+<p>Custom ClassLoader:属于应用程序根据自身需要自定义的ClassLoader，如tomcat、jboss都会根据j2ee规范自行实现ClassLoader</p>
+<blockquote>
+<p>加载过程中会先检查类是否被已加载，检查顺序是自底向上，从Custom ClassLoader到BootStrap ClassLoader逐层检查，只要某个classloader已加载就视为已加载此类，保证此类只所有ClassLoader加载一次。而加载的顺序是自顶向下，也就是由上层来逐层尝试加载此类。</p>
+</blockquote>
+<p><a id="way5-3-1"></a></p>
+<p>###为什么这么设计?</p>
+<p>类加载器:任何一个类都需要加载它的类加载器和这个类一同确立其在java虚拟机唯一性。每个类加载器都有类名称空间。</p>
+<blockquote>
+<p>两个类是否相同,是由同一个类加载器为前提下才有意义.相同是指equals、instanceof isAssignalbeFrom isIntance等;</p>
+</blockquote>
+<p>例如类java.lang.Object,他存放在rt.jar中,无论哪个类加载器加载这个类,最终都是委派给魔性最顶端的启动类加载器进行加载。因此Object类在程序的各种类加载器环境中都是<strong>同一个类</strong>。<br>相反如果没有使用,各个类加载自行加载的话。那么系统将出现多个不同的Object类,那么java类型体系中最基本的行为也无法保证;</p>
+<p>以下是ClassLoader的源码,实现很简单<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">rotected synchronized <span class="class"><span class="keyword">Class</span>&lt;?&gt; <span class="title">loadClass</span>(<span class="title">String</span> <span class="title">name</span>, <span class="title">boolean</span> <span class="title">resolve</span>)</span></div><div class="line">	throws ClassNotFoundException</div><div class="line">    &#123;</div><div class="line">	// First, check <span class="keyword">if</span> the <span class="class"><span class="keyword">class</span> <span class="title">has</span> <span class="title">already</span> <span class="title">been</span> <span class="title">loaded</span></span></div><div class="line">	<span class="class"><span class="keyword">Class</span> <span class="title">c</span> = <span class="title">findLoadedClass</span>(<span class="title">name</span>);</span></div><div class="line">	<span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</div><div class="line">	    <span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">if</span> (parent != <span class="literal">null</span>) &#123;</div><div class="line">		    //从父加载器加载</div><div class="line">		    c = parent.loadClass(name, <span class="literal">false</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    //从bootstrap loader加载</div><div class="line">		    c = findBootstrapClassOrNull(name);</div><div class="line">		&#125;</div><div class="line">	    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">                // ClassNotFoundException thrown <span class="keyword">if</span> <span class="class"><span class="keyword">class</span> <span class="title">not</span> <span class="title">found</span></span></div><div class="line">                // from the non-<span class="literal">null</span> parent <span class="class"><span class="keyword">class</span> <span class="title">loader</span></span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</div><div class="line">	        // <span class="keyword">If</span> still <span class="keyword">not</span> found, <span class="keyword">then</span> invoke findClass in order</div><div class="line">	        // <span class="keyword">to</span> find the <span class="class"><span class="keyword">class</span>.</span></div><div class="line">	        c = findClass(name);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (resolve) &#123;</div><div class="line">	    resolveClass(c);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>1.2以后,应当把自己的类逻辑写到findClass()(protected)方法中;</p>
+<blockquote>
+<p>热部署:OSGI(类加载器精髓);</p>
+<p>NB技巧:子类可以公开父类中的protected的方法;</p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">findClass_</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.findClass();<span class="comment">//protected</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="静态分派与动态分派"><a href="#静态分派与动态分派" class="headerlink" title="静态分派与动态分派"></a>静态分派与动态分派</h1><p><a id="way6-1"></a>  </p>
+<h2 id="静态分派"><a href="#静态分派" class="headerlink" title="静态分派"></a>静态分派</h2><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Map</span> <span class="built_in">map</span>=<span class="literal">new</span> HashMap();</div></pre></td></tr></table></figure>
+<p>Map(静态类型,外观类型接口类型(我习惯叫)):其变化仅在使用时发生，变量本身的静态类型不会改变，并且最终的静态类型是在编译期可知的。</p>
+<p>HashMap(实际类型):其变化的结果在运行期才可确定，编译器不编译程序时并不知道一个对象的实际类型是什么。</p>
+<ul>
+<li>所有依赖静态类型来定位方法执行版本的分派动作称为静态分派。<ul>
+<li>①.静态分派典型的应用是方法重载，</li>
+<li>②.静态分派发生在编译阶段，因此确定静态分派的动作实际上不是由虚拟机来执行的 </li>
+<li>③.对于方法参数的匹配也是根据变量的静态类型来确定，在很多情况下根据参数的类型并不能找到唯一的方法调用，这个时候的处理方式是找到一个最合适的方法。比如：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OverLoad</span> &#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params"><span class="keyword">char</span> arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello char"</span>);  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params"><span class="keyword">int</span> arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello int"</span>);  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params"><span class="keyword">long</span> arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello long"</span>);  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params">Character arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello Character"</span>);  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params">Serializable arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello Serializable"</span>);  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params">Object arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello object"</span>);  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sayHello</span>(<span class="params"><span class="keyword">char</span> ...arg</span>) </span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"hello arg..."</span>);  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;  </div><div class="line">        sayHello(<span class="string">'a'</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从头注解方法，结果会按顺序输出。</p>
+<p>1、基本类型是重载按char-&gt;int-&gt;long-&gt;float-&gt;double-&gt;Character-&gt;Serializable(因为Character实现了他)顺序匹配的。</p>
+<p>2、可变参数的重载优先级是最低的。</p>
+<blockquote>
+<p>Tips:如果出现了两个参数分别为Serializable和Comparable(Character实现这两个),编译器无法确定自动转型那种类型。提示类型模糊拒绝编译;</p>
+</blockquote>
+<p><a id="way6-2"></a>  </p>
+<h2 id="动态分派"><a href="#动态分派" class="headerlink" title="动态分派"></a>动态分派</h2><p>方法执行会找到对应的实际类型。</p>
+<p><a id="way7-1"></a>  </p>
+<h1 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h1><blockquote>
+<p>NB之处 不仅仅能实现别人的接口,也能实现自己的接口这样相当于 对象本身了,但是可以却可以在方法执行之前或之后搞事情了</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicProxyTest</span> </span>&#123;  </div><div class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">IHello</span></span>&#123;  </div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">implements</span> <span class="title">IHello</span></span>&#123;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>&#123;  </div><div class="line">            System.out.println(<span class="string">"hello world"</span>);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;  </div><div class="line">        Object originalObj;  </div><div class="line">        <span class="function">Object <span class="title">bind</span><span class="params">(Object originalObj)</span></span>&#123;  </div><div class="line">            <span class="keyword">this</span>.originalObj = originalObj;  </div><div class="line">            <span class="keyword">return</span> Proxy.newProxyInstance(originalObj.getClass().getClassLoader(), originalObj.getClass(),  </div><div class="line">                    getInterfaces(),<span class="keyword">this</span>);  </div><div class="line">        &#125;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span>  </span></div><div class="line">                <span class="keyword">throws</span> Throwable &#123;  </div><div class="line">            System.out.println(<span class="string">"welcome"</span>);  </div><div class="line">            <span class="keyword">return</span> method.invoke(originalObj, args);  </div><div class="line">        &#125;  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </div><div class="line">        <span class="comment">/* 设置此系统属性,让JVM生成的Proxy类写入文件.保存路径为：com/sun/proxy(如果不存在请生工创建) */</span></div><div class="line">     	System.getProperties().put(<span class="string">"sun.misc.ProxyGenerator.saveGeneratedFiles"</span>, <span class="string">"true"</span>);</div><div class="line">        IHello hello = (IHello)<span class="keyword">new</span> DynamicProxy().bind(<span class="keyword">new</span> Hello());  </div><div class="line">        hello.sayHello();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>System.getProperties().put(“sun.misc.ProxyGenerator.saveGeneratedFiles”, “true”)-&gt;设置此系统属性,让JVM生成的Proxy类写入文件.保存路径为：com/sun/proxy(如果不存在请生工创建)</p>
+</blockquote>
+<p>java逆向工具:为了解决把1.5中编写的代码放到1.4 1.3的环境部署使用的问题。比较出色的Retrotranslator</p>
+<h1 id="Java魔法糖"><a href="#Java魔法糖" class="headerlink" title="Java魔法糖"></a>Java魔法糖</h1><p><a id="way8-1"></a> </p>
+<h2 id="泛型与擦除"><a href="#泛型与擦除" class="headerlink" title="泛型与擦除"></a>泛型与擦除</h2><p>编译后的字节码文件中替换为原生类型,并且在相应的位置插入强制转换;</p>
+<blockquote>
+<p>所以泛型遇到重载,不会执行编译;例如参数List<integer>和List<string>编译后的文件是一样的所以你懂的;</string></integer></p>
+</blockquote>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sugar</span> </span>&#123;</div><div class="line">    <span class="comment">//看bin目录下的编译文件;</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</div><div class="line"></div><div class="line">        <span class="comment">//泛型 自动装箱,自动拆箱,便利循环,变长参数;</span></div><div class="line">        List&lt;Integer&gt; list= Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line">        <span class="keyword">int</span> <span class="keyword">sum</span>=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> integer : list) &#123;</div><div class="line">            <span class="keyword">sum</span>+=integer;</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="keyword">sum</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后文件<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Sugar &#123;</div><div class="line">    <span class="keyword">public</span> Sugar() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> static void main(String[] args) &#123;</div><div class="line">        List list = Arrays.asList(new <span class="keyword">Integer</span>[]&#123;<span class="keyword">Integer</span>.valueOf(<span class="number">1</span>), <span class="keyword">Integer</span>.valueOf(<span class="number">2</span>), <span class="keyword">Integer</span>.valueOf(<span class="number">3</span>), <span class="keyword">Integer</span>.valueOf(<span class="number">4</span>)&#125;);</div><div class="line">        <span class="built_in">int</span> <span class="built_in">sum</span> = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="built_in">int</span> <span class="keyword">integer</span>;</div><div class="line">        for(Iterator var3 = list.iterator(); var3.hasNext(); <span class="built_in">sum</span> += <span class="keyword">integer</span>) &#123;</div><div class="line">            <span class="keyword">integer</span> = ((<span class="keyword">Integer</span>)var3.next()).intValue();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="built_in">sum</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="https://github.com/luhaoaimama1/AndroidNote-Zone/blob/master/note/jvm/%E8%AF%AD%E6%B3%95%E7%B3%96/%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E9%99%B7%E9%98%B1.java" target="_blank" rel="external">自动装箱陷阱</a></p>
+</blockquote>
+<h1 id="高效并发"><a href="#高效并发" class="headerlink" title="高效并发"></a>高效并发</h1><p><a id="way9-1"></a> </p>
+<h2 id="volatile型变量的特殊规则"><a href="#volatile型变量的特殊规则" class="headerlink" title="volatile型变量的特殊规则"></a>volatile型变量的特殊规则</h2><p>当定义为volatile之后具备两种特性:<br>第一保证此变量对<strong>所有线程</strong>的可见性。当一个线程修改了这个值,新值对于其他线程来说立即可知;<br>第二:禁止指令重排序优化;</p>
+<blockquote>
+<p>这个目录的&lt;<strong>volatile教材</strong>&gt;文件夹有对应的范例;</p>
+<p>volatile和普通变量性能几乎没有区别,比synchronized关键字快;</p>
+</blockquote>
+<p><a id="way9-2"></a> </p>
+<h2 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h2><p>主要两种:协同式调度和抢占式调度<br>协同(不用):执行时间由线程本身来控制。吧自己工作执行完后主动通知系统切换到另一个线程;</p>
+<blockquote>
+<p>坏处:如果线程出现堵塞那么所有都堵塞了</p>
+</blockquote>
+<p>抢占:系统分配时间,切换不由线程本身来决定</p>
+<blockquote>
+<p>Thread.yield()可以让出执行时间.获取时间则没有办法;</p>
+<p>额外知识 ++不是原子性,AtomicInteger CAS(原子性)来避免阻塞同步;</p>
+</blockquote>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://www.cnblogs.com/leesf456/p/5218594.html" target="_blank" rel="external">http://www.cnblogs.com/leesf456/p/5218594.html</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析]]></title>
+      <url>https://luhaoaimama1.github.io/2016/11/20/Rebound/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>综述：Rebound 通过胡克定律，实现的一个类似“弹簧”动画效果的第三方工具包。</p>
+</blockquote>
+<a id="more"></a>
+<p><a href="https://github.com/luhaoaimama1/ReboundDemo" target="_blank" rel="external">官方demo摘出</a></p>
+<h1 id="单独使用"><a href="#单独使用" class="headerlink" title="单独使用"></a>单独使用</h1><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Spring spring =  SpringSystem.create().createSpring();</div><div class="line">spring.addListener(<span class="keyword">new</span> SimpleSpringListener() &#123;</div><div class="line">               <span class="meta">@Override</span></div><div class="line">               <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSpringUpdate</span><span class="params">(Spring spring)</span> </span>&#123;</div><div class="line">                   <span class="keyword">super</span>.onSpringUpdate(spring);</div><div class="line">                   <span class="keyword">double</span> currentValue = spring.getCurrentValue();</div><div class="line">                   <span class="keyword">double</span> valueMap = SpringUtil.mapValueFromRangeToRange(currentValue, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0.5</span>);</div><div class="line">                   ViewHelper.setScaleX(siv, (<span class="keyword">float</span>) valueMap);</div><div class="line">                   ViewHelper.setScaleY(siv, (<span class="keyword">float</span>) valueMap);</div><div class="line">               &#125;</div><div class="line">           &#125;);</div><div class="line">spring.setEndValue(<span class="number">1</span>);<span class="comment">//默认endValue是0；</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Ps:SpringUtil.mapValueFromRangeToRange(currentValue, 0, 1, 1, 0.5);</p>
+<p>是映射工具类 0-&gt;1的转映射到1-&gt;0.5</p>
+</blockquote>
+<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><blockquote>
+<p>SimpleSpringListener实现了SpringListener</p>
+</blockquote>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">SpringListener</span> &#123;</div><div class="line">  <span class="comment">// 在首次开始运动时候调用。</span></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onSpringActivate</span>(<span class="params">Spring spring</span>)</span>;</div><div class="line">  <span class="comment">//在advance后调用，表示状态更新。</span></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onSpringUpdate</span>(<span class="params">Spring spring</span>)</span>;</div><div class="line">  <span class="comment">//在进入rest状态后调用。</span></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onSpringAtRest</span>(<span class="params">Spring spring</span>)</span>;</div><div class="line">  <span class="comment">//则略有不同，仅在setEndValue中被调用，且该Spring需要在运动中且新的endValue不等于原endValue。</span></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onSpringEndStateChange</span>(<span class="params">Spring spring</span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><blockquote>
+<p>拉力(tension) default:40—&gt;拉力越大，弹簧效果越明显</p>
+<p>摩擦力(friction) default:7–&gt;弹框效果阻力越大、越不明显</p>
+<p>Ps:如果这个摩擦力的值设置为0，就像真实世界中处于真空状态，一点摩擦力都没有，这个弹簧效果会一直无限制重复下去，根本停不下来</p>
+</blockquote>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.setSpringConfig(<span class="keyword">new</span> <span class="type">SpringConfig</span>(tensionValue, frictionValue));</div></pre></td></tr></table></figure>
+<h1 id="setEndValue与setCurrentValue的区别"><a href="#setEndValue与setCurrentValue的区别" class="headerlink" title="setEndValue与setCurrentValue的区别"></a>setEndValue与setCurrentValue的区别</h1><blockquote>
+<p>end是一个值变化的过程,currentValue是表示插入一个值，表示一个瞬间(因为reset了~)；</p>
+<p>Ps:setAtRest()会让他停止动画；</p>
+</blockquote>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb91ocxcvsj30l40guq4f.jpg" width="500"></p>
+<h1 id="连锁动画"><a href="#连锁动画" class="headerlink" title="连锁动画"></a>连锁动画</h1><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">SpringChain</span> mSpringChain = <span class="type">SpringChain</span>.create();</div><div class="line">mSpringChain.addSpring(<span class="function"><span class="keyword">new</span> <span class="title">SimpleSpringListener</span>()&#123;&#125;);</span></div><div class="line"><span class="title">mSpringChain</span>.<span class="title">setControlSpringIndex</span>(<span class="number">2</span>).<span class="title">getControlSpring</span>().<span class="title">setEndValue</span>(<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>SpringChain这个类，创建它有两个create方法：</p>
+<ul>
+<li>默认无参数create()</li>
+<li><p>有参数的create(int mainTension,int mainFriction,int attachmentTension,int attachmentFriction)</p>
+<blockquote>
+<p>mainTension:主导spring的拉力系数，mainFriction:主导Spring的摩擦力系数，</p>
+<p>attachmentTensio,attachmentFriction:表示附属的拉力和摩擦力系数</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>SpringChain需要设置一个起主导控制作用的Spring，通过setControlSpringIndex方法来设置</p>
+<p>getControlSpring()则代表 获得主导的Spring</p>
+<p>addSpring 里其实直接new了.  通过mSpringChain.getAllSprings()可以获取到注册到mSpringChain里的所有Spring</p>
+</blockquote>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb91okt78nj30oq09udgk.jpg" width="500"></p>
+<h1 id="官方小球demo解析"><a href="#官方小球demo解析" class="headerlink" title="官方小球demo解析"></a>官方小球demo解析</h1><ul>
+<li><p>setVelocity</p>
+<blockquote>
+<p>会根据当前的速度计算剩下的位置；类似setEndValue 是一个值的变化 而不是瞬间；</p>
+<p>Ps:根据官方小球demo,setVelocity之前 会把拉力设置为0 可能是为了拉力不影响速度的值吧；</p>
+<p>Tip:setEndValue 则是和拉力有关系没速度没关系。所以下面代码在setEndValue使用之前 把拉力从0改成20</p>
+</blockquote>
+</li>
+<li><p>SpringSystemListener（SpringSystem.addListener）</p>
+<ul>
+<li>onBeforeIntegrate 每次计算之前</li>
+<li>onAfterIntegrate  每次计算之后</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>为什么在onAfterIntegrate里写 而不是onBeforeIntegrate 因为如果出界后可以马上放回来。</p>
+</blockquote>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">springSystem = SpringSystem.create();</div><div class="line">springSystem.addListener(<span class="keyword">this</span>);</div><div class="line">xSpring = springSystem.createSpring();</div><div class="line">ySpring = springSystem.createSpring();</div><div class="line"></div><div class="line">@Override</div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> onBeforeIntegrate(BaseSpringSystem springSystem) &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> onAfterIntegrate(BaseSpringSystem springSystem) &#123;</div><div class="line">    <span class="comment">//x就不写了 同y</span></div><div class="line">    <span class="keyword">if</span> (y + radius &gt;= getHeight()) &#123;</div><div class="line">        <span class="comment">//球碰到或出边界  吧速度返过来 然后setCurrentValue注意后边有个false 是让动画继续的意思；</span></div><div class="line">       ySpring.setVelocity(-ySpring.getVelocity());</div><div class="line">        <span class="comment">//ySpring.getCurrentValue() - (y + radius - getHeight()) 表示如果出界 就把他放回界内；</span></div><div class="line">       ySpring.setCurrentValue(ySpring.getCurrentValue() - (y + radius - getHeight()), <span class="keyword">false</span>);</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">if</span> (y - radius &lt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">//同上</span></div><div class="line">       ySpring.setVelocity(-ySpring.getVelocity());</div><div class="line">       ySpring.setCurrentValue(ySpring.getCurrentValue() - (y - radius), <span class="keyword">false</span>);</div><div class="line">     &#125;</div><div class="line"> </div><div class="line">     <span class="keyword">for</span> (PointF <span class="built_in">point</span> : points) &#123;</div><div class="line">       <span class="keyword">if</span> (<span class="built_in">dist</span>(x, y, <span class="built_in">point</span>.x, <span class="built_in">point</span>.y) &lt; attractionThreshold &amp;&amp;</div><div class="line">           Math.<span class="built_in">abs</span>(xSpring.getVelocity()) &lt; <span class="number">900</span> &amp;&amp;</div><div class="line">           Math.<span class="built_in">abs</span>(ySpring.getVelocity()) &lt; <span class="number">900</span> &amp;&amp;</div><div class="line">           !dragging) &#123;</div><div class="line">           <span class="comment">//如果速度小于某个值 并且在某个圆的一定范围内 并且手没有拖拽,则用setEndValue平滑过渡到某一点；</span></div><div class="line">         xSpring.setSpringConfig(CONVERGING);</div><div class="line">         xSpring.setEndValue(<span class="built_in">point</span>.x);</div><div class="line">         <span class="comment">//CONVERGING=SpringConfig.fromOrigamiTensionAndFriction(20, 3); </span></div><div class="line">         <span class="comment">//这里为什么把拉力弄成20？因为setEndValue和速度没关系和拉力有关系被；</span></div><div class="line">         ySpring.setSpringConfig(CONVERGING);</div><div class="line">         ySpring.setEndValue(<span class="built_in">point</span>.y);</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="简单的源码流程分析图"><a href="#简单的源码流程分析图" class="headerlink" title="简单的源码流程分析图"></a>简单的源码流程分析图</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb91oqry1sj31jq0wa78w.jpg" alt=""></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/hanhailong726188/article/details/50687466" target="_blank" rel="external">http://blog.csdn.net/hanhailong726188/article/details/50687466</a></p>
+<p><a href="http://www.jianshu.com/p/9d56d92d337c" target="_blank" rel="external">http://www.jianshu.com/p/9d56d92d337c</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-NestedScrolling Child与Parent的实例学习]]></title>
+      <url>https://luhaoaimama1.github.io/2016/10/26/NestedScrolling/</url>
+      <content type="html"><![CDATA[<p>遵守约定：就是google写了一套约定规范 这样大家都照规定写就可以兼容了；<br><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external">zone-sdk项目</a>运行后:-&gt;onTouch事件传递与其辅助类的研究-&gt;即可看到;</p>
+<a id="more"></a>
+<h1 id="初步理解"><a href="#初步理解" class="headerlink" title="初步理解"></a>初步理解</h1><blockquote>
+<p><a href="https://segmentfault.com/a/1190000002873657" target="_blank" rel="external">如果不是很了解请先看此</a></p>
+<p>方法对应：子view会 触发 父view方法。一般是子view发起调用，父view接受回调。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">子view</th>
+<th style="text-align:center">父view</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">startNestedScroll</td>
+<td style="text-align:center">onStartNestedScroll、onNestedScrollAccepted</td>
+</tr>
+<tr>
+<td style="text-align:center">dispatchNestedPreScroll(child消耗前传递给 parent)</td>
+<td style="text-align:center">onNestedPreScroll(子view消耗前)</td>
+</tr>
+<tr>
+<td style="text-align:center">dispatchNestedScroll(child消耗后传递给 parent)</td>
+<td style="text-align:center">onNestedScroll(子view消耗后)</td>
+</tr>
+<tr>
+<td style="text-align:center">stopNestedScroll</td>
+<td style="text-align:center">onStopNestedScroll</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>fling和 Scroll 类似 就不说了</p>
+</blockquote>
+<h1 id="Parent"><a href="#Parent" class="headerlink" title="Parent"></a>Parent</h1><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk2vEyiC22IktY2lqqNl1d1jF9" target="_blank" rel="external"><code>parent流程接入</code></a>   <a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/touch/NestedScrollingActivity_hongParent.java" target="_blank" rel="external"><code>parent代码实例</code></a></p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在写具体的实现前，先对需要用到的上述方法做一下简单的介绍：</div><div class="line"></div><div class="line">onStartNestedScroll该方法，一定要按照自己的需求返回true，该方法决定了当前控件是否能接收到其内部<span class="keyword">View</span>(非并非是直接子<span class="keyword">View</span>)</div><div class="line">滑动时的参数；假设你只涉及到纵向滑动，这里可以根据nestedScrollAxes这个参数，进行纵向判断。</div><div class="line"></div><div class="line">onNestedPreScroll该方法的会传入内部<span class="keyword">View</span>移动的dx,dy，如果你需要消耗一定的dx,dy，就通过最后一个参数consumed进行指定，</div><div class="line">例如我要消耗一半的dy，就可以写consumed[<span class="number">1</span>]=dy/<span class="number">2</span>；（消耗后别以为完事了 需要自己调用scroller）</div><div class="line"></div><div class="line">onNestedScroll这个不常用 主要是子<span class="keyword">view</span>滑动后的剩下的位移交给NestedParent处理</div><div class="line"></div><div class="line">onNestedPreFling你可以捕获对内部<span class="keyword">View</span>的fling事件，如果<span class="keyword">return</span> true则表示拦截掉内部<span class="keyword">View</span>的事件。</div><div class="line">（消耗后别以为完事了 需要自己调用scroller的fling）</div><div class="line"></div><div class="line">onNestedFling：同onNestedScroll不咋常用</div></pre></td></tr></table></figure>
+<blockquote>
+<p>摘自<em>HongYang</em>: <a href="http://blog.csdn.net/lmj623565791/article/details/52204039" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/52204039</a></p>
+</blockquote>
+<h1 id="Child"><a href="#Child" class="headerlink" title="Child"></a>Child</h1><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk0hpNyB0-1QGL2Fj4sK1tPrPG" target="_blank" rel="external"><code>child流程接入</code></a>  <a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/touch/NestedScrollingActivity_Child.java" target="_blank" rel="external"><code>child代码实例</code></a> </p>
+<h2 id="方法的使用时机"><a href="#方法的使用时机" class="headerlink" title="方法的使用时机:"></a>方法的使用时机:</h2><p>startNestedScroll,stopNestedScroll；</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yykhy0yj30m808i76m.jpg" alt=""></p>
+<p>dispatchNestedPreScroll使用时机  此例为RecyclerView的内容；<br>(因为是子view消耗钱 父消耗 )  所以 用if判断 父亲是否消耗；</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb8yyf39tvj30jg04y402.jpg" alt=""></p>
+<p>dispatchNestedScroll  则和上边不同；是child先消耗了；在吧剩下的给NestedParent；看他消耗不；</p>
+<blockquote>
+<p>参考RecyclerView</p>
+</blockquote>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yy026faj30m80hgjxf.jpg" alt=""></p>
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>1.抖动问题：offsetInWindow 如果不加这个参数会出现抖动，</p>
+<blockquote>
+<p>因为父亲消耗后，布局会偏移导致  每次的触摸事件e 其实也跟着偏移了(偏移量是上一次的布局的位移)所以e需要修正；</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-事件传递的学习]]></title>
+      <url>https://luhaoaimama1.github.io/2016/09/17/EventPass/</url>
+      <content type="html"><![CDATA[<p>研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent</p>
+<a id="more"></a>
+<h1 id="dispatchTouchEvent"><a href="#dispatchTouchEvent" class="headerlink" title="dispatchTouchEvent"></a>dispatchTouchEvent</h1><h2 id="View总结"><a href="#View总结" class="headerlink" title="View总结:"></a>View总结:</h2><blockquote>
+<p>onTouchListener &gt; onTouchEvent &gt; onLongClickListener &gt; onClickListener</p>
+<p>上述伪代码总结为下； 基本关键点已经还原~</p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">     <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</div><div class="line">     <span class="keyword">if</span> (onTouchListener != <span class="keyword">null</span>)</div><div class="line">         result = onTouch();</div><div class="line">     <span class="keyword">if</span> (!result) &#123;</div><div class="line">         result = onTouchEvent(e) &#123;</div><div class="line">             <span class="comment">// 检查各种 clickable 如果有一个会 是true就会走</span></div><div class="line">             <span class="keyword">if</span> (((viewFlags &amp; CLICKABLE) == CLICKABLE ||</div><div class="line">                     (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE) ||</div><div class="line">                     (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE) &#123;</div><div class="line">                 </div><div class="line">                 <span class="keyword">case</span>:down</div><div class="line">                 mHasPerformedLongPress = <span class="keyword">false</span>;<span class="comment">//设置标识</span></div><div class="line">                 postDelay（mPendingCheckForTap, ViewConfiguration.getLongPressTimeout()）</div><div class="line">                 <span class="comment">//mPendingCheckForTap线程执行后更改为true; 并执行onLongClickListener</span></div><div class="line">                 </div><div class="line">                 <span class="keyword">case</span>:up</div><div class="line">                 <span class="keyword">if</span> (!mHasPerformedLongPress) &#123;</div><div class="line">                     removeLongPressCallback();  <span class="comment">// 移除长按</span></div><div class="line">                     执行onClickListener</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">             <span class="keyword">return</span> <span class="keyword">true</span>;                        <span class="comment">// ◀︎表示事件被消费</span></div><div class="line">         &#125;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ViewGroup总结："><a href="#ViewGroup总结：" class="headerlink" title="ViewGroup总结："></a>ViewGroup总结：</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">     <span class="keyword">boolean</span> handled=<span class="keyword">false</span>,intercepted= <span class="keyword">false</span>;</div><div class="line">      <span class="comment">//--------拦截判断--------</span></div><div class="line">     <span class="comment">//disallowIntercept与requestDisallowInterceptTouchEvent(boolean)设置的值有关；</span></div><div class="line">     <span class="keyword">if</span>(disallowIntercept)</div><div class="line">       intercepted = onInterceptTouchEvent(ev)</div><div class="line">     <span class="keyword">else</span></div><div class="line">       intercepted=<span class="keyword">false</span>;</div><div class="line">     <span class="comment">//--------拦截结束--------</span></div><div class="line">     <span class="keyword">if</span> (!intercepted) &#123;</div><div class="line">     <span class="comment">//不拦截的话</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = childrenCount - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">                 <span class="comment">//如果有上一个dispatch返回true了 这个直接跳出for循环；</span></div><div class="line">                 <span class="keyword">if</span> (newTouchTarget != <span class="keyword">null</span>) </div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                 <span class="comment">//dispatchTransformedTouchEvent:这个就是会调用child.dispatchTouchEvent</span></div><div class="line">                 <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="keyword">false</span>, child, idBitsToAssign)) &#123;</div><div class="line">                   <span class="comment">//addTouchTarget方法里会给mFirstTouchTarget赋值；</span></div><div class="line">                   newTouchTarget = addTouchTarget(child, idBitsToAssign);</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">                 &#125;</div><div class="line">            &#125;</div><div class="line">     &#125;</div><div class="line">   <span class="keyword">if</span> (mFirstTouchTarget == <span class="keyword">null</span>) &#123; </div><div class="line">       <span class="comment">//dispatchTransformedTouchEvent 因为传递null的view最后会走 super(就是view).dispatchTouchEvent()方法</span></div><div class="line">       handled = dispatchTransformedTouchEvent(ev, canceled, <span class="keyword">null</span>,</div><div class="line">               TouchTarget.ALL_POINTER_IDS);</div><div class="line">   &#125; </div><div class="line">       </div><div class="line"><span class="keyword">return</span> handled;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="源码探究"><a href="#源码探究" class="headerlink" title="源码探究"></a>源码探究</h1><p>View dispatchTouchEvent<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> boolean <span class="title">dispatchTouchEvent</span>(<span class="params">MotionEvent <span class="keyword">event</span></span>) </span>&#123;</div><div class="line">    boolean result = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (onFilterTouchEventForSecurity(<span class="keyword">event</span>)) &#123;</div><div class="line">              <span class="comment">//noinspection SimplifiableIfStatement</span></div><div class="line">              ListenerInfo li = mListenerInfo;</div><div class="line">              <span class="keyword">if</span> (li != <span class="literal">null</span> &amp;&amp; li.mOnTouchListener != <span class="literal">null</span></div><div class="line">                      &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED</div><div class="line">                      &amp;&amp; li.mOnTouchListener.onTouch(<span class="keyword">this</span>, <span class="keyword">event</span>)) &#123;</div><div class="line">                   <span class="comment">//如果 不是ENABLED 并且 setOnTouchListener</span></div><div class="line">                  result = <span class="literal">true</span>;</div><div class="line">              &#125;</div><div class="line">  </div><div class="line">              <span class="keyword">if</span> (!result &amp;&amp; onTouchEvent(<span class="keyword">event</span>)) &#123;</div><div class="line">              <span class="comment">// 如果设置了setOnTouchListener 会截断(就跳过去了)onTouchEvent </span></div><div class="line">                  result = <span class="literal">true</span>;</div><div class="line">              &#125;</div><div class="line">      &#125;</div><div class="line">    <span class="keyword">return</span> result; </div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="View-onTouchEvent-伪代码"><a href="#View-onTouchEvent-伪代码" class="headerlink" title="View onTouchEvent 伪代码"></a>View onTouchEvent 伪代码</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> action = event.getAction();</div><div class="line">  	<span class="comment">// 检查各种 clickable 如果有一个会 是true就会走</span></div><div class="line">    <span class="keyword">if</span> (((viewFlags &amp; CLICKABLE) == CLICKABLE ||</div><div class="line">            (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE) ||</div><div class="line">            (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE) &#123;</div><div class="line">        <span class="keyword">switch</span> (action) &#123;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</div><div class="line">                ...</div><div class="line">                <span class="keyword">if</span>(!mHasPerformedLongPress)&#123;</div><div class="line">                <span class="comment">//longClick线程执行的时候会修改mHasPerformedLongPress=true;</span></div><div class="line">                <span class="comment">//所以longClick 和 click不会同时触发；</span></div><div class="line">                    removeLongPressCallback();  <span class="comment">// 移除长按</span></div><div class="line">                    ...</div><div class="line">                    performClick();             <span class="comment">// 检查单击</span></div><div class="line">                &#125;</div><div class="line">                ...</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">                mHasPerformedLongPress=<span class="keyword">false</span>;</div><div class="line">                ...</div><div class="line">                checkForLongClick(<span class="number">0</span>);       <span class="comment">// 检测长按 这是个延时线程如果没有被移除 就会执行；</span></div><div class="line">                ...</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            ...</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;                        <span class="comment">// ◀︎表示事件被消费</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>摘自GcsSloop:<a href="http://www.gcssloop.com/customview/dispatch-touchevent-source" target="_blank" rel="external">http://www.gcssloop.com/customview/dispatch-touchevent-source</a></p>
+</blockquote>
+<h3 id="ViewGroup"><a href="#ViewGroup" class="headerlink" title="ViewGroup"></a>ViewGroup</h3><blockquote>
+<p>extend View</p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">   ...</div><div class="line">   <span class="keyword">boolean</span> handled = <span class="keyword">false</span>;</div><div class="line">   ... </div><div class="line">   <span class="comment">//--------拦截判断--------</span></div><div class="line">   <span class="keyword">final</span> <span class="keyword">boolean</span> intercepted;</div><div class="line">         <span class="keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN</div><div class="line">                 || mFirstTouchTarget != <span class="keyword">null</span>) &#123;</div><div class="line">              <span class="comment">//disallowIntercept与requestDisallowInterceptTouchEvent(boolean)方法有关；</span></div><div class="line">             <span class="keyword">final</span> <span class="keyword">boolean</span> disallowIntercept = (mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT) != <span class="number">0</span>;</div><div class="line">             <span class="keyword">if</span> (!disallowIntercept) &#123;</div><div class="line">                 intercepted = onInterceptTouchEvent(ev);</div><div class="line">                 ev.setAction(action); <span class="comment">// restore action in case it was changed</span></div><div class="line">             &#125; <span class="keyword">else</span> &#123;</div><div class="line">                 intercepted = <span class="keyword">false</span>;</div><div class="line">             &#125;</div><div class="line">         &#125; <span class="keyword">else</span> &#123;</div><div class="line">             <span class="comment">// There are no touch targets and this action is not an initial down</span></div><div class="line">             <span class="comment">// so this view group continues to intercept touches.</span></div><div class="line">             intercepted = <span class="keyword">true</span>;</div><div class="line">         &#125;  </div><div class="line">     <span class="comment">//--------拦截结束--------</span></div><div class="line">     </div><div class="line">     <span class="keyword">if</span> (!canceled &amp;&amp; !intercepted) &#123;</div><div class="line">       <span class="comment">//没被拦截的情况</span></div><div class="line">       ...</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = childrenCount - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">           ...</div><div class="line">            <span class="comment">//如果有上一个dispatch返回true了 这个直接跳出for循环；</span></div><div class="line">            <span class="keyword">if</span> (newTouchTarget != <span class="keyword">null</span>) &#123;</div><div class="line">                   <span class="comment">// Child is already receiving touch within its bounds.</span></div><div class="line">                   <span class="comment">// Give it the new pointer in addition to the ones it is handling.</span></div><div class="line">                   newTouchTarget.pointerIdBits |= idBitsToAssign;</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="keyword">false</span>, child, idBitsToAssign)) &#123;</div><div class="line">              <span class="comment">// Child wants to receive touch within its bounds.</span></div><div class="line">              mLastTouchDownTime = ev.getDownTime();</div><div class="line">              <span class="keyword">if</span> (preorderedList != <span class="keyword">null</span>) &#123;</div><div class="line">                  <span class="comment">// childIndex points into presorted list, find original index</span></div><div class="line">                  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; childrenCount; j++) &#123;</div><div class="line">                      <span class="keyword">if</span> (children[childIndex] == mChildren[j]) &#123;</div><div class="line">                          mLastTouchDownIndex = j;</div><div class="line">                          <span class="keyword">break</span>;</div><div class="line">                      &#125;</div><div class="line">                  &#125;</div><div class="line">              &#125; <span class="keyword">else</span> &#123;</div><div class="line">                  mLastTouchDownIndex = childIndex;</div><div class="line">              &#125;</div><div class="line">              mLastTouchDownX = ev.getX();</div><div class="line">              mLastTouchDownY = ev.getY();</div><div class="line">              <span class="comment">//addTouchTarget方法里会给mFirstTouchTarget赋值；</span></div><div class="line">              newTouchTarget = addTouchTarget(child, idBitsToAssign);</div><div class="line">              alreadyDispatchedToNewTouchTarget = <span class="keyword">true</span>;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">       &#125;</div><div class="line">        ...</div><div class="line">     &#125;</div><div class="line">     </div><div class="line">     <span class="comment">// Dispatch to touch targets.</span></div><div class="line">     <span class="keyword">if</span> (mFirstTouchTarget == <span class="keyword">null</span>) &#123; </div><div class="line">         <span class="comment">// No touch targets so treat this as an ordinary view.</span></div><div class="line">         <span class="comment">//dispatchTransformedTouchEvent 因为传递null的view最后会走 super(就是view).dispatchTouchEvent()方法</span></div><div class="line">         handled = dispatchTransformedTouchEvent(ev, canceled, <span class="keyword">null</span>,</div><div class="line">                 TouchTarget.ALL_POINTER_IDS);</div><div class="line">     &#125; </div><div class="line">    ...</div><div class="line">    <span class="keyword">return</span> handled; </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h1 id="Method之requestDisallowInterceptTouchEvent"><a href="#Method之requestDisallowInterceptTouchEvent" class="headerlink" title="Method之requestDisallowInterceptTouchEvent"></a>Method之requestDisallowInterceptTouchEvent</h1><blockquote>
+<p>通过日志进行研究</p>
+</blockquote>
+<ul>
+<li>已知:<ul>
+<li>ReParent(就是ViewGroup): onTouchEvent,dispatchTouchEvent,onInterceptTouchEvent </li>
+<li>ViewChild(就是View): onTouchEvent,dispatchTouchEvent</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>return 的都是super.</p>
+</blockquote>
+<h2 id="开始测试："><a href="#开始测试：" class="headerlink" title="开始测试："></a>开始测试：</h2><ul>
+<li><p>第一次 修改child  onTouchEvent return true </p>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 即使我消耗了,其父dispatch,onInterceptTouchEvent也会相继走,</p>
+<p>而不是直接跳到目标View执行 dispatchTouchEvent,onTouchEvent 与传言不符~</p>
+</blockquote>
+</li>
+<li><p>第二次 child dispatchTouchEvent return true </p>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div></pre></td></tr></table></figure>
+<blockquote>
+<p>为啥没走  ReParent-&gt;onTouchEvent ACTION_DOWN 因为 addTouchTarget(child, idBitsToAssign)是dispatchTouchEvent return true就执行 </p>
+<p>会找到对应的目标;所以下面代码不走 </p>
+</blockquote>
+  <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">源码</div><div class="line"><span class="keyword">if</span> (mFirstTouchTarget == <span class="literal">null</span>) </div><div class="line">        <span class="comment">// No touch targets so treat this as an ordinary view.</span></div><div class="line">        handled = dispatchTransformedTouchEvent(ev, canceled, <span class="literal">null</span>,</div><div class="line">                TouchTarget.ALL_POINTER_IDS);</div></pre></td></tr></table></figure>
+</li>
+<li><p>第三次：  child dispatchTouchEvent return true  但是我没有触碰到child </p>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onTouchEvent ACTION_DOWN</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 第二次的源码是正确执行的;</p>
+</blockquote>
+</li>
+<li><p><code>requestDisallowInterceptTouchEvent探究1</code></p>
+<blockquote>
+<p>把代码改回 child onTouchEvent return true dispatchTouchEvent return super.dispatchTouchEvent</p>
+</blockquote>
+<p>  测试源码</p>
+  <figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">case</span> MotionEvent.ACTION_DOWN :</div><div class="line">    downX =event.getX();</div><div class="line">    <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild-&gt;onTouchEvent ACTION_DOWN"</span>);</div><div class="line">    break;</div><div class="line"><span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">    <span class="keyword">if</span>(Math.abs(event.getX()<span class="params">-downX</span>)&gt;<span class="number">200</span>)&#123;</div><div class="line">        <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild- &gt;200!!! 请求拦截"</span>);</div><div class="line">        getParent().requestDisallowInterceptTouchEvent(<span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild- &lt;200!!! 父亲不拦截"</span>);</div><div class="line">        getParent().requestDisallowInterceptTouchEvent(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">Log</span>.i(<span class="built_in">TAG</span>, <span class="string">"ViewChild-&gt;onTouchEvent ACTION_MOVE"</span>);</div><div class="line">    break;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">ViewChild- &lt;<span class="number">200</span>!!! 父亲不拦截</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line"></div><div class="line">ViewChild- &gt;<span class="number">200</span>!!! 请求拦截</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line"></div><div class="line">ViewChild- &lt;<span class="number">200</span>!!! 父亲不拦截</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>onTouchEvent ACTION_MOVE</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div><div class="line">V<span class="function"><span class="title">iewChild</span>-&gt;</span>dispatchTouchEvent ACTION_MOVE</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p><code>requestDisallowInterceptTouchEvent 探究2</code></p>
+<blockquote>
+<p>把ReParent onInterceptTouchEvent return true</p>
+</blockquote>
+  <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>dispatchTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onInterceptTouchEvent ACTION_DOWN</div><div class="line">R<span class="function"><span class="title">eParent</span>-&gt;</span>onTouchEvent ACTION_DOWN</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明 requestDisallowInterceptTouchEvent代码如果不走是不能让他停止拦截的；</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-PorterDuffXfermode的正确使用方式]]></title>
+      <url>https://luhaoaimama1.github.io/2016/08/28/Xfermode/</url>
+      <content type="html"><![CDATA[<p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
+<a id="more"></a>
+<h2 id="官方合成图"><a href="#官方合成图" class="headerlink" title="官方合成图"></a>官方合成图</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb8yigv0rqj30m80f8my1.jpg" alt=""></p>
+<blockquote>
+<p>如正确姿势的图，首先要明白的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">解释2</th>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">解释2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">黄色</td>
+<td style="text-align:center">先画,下层(dst)</td>
+<td style="text-align:center">in</td>
+<td style="text-align:center">交集</td>
+</tr>
+<tr>
+<td style="text-align:center">蓝色</td>
+<td style="text-align:center">后画,上层(src)</td>
+<td style="text-align:center">out</td>
+<td style="text-align:center">不相交的</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>举例：PorterDuff.Mode.SRC_IN参数，表示的显示的是 SRC层 IN交集的部分(注意 <code>这其实是DST层</code> 下面有解释)；</p>
+</blockquote>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yipzxu1j30rs0c13yr.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">解释2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">图2</td>
+<td style="text-align:center"><code>创建两个Bitmap</code> <code>手机宽高</code> <code>bitmap上绘制圆</code> <code>如果看不懂看下面的代码</code></td>
+</tr>
+<tr>
+<td style="text-align:center">图1</td>
+<td style="text-align:center"><code>绘两个圆</code> <code>如果看不懂看下面的代码</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="核心原理-边界-："><a href="#核心原理-边界-：" class="headerlink" title="核心原理(边界)："></a>核心原理(边界)：</h2><blockquote>
+<p>Xfermode效果:作用在 <code>两个边界之内</code>；<code>边界之外</code> <code>没有Xfermode效果</code>；</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">图</th>
+<th style="text-align:center">边界</th>
+<th style="text-align:center">SRC_IN</th>
+<th style="text-align:center">SRC_OUT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>图2</code> <code>正确姿势</code></td>
+<td style="text-align:center">每个都是手机的宽高</td>
+<td style="text-align:center">正确姿势图中的SRC_IN</td>
+<td style="text-align:center">如正确姿势图中的 SRC_OUT</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>图1</code> <code>平时的误解</code></td>
+<td style="text-align:center">每个都是绘的圆那么大</td>
+<td style="text-align:center">如 <code>正确姿势图中的SRC_IN</code> <code>多出黄色的部分</code></td>
+<td style="text-align:center">如 <code>正确姿势图中的SRC_OUT</code> <code>多出黄色的部分</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>正确姿势图 是官方给的图；</p>
+<p>Tips:为什么多出黄色的部分？ 因为这个部分是 边界未相交的部分,那么不会有Xfermode的效果 所以剩下；</p>
+<p><code>那么大家会很疑惑，为什么DST剩下了,SRC边界之外为何不剩下？</code></p>
+<p>因为DST先绘制的 就是底图.SRC是为了给DST添加叠加模式的效果的.</p>
+<p><code>最终显示的都是DST只是变成有叠加效果的DST；</code></p>
+</blockquote>
+<p><code>demo效果：动画、surfaceView、绘图方面的研究-&gt;Xfermode;然后选择模式；</code><br><a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/animal/viewa/XfermodeView.java" target="_blank" rel="external">xfermode代码</a></p>
+<p>图1的代码：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">canvas.saveLayerAlpha(<span class="number">0</span>, <span class="number">0</span>, getWidth(), getHeight(), <span class="number">255</span>,</div><div class="line">            Canvas.ALL_SAVE_FLAG);</div><div class="line"></div><div class="line">    paint.setColor(Color.YELLOW);</div><div class="line">    canvas.drawCircle(getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, <span class="number">200</span>, paint);</div><div class="line">    paint.setXfermode(new PorterDuffXfermode(mode));</div><div class="line">    paint.setColor(Color.BLUE);</div><div class="line">    canvas.drawCircle(getWidth() / <span class="number">2</span> + <span class="number">200</span>, getHeight() / <span class="number">2</span> + <span class="number">200</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure></p>
+<p>图2的代码：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//画黄色的圆 满屏幕那种 <span class="keyword">bitmap</span></div><div class="line"><span class="keyword">Bitmap </span><span class="keyword">bt </span>= <span class="keyword">Bitmap.createBitmap(getWidth(), </span>getHeight(), <span class="keyword">Bitmap.Config.ARGB_4444);</span></div><div class="line"><span class="symbol">canvas2.setBitmap</span>(<span class="keyword">bt);</span></div><div class="line"><span class="symbol">paint.setColor</span>(Color.YELLOW)<span class="comment">;</span></div><div class="line"><span class="symbol">canvas2.drawCircle</span>(getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, <span class="number">200</span>, paint)<span class="comment">;</span></div><div class="line">//画蓝色的圆 满屏幕那种 <span class="keyword">bitmap</span></div><div class="line"><span class="keyword">Bitmap </span><span class="keyword">bt2 </span>= <span class="keyword">Bitmap.createBitmap(getWidth(), </span>getHeight(), <span class="keyword">Bitmap.Config.ARGB_4444);</span></div><div class="line"><span class="symbol">canvas2.setBitmap</span>(<span class="keyword">bt2);</span></div><div class="line"><span class="symbol">paint.setColor</span>(Color.<span class="keyword">BLUE);</span></div><div class="line"><span class="symbol">canvas2.drawCircle</span>(getWidth() / <span class="number">2</span> + <span class="number">200</span>, getHeight() / <span class="number">2</span> + <span class="number">200</span>, <span class="number">200</span>, paint)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<h2 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h2><h4 id="为什么-不用saveLayerAlpha有时候就不好使"><a href="#为什么-不用saveLayerAlpha有时候就不好使" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使"></a>为什么 不用saveLayerAlpha有时候就不好使</h4><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int layerID = canvas.saveLayer(<span class="number">0</span>, <span class="number">0</span>, width * <span class="number">2</span>, height * <span class="number">2</span>, mPaint, Canvas.ALL_SAVE_FLAG);</div><div class="line">canvas.drawBitmap(dstBmp, <span class="number">0</span>, <span class="number">0</span>, mPaint);</div><div class="line">mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));</div><div class="line">canvas.drawBitmap(srcBmp, width / <span class="number">2</span>, height / <span class="number">2</span>, mPaint);</div></pre></td></tr></table></figure>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8ygjcf7ij30uy092mx6.jpg" alt=""></p>
+<h4 id="有saveLayer的绘图流程"><a href="#有saveLayer的绘图流程" class="headerlink" title="有saveLayer的绘图流程"></a><strong>有saveLayer的绘图流程</strong></h4><p>这是因为在调用saveLayer时，会生成了一个全新的bitmap，这个bitmap的大小就是我们指定的保存区域的大小，新生成的bitmap是全透明的，在调用saveLayer后所有的绘图操作都是在这个bitmap上进行的。<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yiwcm8bj30f008umx5.jpg" alt=""></p>
+<h4 id="没有saveLayer的绘图流程"><a href="#没有saveLayer的绘图流程" class="headerlink" title="没有saveLayer的绘图流程"></a><strong>没有saveLayer的绘图流程</strong></h4><p>由于我们先把整个画布给染成了绿色，然后再画上了一个圆形，所以在应用xfermode来画源图像的时候，目标图像当前Bitmap上的所有图像了，也就是整个绿色的屏幕和一个圆形了。所以这时候源图像的相交区域是没有透明像素的，透明度全是100%，这也就不难解释结果是这样的原因了。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yj3233oj30fu09ga9z.jpg" alt=""></p>
+<blockquote>
+<p>总结就是  saveLayer为了区分，哪一步的图形,应该与合成模式的bitmap去合成 运算；</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-Canvas]]></title>
+      <url>https://luhaoaimama1.github.io/2016/05/18/Canvas/</url>
+      <content type="html"><![CDATA[<p>以我个人主观推断的Canvas工作原理</p>
+<a id="more"></a>
+<h2 id="图片理解模型"><a href="#图片理解模型" class="headerlink" title="图片理解模型"></a>图片理解模型</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8y9kyyggj31ig11oq91.jpg" alt=""></p>
+<h2 id="我的启蒙关键就是saveLayer的官方文档："><a href="#我的启蒙关键就是saveLayer的官方文档：" class="headerlink" title="我的启蒙关键就是saveLayer的官方文档："></a>我的启蒙关键就是saveLayer的官方文档：</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">This behaves <span class="keyword">the</span> same <span class="keyword">as</span> save(), but <span class="keyword">in</span> addition <span class="keyword">it</span> allocates <span class="keyword">and</span> redirects drawing <span class="built_in">to</span> <span class="keyword">an</span> offscreen bitmap.</div><div class="line">All drawing calls are directed <span class="built_in">to</span> <span class="keyword">a</span> newly allocated offscreen bitmap. </div><div class="line">Only when <span class="keyword">the</span> balancing call <span class="built_in">to</span> restore() is made, </div><div class="line">is that offscreen buffer drawn back <span class="built_in">to</span> <span class="keyword">the</span> current target <span class="keyword">of</span> <span class="keyword">the</span> Canvas (either <span class="keyword">the</span> screen, <span class="keyword">it</span><span class="string">'s target Bitmap, or the previous layer).</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>大概意思:新建的一个bitmap(离屏)代表Layer(叫他是因为层的概念我们好理解),后续全部的操作(包括drawingXXX)都会定向到这个新的离屏bitmap,仅仅当restore的时候,离屏的绘制缓存才能绘制到current target of the Canvas(bt/offscreen)上</p>
+</blockquote>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><h3 id="Canvas我为什么认为叫-辅助-助手坐标系？"><a href="#Canvas我为什么认为叫-辅助-助手坐标系？" class="headerlink" title="Canvas我为什么认为叫 辅助/助手坐标系？"></a>Canvas我为什么认为叫 辅助/助手坐标系？</h3><p>先看一个例子：<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">Cavas</span>(bitmap);</span></div><div class="line"><span class="title">cavas</span>.<span class="title">translate</span>(<span class="number">0</span>,<span class="number">10</span>);</div><div class="line"><span class="title">cavas</span>.<span class="title">drawLine</span>(...)<span class="comment">//横线</span></div><div class="line"><span class="title">cavas</span>.<span class="title">translate</span>(<span class="number">0</span>,<span class="number">10</span>);</div><div class="line"><span class="title">cavas</span>.<span class="title">drawLine</span>(...)<span class="comment">//横线</span></div></pre></td></tr></table></figure></p>
+<p>结果是：bitmap没有随着cavas.translate位移而改变，但是canvas.translate后边的draw后边的发生改变了<br>说明draw方法是已canvas的参考系为参考,而canvas的参考系有rorate，translate，clip 等属性；<br>经过这些属性的调整最终映射到bitmap坐标系进行绘制,绘制在bitmap的图像就和canvas没关系了(既调整canvas也不会改变bitmap的图像)</p>
+<p><strong>结论：canvas就像 辅助坐标系，辅助draw方法绘制到最终的bitmap上</strong><br>鼠绘的人会不停的旋转画布翻转画布，来绘制线条，主要为了为更舒适(对我们来说就是更简单,更容易理解 )；</p>
+<h3 id="canvas怎么就让绘制简单了？"><a href="#canvas怎么就让绘制简单了？" class="headerlink" title="canvas怎么就让绘制简单了？"></a>canvas怎么就让绘制简单了？</h3><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">Cavas</span>(bitmap);<span class="title">cavas</span>.<span class="title">drawLine</span>(...)<span class="comment">//横线</span></span></div><div class="line"><span class="title">cavas</span>.<span class="title">rorate</span>(<span class="number">90</span>°,x,y);</div><div class="line"><span class="title">cavas</span>.<span class="title">drawLine</span>(...)<span class="comment">//横线</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果没有画布你怎么绘制Line 会计算 cos(90°)与sin(90°)算成坐标点 然后drawLine 发现简单了吧</p>
+</blockquote>
+<h3 id="saveLayerAlpha-…int-alpha-透明度怎么回事？"><a href="#saveLayerAlpha-…int-alpha-透明度怎么回事？" class="headerlink" title="saveLayerAlpha(…int alpha..) 透明度怎么回事？"></a>saveLayerAlpha(…int alpha..) 透明度怎么回事？</h3><p>我认为原理大概是:bitmap会有个方法(假想)叫setAlpha(int alpha)导致所有drawXXX系列的图像的透明度(drawAlpha)最终会=alpha/255*drawAlpha;</p>
+<h3 id="restoreToCount方法和restore方法的区别"><a href="#restoreToCount方法和restore方法的区别" class="headerlink" title="restoreToCount方法和restore方法的区别"></a>restoreToCount方法和restore方法的区别</h3><p>restoreToCount(int saveCount):就是对restore的封装(saveCount必须&gt;=1)<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">例如:<span class="keyword">save</span>四次 然后<span class="keyword">restore</span>三次；</div><div class="line"><span class="keyword">save</span>();1</div><div class="line"><span class="keyword">save</span>();2</div><div class="line"><span class="keyword">save</span>();3</div><div class="line"><span class="keyword">save</span>();4</div><div class="line"><span class="comment">//save栈中为1-&gt;2-&gt;3-&gt;4-&gt;5(now)</span></div><div class="line"><span class="keyword">restore</span>();到4</div><div class="line"><span class="keyword">restore</span>();到3</div><div class="line"><span class="keyword">restore</span>();到2</div><div class="line"><span class="comment">//save栈中为 1-&gt;2  也相当于直接使用 restoreToCount(2)</span></div></pre></td></tr></table></figure></p>
+<h3 id="为什么-view-ondraw里的-不用restore-layer就能显示？"><a href="#为什么-view-ondraw里的-不用restore-layer就能显示？" class="headerlink" title="为什么 view ondraw里的 不用restore layer就能显示？"></a>为什么 view ondraw里的 不用restore layer就能显示？</h3><p>源码大概最后会使用canvas.restoreToCount(1)吧</p>
+<blockquote>
+<p>Tips:自己弄的Canvas 注意一定要restore 把离屏缓存 不然 layer绘制的不会显示!</p>
+<p><strong>所以我们要养成习惯restore,这样代码在哪都不会错</strong></p>
+</blockquote>
+<h3 id="为什么第一次saveLayer的值是1？而不是0"><a href="#为什么第一次saveLayer的值是1？而不是0" class="headerlink" title="为什么第一次saveLayer的值是1？而不是0?"></a>为什么第一次saveLayer的值是1？而不是0?</h3><p>因为canvas.save() 返回的值 是上个图层的值。而且Canvas提供了图层（Layer）支持，缺省情况可以看作是只有一个图 层Layer。</p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
+<li>layer图层必须 <strong>出栈</strong>才能将本层绘制的图像“绘制”到上层或是Canvas上</li>
+<li><p>Tips:想要Canvas显示正确的图像，不是随意出栈即可。例如：saveLayer4次 即 现在栈中为 1-&gt;2-&gt;3-&gt;4-&gt;5  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">restoreToCount(2)是不显示的！而且可以理解为</div><div class="line"><span class="keyword">restore</span>();到4</div><div class="line"><span class="keyword">restore</span>();到3</div><div class="line"><span class="keyword">restore</span>();到2</div><div class="line">所以这是的图像 在第2个Layer(bitmap)上呢</div><div class="line">必须<span class="keyword">restore</span>(<span class="number">1</span>)因为第一层Layer（bt)的引用的正是我们<span class="keyword">new</span> Canvas(bt)的bt；</div></pre></td></tr></table></figure>
+</li>
+<li><p>saveLayer可以指定大小。因为如果每次建立一个和原图一样大小会可能会出现OOM。已屏幕大小为例按一个像素需要8bit存储空间算，1024<em>768的机器，所使用的bit数就是1024</em>768*8=6.2M！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">saveLayer</span><span class="params">(RectF bounds, Paint paint, <span class="keyword">int</span> saveFlags)</span></span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h2><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/51317746</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）]]></title>
+      <url>https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/</url>
+      <content type="html"><![CDATA[<p>已经测试我一般用 <a href="#way2">方案1</a></p>
+<a id="more"></a>
+<p><a id="way2"></a></p>
+<h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Dp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成DP</a><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Sp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成SP</a><br>主要代码就是下面的<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ldpi</span>(<span class="string">"values-ldpi"</span>,<span class="number">0.75</span>F),<span class="selector-tag">mdpi</span>(<span class="string">"values-mdpi"</span>,<span class="number">1.0</span>F),<span class="selector-tag">hdpi</span>(<span class="string">"values-hdpi"</span>,<span class="number">1.5</span>F),<span class="selector-tag">xhdpi</span>(<span class="string">"values-xhdpi"</span>,<span class="number">2</span>F),<span class="selector-tag">xxhdpi</span>(<span class="string">"values-xxhdpi"</span>,<span class="number">3</span>F);</div></pre></td></tr></table></figure></p>
+<h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_AccurateSize.java" target="_blank" rel="external">如果想支持多种像素文件夹那种 看这个</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-打造无敌解耦的BaseActivity]]></title>
+      <url>https://luhaoaimama1.github.io/2016/03/23/BaseActivity/</url>
+      <content type="html"><![CDATA[<p><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
+<h1 id="BaseActivity"><a href="#BaseActivity" class="headerlink" title="BaseActivity"></a>BaseActivity</h1><p>ActivityKinds(观察者的基类): 在使用的BaseActivity注册ActivityKinds或者移除不必要的ActivityKinds</p>
+<blockquote>
+<p>专注：<code>onCreate</code>，<code>onResume</code>，<code>onActivityResult</code>，<code>onPause</code>，<code>onDestroy</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CollectionActivityKind</td>
+<td style="text-align:center">收集所有Activity用的</td>
+</tr>
+<tr>
+<td style="text-align:center">FeaturesKind</td>
+<td style="text-align:center"><a href="#featuresKind">专门处理关于onActivityResult的</a></td>
+</tr>
+<tr>
+<td style="text-align:center">ScreenSettingKind</td>
+<td style="text-align:center">setNoTitle,setFullScreen的</td>
+</tr>
+<tr>
+<td style="text-align:center">SwipeBackKind</td>
+<td style="text-align:center">左滑退出Activity用的 集成别的项目~</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>考虑兼容(简称BaseActivity)分成三块:<code>BaseActivity</code> <code>BaseAppCompatActivity</code> <code>BaseFragmentActivity</code></p>
+</blockquote>
+<h4 id="BaseActivity里的主要工作"><a href="#BaseActivity里的主要工作" class="headerlink" title="BaseActivity里的主要工作"></a>BaseActivity里的主要工作</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">updateKinds</td>
+<td style="text-align:center">在这里 移除与注册 ActivityKinds</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ActivityKinds范例："><a href="#ActivityKinds范例：" class="headerlink" title="ActivityKinds范例："></a>ActivityKinds范例：</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">StatKind</span> <span class="keyword">extends</span> <span class="title">ActivityKinds</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onResume() &#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        <span class="comment">//百度统计</span></div><div class="line">        <span class="type">StatService</span>.onResume(activity);</div><div class="line">        <span class="comment">//jpush</span></div><div class="line">        <span class="type">JpushUtils</span>.<span class="type">Activity</span>.resumePush(activity.getApplicationContext());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onPause() &#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        <span class="type">StatService</span>.onPause(activity);</div><div class="line">        <span class="type">JpushUtils</span>.<span class="type">Activity</span>.stopPush(activity.getApplicationContext());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind"><a href="#BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind" class="headerlink" title="BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;"></a>BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DBaseAppCompatActivity</span> <span class="keyword">extends</span> <span class="title">BaseAppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> arg0) &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(arg0);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void updateKinds() &#123;</div><div class="line">        mKindControl.remove(<span class="type">SwipeBackKind</span>.<span class="keyword">class</span>);</div><div class="line">        mKindControl.put(<span class="keyword">new</span> <span class="type">StatKind</span>());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a id="featuresKind"></a></p>
+<h1 id="FeaturesKind"><a href="#FeaturesKind" class="headerlink" title="FeaturesKind"></a>FeaturesKind</h1><p>观察者模式：</p>
+<blockquote>
+<p>ExtraFeature(观察者的基类):专注：<code>init（onResume中使用）</code>,<code>onActivityResult</code>,<code>destory</code></p>
+<p>RequestCodeConfig(所有ExtraFeature的Code声明):其中的START_CODE(默认1000开始)可以修改,而进行整体code偏移 主要是怕碰到别的类似开源项目code重复导致不必要的问题;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Feature_Pic</td>
+<td style="text-align:center">拍照功能与相册选择功能(如果写建议参考这个)</td>
+</tr>
+<tr>
+<td style="text-align:center">Feature_SystemClip</td>
+<td style="text-align:center">系统裁剪(demo 让我删除了.)</td>
+</tr>
+<tr>
+<td style="text-align:center">Featrue_CustomCamera</td>
+<td style="text-align:center">自定义相机(demo 没有. 很久以前的了就不给demo了~)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Tips:<code>返回值的方法要抽象</code>,这样就不会忘记写。 剩下的方法就可以public不抽象了~</p>
+</blockquote>
+<h4 id="Activity中拍照的使用范例："><a href="#Activity中拍照的使用范例：" class="headerlink" title="Activity中拍照的使用范例："></a>Activity中拍照的使用范例：</h4><blockquote>
+<p>声明后 注意 把拍照的功能添加到FeaturesKind里面 <code>mKindControl.get(FeaturesKind.class).addFeature(feature_Pic);</code></p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line">public <span class="keyword">void</span> updateKinds() &#123;</div><div class="line">    <span class="keyword">super</span>.updateKinds();</div><div class="line">    feature_Pic = <span class="keyword">new</span> Feature_Pic(<span class="keyword">this</span>) &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        protected <span class="keyword">void</span> getReturnedPicPath(<span class="built_in">String</span> path) &#123;</div><div class="line">            System.out.println(path);</div><div class="line">            Intent intent = <span class="keyword">new</span> Intent(Photo_Shot_MainActivity.<span class="keyword">this</span>,ShowPicActivity.<span class="keyword">class</span>);</div><div class="line">            <span class="built_in">Uri</span> uri = <span class="built_in">Uri</span>.parse(path);</div><div class="line">            intent.setData(uri);</div><div class="line">            startActivity(intent);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    mKindControl.<span class="keyword">get</span>(FeaturesKind.<span class="keyword">class</span>).addFeature(feature_Pic);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>然后调用此方法就好了~ <code>feature_Pic.openCamera();</code> <code>feature_Pic.openPhotos();</code></p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">    <span class="keyword">case</span> R.id.shot:</div><div class="line">        feature_Pic.openCamera();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> R.id.photo:</div><div class="line">        feature_Pic.openPhotos();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     

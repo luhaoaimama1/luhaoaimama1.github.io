@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Android-打造无敌解耦的BaseActivity"/>
+
+
+
+
+  <meta name="keywords" content="android," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Zone">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+
+
+
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/03/23/BaseActivity/"/>
+
+
+<meta name="description" content="设计模式:观察者模式目的：解耦，各司其职。拍照等涉及onActivityResult的封装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-打造无敌解耦的BaseActivity">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2016/03/23/BaseActivity/index.html">
+<meta property="og:site_name" content="Zone">
+<meta property="og:description" content="设计模式:观察者模式目的：解耦，各司其职。拍照等涉及onActivityResult的封装">
+<meta property="og:updated_time" content="2016-12-30T12:13:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-打造无敌解耦的BaseActivity">
+<meta name="twitter:description" content="设计模式:观察者模式目的：解耦，各司其职。拍照等涉及onActivityResult的封装">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?luhaoaimama1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+    <title> Android-打造无敌解耦的BaseActivity · Zone </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/message">
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/github">
+            项目
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">Zone</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      
+      <a class="mobile-menu-item" href="/">
+        首页
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/archives/">
+        归档
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/categories">
+        分类
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/about">
+        关于
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/message">
+        留言
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/github">
+        项目
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android-打造无敌解耦的BaseActivity
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年3月23日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BaseActivity"><span class="toc-text">BaseActivity</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BaseActivity里的主要工作"><span class="toc-text">BaseActivity里的主要工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ActivityKinds范例："><span class="toc-text">ActivityKinds范例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind"><span class="toc-text">BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FeaturesKind"><span class="toc-text">FeaturesKind</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity中拍照的使用范例："><span class="toc-text">Activity中拍照的使用范例：</span></a></li></ol></li></ol></li></ol></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <p><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
+<h1 id="BaseActivity"><a href="#BaseActivity" class="headerlink" title="BaseActivity"></a>BaseActivity</h1><p>ActivityKinds(观察者的基类): 在使用的BaseActivity注册ActivityKinds或者移除不必要的ActivityKinds</p>
+<blockquote>
+<p>专注：<code>onCreate</code>，<code>onResume</code>，<code>onActivityResult</code>，<code>onPause</code>，<code>onDestroy</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CollectionActivityKind</td>
+<td style="text-align:center">收集所有Activity用的</td>
+</tr>
+<tr>
+<td style="text-align:center">FeaturesKind</td>
+<td style="text-align:center"><a href="#featuresKind">专门处理关于onActivityResult的</a></td>
+</tr>
+<tr>
+<td style="text-align:center">ScreenSettingKind</td>
+<td style="text-align:center">setNoTitle,setFullScreen的</td>
+</tr>
+<tr>
+<td style="text-align:center">SwipeBackKind</td>
+<td style="text-align:center">左滑退出Activity用的 集成别的项目~</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>考虑兼容(简称BaseActivity)分成三块:<code>BaseActivity</code> <code>BaseAppCompatActivity</code> <code>BaseFragmentActivity</code></p>
+</blockquote>
+<h4 id="BaseActivity里的主要工作"><a href="#BaseActivity里的主要工作" class="headerlink" title="BaseActivity里的主要工作"></a>BaseActivity里的主要工作</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">updateKinds</td>
+<td style="text-align:center">在这里 移除与注册 ActivityKinds</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ActivityKinds范例："><a href="#ActivityKinds范例：" class="headerlink" title="ActivityKinds范例："></a>ActivityKinds范例：</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">StatKind</span> <span class="keyword">extends</span> <span class="title">ActivityKinds</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onResume() &#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        <span class="comment">//百度统计</span></div><div class="line">        <span class="type">StatService</span>.onResume(activity);</div><div class="line">        <span class="comment">//jpush</span></div><div class="line">        <span class="type">JpushUtils</span>.<span class="type">Activity</span>.resumePush(activity.getApplicationContext());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onPause() &#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        <span class="type">StatService</span>.onPause(activity);</div><div class="line">        <span class="type">JpushUtils</span>.<span class="type">Activity</span>.stopPush(activity.getApplicationContext());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind"><a href="#BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind" class="headerlink" title="BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;"></a>BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DBaseAppCompatActivity</span> <span class="keyword">extends</span> <span class="title">BaseAppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> arg0) &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(arg0);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void updateKinds() &#123;</div><div class="line">        mKindControl.remove(<span class="type">SwipeBackKind</span>.<span class="keyword">class</span>);</div><div class="line">        mKindControl.put(<span class="keyword">new</span> <span class="type">StatKind</span>());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a id="featuresKind"></a></p>
+<h1 id="FeaturesKind"><a href="#FeaturesKind" class="headerlink" title="FeaturesKind"></a>FeaturesKind</h1><p>观察者模式：</p>
+<blockquote>
+<p>ExtraFeature(观察者的基类):专注：<code>init（onResume中使用）</code>,<code>onActivityResult</code>,<code>destory</code></p>
+<p>RequestCodeConfig(所有ExtraFeature的Code声明):其中的START_CODE(默认1000开始)可以修改,而进行整体code偏移 主要是怕碰到别的类似开源项目code重复导致不必要的问题;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Feature_Pic</td>
+<td style="text-align:center">拍照功能与相册选择功能(如果写建议参考这个)</td>
+</tr>
+<tr>
+<td style="text-align:center">Feature_SystemClip</td>
+<td style="text-align:center">系统裁剪(demo 让我删除了.)</td>
+</tr>
+<tr>
+<td style="text-align:center">Featrue_CustomCamera</td>
+<td style="text-align:center">自定义相机(demo 没有. 很久以前的了就不给demo了~)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Tips:<code>返回值的方法要抽象</code>,这样就不会忘记写。 剩下的方法就可以public不抽象了~</p>
+</blockquote>
+<h4 id="Activity中拍照的使用范例："><a href="#Activity中拍照的使用范例：" class="headerlink" title="Activity中拍照的使用范例："></a>Activity中拍照的使用范例：</h4><blockquote>
+<p>声明后 注意 把拍照的功能添加到FeaturesKind里面 <code>mKindControl.get(FeaturesKind.class).addFeature(feature_Pic);</code></p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line">public <span class="keyword">void</span> updateKinds() &#123;</div><div class="line">    <span class="keyword">super</span>.updateKinds();</div><div class="line">    feature_Pic = <span class="keyword">new</span> Feature_Pic(<span class="keyword">this</span>) &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        protected <span class="keyword">void</span> getReturnedPicPath(<span class="built_in">String</span> path) &#123;</div><div class="line">            System.out.println(path);</div><div class="line">            Intent intent = <span class="keyword">new</span> Intent(Photo_Shot_MainActivity.<span class="keyword">this</span>,ShowPicActivity.<span class="keyword">class</span>);</div><div class="line">            <span class="built_in">Uri</span> uri = <span class="built_in">Uri</span>.parse(path);</div><div class="line">            intent.setData(uri);</div><div class="line">            startActivity(intent);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    mKindControl.<span class="keyword">get</span>(FeaturesKind.<span class="keyword">class</span>).addFeature(feature_Pic);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>然后调用此方法就好了~ <code>feature_Pic.openCamera();</code> <code>feature_Pic.openPhotos();</code></p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">    <span class="keyword">case</span> R.id.shot:</div><div class="line">        feature_Pic.openCamera();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> R.id.photo:</div><div class="line">        feature_Pic.openPhotos();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/android/">android</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/04/25/ScreenAdapter/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/23/BaseActivity/"
+           data-title="Android-打造无敌解耦的BaseActivity" data-url="https://luhaoaimama1.github.io/2016/03/23/BaseActivity/">
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2016
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luhaoaimama1"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+
+  </body>
+</html>

@@ -108,6 +108,13 @@
           </a>
         </li>
       
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/github">
+            项目
+          </a>
+        </li>
+      
       
         <li class="menu-search">
           <form>
@@ -160,6 +167,11 @@
         留言
       </a>
     
+      
+      <a class="mobile-menu-item" href="/github">
+        项目
+      </a>
+    
   </nav>
 </div>
       </header>
@@ -195,7 +207,7 @@
         
 
         
-          <h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p><a href="https://hexo.io/zh-cn/">Hexo</a>是基于<code>NodeJs</code>的静态博客框架，简单、轻量，其生成的静态网页可以托管在<code>Github</code>和<code>Heroku</code>上。</p>
+          <p><a href="https://hexo.io/zh-cn/">Hexo</a>是基于<code>NodeJs</code>的静态博客框架，简单、轻量，其生成的静态网页可以托管在<code>Github</code>和<code>Heroku</code>上。</p>
 <ul>
 <li>超快速度</li>
 <li>支持MarkDown</li>
@@ -205,6 +217,357 @@
 <p>下面以我的博客为例，luhaoaimama1.github.io</p>
           <div class="read-more">
             <a href="/2016/12/28/hexo/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/12/18/drawText/">Android-drawText()详解</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年12月18日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <ul>
+<li>全局声明<ul>
+<li>canvas.drawText(string, <strong>baseLineX</strong>, <strong>baseLineY</strong>, paint)</li>
+<li>baseLineY=基线的Y;</li>
+<li>baseLineX=基线的X;</li>
+<li>本篇以textSize=100为例</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>API:canvas.drawText(String text,int start,int end,float x,float y, paint); //截取字符串 然后绘制     </p>
+</blockquote>
+          <div class="read-more">
+            <a href="/2016/12/18/drawText/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/12/05/JVM/">深入理解Java虚拟机总结</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年12月5日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><ul>
+<li>各种基本类型:boolean、byte、char、short、int、float、long、double;</li>
+<li>对象引用:reference类型 不等于对象本身,可能是对象的句柄也可能对象的引用指针</li>
+<li>局部变量默认没有初始值,不赋值是不可以使用的。和类变量(默认是有的)不一样;</li>
+<li>额外了解:插入式注解处理器:需要继承AbstractProcessor;</li>
+</ul>
+          <div class="read-more">
+            <a href="/2016/12/05/JVM/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/11/20/Rebound/">Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年11月20日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <blockquote>
+<p>综述：Rebound 通过胡克定律，实现的一个类似“弹簧”动画效果的第三方工具包。</p>
+</blockquote>
+          <div class="read-more">
+            <a href="/2016/11/20/Rebound/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/10/26/NestedScrolling/">Android-NestedScrolling Child与Parent的实例学习</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年10月26日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <p>遵守约定：就是google写了一套约定规范 这样大家都照规定写就可以兼容了；<br><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk">zone-sdk项目</a>运行后:-&gt;onTouch事件传递与其辅助类的研究-&gt;即可看到;</p>
+          <div class="read-more">
+            <a href="/2016/10/26/NestedScrolling/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/09/17/EventPass/">Android-事件传递的学习</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年9月17日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <p>研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent</p>
+          <div class="read-more">
+            <a href="/2016/09/17/EventPass/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/08/28/Xfermode/">Android-PorterDuffXfermode的正确使用方式</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年8月28日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
+          <div class="read-more">
+            <a href="/2016/08/28/Xfermode/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/05/18/Canvas/">Android-Canvas</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年5月18日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <p>以我个人主观推断的Canvas工作原理</p>
+          <div class="read-more">
+            <a href="/2016/05/18/Canvas/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/04/25/ScreenAdapter/">Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年4月25日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <p>已经测试我一般用 <a href="#way2">方案1</a></p>
+          <div class="read-more">
+            <a href="/2016/04/25/ScreenAdapter/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/03/23/BaseActivity/">Android-打造无敌解耦的BaseActivity</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年3月23日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+          
+        
+
+        
+          <p><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br>
+          <div class="read-more">
+            <a href="/2016/03/23/BaseActivity/" class="read-more-link">阅读更多</a>
           </div>
         
       

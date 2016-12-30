@@ -11,8 +11,12 @@
 
 
 
+  <meta name="description" content="Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）"/>
 
 
+
+
+  <meta name="keywords" content="android,适配," />
 
 
 
@@ -26,25 +30,19 @@
 
 
 
-<link rel="canonical" href="https://luhaoaimama1.github.io/about/"/>
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/"/>
 
 
-<meta name="description" content="一个灵魂在异世界游荡的人~这是哪?我是谁?来自哪里?要去哪里? (*&amp;gt;∀&amp;lt;)ﾉ))★
-
-Just do it!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zone">
-<meta property="og:url" content="https://luhaoaimama1.github.io/about/index.html">
+<meta name="description" content="已经测试我一般用 方案1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="一个灵魂在异世界游荡的人~这是哪?我是谁?来自哪里?要去哪里? (*&amp;gt;∀&amp;lt;)ﾉ))★
-
-Just do it!">
-<meta property="og:updated_time" content="2016-12-30T12:53:49.000Z">
+<meta property="og:description" content="已经测试我一般用 方案1">
+<meta property="og:updated_time" content="2016-12-30T12:12:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zone">
-<meta name="twitter:description" content="一个灵魂在异世界游荡的人~这是哪?我是谁?来自哪里?要去哪里? (*&amp;gt;∀&amp;lt;)ﾉ))★
-
-Just do it!">
+<meta name="twitter:title" content="Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）">
+<meta name="twitter:description" content="已经测试我一般用 方案1">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -70,7 +68,7 @@ Just do it!">
 
 
 
-    <title>  · Zone </title>
+    <title> Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案） · Zone </title>
   </head>
 
   <body>
@@ -190,18 +188,85 @@ Just do it!">
         <div class="content-wrapper">
           <div id="content" class="content">
             
+  
   <article class="post">
-    <div class="post-content">
-      <h3 id="一个灵魂在异世界游荡的人"><a href="#一个灵魂在异世界游荡的人" class="headerlink" title="一个灵魂在异世界游荡的人~"></a>一个灵魂在异世界游荡的人~</h3><p><strong>这是哪?我是谁?来自哪里?要去哪里?</strong> (*&gt;∀&lt;)ﾉ))★</p>
-<blockquote>
-<p><em>Just do it!</em></p>
-</blockquote>
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）
+        
+      </h1>
 
+      <div class="post-meta">
+        <span class="post-time">
+          2016年4月25日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#方案1"><span class="toc-text">方案1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方案2"><span class="toc-text">方案2</span></a></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <p>已经测试我一般用 <a href="#way2">方案1</a></p>
+<a id="more"></a>
+<p><a id="way2"></a></p>
+<h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Dp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成DP</a><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Sp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成SP</a><br>主要代码就是下面的<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ldpi</span>(<span class="string">"values-ldpi"</span>,<span class="number">0.75</span>F),<span class="selector-tag">mdpi</span>(<span class="string">"values-mdpi"</span>,<span class="number">1.0</span>F),<span class="selector-tag">hdpi</span>(<span class="string">"values-hdpi"</span>,<span class="number">1.5</span>F),<span class="selector-tag">xhdpi</span>(<span class="string">"values-xhdpi"</span>,<span class="number">2</span>F),<span class="selector-tag">xxhdpi</span>(<span class="string">"values-xxhdpi"</span>,<span class="number">3</span>F);</div></pre></td></tr></table></figure></p>
+<h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_AccurateSize.java" target="_blank" rel="external">如果想支持多种像素文件夹那种 看这个</a></p>
+
+      
     </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/android/">android</a>
+          
+            <a href="/tags/适配/">适配</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/05/18/Canvas/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android-Canvas</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/03/23/BaseActivity/">
+        <span class="next-text nav-default">Android-打造无敌解耦的BaseActivity</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
   </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/25/ScreenAdapter/"
+           data-title="Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）" data-url="https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/">
+      </div>
+    
+  </div>
+
         </div>  
       </main>
 
