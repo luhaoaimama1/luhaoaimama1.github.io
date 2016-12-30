@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8ygjcf7ij30uy092mx6.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yiwcm8bj30f008umx5.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yj3233oj30fu09ga9z.jpg">
-<meta property="og:updated_time" content="2016-12-30T12:12:47.000Z">
+<meta property="og:updated_time" content="2016-12-30T13:01:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-PorterDuffXfermode的正确使用方式">
 <meta name="twitter:description" content="看这篇文章请确保看过本站的Android-Canvas这篇文章,主要理解其工作模式后会更容易理解;">
@@ -214,7 +214,7 @@
       <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">文章目录</h2>
         <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方合成图"><span class="toc-text">官方合成图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心原理-边界-："><span class="toc-text">核心原理(边界)：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题延伸"><span class="toc-text">问题延伸</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么-不用saveLayerAlpha有时候就不好使"><span class="toc-text">为什么 不用saveLayerAlpha有时候就不好使</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有saveLayer的绘图流程"><span class="toc-text">有saveLayer的绘图流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#没有saveLayer的绘图流程"><span class="toc-text">没有saveLayer的绘图流程</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#官方合成图"><span class="toc-text">官方合成图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心原理-边界-："><span class="toc-text">核心原理(边界)：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题延伸"><span class="toc-text">问题延伸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么-不用saveLayerAlpha有时候就不好使"><span class="toc-text">为什么 不用saveLayerAlpha有时候就不好使</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有saveLayer的绘图流程"><span class="toc-text">有saveLayer的绘图流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有saveLayer的绘图流程"><span class="toc-text">没有saveLayer的绘图流程</span></a></li></ol></li></ol>
         </div>
       </div>
     
@@ -223,7 +223,7 @@
       
         <p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
 <a id="more"></a>
-<h2 id="官方合成图"><a href="#官方合成图" class="headerlink" title="官方合成图"></a>官方合成图</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb8yigv0rqj30m80f8my1.jpg" alt=""></p>
+<h1 id="官方合成图"><a href="#官方合成图" class="headerlink" title="官方合成图"></a>官方合成图</h1><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb8yigv0rqj30m80f8my1.jpg" alt=""></p>
 <blockquote>
 <p>如正确姿势的图，首先要明白的</p>
 </blockquote>
@@ -273,7 +273,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="核心原理-边界-："><a href="#核心原理-边界-：" class="headerlink" title="核心原理(边界)："></a>核心原理(边界)：</h2><blockquote>
+<h1 id="核心原理-边界-："><a href="#核心原理-边界-：" class="headerlink" title="核心原理(边界)："></a>核心原理(边界)：</h1><blockquote>
 <p>Xfermode效果:作用在 <code>两个边界之内</code>；<code>边界之外</code> <code>没有Xfermode效果</code>；</p>
 </blockquote>
 <table>
@@ -310,11 +310,11 @@
 <p><code>demo效果：动画、surfaceView、绘图方面的研究-&gt;Xfermode;然后选择模式；</code><br><a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/animal/viewa/XfermodeView.java" target="_blank" rel="external">xfermode代码</a></p>
 <p>图1的代码：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">canvas.saveLayerAlpha(<span class="number">0</span>, <span class="number">0</span>, getWidth(), getHeight(), <span class="number">255</span>,</div><div class="line">            Canvas.ALL_SAVE_FLAG);</div><div class="line"></div><div class="line">    paint.setColor(Color.YELLOW);</div><div class="line">    canvas.drawCircle(getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, <span class="number">200</span>, paint);</div><div class="line">    paint.setXfermode(new PorterDuffXfermode(mode));</div><div class="line">    paint.setColor(Color.BLUE);</div><div class="line">    canvas.drawCircle(getWidth() / <span class="number">2</span> + <span class="number">200</span>, getHeight() / <span class="number">2</span> + <span class="number">200</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure></p>
 <p>图2的代码：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//画黄色的圆 满屏幕那种 <span class="keyword">bitmap</span></div><div class="line"><span class="keyword">Bitmap </span><span class="keyword">bt </span>= <span class="keyword">Bitmap.createBitmap(getWidth(), </span>getHeight(), <span class="keyword">Bitmap.Config.ARGB_4444);</span></div><div class="line"><span class="symbol">canvas2.setBitmap</span>(<span class="keyword">bt);</span></div><div class="line"><span class="symbol">paint.setColor</span>(Color.YELLOW)<span class="comment">;</span></div><div class="line"><span class="symbol">canvas2.drawCircle</span>(getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, <span class="number">200</span>, paint)<span class="comment">;</span></div><div class="line">//画蓝色的圆 满屏幕那种 <span class="keyword">bitmap</span></div><div class="line"><span class="keyword">Bitmap </span><span class="keyword">bt2 </span>= <span class="keyword">Bitmap.createBitmap(getWidth(), </span>getHeight(), <span class="keyword">Bitmap.Config.ARGB_4444);</span></div><div class="line"><span class="symbol">canvas2.setBitmap</span>(<span class="keyword">bt2);</span></div><div class="line"><span class="symbol">paint.setColor</span>(Color.<span class="keyword">BLUE);</span></div><div class="line"><span class="symbol">canvas2.drawCircle</span>(getWidth() / <span class="number">2</span> + <span class="number">200</span>, getHeight() / <span class="number">2</span> + <span class="number">200</span>, <span class="number">200</span>, paint)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
-<h2 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h2><h4 id="为什么-不用saveLayerAlpha有时候就不好使"><a href="#为什么-不用saveLayerAlpha有时候就不好使" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使"></a>为什么 不用saveLayerAlpha有时候就不好使</h4><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
+<h1 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h1><h2 id="为什么-不用saveLayerAlpha有时候就不好使"><a href="#为什么-不用saveLayerAlpha有时候就不好使" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使"></a>为什么 不用saveLayerAlpha有时候就不好使</h2><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int layerID = canvas.saveLayer(<span class="number">0</span>, <span class="number">0</span>, width * <span class="number">2</span>, height * <span class="number">2</span>, mPaint, Canvas.ALL_SAVE_FLAG);</div><div class="line">canvas.drawBitmap(dstBmp, <span class="number">0</span>, <span class="number">0</span>, mPaint);</div><div class="line">mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));</div><div class="line">canvas.drawBitmap(srcBmp, width / <span class="number">2</span>, height / <span class="number">2</span>, mPaint);</div></pre></td></tr></table></figure>
 <p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8ygjcf7ij30uy092mx6.jpg" alt=""></p>
-<h4 id="有saveLayer的绘图流程"><a href="#有saveLayer的绘图流程" class="headerlink" title="有saveLayer的绘图流程"></a><strong>有saveLayer的绘图流程</strong></h4><p>这是因为在调用saveLayer时，会生成了一个全新的bitmap，这个bitmap的大小就是我们指定的保存区域的大小，新生成的bitmap是全透明的，在调用saveLayer后所有的绘图操作都是在这个bitmap上进行的。<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yiwcm8bj30f008umx5.jpg" alt=""></p>
-<h4 id="没有saveLayer的绘图流程"><a href="#没有saveLayer的绘图流程" class="headerlink" title="没有saveLayer的绘图流程"></a><strong>没有saveLayer的绘图流程</strong></h4><p>由于我们先把整个画布给染成了绿色，然后再画上了一个圆形，所以在应用xfermode来画源图像的时候，目标图像当前Bitmap上的所有图像了，也就是整个绿色的屏幕和一个圆形了。所以这时候源图像的相交区域是没有透明像素的，透明度全是100%，这也就不难解释结果是这样的原因了。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yj3233oj30fu09ga9z.jpg" alt=""></p>
+<h2 id="有saveLayer的绘图流程"><a href="#有saveLayer的绘图流程" class="headerlink" title="有saveLayer的绘图流程"></a><strong>有saveLayer的绘图流程</strong></h2><p>这是因为在调用saveLayer时，会生成了一个全新的bitmap，这个bitmap的大小就是我们指定的保存区域的大小，新生成的bitmap是全透明的，在调用saveLayer后所有的绘图操作都是在这个bitmap上进行的。<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yiwcm8bj30f008umx5.jpg" alt=""></p>
+<h2 id="没有saveLayer的绘图流程"><a href="#没有saveLayer的绘图流程" class="headerlink" title="没有saveLayer的绘图流程"></a><strong>没有saveLayer的绘图流程</strong></h2><p>由于我们先把整个画布给染成了绿色，然后再画上了一个圆形，所以在应用xfermode来画源图像的时候，目标图像当前Bitmap上的所有图像了，也就是整个绿色的屏幕和一个圆形了。所以这时候源图像的相交区域是没有透明像素的，透明度全是100%，这也就不难解释结果是这样的原因了。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yj3233oj30fu09ga9z.jpg" alt=""></p>
 <blockquote>
 <p>总结就是  saveLayer为了区分，哪一步的图形,应该与合成模式的bitmap去合成 运算；</p>
 </blockquote>
