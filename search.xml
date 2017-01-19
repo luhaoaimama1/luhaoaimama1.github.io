@@ -1051,7 +1051,8 @@
     <entry>
       <title><![CDATA[Android-打造无敌解耦的BaseActivity]]></title>
       <url>https://luhaoaimama1.github.io/2016/03/23/BaseActivity/</url>
-      <content type="html"><![CDATA[<p><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>[封装在zone-sdk库中]<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external">https://github.com/luhaoaimama1/zone-sdk</a><br><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
+<h1 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h1><p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvwziewhij31kw0okgq0.jpg" alt=""></p>
 <h1 id="BaseActivity"><a href="#BaseActivity" class="headerlink" title="BaseActivity"></a>BaseActivity</h1><p>ActivityKinds(观察者的基类): 在使用的BaseActivity注册ActivityKinds或者移除不必要的ActivityKinds</p>
 <blockquote>
 <p>专注：<code>onCreate</code>，<code>onResume</code>，<code>onActivityResult</code>，<code>onPause</code>，<code>onDestroy</code></p>
