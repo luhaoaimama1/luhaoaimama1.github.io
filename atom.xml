@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2016-12-30T14:23:50.000Z</updated>
+  <updated>2017-01-19T07:15:12.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android-BitmapComposer(类似于AE的合成模式)</title>
+    <link href="https://luhaoaimama1.github.io/2017/01/19/BitmapComposer/"/>
+    <id>https://luhaoaimama1.github.io/2017/01/19/BitmapComposer/</id>
+    <published>2017-01-19T05:19:37.000Z</published>
+    <updated>2017-01-19T07:15:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>灵感来源于AE,参考AE合成图的步骤;</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg" alt=""></p>
+<a id="more"></a>
+<p><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external">zone-sdk项目</a>运行后:-&gt;动画、surfaceView、绘图方面的研究-&gt;波浪 进入即可看到;</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fbvyespt80g307i0dcax1.gif" alt=""></p>
+<blockquote>
+<p>demo原理:第一层是 <strong>黑白图片</strong>,第二层是加过 <strong>波浪Mask(遮罩的-既android的PorterDuff)</strong>的<strong>原图</strong></p>
+</blockquote>
+<h1 id="代码范例"><a href="#代码范例" class="headerlink" title="代码范例:"></a>代码范例:</h1><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">image2.post(<span class="function"><span class="keyword">new</span> <span class="title">Runnable</span>() &#123;</span></div><div class="line">            @<span class="title">Override</span></div><div class="line">            <span class="title">public</span> <span class="title">void</span> <span class="title">run</span>() &#123;</div><div class="line">                <span class="title">Bitmap</span> <span class="title">bt</span> = <span class="title">SampleUtils</span>.<span class="title">load</span>(<span class="type">WaveActivity</span>.this, <span class="type">R</span>.drawable.aaaaaaaaaaaab)</div><div class="line">                        .<span class="title">bitmap</span>();</div><div class="line"></div><div class="line">                <span class="title">ColorMatrix</span> <span class="title">colorMatrix</span> = <span class="title">new</span> <span class="title">ColorMatrix</span>();</div><div class="line">                <span class="title">colorMatrix</span>.<span class="title">setSaturation</span>(<span class="number">0</span>);</div><div class="line"></div><div class="line">                <span class="title">BitmapComposer</span> <span class="title">bitmapComposer</span> = <span class="title">BitmapComposer</span>.<span class="title">newComposition</span>(bt.getWidth(), <span class="title">bt</span>.<span class="title">getHeight</span>(), <span class="title">Bitmap</span>.<span class="title">Config</span>.<span class="title">ARGB_8888</span>);</div><div class="line">                <span class="title">Matrix</span> <span class="title">first</span> = <span class="title">new</span> <span class="title">Matrix</span>();</div><div class="line">                <span class="title">first</span>.<span class="title">postTranslate</span>(<span class="number">0</span>, <span class="number">-20</span>);</div><div class="line">                <span class="title">new</span> <span class="title">WaveHelper</span>(bt.getWidth(), <span class="title">bt</span>.<span class="title">getHeight</span>(), <span class="title">new</span> <span class="title">WaveHelper</span>.<span class="title">RefreshCallback</span>() &#123;</div><div class="line"></div><div class="line">                    @<span class="title">Override</span></div><div class="line">                    <span class="title">public</span> <span class="title">void</span> <span class="title">refresh</span>(<span class="type">Bitmap</span> wave) &#123;</div><div class="line">                        <span class="title">Bitmap</span> <span class="title">render</span> = <span class="title">bitmapComposer</span>.<span class="title">clear</span>()</div><div class="line">                                .<span class="title">newLayer</span>(<span class="type">BitmapComposer</span>.<span class="type">Layer</span>.bitmap(bt)</div><div class="line">                                        .<span class="title">colorFilter</span>(new <span class="type">ColorMatrixColorFilter</span>(colorMatrix)))</div><div class="line">                                .<span class="title">newLayer</span>(</div><div class="line">                                        <span class="type">BitmapComposer</span>.<span class="type">Layer</span>.bitmap(bt)</div><div class="line"><span class="comment">//                                              .colorFilter(new ColorMatrixColorFilter(colorMatrix))</span></div><div class="line">                                                .<span class="title">mask</span>(wave, <span class="type">PorterDuff</span>.<span class="type">Mode</span>.<span class="type">DST_IN</span>)</div><div class="line"><span class="comment">//                                              .matrix(first)</span></div><div class="line">                                )</div><div class="line">                                .<span class="title">render</span>();</div><div class="line">                        <span class="title">image2</span>.<span class="title">setImageBitmap</span>(render);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/race604/WaveLoading" target="_blank" rel="external">https://github.com/race604/WaveLoading</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;灵感来源于AE,参考AE合成图的步骤;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
+    
+      <category term="bitmap" scheme="https://luhaoaimama1.github.io/tags/bitmap/"/>
+    
+  </entry>
   
   <entry>
     <title>Android-drawText()详解</title>
@@ -1251,13 +1286,16 @@
   </entry>
   
   <entry>
-    <title>Android-Canvas</title>
+    <title>Android-Canvas系统理解</title>
     <link href="https://luhaoaimama1.github.io/2016/05/18/Canvas/"/>
     <id>https://luhaoaimama1.github.io/2016/05/18/Canvas/</id>
     <published>2016-05-18T05:19:37.000Z</published>
-    <updated>2016-12-30T14:22:37.000Z</updated>
+    <updated>2017-01-19T06:37:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>以我个人主观推断的Canvas工作原理</p>
+<blockquote>
+<p>如果有错误请指出谢谢~</p>
+</blockquote>
 <a id="more"></a>
 <h1 id="图片理解模型"><a href="#图片理解模型" class="headerlink" title="图片理解模型"></a>图片理解模型</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8y9kyyggj31ig11oq91.jpg" alt=""></p>
 <h1 id="我的启蒙关键就是saveLayer的官方文档："><a href="#我的启蒙关键就是saveLayer的官方文档：" class="headerlink" title="我的启蒙关键就是saveLayer的官方文档："></a>我的启蒙关键就是saveLayer的官方文档：</h1><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">This behaves <span class="keyword">the</span> same <span class="keyword">as</span> save(), but <span class="keyword">in</span> addition <span class="keyword">it</span> allocates <span class="keyword">and</span> redirects drawing <span class="built_in">to</span> <span class="keyword">an</span> offscreen bitmap.</div><div class="line">All drawing calls are directed <span class="built_in">to</span> <span class="keyword">a</span> newly allocated offscreen bitmap. </div><div class="line">Only when <span class="keyword">the</span> balancing call <span class="built_in">to</span> restore() is made, </div><div class="line">is that offscreen buffer drawn back <span class="built_in">to</span> <span class="keyword">the</span> current target <span class="keyword">of</span> <span class="keyword">the</span> Canvas (either <span class="keyword">the</span> screen, <span class="keyword">it</span><span class="string">'s target Bitmap, or the previous layer).</span></div></pre></td></tr></table></figure>
@@ -1294,6 +1332,9 @@
     <summary type="html">
     
       &lt;p&gt;以我个人主观推断的Canvas工作原理&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果有错误请指出谢谢~&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -1340,9 +1381,9 @@
     <link href="https://luhaoaimama1.github.io/2016/03/23/BaseActivity/"/>
     <id>https://luhaoaimama1.github.io/2016/03/23/BaseActivity/</id>
     <published>2016-03-23T05:19:37.000Z</published>
-    <updated>2017-01-19T06:23:28.000Z</updated>
+    <updated>2017-01-19T06:30:38.000Z</updated>
     
-    <content type="html"><![CDATA[<p>[封装在zone-sdk库中]<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external">https://github.com/luhaoaimama1/zone-sdk</a><br><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p><strong>封装库</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external"><em>zone-sdk</em></a><br><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
 <h1 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h1><p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvwziewhij31kw0okgq0.jpg" alt=""></p>
 <h1 id="BaseActivity"><a href="#BaseActivity" class="headerlink" title="BaseActivity"></a>BaseActivity</h1><p>ActivityKinds(观察者的基类): 在使用的BaseActivity注册ActivityKinds或者移除不必要的ActivityKinds</p>
 <blockquote>
@@ -1370,7 +1411,7 @@
 </tr>
 <tr>
 <td style="text-align:center">SwipeBackKind</td>
-<td style="text-align:center">左滑退出Activity用的 集成别的项目~</td>
+<td style="text-align:center">左滑退出Activity用的 集成别的项目~ <a href="https://github.com/Jude95/SwipeBackHelper/blob/master/README_ch.md" target="_blank" rel="external">xml额外的配置,参考地址</a></td>
 </tr>
 </tbody>
 </table>
@@ -1436,7 +1477,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;[封装在zone-sdk库中]&lt;a href=&quot;https://github.com/luhaoaimama1/zone-sdk&quot;&gt;https://github.com/luhaoaimama1/zone-sdk&lt;/a&gt;&lt;br&gt;&lt;strong&gt;设计模式&lt;/strong&gt;:观察者模式&lt;br&gt;&lt;strong&gt;目的&lt;/strong&gt;：解耦，各司其职。拍照等涉及onActivityResult的封装&lt;br&gt;
+      &lt;p&gt;&lt;strong&gt;封装库&lt;/strong&gt;:&lt;a href=&quot;https://github.com/luhaoaimama1/zone-sdk&quot;&gt;&lt;em&gt;zone-sdk&lt;/em&gt;&lt;/a&gt;&lt;br&gt;&lt;strong&gt;设计模式&lt;/strong&gt;:观察者模式&lt;br&gt;&lt;strong&gt;目的&lt;/strong&gt;：解耦，各司其职。拍照等涉及onActivityResult的封装&lt;br&gt;
     
     </summary>
     

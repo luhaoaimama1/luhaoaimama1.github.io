@@ -11,7 +11,7 @@
 
 
 
-  <meta name="description" content="Android-Canvas"/>
+  <meta name="description" content="Android-Canvas系统理解"/>
 
 
 
@@ -33,17 +33,23 @@
 <link rel="canonical" href="https://luhaoaimama1.github.io/2016/05/18/Canvas/"/>
 
 
-<meta name="description" content="以我个人主观推断的Canvas工作原理">
+<meta name="description" content="以我个人主观推断的Canvas工作原理
+
+如果有错误请指出谢谢~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android-Canvas">
+<meta property="og:title" content="Android-Canvas系统理解">
 <meta property="og:url" content="https://luhaoaimama1.github.io/2016/05/18/Canvas/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="以我个人主观推断的Canvas工作原理">
+<meta property="og:description" content="以我个人主观推断的Canvas工作原理
+
+如果有错误请指出谢谢~">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8y9kyyggj31ig11oq91.jpg">
-<meta property="og:updated_time" content="2016-12-30T14:22:37.000Z">
+<meta property="og:updated_time" content="2017-01-19T06:37:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android-Canvas">
-<meta name="twitter:description" content="以我个人主观推断的Canvas工作原理">
+<meta name="twitter:title" content="Android-Canvas系统理解">
+<meta name="twitter:description" content="以我个人主观推断的Canvas工作原理
+
+如果有错误请指出谢谢~">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8y9kyyggj31ig11oq91.jpg">
 
 
@@ -70,7 +76,7 @@
 
 
 
-    <title> Android-Canvas · Zone </title>
+    <title> Android-Canvas系统理解 · Zone </title>
   </head>
 
   <body>
@@ -207,7 +213,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Android-Canvas
+          Android-Canvas系统理解
         
       </h1>
 
@@ -230,6 +236,9 @@
     <div class="post-content">
       
         <p>以我个人主观推断的Canvas工作原理</p>
+<blockquote>
+<p>如果有错误请指出谢谢~</p>
+</blockquote>
 <a id="more"></a>
 <h1 id="图片理解模型"><a href="#图片理解模型" class="headerlink" title="图片理解模型"></a>图片理解模型</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8y9kyyggj31ig11oq91.jpg" alt=""></p>
 <h1 id="我的启蒙关键就是saveLayer的官方文档："><a href="#我的启蒙关键就是saveLayer的官方文档：" class="headerlink" title="我的启蒙关键就是saveLayer的官方文档："></a>我的启蒙关键就是saveLayer的官方文档：</h1><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">This behaves <span class="keyword">the</span> same <span class="keyword">as</span> save(), but <span class="keyword">in</span> addition <span class="keyword">it</span> allocates <span class="keyword">and</span> redirects drawing <span class="built_in">to</span> <span class="keyword">an</span> offscreen bitmap.</div><div class="line">All drawing calls are directed <span class="built_in">to</span> <span class="keyword">a</span> newly allocated offscreen bitmap. </div><div class="line">Only when <span class="keyword">the</span> balancing call <span class="built_in">to</span> restore() is made, </div><div class="line">is that offscreen buffer drawn back <span class="built_in">to</span> <span class="keyword">the</span> current target <span class="keyword">of</span> <span class="keyword">the</span> Canvas (either <span class="keyword">the</span> screen, <span class="keyword">it</span><span class="string">'s target Bitmap, or the previous layer).</span></div></pre></td></tr></table></figure>
@@ -303,7 +312,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/05/18/Canvas/"
-           data-title="Android-Canvas" data-url="https://luhaoaimama1.github.io/2016/05/18/Canvas/">
+           data-title="Android-Canvas系统理解" data-url="https://luhaoaimama1.github.io/2016/05/18/Canvas/">
       </div>
     
   </div>
