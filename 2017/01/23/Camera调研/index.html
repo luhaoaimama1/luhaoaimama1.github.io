@@ -11,10 +11,12 @@
 
 
 
-  <meta name="description" content="Zone ‘s Blog"/>
+  <meta name="description" content="Camera的研究"/>
 
 
 
+
+  <meta name="keywords" content="android,camera," />
 
 
 
@@ -28,18 +30,119 @@
 
 
 
-<link rel="canonical" href="https://luhaoaimama1.github.io/"/>
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/01/23/Camera调研/"/>
 
 
-<meta name="description" content="Zone ‘s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zone">
-<meta property="og:url" content="https://luhaoaimama1.github.io/index.html">
+<meta name="description" content="View,Camera 坐标轴分析
+下面的多图在此项目中
+
+
+
+
+View
+Camera(锚点:左上角点)
+Camera Lib
+
+
+
+
+
+
+
+
+
+
+
+同view
+
+
+左手坐标系 判断依据
+camera视角的图片锚点坐标系
+同view
+
+
+
+
+camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ 
+回答：因为我们的API名字叫做Camera 他是以摄像机的角">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Camera的研究">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2017/01/23/Camera调研/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="Zone ‘s Blog">
+<meta property="og:description" content="View,Camera 坐标轴分析
+下面的多图在此项目中
+
+
+
+
+View
+Camera(锚点:左上角点)
+Camera Lib
+
+
+
+
+
+
+
+
+
+
+
+同view
+
+
+左手坐标系 判断依据
+camera视角的图片锚点坐标系
+同view
+
+
+
+
+camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ 
+回答：因为我们的API名字叫做Camera 他是以摄像机的角">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fc0f25baf7g307i07i1l1.gif">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fc0f2btfm7g307i07i7wl.gif">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0f6bb02pj30at08cwel.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fc0fai83kyj30at08cglh.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fc0l088rrtg307i0dcdwu.gif">
+<meta property="og:updated_time" content="2017-01-23T07:38:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zone">
-<meta name="twitter:description" content="Zone ‘s Blog">
+<meta name="twitter:title" content="Camera的研究">
+<meta name="twitter:description" content="View,Camera 坐标轴分析
+下面的多图在此项目中
+
+
+
+
+View
+Camera(锚点:左上角点)
+Camera Lib
+
+
+
+
+
+
+
+
+
+
+
+同view
+
+
+左手坐标系 判断依据
+camera视角的图片锚点坐标系
+同view
+
+
+
+
+camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ 
+回答：因为我们的API名字叫做Camera 他是以摄像机的角">
+<meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -65,7 +168,7 @@
 
 
 
-    <title> Zone </title>
+    <title> Camera的研究 · Zone </title>
   </head>
 
   <body>
@@ -197,14 +300,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/01/23/Camera调研/">Camera的研究</a>
+          Camera的研究
         
       </h1>
 
@@ -216,13 +317,17 @@
     </header>
 
     
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View-Camera-坐标轴分析"><span class="toc-text">View,Camera 坐标轴分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解-Camera的translate与rotate"><span class="toc-text">理解 Camera的translate与rotate</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#想要理解上面-先跟我做一些事情"><span class="toc-text">想要理解上面 先跟我做一些事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从中明白了什么"><span class="toc-text">从中明白了什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Camera-传说中-移动旋转点的-解释"><span class="toc-text">Camera 传说中 移动旋转点的 解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最后我还要提示下："><span class="toc-text">最后我还要提示下：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例讲解"><span class="toc-text">实例讲解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
+        </div>
+      </div>
+    
 
     <div class="post-content">
       
-        
-
-        
-          <a id="more"></a>
+        <a id="more"></a>
 <h1 id="View-Camera-坐标轴分析"><a href="#View-Camera-坐标轴分析" class="headerlink" title="View,Camera 坐标轴分析"></a>View,Camera 坐标轴分析</h1><blockquote>
 <p><a href="https://github.com/luhaoaimama1/ZAnimate" target="_blank" rel="external">下面的多图在此项目中</a></p>
 </blockquote>
@@ -322,646 +427,46 @@
 </blockquote>
 <h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/zhangyuChen1991/Roll3DImageView" target="_blank" rel="external">https://github.com/zhangyuChen1991/Roll3DImageView</a></p>
 
-        
       
     </div>
 
     
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/01/19/BitmapComposer/">Android-BitmapComposer(类似于AE的合成模式)</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年1月19日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
+      <footer class="post-footer">
+        <div class="post-tags">
           
-        
-
-        
-          <p>灵感来源于AE,参考AE合成图的步骤;</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg" alt=""></p>
-          <div class="read-more">
-            <a href="/2017/01/19/BitmapComposer/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/12/18/drawText/">Android-drawText()详解</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年12月18日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
+            <a href="/tags/android/">android</a>
           
-        
-
-        
-          <ul>
-<li>全局声明<ul>
-<li>canvas.drawText(string, <strong>baseLineX</strong>, <strong>baseLineY</strong>, paint)</li>
-<li>baseLineY=基线的Y;</li>
-<li>baseLineX=基线的X;</li>
-<li>本篇以textSize=100为例</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>API:canvas.drawText(String text,int start,int end,float x,float y, paint); //截取字符串 然后绘制     </p>
-</blockquote>
-          <div class="read-more">
-            <a href="/2016/12/18/drawText/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/12/05/JVM/">深入理解Java虚拟机总结</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年12月5日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
+            <a href="/tags/camera/">camera</a>
           
-        
+        </div>
 
         
-          <h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><ul>
-<li>各种基本类型:boolean、byte、char、short、int、float、long、double;</li>
-<li>对象引用:reference类型 不等于对象本身,可能是对象的句柄也可能对象的引用指针</li>
-<li>局部变量默认没有初始值,不赋值是不可以使用的。和类变量(默认是有的)不一样;</li>
-<li>额外了解:插入式注解处理器:需要继承AbstractProcessor;</li>
-</ul>
-          <div class="read-more">
-            <a href="/2016/12/05/JVM/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
+  <nav class="post-nav">
     
-  </article>
-
     
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/11/20/Rebound/">Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年11月20日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <blockquote>
-<p>综述：Rebound 通过胡克定律，实现的一个类似“弹簧”动画效果的第三方工具包。</p>
-</blockquote>
-          <div class="read-more">
-            <a href="/2016/11/20/Rebound/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/11/10/CacheSystem/">Android-View的drawing缓存系统</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年11月10日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>主要讲述关于View中关键词Drawing的方法~</p>
-          <div class="read-more">
-            <a href="/2016/11/10/CacheSystem/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/11/05/CoordinateSystem/">Android-CoordinateSystem</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年11月5日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>主要讲述关于View中坐标系系统~</p>
-          <div class="read-more">
-            <a href="/2016/11/05/CoordinateSystem/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/10/26/NestedScrolling/">Android-NestedScrolling Child与Parent的实例学习</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年10月26日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>遵守约定：就是google写了一套约定规范 这样大家都照规定写就可以兼容了；<br><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk">zone-sdk项目</a>运行后:-&gt;onTouch事件传递与其辅助类的研究-&gt;即可看到;</p>
-          <div class="read-more">
-            <a href="/2016/10/26/NestedScrolling/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/09/17/EventPass/">Android-事件传递的学习</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年9月17日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent</p>
-          <div class="read-more">
-            <a href="/2016/09/17/EventPass/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/08/28/Xfermode/">Android-PorterDuffXfermode的正确使用方式</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年8月28日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
-          <div class="read-more">
-            <a href="/2016/08/28/Xfermode/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/07/13/Java疑难问题汇总/">Android疑难问题汇总</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年7月13日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>持续收集ing 敬请留言~</p>
-          <div class="read-more">
-            <a href="/2016/07/13/Java疑难问题汇总/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/07/06/几何原理图/">几何原理图</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年7月6日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>持续收集ing 敬请留言~</p>
-          <div class="read-more">
-            <a href="/2016/07/06/几何原理图/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/06/19/奇淫技巧/">Android-奇淫技巧</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年6月19日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>持续收集ing 敬请留言~</p>
-          <div class="read-more">
-            <a href="/2016/06/19/奇淫技巧/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/06/02/hexo/">Mac下Hexo搭建博客攻略</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年6月2日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p><a href="https://hexo.io/zh-cn/">Hexo</a>是基于<code>NodeJs</code>的静态博客框架，简单、轻量，其生成的静态网页可以托管在<code>Github</code>和<code>Heroku</code>上。</p>
-<ul>
-<li>超快速度</li>
-<li>支持MarkDown</li>
-<li>一键部署</li>
-<li>丰富的插件</li>
-</ul>
-<p>下面以我的博客为例，luhaoaimama1.github.io</p>
-          <div class="read-more">
-            <a href="/2016/06/02/hexo/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/05/18/Canvas/">Android-Canvas系统理解</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年5月18日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>以我个人主观推断的Canvas工作原理</p>
-<blockquote>
-<p>如果有错误请指出谢谢~</p>
-</blockquote>
-          <div class="read-more">
-            <a href="/2016/05/18/Canvas/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/04/25/ScreenAdapter/">Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年4月25日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p>已经测试我一般用 <a href="#way2">方案1</a></p>
-          <div class="read-more">
-            <a href="/2016/04/25/ScreenAdapter/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/03/23/BaseActivity/">Android-打造无敌解耦的BaseActivity</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016年3月23日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <p><strong>封装库</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk"><em>zone-sdk</em></a><br><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br>
-          <div class="read-more">
-            <a href="/2016/03/23/BaseActivity/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2017/01/19/BitmapComposer/">
+        <span class="next-text nav-default">Android-BitmapComposer(类似于AE的合成模式)</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/23/Camera调研/"
+           data-title="Camera的研究" data-url="https://luhaoaimama1.github.io/2017/01/23/Camera调研/">
+      </div>
+    
+  </div>
+
         </div>  
       </main>
 

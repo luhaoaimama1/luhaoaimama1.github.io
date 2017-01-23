@@ -4,6 +4,111 @@
   
     
     <entry>
+      <title><![CDATA[Camera的研究]]></title>
+      <url>https://luhaoaimama1.github.io/2017/01/23/Camera%E8%B0%83%E7%A0%94/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h1 id="View-Camera-坐标轴分析"><a href="#View-Camera-坐标轴分析" class="headerlink" title="View,Camera 坐标轴分析"></a>View,Camera 坐标轴分析</h1><blockquote>
+<p><a href="https://github.com/luhaoaimama1/ZAnimate" target="_blank" rel="external">下面的多图在此项目中</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">View</th>
+<th style="text-align:center">Camera(锚点:左上角点)</th>
+<th style="text-align:center">Camera Lib</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif" alt=""></td>
+<td style="text-align:center"><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fc0f25baf7g307i07i1l1.gif" alt=""></td>
+<td style="text-align:center"><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fc0f2btfm7g307i07i7wl.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fc0f6bb02pj30at08cwel.jpg" alt=""></td>
+<td style="text-align:center"><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fc0fai83kyj30at08cglh.jpg" alt=""></td>
+<td style="text-align:center">同view</td>
+</tr>
+<tr>
+<td style="text-align:center">左手坐标系 <a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk1nSH681Fc4lk2iftz320K7Za" target="_blank" rel="external">判断依据</a></td>
+<td style="text-align:center"><em>camera视角的图片锚点坐标系</em></td>
+<td style="text-align:center">同view</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>camera视角的图片锚点坐标系</em>：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ </p>
+<p>回答：因为我们的API名字叫做Camera 他是以摄像机的角度去 理解做操作的； 可以自己拿手机拍照去 通过移动摄像机 而让里面的物体移动。就会明白了。 </p>
+<p>Tips:Camera真实<strong>没有移动</strong>(因为getLocationX、Y、Z都是没有移动的)，只是以他的角度去理解； </p>
+</blockquote>
+<h1 id="理解-Camera的translate与rotate"><a href="#理解-Camera的translate与rotate" class="headerlink" title="理解 Camera的translate与rotate"></a>理解 Camera的translate与rotate</h1><figure class="highlight zephir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Applies a translation transform on all three axis.</div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> x The distance to translate by on the X axis</div><div class="line"> * <span class="doctag">@param</span> y The distance to translate by on the Y axis</div><div class="line"> * <span class="doctag">@param</span> z The distance to translate by on the Z axis</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> native void translate(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z);</div><div class="line"></div><div class="line"> <span class="comment">/**</span></div><div class="line"> * Applies a rotation transform around all three axis.</div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> x The angle of rotation around the X axis, in degrees</div><div class="line"> * <span class="doctag">@param</span> y The angle of rotation around the Y axis, in degrees</div><div class="line"> * <span class="doctag">@param</span> z The angle of rotation around the Z axis, in degrees</div><div class="line"> * </div><div class="line"> * <span class="doctag">@see</span> #rotateX(float)</div><div class="line"> * <span class="doctag">@see</span> #rotateY(float)</div><div class="line"> * <span class="doctag">@see</span> #rotateZ(float)</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> native void rotate(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z);</div></pre></td></tr></table></figure>
+<p>看到没关键点是-&gt; <strong>axis 的位移与旋转</strong>；</p>
+<h2 id="想要理解上面-先跟我做一些事情"><a href="#想要理解上面-先跟我做一些事情" class="headerlink" title="想要理解上面 先跟我做一些事情"></a>想要理解上面 先跟我做一些事情</h2><blockquote>
+<p>锚点：左上角点</p>
+</blockquote>
+<p>拿起你的手机  平行面对你，已左上角为手机坐标系原点(任何时候 包括 旋转位移以后)。 </p>
+<ul>
+<li>围绕Y轴做旋转45，然后X位移一段距离distanceX。在旋转75°</li>
+</ul>
+<h2 id="从中明白了什么"><a href="#从中明白了什么" class="headerlink" title="从中明白了什么"></a>从中明白了什么</h2><blockquote>
+<p>锚点：左上角点</p>
+</blockquote>
+<ul>
+<li><p>明白什么叫做 axis 的位移与旋转。 就是每次造作都是以 手机左上角(相当于咱们的图片左上角)为坐标系</p>
+</li>
+<li><p>从整体来看我们经过了 三次操作，以每次操作之前，手机左上角的点为例，第一次操作点 记为 operate1，依次 operate2 ，operate3.那么从整体来看 我相当于  operate1 X轴:distanceX的点 rorate1 围绕operate1 旋转45°，然后围绕本身operate3 75°。总结为:</p>
+<ul>
+<li>既 旋转之后 +位移操作，就是相当于 <strong>[旋转之前+位移]之后的点</strong> 围绕 <strong>旋转之前的点</strong> 旋转，</li>
+<li>旋转不加位移  就相当于 [锚点] 旋转。</li>
+<li>这个手机外边的世界就暂且叫做合成坐标系,而手机左上角则暂且叫做锚点坐标系;<blockquote>
+<p>不管做了多少次操作都遵循这个 规律；</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Camera-传说中-移动旋转点的-解释"><a href="#Camera-传说中-移动旋转点的-解释" class="headerlink" title="Camera 传说中 移动旋转点的 解释"></a>Camera 传说中 移动旋转点的 解释</h1><blockquote>
+<p>camera的合成坐标系 是 </p>
+</blockquote>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">Matrix</span> temp = <span class="function"><span class="keyword">new</span> <span class="title">Matrix</span>();		<span class="comment">// 临时Matrix变量</span></span></div><div class="line"><span class="title">this</span>.<span class="title">getMatrix</span>(temp);			<span class="comment">// 获取Matrix</span></div><div class="line"><span class="title">temp</span>.<span class="title">preTranslate</span>(-centerX, -centerY);	<span class="comment">// 使用pre将旋转中心移动到和Camera位置相同。</span></div><div class="line"><span class="title">temp</span>.<span class="title">postTranslate</span>(centerX, centerY);	<span class="comment">// 使用post将图片(View)移动到原来的位置</span></div></pre></td></tr></table></figure>
+<p>temp.preTranslate操作:是把最开的图片移动位置。</p>
+<blockquote>
+<p>center为例: 左上角(锚点)是center点了,因为开始的图片变了位置,左上角(锚点)对于camera的合成坐标系依然没变</p>
+</blockquote>
+<p>temp.postTranslate操作 移动的是 camera的合成坐标系</p>
+<blockquote>
+<p>Tips: 旋转的中心点依然是左上角点(锚点 例子中的center点),而不是post中的点。 </p>
+</blockquote>
+<h2 id="最后我还要提示下："><a href="#最后我还要提示下：" class="headerlink" title="最后我还要提示下："></a>最后我还要提示下：</h2><blockquote>
+<p>我们的视角 就是view坐标系(所有View 大小 padding等等都是参考此来设计的)；</p>
+</blockquote>
+<ul>
+<li>camera translate,rotate 是在合成坐标系里 的视角 ,位移旋转， 位移和旋转的值都是相对于 合成坐标系里 的视角,因为里面有摄像机 <blockquote>
+<p>假如camera向下移动100 以我们的视角可能是89等,因为以camera坐标系的视角(包含摄像机 Z轴 视差等等因素)判定的；</p>
+</blockquote>
+</li>
+<li>Matrix postTranslate 系列,则是 对于合成坐标系的操作， 更改的位置和旋转等。都是 相对于View坐标系的值 <blockquote>
+<p>假如Matrix向下移动100  就是100 这是以View坐标系既我们的视角来判定的；</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="实例讲解"><a href="#实例讲解" class="headerlink" title="实例讲解"></a>实例讲解</h3><blockquote>
+<p><a href="https://github.com/luhaoaimama1/ZAnimate" target="_blank" rel="external">此demo在此项目中</a></p>
+</blockquote>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fc0l088rrtg307i0dcdwu.gif" alt=""></p>
+<p>左图关键代码：</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">camera</span>.save();</div><div class="line">  <span class="keyword">camera</span>.rotateX(-rotateDegree);</div><div class="line">  <span class="keyword">camera</span>.getMatrix(<span class="keyword">matrix</span>);</div><div class="line">  <span class="keyword">camera</span>.restore();</div><div class="line"></div><div class="line">  <span class="comment">// -viewWidth / 2 保持着竖线高度不变的，其他会倾斜；</span></div><div class="line">  <span class="keyword">matrix</span>.preTranslate(-viewWidth / <span class="number">2</span>, <span class="number">0</span>);</div><div class="line">  <span class="keyword">matrix</span>.postTranslate(viewWidth / <span class="number">2</span>, (<span class="keyword">float</span>) axisY);</div></pre></td></tr></table></figure>
+<p>右图关键代码：把 <strong>postTranslate</strong>移动的 移动到了<strong>camera.transalte</strong></p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">camera</span>.save();</div><div class="line">       <span class="keyword">camera</span>.rotateX(-rotateDegree);</div><div class="line">       <span class="keyword">camera</span>.translte(<span class="number">0</span>,(<span class="keyword">float</span>) axisY,<span class="number">0</span>)</div><div class="line">       <span class="keyword">camera</span>.getMatrix(<span class="keyword">matrix</span>);</div><div class="line">       <span class="keyword">camera</span>.restore();</div><div class="line"></div><div class="line">       <span class="comment">// -viewWidth / 2 保持着竖线高度不变的，其他会倾斜；</span></div><div class="line">       <span class="keyword">matrix</span>.preTranslate(-viewWidth / <span class="number">2</span>, <span class="number">0</span>);</div><div class="line">       <span class="keyword">matrix</span>.postTranslate(viewWidth / <span class="number">2</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这里的问题是,0度的时候 还能看到？因为你camera.translte(0,(float) axisY,0),因为Y不在是0,和摄像机不保持相同高度后是可以看到的。所以这里用matrix.postTranslate比较好</p>
+<p>这还算好的 如果摄像机移动Z轴的话  会出现和严重的问题,因为这仅仅是一段代码补全就暂且不说了；</p>
+</blockquote>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/zhangyuChen1991/Roll3DImageView" target="_blank" rel="external">https://github.com/zhangyuChen1991/Roll3DImageView</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android-BitmapComposer(类似于AE的合成模式)]]></title>
       <url>https://luhaoaimama1.github.io/2017/01/19/BitmapComposer/</url>
       <content type="html"><![CDATA[<p>灵感来源于AE,参考AE合成图的步骤;</p>
