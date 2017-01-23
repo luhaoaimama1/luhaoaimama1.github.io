@@ -41,7 +41,7 @@
 <meta property="og:description" content="灵感来源于AE,参考AE合成图的步骤;">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fbvyespt80g307i0dcax1.gif">
-<meta property="og:updated_time" content="2017-01-19T07:15:12.000Z">
+<meta property="og:updated_time" content="2017-01-23T02:47:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-BitmapComposer(类似于AE的合成模式)">
 <meta name="twitter:description" content="灵感来源于AE,参考AE合成图的步骤;">
@@ -223,7 +223,7 @@
       <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">文章目录</h2>
         <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代码范例"><span class="toc-text">代码范例:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#封装后的使用方式"><span class="toc-text">封装后的使用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码范例"><span class="toc-text">代码范例:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
         </div>
       </div>
     
@@ -233,6 +233,15 @@
         <p>灵感来源于AE,参考AE合成图的步骤;</p>
 <p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg" alt=""></p>
 <a id="more"></a>
+<h1 id="封装后的使用方式"><a href="#封装后的使用方式" class="headerlink" title="封装后的使用方式"></a>封装后的使用方式</h1><ul>
+<li>可以无限newLayer,并且每个layer对应的bitmap都有以下特征<ul>
+<li>mask   PorterDuff.Mode 造作</li>
+<li>colorFilter  滤镜操作</li>
+<li>matrix  矩阵操作 既 位置,旋转缩放等。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">BitmapComposer</span><span class="selector-class">.newComposition</span>(<span class="selector-tag">bt</span><span class="selector-class">.getWidth</span>(), <span class="selector-tag">bt</span><span class="selector-class">.getHeight</span>(), <span class="selector-tag">Bitmap</span><span class="selector-class">.Config</span><span class="selector-class">.ARGB_8888</span>)</div><div class="line"><span class="selector-class">.clear</span>()</div><div class="line"><span class="selector-class">.newLayer</span>(<span class="selector-tag">BitmapComposer</span><span class="selector-class">.Layer</span><span class="selector-class">.bitmap</span>(<span class="selector-tag">bt</span>)</div><div class="line">                   <span class="selector-class">.colorFilter</span>(<span class="selector-tag">new</span> <span class="selector-tag">ColorMatrixColorFilter</span>(<span class="selector-tag">colorMatrix</span>))</div><div class="line">                    <span class="selector-class">.matrix</span>(<span class="selector-tag">matrix</span>)  )</div><div class="line"><span class="selector-class">.newLayer</span>(<span class="selector-tag">BitmapComposer</span><span class="selector-class">.Layer</span><span class="selector-class">.bitmap</span>(<span class="selector-tag">bt</span>)</div><div class="line">          <span class="selector-class">.colorFilter</span>(<span class="selector-tag">new</span> <span class="selector-tag">ColorMatrixColorFilter</span>(<span class="selector-tag">colorMatrix</span>))</div><div class="line">          <span class="selector-class">.mask</span>(<span class="selector-tag">wave</span>, <span class="selector-tag">PorterDuff</span><span class="selector-class">.Mode</span><span class="selector-class">.DST_IN</span>)</div><div class="line">           <span class="selector-class">.matrix</span>(<span class="selector-tag">matrix</span>)    )</div><div class="line"><span class="selector-class">.render</span>();</div></pre></td></tr></table></figure>
 <p><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external">zone-sdk项目</a>运行后:-&gt;动画、surfaceView、绘图方面的研究-&gt;波浪 进入即可看到;</p>
 <p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fbvyespt80g307i0dcax1.gif" alt=""></p>
 <blockquote>
