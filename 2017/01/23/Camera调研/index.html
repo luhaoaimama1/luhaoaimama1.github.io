@@ -33,115 +33,22 @@
 <link rel="canonical" href="https://luhaoaimama1.github.io/2017/01/23/Camera调研/"/>
 
 
-<meta name="description" content="View,Camera 坐标轴分析
-下面的多图在此项目中
-
-
-
-
-View
-Camera(锚点:左上角点)
-Camera Lib
-
-
-
-
-
-
-
-
-
-
-
-同view
-
-
-左手坐标系 判断依据
-camera视角的图片锚点坐标系
-同view
-
-
-
-
-camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ 
-回答：因为我们的API名字叫做Camera 他是以摄像机的角">
+<meta name="description" content="关于坐标轴分析 最终理解 Camera">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Camera的研究">
 <meta property="og:url" content="https://luhaoaimama1.github.io/2017/01/23/Camera调研/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="View,Camera 坐标轴分析
-下面的多图在此项目中
-
-
-
-
-View
-Camera(锚点:左上角点)
-Camera Lib
-
-
-
-
-
-
-
-
-
-
-
-同view
-
-
-左手坐标系 判断依据
-camera视角的图片锚点坐标系
-同view
-
-
-
-
-camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ 
-回答：因为我们的API名字叫做Camera 他是以摄像机的角">
+<meta property="og:description" content="关于坐标轴分析 最终理解 Camera">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fc0f25baf7g307i07i1l1.gif">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fc0f2btfm7g307i07i7wl.gif">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0f6bb02pj30at08cwel.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fc0fai83kyj30at08cglh.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fc0l088rrtg307i0dcdwu.gif">
-<meta property="og:updated_time" content="2017-01-23T07:38:24.000Z">
+<meta property="og:updated_time" content="2017-01-23T07:43:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Camera的研究">
-<meta name="twitter:description" content="View,Camera 坐标轴分析
-下面的多图在此项目中
-
-
-
-
-View
-Camera(锚点:左上角点)
-Camera Lib
-
-
-
-
-
-
-
-
-
-
-
-同view
-
-
-左手坐标系 判断依据
-camera视角的图片锚点坐标系
-同view
-
-
-
-
-camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是为什么会围绕X旋转180呢？ 
-回答：因为我们的API名字叫做Camera 他是以摄像机的角">
+<meta name="twitter:description" content="关于坐标轴分析 最终理解 Camera">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif">
 
 
@@ -327,7 +234,8 @@ camera视角的图片锚点坐标系：其实用的也是左手坐标系,但是�
 
     <div class="post-content">
       
-        <a id="more"></a>
+        <p>关于坐标轴分析 最终理解 Camera</p>
+<a id="more"></a>
 <h1 id="View-Camera-坐标轴分析"><a href="#View-Camera-坐标轴分析" class="headerlink" title="View,Camera 坐标轴分析"></a>View,Camera 坐标轴分析</h1><blockquote>
 <p><a href="https://github.com/luhaoaimama1/ZAnimate" target="_blank" rel="external">下面的多图在此项目中</a></p>
 </blockquote>
