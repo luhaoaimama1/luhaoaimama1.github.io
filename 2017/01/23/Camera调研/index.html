@@ -11,7 +11,7 @@
 
 
 
-  <meta name="description" content="Camera的研究"/>
+  <meta name="description" content="Camera的研究与封装"/>
 
 
 
@@ -33,22 +33,23 @@
 <link rel="canonical" href="https://luhaoaimama1.github.io/2017/01/23/Camera调研/"/>
 
 
-<meta name="description" content="关于坐标轴分析 最终理解 Camera">
+<meta name="description" content="关于坐标轴分析 最终理解 Camera 与封装lib">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Camera的研究">
+<meta property="og:title" content="Camera的研究与封装">
 <meta property="og:url" content="https://luhaoaimama1.github.io/2017/01/23/Camera调研/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="关于坐标轴分析 最终理解 Camera">
+<meta property="og:description" content="关于坐标轴分析 最终理解 Camera 与封装lib">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fc0f25baf7g307i07i1l1.gif">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fc0f2btfm7g307i07i7wl.gif">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0f6bb02pj30at08cwel.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fc0fai83kyj30at08cglh.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fc0l088rrtg307i0dcdwu.gif">
-<meta property="og:updated_time" content="2017-01-23T07:43:05.000Z">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwgy1fc0y5tuckfj30fg0rs0sz.jpg">
+<meta property="og:updated_time" content="2017-01-23T15:33:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Camera的研究">
-<meta name="twitter:description" content="关于坐标轴分析 最终理解 Camera">
+<meta name="twitter:title" content="Camera的研究与封装">
+<meta name="twitter:description" content="关于坐标轴分析 最终理解 Camera 与封装lib">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fc0em565jkg307i07i7wm.gif">
 
 
@@ -75,7 +76,7 @@
 
 
 
-    <title> Camera的研究 · Zone </title>
+    <title> Camera的研究与封装 · Zone </title>
   </head>
 
   <body>
@@ -212,7 +213,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Camera的研究
+          Camera的研究与封装
         
       </h1>
 
@@ -227,14 +228,14 @@
       <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">文章目录</h2>
         <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View-Camera-坐标轴分析"><span class="toc-text">View,Camera 坐标轴分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解-Camera的translate与rotate"><span class="toc-text">理解 Camera的translate与rotate</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#想要理解上面-先跟我做一些事情"><span class="toc-text">想要理解上面 先跟我做一些事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从中明白了什么"><span class="toc-text">从中明白了什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Camera-传说中-移动旋转点的-解释"><span class="toc-text">Camera 传说中 移动旋转点的 解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最后我还要提示下："><span class="toc-text">最后我还要提示下：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例讲解"><span class="toc-text">实例讲解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View-Camera-坐标轴分析"><span class="toc-text">View,Camera 坐标轴分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解-Camera的translate与rotate"><span class="toc-text">理解 Camera的translate与rotate</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#想要理解上面-先跟我做一些事情"><span class="toc-text">想要理解上面 先跟我做一些事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从中明白了什么"><span class="toc-text">从中明白了什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Camera-传说中-移动旋转点的-解释"><span class="toc-text">Camera 传说中 移动旋转点的 解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最后我还要提示下："><span class="toc-text">最后我还要提示下：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例讲解"><span class="toc-text">实例讲解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#封装Lib"><span class="toc-text">封装Lib</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
         </div>
       </div>
     
 
     <div class="post-content">
       
-        <p>关于坐标轴分析 最终理解 Camera</p>
+        <p>关于坐标轴分析 最终理解 Camera 与封装lib</p>
 <a id="more"></a>
 <h1 id="View-Camera-坐标轴分析"><a href="#View-Camera-坐标轴分析" class="headerlink" title="View,Camera 坐标轴分析"></a>View,Camera 坐标轴分析</h1><blockquote>
 <p><a href="https://github.com/luhaoaimama1/ZAnimate" target="_blank" rel="external">下面的多图在此项目中</a></p>
@@ -283,7 +284,7 @@
 <p>锚点：左上角点</p>
 </blockquote>
 <ul>
-<li><p>明白什么叫做 axis 的位移与旋转。 就是每次造作都是以 手机左上角(相当于咱们的图片左上角)为坐标系</p>
+<li><p>明白什么叫做 axis 的位移与旋转。 就是每次操作都是以 手机左上角(相当于咱们的图片左上角)为坐标系</p>
 </li>
 <li><p>从整体来看我们经过了 三次操作，以每次操作之前，手机左上角的点为例，第一次操作点 记为 operate1，依次 operate2 ，operate3.那么从整体来看 我相当于  operate1 X轴:distanceX的点 rorate1 围绕operate1 旋转45°，然后围绕本身operate3 75°。总结为:</p>
 <ul>
@@ -333,6 +334,29 @@
 <p>这里的问题是,0度的时候 还能看到？因为你camera.translte(0,(float) axisY,0),因为Y不在是0,和摄像机不保持相同高度后是可以看到的。所以这里用matrix.postTranslate比较好</p>
 <p>这还算好的 如果摄像机移动Z轴的话  会出现和严重的问题,因为这仅仅是一段代码补全就暂且不说了；</p>
 </blockquote>
+<h1 id="封装Lib"><a href="#封装Lib" class="headerlink" title="封装Lib"></a>封装Lib</h1><blockquote>
+<p>通过上面的理解 我们开始封装lib</p>
+</blockquote>
+<ol>
+<li>首先更改Camera视角的坐标系为view坐标系 而不是camera的视角。</li>
+<li><p>我们希望setPivot(float px, float py)或者setPivot(PivotType pivotType)的预设方式;</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   <span class="comment">*</span> <span class="comment">0</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">1</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">2</span></div><div class="line">   <span class="comment">*</span> <span class="comment">|</span>       <span class="comment">|</span></div><div class="line">   <span class="comment">*</span> <span class="comment">7</span>   <span class="comment">8</span>   <span class="comment">3</span></div><div class="line">   <span class="comment">*</span> <span class="comment">|</span>       <span class="comment">|</span></div><div class="line">   <span class="comment">*</span> <span class="comment">6</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">5</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">4</span></div><div class="line">   <span class="comment">*/</span></div><div class="line">  <span class="comment">public</span> <span class="comment">enum</span> <span class="comment">PivotType</span> <span class="comment">&#123;</span></div><div class="line">      <span class="comment">None</span><span class="string">,</span></div><div class="line">      <span class="comment">LeftTop</span><span class="string">,</span> <span class="comment">LeftCenter</span><span class="string">,</span> <span class="comment">LeftBottom</span><span class="string">,</span></div><div class="line">      <span class="comment">RightTop</span><span class="string">,</span> <span class="comment">RightCenter</span><span class="string">,</span> <span class="comment">RightBottom</span><span class="string">,</span></div><div class="line">      <span class="comment">CenterTop</span><span class="string">,</span> <span class="comment">Center</span><span class="string">,</span> <span class="comment">CenterBottom</span><span class="string">,</span></div><div class="line">  <span class="comment">&#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>getMatrix的时候,matrix.preTranslate(x,y);操作, 但是不要postTranslate操作 因为post是移动整个camera的合成坐标系的;</p>
+</li>
+<li><p>最后我希望 类似AE那种可以绑定parent的形式,并且parent也可以绑定</p>
+</li>
+</ol>
+<p>关于第4点,未改进的方式,记得这个上面提到的规律吧—-&gt;旋转之后 +位移操作，就是相当于 <strong>[旋转之前+位移]之后的点</strong> 围绕 <strong>旋转之前的点</strong> 旋转</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">cameraFinal</span><span class="selector-class">.translate</span>(<span class="selector-tag">parent</span><span class="selector-class">.parent</span><span class="selector-class">.tx</span>, <span class="selector-tag">parent</span><span class="selector-class">.parent</span><span class="selector-class">.ty</span>, <span class="selector-tag">parent</span><span class="selector-class">.parent</span><span class="selector-class">.tz</span>);</div><div class="line"><span class="selector-tag">cameraFinal</span><span class="selector-class">.rotate</span>(<span class="selector-tag">parent</span><span class="selector-class">.parent</span><span class="selector-class">.rx</span>, <span class="selector-tag">parent</span><span class="selector-class">.parent</span><span class="selector-class">.ry</span>, <span class="selector-tag">parent</span><span class="selector-class">.parent</span><span class="selector-class">.rz</span>);</div><div class="line"></div><div class="line"><span class="selector-tag">cameraFinal</span><span class="selector-class">.translate</span>(<span class="selector-tag">parent</span><span class="selector-class">.tx</span>, <span class="selector-tag">parent</span><span class="selector-class">.ty</span>, <span class="selector-tag">parent</span><span class="selector-class">.tz</span>);</div><div class="line"><span class="selector-tag">cameraFinal</span><span class="selector-class">.rotate</span>(<span class="selector-tag">parent</span><span class="selector-class">.rx</span>, <span class="selector-tag">parent</span><span class="selector-class">.ry</span>, <span class="selector-tag">parent</span><span class="selector-class">.rz</span>);</div><div class="line"></div><div class="line"><span class="selector-tag">cameraFinal</span><span class="selector-class">.translate</span>(<span class="selector-tag">tx</span>, <span class="selector-tag">ty</span>, <span class="selector-tag">tz</span>);</div><div class="line"><span class="selector-tag">cameraFinal</span><span class="selector-class">.rotate</span>(<span class="selector-tag">rx</span>, <span class="selector-tag">ry</span>, <span class="selector-tag">rz</span>);</div></pre></td></tr></table></figure>
+<p>关于第4点,改进成</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">List&lt;Layer&gt; parentlist = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">     parentlist.<span class="built_in">add</span>(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">     Layer rootParent = parent;</div><div class="line">     <span class="keyword">while</span> (rootParent!=<span class="keyword">null</span>) &#123;</div><div class="line">         parentlist.<span class="built_in">add</span>(rootParent);</div><div class="line">         rootParent = rootParent.parent;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line">     cameraFinal.<span class="built_in">save</span>();</div><div class="line">     <span class="keyword">for</span> (<span class="built_in">int</span> i = parentlist.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">         Layer layer = parentlist.<span class="built_in">get</span>(i);</div><div class="line">         cameraFinal.<span class="built_in">translate</span>(layer.tx, layer.ty, layer.tz);</div><div class="line">         cameraFinal.<span class="built_in">rotate</span>(layer.rx, layer.ry, layer.rz);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     cameraFinal.getMatrix(matrix);</div><div class="line">     cameraFinal.restore();</div></pre></td></tr></table></figure>
+<p>最后封装成两个类</p>
+<blockquote>
+<p><a href="https://github.com/luhaoaimama1/ZAnimate/blob/master/library/src/main/java/zone/com/zanimate/camera/CameraCorrect.java" target="_blank" rel="external">Camera封装类CameraCorrect</a><br><a href="https://github.com/luhaoaimama1/ZAnimate/blob/master/library/src/main/java/zone/com/zanimate/camera/Layer.java" target="_blank" rel="external">绑定parent封装类Layer</a></p>
+</blockquote>
+<p><a href="https://github.com/luhaoaimama1/ZAnimate" target="_blank" rel="external">demo范例:</a></p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fc0y5tuckfj30fg0rs0sz.jpg" alt=""></p>
 <h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/zhangyuChen1991/Roll3DImageView" target="_blank" rel="external">https://github.com/zhangyuChen1991/Roll3DImageView</a></p>
 
       
@@ -370,7 +394,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/01/23/Camera调研/"
-           data-title="Camera的研究" data-url="https://luhaoaimama1.github.io/2017/01/23/Camera调研/">
+           data-title="Camera的研究与封装" data-url="https://luhaoaimama1.github.io/2017/01/23/Camera调研/">
       </div>
     
   </div>
