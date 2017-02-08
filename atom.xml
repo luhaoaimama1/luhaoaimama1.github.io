@@ -1506,6 +1506,47 @@
   </entry>
   
   <entry>
+    <title>Android-2017面试题整理</title>
+    <link href="https://luhaoaimama1.github.io/2016/05/18/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://luhaoaimama1.github.io/2016/05/18/面试题/</id>
+    <published>2016-05-18T05:19:37.000Z</published>
+    <updated>2017-02-07T06:25:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>2017面试题整理</p>
+<a id="more"></a>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>1.Activity的生命周期的理解<br><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt=""><br>onCreate()【创建基本的UI元素】：当 activity 第一次创建时会被调用。</p>
+<p>onRestart()：在 activity 被停止后重新启动时会调用该方法。其后续会调用 onStart 方法。</p>
+<p>onStart():交互之前 不可见，位图从新加载；</p>
+<p>onResume()【从新初始化资源 例如Camera、sensor】：交互之前 可见不可操作 ；</p>
+<p>onPause()【清除资源 避免浪费  例如Camera、sensor】：交互之后 可见 不可操作 ；。</p>
+<p>onStop()：交互之后  不可见，位图回收 不可再pause回收那样会造成 正在使用已经回收的位图错误;</p>
+<p>onDestroy()【因为引用会在Activity销毁的时候销毁，而线程不会，所以清楚开启的线程】：在 activity 被销毁前会调用该方法</p>
+<p>onWindowFocusChanged(boolean hasFocus)：hasFocus true就是可见，false就是不可见；官方意思:这个Activity得到或者失去焦点的时候 就会call。</p>
+<ul>
+<li>扩展<blockquote>
+<p>今天又听说有同学遭遇了更变态的问题：什么情况下Activity走了onCreat()，而不走onStart()，这简直就是脑筋急转弯嘛。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/51317746</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2017面试题整理&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
+    
+      <category term="面试题" scheme="https://luhaoaimama1.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</title>
     <link href="https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/"/>
     <id>https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/</id>

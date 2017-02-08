@@ -11,10 +11,12 @@
 
 
 
-  <meta name="description" content="Zone ‘s Blog"/>
+  <meta name="description" content="Android-2017面试题整理"/>
 
 
 
+
+  <meta name="keywords" content="android,面试题," />
 
 
 
@@ -28,18 +30,21 @@
 
 
 
-<link rel="canonical" href="https://luhaoaimama1.github.io/tags/canvas/"/>
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/05/18/面试题/"/>
 
 
-<meta name="description" content="Zone ‘s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zone">
-<meta property="og:url" content="https://luhaoaimama1.github.io/tags/canvas/index.html">
+<meta name="description" content="2017面试题整理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-2017面试题整理">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2016/05/18/面试题/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="Zone ‘s Blog">
+<meta property="og:description" content="2017面试题整理">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg">
+<meta property="og:updated_time" content="2017-02-07T06:25:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zone">
-<meta name="twitter:description" content="Zone ‘s Blog">
+<meta name="twitter:title" content="Android-2017面试题整理">
+<meta name="twitter:description" content="2017面试题整理">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -52,11 +57,7 @@
 
 
 
-    <title>
-  
-    canvas · Zone
-  
-</title>
+    <title> Android-2017面试题整理 · Zone </title>
   </head>
 
   <body>
@@ -189,58 +190,96 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android-2017面试题整理
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年5月18日
+        </span>
+      </div>
+    </header>
+
     
-      
-        <div class="archive-title tag">
-          <h2 class="archive-name">canvas</h2>
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
         </div>
-      
-    
-
-    
-      
-      
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2016-12-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/12/18/drawText/" class="archive-post-link">
-            Android-drawText()详解
-          </a>
-        </span>
       </div>
     
-      
-      
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2016-05-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/05/18/Canvas/" class="archive-post-link">
-            Android-Canvas系统理解
-          </a>
-        </span>
-      </div>
-    
-  </section>
 
-  
-  <nav class="pagination">
+    <div class="post-content">
+      
+        <p>2017面试题整理</p>
+<a id="more"></a>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>1.Activity的生命周期的理解<br><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt=""><br>onCreate()【创建基本的UI元素】：当 activity 第一次创建时会被调用。</p>
+<p>onRestart()：在 activity 被停止后重新启动时会调用该方法。其后续会调用 onStart 方法。</p>
+<p>onStart():交互之前 不可见，位图从新加载；</p>
+<p>onResume()【从新初始化资源 例如Camera、sensor】：交互之前 可见不可操作 ；</p>
+<p>onPause()【清除资源 避免浪费  例如Camera、sensor】：交互之后 可见 不可操作 ；。</p>
+<p>onStop()：交互之后  不可见，位图回收 不可再pause回收那样会造成 正在使用已经回收的位图错误;</p>
+<p>onDestroy()【因为引用会在Activity销毁的时候销毁，而线程不会，所以清楚开启的线程】：在 activity 被销毁前会调用该方法</p>
+<p>onWindowFocusChanged(boolean hasFocus)：hasFocus true就是可见，false就是不可见；官方意思:这个Activity得到或者失去焦点的时候 就会call。</p>
+<ul>
+<li>扩展<blockquote>
+<p>今天又听说有同学遭遇了更变态的问题：什么情况下Activity走了onCreat()，而不走onStart()，这简直就是脑筋急转弯嘛。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/51317746</a></p>
+
+      
+    </div>
+
     
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/android/">android</a>
+          
+            <a href="/tags/面试题/">面试题</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/05/18/Canvas/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android-Canvas系统理解</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/04/25/ScreenAdapter/">
+        <span class="next-text nav-default">Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/18/面试题/"
+           data-title="Android-2017面试题整理" data-url="https://luhaoaimama1.github.io/2016/05/18/面试题/">
+      </div>
+    
+  </div>
+
         </div>  
       </main>
 
