@@ -45,7 +45,7 @@
 1234567public class Test&amp;#123;    static&amp;#123;         i=0;         system.out.print(i);//非法向前引用    &amp;#125;    stati">
 <meta property="og:image" content="http://images0.cnblogs.com/blog2015/544748/201505/251937420687138.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgw1fb917dq0h0j30hs0cd775.jpg">
-<meta property="og:updated_time" content="2017-03-10T02:39:03.000Z">
+<meta property="og:updated_time" content="2017-03-14T07:51:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java虚拟机总结---类初始化过程">
 <meta name="twitter:description" content="类的初始化过程
@@ -367,6 +367,7 @@
 </blockquote>
 <p>NB技巧:子类可以公开父类中的protected的方法;</p>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">findClass_</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.findClass();<span class="comment">//protected</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/classload/ClassLoaderTest.java" target="_blank" rel="external">Demo Code</a></p>
 
       
     </div>

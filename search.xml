@@ -596,6 +596,7 @@
 </blockquote>
 <p>NB技巧:子类可以公开父类中的protected的方法;</p>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">findClass_</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.findClass();<span class="comment">//protected</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/classload/ClassLoaderTest.java" target="_blank" rel="external">Demo Code</a></p>
 ]]></content>
     </entry>
     
