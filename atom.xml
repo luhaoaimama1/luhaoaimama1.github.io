@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2017-03-14T07:23:59.000Z</updated>
+  <updated>2017-03-14T11:10:08.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>了解Java中的I/O系统</title>
+    <link href="https://luhaoaimama1.github.io/2017/03/14/IO/"/>
+    <id>https://luhaoaimama1.github.io/2017/03/14/IO/</id>
+    <published>2017-03-14T12:19:37.000Z</published>
+    <updated>2017-03-14T11:10:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdmkir64xbj30xi0yrt9r.jpg" alt=""><br><a href="https://www.processon.com/view/link/58c7cef4e4b0337115d577a9" target="_blank" rel="external">图片项目地址 可以复制下来 进行修改</a></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/tree/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/io" target="_blank" rel="external">IO’s Demos Code</a></p>
+<blockquote>
+<p>编码乱码原因: 机器中的编码都是 二进制编码 显示的时候 为了让人看懂 从而设置了各种字符集 ,如果与原来的编码不一致则会导致看不懂既乱码 。机器的二进制码没有变化 ,仅仅是 对照的字符集 不一致 导致的</p>
+</blockquote>
+<h1 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h1><blockquote>
+<p>字符流的由来： 因为数据编码的不同，而有了对字符进行高效操作的流对象。本质其实就是基于字节流读取时，去查了指定的码表。 字节流和字符流的区别：</p>
+</blockquote>
+<ul>
+<li>读写单位不同<ul>
+<li>字节流以字节（8bit）为单位，字符流以字符为单位，根据码表映射字符，一次可能读多个字节。</li>
+</ul>
+</li>
+<li>处理对象不同<ul>
+<li>字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据。Java中字符是采用Unicode标准，一个字符是16位，即一个字符使用两个字节来表示。为此，JAVA中引入了处理字符的流 </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>结论：只要是处理纯文本数据，就优先考虑使用字符流。 除此之外都使用字节流。</p>
+</blockquote>
+<h1 id="常用的处理流类型"><a href="#常用的处理流类型" class="headerlink" title="常用的处理流类型"></a>常用的处理流类型</h1><p>该类型是对一个已存在的流的连接和封装，通过所封装的流的功能调用实现数据读写，处理流的构造方法总是要带一个其他流对象作为参数，一个流对象进过其他流的多次包装，叫做流的链接。主要可以分为以下几种：</p>
+<h2 id="缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）"><a href="#缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）" class="headerlink" title="缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）"></a>缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）</h2><ul>
+<li>功能<ul>
+<li>提高对流的操作效率 </li>
+<li>readLine()<br>一次读一行，到行标记时，将行标记之前的字符数据作为字符串返回，当读到末尾时，返回null，其原理还是与缓冲区关联的流对象的read方法，只不过每一次读取到一个字符，先不进行具体操作，先进行临时储存，当读取到回车标记时，将临时容器中储存的数据一次性返回。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BufferedWriter bufw=<span class="keyword">new</span> <span class="type">BufferedWriter</span>(<span class="keyword">new</span> <span class="type">FileWriter</span>(<span class="string">"buf.txt"</span>));<span class="comment">//读取缓冲区对象：        </span></div><div class="line">BufferedReader bufr=<span class="keyword">new</span> <span class="type">BufferedReader</span>(<span class="keyword">new</span> <span class="type">FileReader</span>(<span class="string">"buf.txt"</span>));</div></pre></td></tr></table></figure>
+<h2 id="转换流（InputStreamReader-OutputStreamWriter）"><a href="#转换流（InputStreamReader-OutputStreamWriter）" class="headerlink" title="转换流（InputStreamReader/OutputStreamWriter）"></a>转换流（InputStreamReader/OutputStreamWriter）</h2><p>该类型时字节流和字符流之间的桥梁，</p>
+<ul>
+<li>功能<ul>
+<li>该类型时字节流和字符流之间的桥梁<br>该流对象中可以对读取到的字节数据进行指定编码的编码转换。</li>
+</ul>
+</li>
+</ul>
+<p>构造函数主要有：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">InputStreamReader</span>(InputStream);        <span class="comment">//通过构造函数初始化，使用的是本系统默认的编码表GBK。  </span></div><div class="line"><span class="selector-tag">InputStreamWriter</span>(InputStream,String charSet);   <span class="comment">//通过该构造函数初始化，可以指定编码表。  </span></div><div class="line"><span class="selector-tag">OutputStreamWriter</span>(OutputStream);      <span class="comment">//通过该构造函数初始化，使用的是本系统默认的编码表GBK。  </span></div><div class="line"><span class="selector-tag">OutputStreamwriter</span>(OutputStream,String charSet);   <span class="comment">//通过该构造函数初始化，可以指定编码表。</span></div></pre></td></tr></table></figure></p>
+<p>这里看下 FileReader类的构造器 </p>
+<ul>
+<li>相当于 new InputStreamReader(new FileInputStream(“a.txt”))</li>
+<li>并且该对象使用的时默认的编码表<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">FileReader</span> <span class="keyword">extends</span> <span class="title">InputStreamReader</span> </span>&#123;</div><div class="line"> public <span class="type">FileReader</span>(<span class="type">String</span> fileName) <span class="keyword">throws</span> <span class="type">FileNotFoundException</span> &#123;</div><div class="line">        <span class="comment">//相当于 new InputStreamReader(new FileInputStream("a.txt"));</span></div><div class="line">        <span class="keyword">super</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(fileName));<span class="comment">//该对象使用的时默认的编码表</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>即如果a.txt中的文件中的字符数据是通过utf-8的形式编码，那么在读取时，就必须指定编码表，那么转换流时必须的。即：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">InputStreamReader isr=<span class="keyword">new</span> <span class="type">InputStreamReader</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"a.txt"</span>),utf<span class="number">-8</span>);</div></pre></td></tr></table></figure>
+<h2 id="数据流（DataInputStream-DataOutputStream）"><a href="#数据流（DataInputStream-DataOutputStream）" class="headerlink" title="数据流（DataInputStream/DataOutputStream）"></a>数据流（DataInputStream/DataOutputStream）</h2><p>该数据流可以方便地对一些基本类型数据进行直接的存储和读取，不需要再进一步进行转换，通常只要操作基本数据类型的数据，就需要通过DataStream进行包装。</p>
+<p>构造方法：        </p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DataInputStreamReader（<span class="keyword">InputStream</span>）；  </div><div class="line"> DataInputStreamWriter（<span class="keyword">OutputStream</span>）</div></pre></td></tr></table></figure>
+<p>方法举例：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">int</span> <span class="selector-tag">readInt</span>()；<span class="comment">//一次读取四个字节，并将其转成int值  </span></div><div class="line"><span class="selector-tag">writeInt</span>(int)；<span class="comment">//一次写入四个字节，注意和write(int)不同，write(int)只将该整数的最低一个8位写入，剩余三个8为丢失  </span></div><div class="line"><span class="selector-tag">hort</span> <span class="selector-tag">readShort</span>();  </div><div class="line"><span class="selector-tag">writeShort</span>(short);  </div><div class="line"><span class="selector-tag">String</span> <span class="selector-tag">readUTF</span>();<span class="comment">//按照utf-8修改版读取字符，注意，它只能读writeUTF()写入的字符数据。  </span></div><div class="line"><span class="selector-tag">writeUTF</span>(String);<span class="comment">//按照utf-8修改版将字符数据进行存储，只能通过readUTF读取。 </span></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>注意：在使用数据流读/存数据的时候，需要有一定的顺序，即某个类型的数据先写入就必须先读出，服从先进先出的原则。</p>
+<h2 id="打印流（PrintStream-PrintWriter）"><a href="#打印流（PrintStream-PrintWriter）" class="headerlink" title="打印流（PrintStream/PrintWriter）"></a>打印流（PrintStream/PrintWriter）</h2><p>PrintStream是一个字节打印流，System.out对应的类型就是PrintStream</p>
+<ul>
+<li>它的构造函数可以接受数据类型：<ul>
+<li>字符串路径</li>
+<li>File对象 </li>
+<li>OutputStream</li>
+</ul>
+</li>
+</ul>
+<p>PrintStream是一个字符打印流</p>
+<ul>
+<li>它的构造函数可以接受数据类型：<ul>
+<li>字符串路径</li>
+<li>File对象</li>
+<li>OutputStream  </li>
+<li>Writer </li>
+</ul>
+</li>
+</ul>
+<p>对于1、2类型的数据，可以指定编码表，也就是字符集，对于3、4类型的数据，可以指定自动刷新，当该自动刷新为True时，只有3个方法可以用：println,printf,format。 </p>
+<h2 id="对象流（ObjectInputStream-ObjectOutputStream）"><a href="#对象流（ObjectInputStream-ObjectOutputStream）" class="headerlink" title="对象流（ObjectInputStream/ObjectOutputStream）"></a>对象流（ObjectInputStream/ObjectOutputStream）</h2><p>该类型的流可以把类作为一个整体进行存取，主要方法有：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span> readObject();该方法抛出异常：ClassNotFountException。</div><div class="line"></div><div class="line"><span class="keyword">void</span> writeObject(<span class="built_in">Object</span>)：被写入的对象必须实现一个接口：Serializable，否则就会抛出：NotSerializableException</div></pre></td></tr></table></figure></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/zzp_403184692/article/details/8057693" target="_blank" rel="external">http://blog.csdn.net/zzp_403184692/article/details/8057693</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概览&quot;&gt;&lt;a href=&quot;#概览&quot; class=&quot;headerlink&quot; title=&quot;概览&quot;&gt;&lt;/a&gt;概览&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://ww4.sinaimg.cn/large/006tKfTcgy1fdmkir64xbj30xi0yrt9
+    
+    </summary>
+    
+      <category term="I/O" scheme="https://luhaoaimama1.github.io/categories/I-O/"/>
+    
+    
+      <category term="I/O" scheme="https://luhaoaimama1.github.io/tags/I-O/"/>
+    
+  </entry>
   
   <entry>
     <title>常用排序图解</title>
@@ -1926,118 +2021,6 @@
       <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
       <category term="适配" scheme="https://luhaoaimama1.github.io/tags/%E9%80%82%E9%85%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android-打造无敌解耦的BaseActivity</title>
-    <link href="https://luhaoaimama1.github.io/2016/03/23/BaseActivity/"/>
-    <id>https://luhaoaimama1.github.io/2016/03/23/BaseActivity/</id>
-    <published>2016-03-23T05:19:37.000Z</published>
-    <updated>2017-01-19T06:30:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>封装库</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="external"><em>zone-sdk</em></a><br><strong>设计模式</strong>:观察者模式<br><strong>目的</strong>：解耦，各司其职。拍照等涉及onActivityResult的封装<br><a id="more"></a></p>
-<h1 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h1><p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvwziewhij31kw0okgq0.jpg" alt=""></p>
-<h1 id="BaseActivity"><a href="#BaseActivity" class="headerlink" title="BaseActivity"></a>BaseActivity</h1><p>ActivityKinds(观察者的基类): 在使用的BaseActivity注册ActivityKinds或者移除不必要的ActivityKinds</p>
-<blockquote>
-<p>专注：<code>onCreate</code>，<code>onResume</code>，<code>onActivityResult</code>，<code>onPause</code>，<code>onDestroy</code></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名字</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">CollectionActivityKind</td>
-<td style="text-align:center">收集所有Activity用的</td>
-</tr>
-<tr>
-<td style="text-align:center">FeaturesKind</td>
-<td style="text-align:center"><a href="#featuresKind">专门处理关于onActivityResult的</a></td>
-</tr>
-<tr>
-<td style="text-align:center">ScreenSettingKind</td>
-<td style="text-align:center">setNoTitle,setFullScreen的</td>
-</tr>
-<tr>
-<td style="text-align:center">SwipeBackKind</td>
-<td style="text-align:center">左滑退出Activity用的 集成别的项目~ <a href="https://github.com/Jude95/SwipeBackHelper/blob/master/README_ch.md" target="_blank" rel="external">xml额外的配置,参考地址</a></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>考虑兼容(简称BaseActivity)分成三块:<code>BaseActivity</code> <code>BaseAppCompatActivity</code> <code>BaseFragmentActivity</code></p>
-</blockquote>
-<h2 id="BaseActivity里的主要工作"><a href="#BaseActivity里的主要工作" class="headerlink" title="BaseActivity里的主要工作"></a>BaseActivity里的主要工作</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">名字</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">updateKinds</td>
-<td style="text-align:center">在这里 移除与注册 ActivityKinds</td>
-</tr>
-</tbody>
-</table>
-<h2 id="ActivityKinds范例："><a href="#ActivityKinds范例：" class="headerlink" title="ActivityKinds范例："></a>ActivityKinds范例：</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">StatKind</span> <span class="keyword">extends</span> <span class="title">ActivityKinds</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onResume() &#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        <span class="comment">//百度统计</span></div><div class="line">        <span class="type">StatService</span>.onResume(activity);</div><div class="line">        <span class="comment">//jpush</span></div><div class="line">        <span class="type">JpushUtils</span>.<span class="type">Activity</span>.resumePush(activity.getApplicationContext());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onPause() &#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        <span class="type">StatService</span>.onPause(activity);</div><div class="line">        <span class="type">JpushUtils</span>.<span class="type">Activity</span>.stopPush(activity.getApplicationContext());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind"><a href="#BaseActivity移除不必要的SwipeBackKind-功能-注册StatKind" class="headerlink" title="BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;"></a>BaseActivity移除不必要的SwipeBackKind 功能,注册StatKind;</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DBaseAppCompatActivity</span> <span class="keyword">extends</span> <span class="title">BaseAppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> arg0) &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(arg0);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void updateKinds() &#123;</div><div class="line">        mKindControl.remove(<span class="type">SwipeBackKind</span>.<span class="keyword">class</span>);</div><div class="line">        mKindControl.put(<span class="keyword">new</span> <span class="type">StatKind</span>());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a id="featuresKind"></a></p>
-<h1 id="FeaturesKind"><a href="#FeaturesKind" class="headerlink" title="FeaturesKind"></a>FeaturesKind</h1><p>观察者模式：</p>
-<blockquote>
-<p>ExtraFeature(观察者的基类):专注：<code>init（onResume中使用）</code>,<code>onActivityResult</code>,<code>destory</code></p>
-<p>RequestCodeConfig(所有ExtraFeature的Code声明):其中的START_CODE(默认1000开始)可以修改,而进行整体code偏移 主要是怕碰到别的类似开源项目code重复导致不必要的问题;</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名字</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Feature_Pic</td>
-<td style="text-align:center">拍照功能与相册选择功能(如果写建议参考这个)</td>
-</tr>
-<tr>
-<td style="text-align:center">Feature_SystemClip</td>
-<td style="text-align:center">系统裁剪(demo 让我删除了.)</td>
-</tr>
-<tr>
-<td style="text-align:center">Featrue_CustomCamera</td>
-<td style="text-align:center">自定义相机(demo 没有. 很久以前的了就不给demo了~)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Tips:<code>返回值的方法要抽象</code>,这样就不会忘记写。 剩下的方法就可以public不抽象了~</p>
-</blockquote>
-<h2 id="Activity中拍照的使用范例："><a href="#Activity中拍照的使用范例：" class="headerlink" title="Activity中拍照的使用范例："></a>Activity中拍照的使用范例：</h2><blockquote>
-<p>声明后 注意 把拍照的功能添加到FeaturesKind里面 <code>mKindControl.get(FeaturesKind.class).addFeature(feature_Pic);</code></p>
-</blockquote>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line">public <span class="keyword">void</span> updateKinds() &#123;</div><div class="line">    <span class="keyword">super</span>.updateKinds();</div><div class="line">    feature_Pic = <span class="keyword">new</span> Feature_Pic(<span class="keyword">this</span>) &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        protected <span class="keyword">void</span> getReturnedPicPath(<span class="built_in">String</span> path) &#123;</div><div class="line">            System.out.println(path);</div><div class="line">            Intent intent = <span class="keyword">new</span> Intent(Photo_Shot_MainActivity.<span class="keyword">this</span>,ShowPicActivity.<span class="keyword">class</span>);</div><div class="line">            <span class="built_in">Uri</span> uri = <span class="built_in">Uri</span>.parse(path);</div><div class="line">            intent.setData(uri);</div><div class="line">            startActivity(intent);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    mKindControl.<span class="keyword">get</span>(FeaturesKind.<span class="keyword">class</span>).addFeature(feature_Pic);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>然后调用此方法就好了~ <code>feature_Pic.openCamera();</code> <code>feature_Pic.openPhotos();</code></p>
-</blockquote>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">    <span class="keyword">case</span> R.id.shot:</div><div class="line">        feature_Pic.openCamera();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> R.id.photo:</div><div class="line">        feature_Pic.openPhotos();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;封装库&lt;/strong&gt;:&lt;a href=&quot;https://github.com/luhaoaimama1/zone-sdk&quot;&gt;&lt;em&gt;zone-sdk&lt;/em&gt;&lt;/a&gt;&lt;br&gt;&lt;strong&gt;设计模式&lt;/strong&gt;:观察者模式&lt;br&gt;&lt;strong&gt;目的&lt;/strong&gt;：解耦，各司其职。拍照等涉及onActivityResult的封装&lt;br&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
   </entry>
   
