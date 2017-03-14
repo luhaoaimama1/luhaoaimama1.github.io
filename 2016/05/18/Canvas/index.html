@@ -44,7 +44,7 @@
 
 如果有错误请指出谢谢~">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8y9kyyggj31ig11oq91.jpg">
-<meta property="og:updated_time" content="2017-01-19T06:37:19.000Z">
+<meta property="og:updated_time" content="2017-02-08T09:02:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-Canvas系统理解">
 <meta name="twitter:description" content="以我个人主观推断的Canvas工作原理
@@ -59,6 +59,19 @@
 
   <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?luhaoaimama1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -215,7 +228,7 @@
       <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">文章目录</h2>
         <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#图片理解模型"><span class="toc-text">图片理解模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#我的启蒙关键就是saveLayer的官方文档："><span class="toc-text">我的启蒙关键就是saveLayer的官方文档：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#疑问"><span class="toc-text">疑问</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas我为什么认为叫-辅助-助手坐标系？"><span class="toc-text">Canvas我为什么认为叫 辅助/助手坐标系？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas怎么就让绘制简单了？"><span class="toc-text">canvas怎么就让绘制简单了？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#saveLayerAlpha-…int-alpha-透明度怎么回事？"><span class="toc-text">saveLayerAlpha(…int alpha..) 透明度怎么回事？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#restoreToCount方法和restore方法的区别"><span class="toc-text">restoreToCount方法和restore方法的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么-view-ondraw里的-不用restore-layer就能显示？"><span class="toc-text">为什么 view ondraw里的 不用restore layer就能显示？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么第一次saveLayer的值是1？而不是0"><span class="toc-text">为什么第一次saveLayer的值是1？而不是0?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tips"><span class="toc-text">Tips</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#图片理解模型"><span class="toc-text">图片理解模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#我的启蒙关键就是saveLayer的官方文档："><span class="toc-text">我的启蒙关键就是saveLayer的官方文档：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#疑问"><span class="toc-text">疑问</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas我为什么认为叫-辅助-助手坐标系？"><span class="toc-text">Canvas我为什么认为叫 辅助/助手坐标系？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas怎么就让绘制简单了？"><span class="toc-text">canvas怎么就让绘制简单了？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#saveLayerAlpha-…int-alpha-透明度怎么回事？"><span class="toc-text">saveLayerAlpha(…int alpha..) 透明度怎么回事？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#restoreToCount方法和restore方法的区别"><span class="toc-text">restoreToCount方法和restore方法的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么-view-ondraw里的-不用restore-layer就能显示？"><span class="toc-text">为什么 view ondraw里的 不用restore layer就能显示？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么第一次saveLayer的值是1-？而不是0"><span class="toc-text">为什么第一次saveLayer的值是1 ？而不是0 ?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tips"><span class="toc-text">Tips</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
         </div>
       </div>
     
@@ -246,7 +259,7 @@
 <p>Tips:自己弄的Canvas 注意一定要restore 把离屏缓存 不然 layer绘制的不会显示!</p>
 <p><strong>所以我们要养成习惯restore,这样代码在哪都不会错</strong></p>
 </blockquote>
-<h2 id="为什么第一次saveLayer的值是1？而不是0"><a href="#为什么第一次saveLayer的值是1？而不是0" class="headerlink" title="为什么第一次saveLayer的值是1？而不是0?"></a>为什么第一次saveLayer的值是1？而不是0?</h2><p>因为canvas.save() 返回的值 是上个图层的值。而且Canvas提供了图层（Layer）支持，缺省情况可以看作是只有一个图 层Layer。</p>
+<h2 id="为什么第一次saveLayer的值是1-？而不是0"><a href="#为什么第一次saveLayer的值是1-？而不是0" class="headerlink" title="为什么第一次saveLayer的值是1 ？而不是0 ?"></a>为什么第一次saveLayer的值是1 ？而不是0 ?</h2><p>因为canvas.save() 返回的值 是上个图层的值。而且Canvas提供了图层（Layer）支持，缺省情况可以看作是只有一个图 层Layer。</p>
 <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
 <li>layer图层必须 <strong>出栈</strong>才能将本层绘制的图像“绘制”到上层或是Canvas上</li>
 <li><p>Tips:想要Canvas显示正确的图像，不是随意出栈即可。例如：saveLayer4次 即 现在栈中为 1-&gt;2-&gt;3-&gt;4-&gt;5  </p>
@@ -281,8 +294,8 @@
       </a>
     
     
-      <a class="next" href="/2016/05/18/面试题/">
-        <span class="next-text nav-default">Android-2017面试题整理</span>
+      <a class="next" href="/2016/04/25/ScreenAdapter/">
+        <span class="next-text nav-default">Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>

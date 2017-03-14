@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2017-01-23T15:33:44.000Z</updated>
+  <updated>2017-03-14T07:23:59.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,6 +14,264 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用排序图解</title>
+    <link href="https://luhaoaimama1.github.io/2017/03/14/%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3/"/>
+    <id>https://luhaoaimama1.github.io/2017/03/14/排序图解/</id>
+    <published>2017-03-14T05:19:37.000Z</published>
+    <updated>2017-03-14T07:23:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1fdmd05t9trj30ex06274e.jpg" alt=""></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.java" target="_blank" rel="external">查看Code</a></p>
+<a id="more"></a>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fdmd0inhvbj30u30gr0u2.jpg" alt=""><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F.java" target="_blank" rel="external">查看Code</a></p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fdmd0ero4aj308n064q43.jpg" alt=""><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F.java" target="_blank" rel="external">查看Code</a></p>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fdmd0n73syj30fl0emjs8.jpg" alt=""><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F.java" target="_blank" rel="external">查看Code</a></p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>如图多次 分组循环即可  最后  都会分成 一个的。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdmd0qf7axj30fo067ju4.jpg" alt=""></p>
+<p>切分元素 为美组第一个。    小于左边 ，大于右边  的转换过程为此图<br><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1fdmd0tsfwjj31ea0smwfw.jpg" alt=""></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F.java" target="_blank" rel="external">查看Code</a></p>
+<h2 id="二分查找（折半插入查找）"><a href="#二分查找（折半插入查找）" class="headerlink" title="二分查找（折半插入查找）"></a>二分查找（折半插入查找）</h2><p>这个是 while 一半的 二分方式 定位 应该放的位置。然后后边的统一向后移动。<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fdmdwbpbrij31kw0ob0tp.jpg" alt=""></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E4%BA%8C%E5%88%86%E6%8E%92%E5%BA%8F.java" target="_blank" rel="external">查看Code</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot; title=&quot;冒泡排序&quot;&gt;&lt;/a&gt;冒泡排序&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006tKfTcgy1fdmd05t9trj30ex06274e.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.java&quot;&gt;查看Code&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="排序" scheme="https://luhaoaimama1.github.io/categories/%E6%8E%92%E5%BA%8F/"/>
+    
+    
+      <category term="排序" scheme="https://luhaoaimama1.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-2017面试题整理(未整理完)</title>
+    <link href="https://luhaoaimama1.github.io/2017/02/09/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://luhaoaimama1.github.io/2017/02/09/面试题/</id>
+    <published>2017-02-09T05:19:37.000Z</published>
+    <updated>2017-02-08T08:29:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>2017面试题整理</p>
+<a id="more"></a>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Activity的生命周期的理解"><a href="#Activity的生命周期的理解" class="headerlink" title="Activity的生命周期的理解"></a>Activity的生命周期的理解</h2><p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">周期</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">onCreate()</td>
+<td style="text-align:center">【创建基本的UI元素】：当 activity 第一次创建时会被调用。</td>
+</tr>
+<tr>
+<td style="text-align:center">onRestart()</td>
+<td style="text-align:center">在 activity 被停止后重新启动时会调用该方法。其后续会调用 onStart 方法。</td>
+</tr>
+<tr>
+<td style="text-align:center">onStart()</td>
+<td style="text-align:center">交互之前 不可见，位图从新加载；</td>
+</tr>
+<tr>
+<td style="text-align:center">onResume()</td>
+<td style="text-align:center">【从新初始化资源 例如Camera、sensor】：交互之前 可见不可操作</td>
+</tr>
+<tr>
+<td style="text-align:center">onPause()</td>
+<td style="text-align:center">【清除资源 避免浪费  例如Camera、sensor】：交互之后 可见 不可操作</td>
+</tr>
+<tr>
+<td style="text-align:center">onStop()</td>
+<td style="text-align:center">交互之后  不可见，位图回收 不可再pause回收那样会造成 正在使用已经回收的位图错误;</td>
+</tr>
+<tr>
+<td style="text-align:center">onDestroy()</td>
+<td style="text-align:center">【因为引用会在Activity销毁的时候销毁，而线程不会，所以清楚开启的线程】：在 activity 被销毁前会调用该方法</td>
+</tr>
+<tr>
+<td style="text-align:center">onWindowFocusChanged(boolean hasFocus)</td>
+<td style="text-align:center">hasFocus true就是可见，false就是不可见；官方意思:这个Activity得到或者失去焦点的时候 就会call。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>扩展<blockquote>
+<p>今天又听说有同学遭遇了更变态的问题：什么情况下Activity走了onCreat()，而不走onStart()，这简直就是脑筋急转弯嘛。<br>是在onCeate里面，调用finish直接就挂掉不会调用onStart了</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="service生命周期？"><a href="#service生命周期？" class="headerlink" title="service生命周期？"></a>service生命周期？</h2><p>这里要注意service有两种启动方式，startService()和bindService()<br><img src="http://upload-images.jianshu.io/upload_images/1187237-4cbfd0f464cd5313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="如何理解Activity，View，Window三者之间的关系？"><a href="#如何理解Activity，View，Window三者之间的关系？" class="headerlink" title="如何理解Activity，View，Window三者之间的关系？"></a>如何理解Activity，View，Window三者之间的关系？</h2><ul>
+<li>Activity构造的时候会初始化一个Window，准确的说是PhoneWindow。</li>
+<li>这个PhoneWindow有一个“ViewRoot”，这个“ViewRoot”是一个View或者说ViewGroup，是最初始的根视图。</li>
+<li>“ViewRoot”通过addView方法来一个个的添加View。比如TextView，Button等</li>
+<li>这些View的事件监听，是由WindowManagerService来接受消息，并且回调Activity函数。比如onClickListener，onKeyDown等。</li>
+</ul>
+<h2 id="Activity的几种LaunchMode"><a href="#Activity的几种LaunchMode" class="headerlink" title="Activity的几种LaunchMode"></a>Activity的几种LaunchMode</h2><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk3mqtd_1vOQt92MTTz53ktcy1" target="_blank" rel="external">http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk3mqtd_1vOQt92MTTz53ktcy1</a></p>
+<h2 id="横竖屏切换时候activity的生命周期"><a href="#横竖屏切换时候activity的生命周期" class="headerlink" title="横竖屏切换时候activity的生命周期"></a>横竖屏切换时候activity的生命周期</h2><ul>
+<li>设置 android:configChanges=”orientation” 和不设置这个属性，生命周期表现为重新创建activity</li>
+<li>设置 android:configChanges=”orientation|keyboardHidden”，在2.3上表现为不重新创建activity，4.0如下<ul>
+<li>android:targetSdkVersion&lt;=”12”，生命周期表现为不重新创建activity</li>
+<li>android:targetSdkVersion&gt;”12”，表现为重新创建activity</li>
+</ul>
+</li>
+<li>设置 android:configChanges=”orientation|keyboardHidden|screenSize”，在2.3和4.0上都表现为不重新创建<br>版本不一样切竖屏执行的次数不一样，而且configChanges在3.2之后需要配置screenSize<br>参考:<a href="http://www.cnblogs.com/xiaoQLu/p/3324503.html" target="_blank" rel="external">http://www.cnblogs.com/xiaoQLu/p/3324503.html</a></li>
+</ul>
+<h2 id="android中的动画有哪几类，它们的特点和区别是什么"><a href="#android中的动画有哪几类，它们的特点和区别是什么" class="headerlink" title="android中的动画有哪几类，它们的特点和区别是什么?"></a>android中的动画有哪几类，它们的特点和区别是什么?</h2><ul>
+<li>FrameAnimation（逐帧动画）：将多张图片组合起来进行播放，类似于早期电影的工作原理，很多App的loading是采用这种方式。</li>
+<li>TweenAnimation（补间动画）：是对某个View进行一系列的动画的操作，包括淡入淡出（Alpha），缩放（Scale），平移（Translate），旋转（Rotate）四种模式。</li>
+<li>PropertyAnimation（属性动画）：属性动画不再仅仅是一种视觉效果了，而是一种不断地对值进行操作的机制，并将值赋到指定对象的指定属性上，可以是任意对象的任意属性。</li>
+</ul>
+<h2 id="handler机制的原理"><a href="#handler机制的原理" class="headerlink" title="handler机制的原理"></a>handler机制的原理</h2><p>andriod提供了 Handler 和 Looper 来满足线程间的通信。Handler 先进先出原则。Looper类用来管理特定线程内对象之间的消息交换(Message Exchange)。</p>
+<ul>
+<li>Looper: 一个线程可以产生一个Looper对象，由它来管理此线程里的Message Queue(消息队列)。</li>
+<li>Handler: 你可以构造Handler对象来与Looper沟通，以便push新消息到Message Queue里;或者接收Looper从Message Queue取出)所送来的消息。</li>
+<li>Message Queue(消息队列):用来存放线程放入的消息。</li>
+<li>线程：UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。</li>
+</ul>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchwjv65jhj30sg0fgjtw.jpg" alt=""><br>需要注意的地方：</p>
+<ul>
+<li>prepareMainLooper ：为ActivityThread特殊准备的</li>
+<li>handler对象只能添加到有消息队列的线程中 否则会发生异常 其实Activity被构造前已经.prepare了 而且不能.prepare两次</li>
+<li>一个线程可以有多个handler  每个 message会对应对应 的handler（监听在handler内部）  所以没事</li>
+<li>Looper也是可以退出的 如果所有的事情都完事了 可以quit不然,looper会一直等待下去(当然可以不管~)</li>
+<li>quit :直接退出</li>
+<li>quitSafely:先设定一个退出标识（小心进不来了），然后把消息处理完后真正退出</li>
+<li>Activity的主线程就是ActivityThread 主线程的入口是main方法</li>
+</ul>
+<h2 id="让Activity变成一个窗口：Activity属性设定"><a href="#让Activity变成一个窗口：Activity属性设定" class="headerlink" title="让Activity变成一个窗口：Activity属性设定"></a>让Activity变成一个窗口：Activity属性设定</h2><p>对话框<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">android</span> :theme=<span class="string">"<span class="variable">@android</span>:style/Theme.Dialog"</span></div></pre></td></tr></table></figure></p>
+<p>半透明的</p>
+<blockquote>
+<p>注意其生命周期</p>
+</blockquote>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">android:</span>theme=<span class="string">"@android:style/Theme.Translucent"</span></div></pre></td></tr></table></figure>
+<h2 id="如何将SQLite数据库-dictionary-db文件-与apk文件一起发布"><a href="#如何将SQLite数据库-dictionary-db文件-与apk文件一起发布" class="headerlink" title="如何将SQLite数据库(dictionary.db文件)与apk文件一起发布?"></a>如何将SQLite数据库(dictionary.db文件)与apk文件一起发布?</h2><p>可以将dictionary.db文件复制到Eclipse Android工程中的res raw目录中。所有在res raw目录中的文件不会被压缩，这样可以直接提取该目录中的文件。可以将dictionary.db文件复制到res raw目录中</p>
+<h2 id="如何将打开res-raw目录中的数据库文件"><a href="#如何将打开res-raw目录中的数据库文件" class="headerlink" title="如何将打开res raw目录中的数据库文件?"></a>如何将打开res raw目录中的数据库文件?</h2><p>在Android中不能直接打开res raw目录中的数据库文件，而需要在程序第一次启动时将该文件复制到手机内存或SD卡的某个目录中，然后再打开该数据库文件。复制的基本方法是使用getResources().openRawResource方法获得res raw目录中资源的 InputStream对象，然后将该InputStream对象中的数据写入其他的目录中相应文件中。在Android SDK中可以使用SQLiteDatabase.openOrCreateDatabase方法来打开任意目录中的SQLite数据库文件。  </p>
+<h2 id="MVC-MVVM-MVP"><a href="#MVC-MVVM-MVP" class="headerlink" title="MVC MVVM  MVP"></a>MVC MVVM  MVP</h2><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk03i2dZ3qEkEB2hONOQ1uxi1j" target="_blank" rel="external">http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk03i2dZ3qEkEB2hONOQ1uxi1j</a></p>
+<h2 id="什么是ANR-如何避免它"><a href="#什么是ANR-如何避免它" class="headerlink" title="什么是ANR 如何避免它?"></a>什么是ANR 如何避免它?</h2><p>ANR：Application Not Responding。</p>
+<ul>
+<li>用户对应用程序的操作(如输入事件，按键、触摸屏事件)在5秒内无响应</li>
+<li>广播接受器(BroadcastReceiver)在10秒内仍未执行完毕 </li>
+</ul>
+<blockquote>
+<p>不要在UI线程做耗时操作即可避免</p>
+</blockquote>
+<h2 id="如果后台的Activity由于某原因被系统回收了，如何在被系统回收之前保存当前状态"><a href="#如果后台的Activity由于某原因被系统回收了，如何在被系统回收之前保存当前状态" class="headerlink" title="如果后台的Activity由于某原因被系统回收了，如何在被系统回收之前保存当前状态?"></a>如果后台的Activity由于某原因被系统回收了，如何在被系统回收之前保存当前状态?</h2><p>通过重写onSaveInstanceState（）方法来实现Activity的运行状态，请注意以下几点：</p>
+<ul>
+<li>由于activity 对象被暂停或停止时，它仍然保留在内存里面，关于它的成员信息和当前状态都是活动的，所以此时可以保存Activity的状态，从而使用户所作的Activity的更改保存在内存中</li>
+<li>当系统回收内存而将Activity销毁时，就无法保存其状态，所以需要调用onSaveInstanceState（）方法来实现状态的保存</li>
+<li>很多情况并不需要保持状态信息，比如按下返回键直接关闭程序，所以并不能保证会调用onSaveInstanceState。如果调用了该方法，一般是在onStop 方法之前且可能在 onPause 之后调用。尽管如此，即使你没做任何操作或没有实现 onSaveInstanceState() 方法，你的 activity 状态也能通过Activity 类里面默认实现的 onSaveInstanceState 方法恢复出来。特别是会为布局中的视图（ View ）默认调用onSaveInstanceState 方法，并在这个方法中允许每一个视图提供它需要恢复的任何信息。几乎每一个 Android框架中的 widget 都视情况实现了这个方法。</li>
+</ul>
+<p>注：因为 onSaveInstanceState 方法不一定会被调用(系统因为内存紧张回收的时候才调用 或者调整Activity的方向把)，所以你应该只是用它来保存一些 activity 的转换过程状态（即 UI 的状态），而不能用来保存永久性数据。但你可以用 onPause 方法在用户离开 activity 时来保存永久性数据，比如需要保存到数据库的数据。<br>有一个很好的方法可以用来检验应用程序保存状态的能力，就是简单地旋转你的设备来改变屏幕的方向。因为当屏幕方向改变时，系统为了给新的方向提供一个可能合适的代替资源，会销毁 activity 并新建一个新的。由于这个原因，你的 activity 是否能在其重新创建时完成保存状态就显得尤为重要，因为用户经常会在使用应用程序时旋转屏幕的。<br>上文部分内容参考了：<a href="http://blog.csdn.net/sam_zhang1984/article/details/6430817" target="_blank" rel="external">http://blog.csdn.net/sam_zhang1984/article/details/6430817</a></p>
+<h2 id="谈谈android数据存储方式。"><a href="#谈谈android数据存储方式。" class="headerlink" title="谈谈android数据存储方式。"></a>谈谈android数据存储方式。</h2><p>Android提供了5种方式存储数据：</p>
+<ul>
+<li>使用SharedPreferences存储数据；它是Android提供的用来存储一些简单配置信息的一种机制，采用了XML格式将数据存储到设备中。只能在同一个包内使用，不能在不同的包之间使用。</li>
+<li>文件存储数据；文件存储方式是一种较常用的方法，在Android中读取/写入文件的方法，与Java中实现I/O的程序是完全一样的，提供了openFileInput()和openFileOutput()方法来读取设备上的文件。</li>
+<li>SQLite数据库存储数据；SQLite是Android所带的一个标准的数据库，它支持SQL语句，它是一个轻量级的嵌入式数据库。</li>
+<li>使用ContentProvider存储数据；主要用于应用程序之间进行数据交换，从而能够让其他的应用保存或读取此Content Provider的各种数据类型。</li>
+<li>网络存储数据；通过网络上提供给我们的存储空间来上传(存储)和下载(获取)我们存储在网络空间中的数据信息。</li>
+</ul>
+<h2 id="Android中Activity-Intent-Content-Provider-Service各有什么区别。"><a href="#Android中Activity-Intent-Content-Provider-Service各有什么区别。" class="headerlink" title="Android中Activity, Intent, Content Provider, Service各有什么区别。"></a>Android中Activity, Intent, Content Provider, Service各有什么区别。</h2><ul>
+<li>Activity： 活动，是最基本的android应用程序组件。一个活动就是一个用户可以操作的可视化用户界面，每一个活动都被实现为一个独立的类，并且从活动基类继承而来。</li>
+<li>Intent： 意图，描述应用想干什么。最重要的部分是动作和动作对应的数据。</li>
+<li>Content Provider：内容提供器，android应用程序能够将它们的数据保存到文件、SQLite数据库中，甚至是任何有效的设备中。当你想将你的应用数据和其他应用共享时，内容提供器就可以发挥作用了。</li>
+<li>Service：服务，具有一段较长生命周期且没有用户界面的程序组件。</li>
+</ul>
+<h2 id="View-surfaceView-GLSurfaceView有什么区别。"><a href="#View-surfaceView-GLSurfaceView有什么区别。" class="headerlink" title="View, surfaceView, GLSurfaceView有什么区别。"></a>View, surfaceView, GLSurfaceView有什么区别。</h2><ul>
+<li>view是最基础的，必须在UI主线程内更新画面，速度较慢。</li>
+<li>SurfaceView 是view的子类，类似使用双缓机制，在新的线程中更新画面所以刷新界面速度比view快</li>
+<li>GLSurfaceView 是SurfaceView的子类，opengl 专用的</li>
+</ul>
+<h2 id="Manifest-xml文件中主要包括哪些信息？"><a href="#Manifest-xml文件中主要包括哪些信息？" class="headerlink" title="Manifest.xml文件中主要包括哪些信息？"></a>Manifest.xml文件中主要包括哪些信息？</h2><ul>
+<li>manifest：根节点，描述了package中所有的内容。</li>
+<li>uses-permission：请求你的package正常运作所需赋予的安全许可。</li>
+<li>permission： 声明了安全许可来限制哪些程序能你package中的组件和功能。</li>
+<li>instrumentation：声明了用来测试此package或其他package指令组件的代码。</li>
+<li>application：包含package中application级别组件声明的根节点。</li>
+<li>activity：Activity是用来与用户交互的主要工具。</li>
+<li>receiver：IntentReceiver能使的application获得数据的改变或者发生的操作，即使它当前不在运行。</li>
+<li>service：Service是能在后台运行任意时间的组件。</li>
+<li>provider：ContentProvider是用来管理持久化数据并发布给其他应用程序使用的组件。</li>
+</ul>
+<h2 id="根据自己的理解描述下Android数字签名"><a href="#根据自己的理解描述下Android数字签名" class="headerlink" title="根据自己的理解描述下Android数字签名"></a>根据自己的理解描述下Android数字签名</h2><ul>
+<li>所有的应用程序都必须有数字证书，Android系统不会安装一个没有数字证书的应用程序</li>
+<li>Android程序包使用的数字证书可以是自签名的，不需要一个权威的数字证书机构签名认证</li>
+<li>如果要正式发布一个Android程序，必须使用一个合适的私钥生成的数字证书来给程序签名，而不能使用adt插件或者ant工具生成的调试证书来发布。</li>
+<li>数字证书都是有有效期的，Android只是在应用程序安装的时候才会检查证书的有效期。如果程序已经安装在系统中，即使证书过期也不会影响程序的正常功能。* </li>
+</ul>
+<h2 id="android-gravity与android-layout-gravity的区别"><a href="#android-gravity与android-layout-gravity的区别" class="headerlink" title="android:gravity与android:layout_gravity的区别"></a>android:gravity与android:layout_gravity的区别</h2><ul>
+<li>android:gravity用于设置View组件的对齐方式</li>
+<li>android:layout_gravity用于设置Container组件的 对齐方式。</li>
+</ul>
+<h2 id="注册广播接收者两种方式的区别，及优缺点"><a href="#注册广播接收者两种方式的区别，及优缺点" class="headerlink" title="注册广播接收者两种方式的区别，及优缺点"></a>注册广播接收者两种方式的区别，及优缺点</h2><p>注册的方法有两种，一种是静态注册:清单文件中声明，一种是动态注册:代码进行注册。<br>动态注册优点(跟随程序的生命周期)：在 Android 的广播机制中，动态注册的优先级是要高于静态注册优先级的，因此在必要的情况下，我们是需要动态注册广播接收器的。<br>静态注册优点(手机开着即可)：动态注册广播接收器还有一个特点，就是当用来注册的 Activity 关掉后，广播也就失效了。同时反映了静态注册的一个优势，就是无需担忧广播接收器是否被关闭，只要设备是开启状态，广播接收器就是打开着的。</p>
+<h2 id="android中有哪几种解析xml的类-官方推荐哪种？以及它们的原理和区别"><a href="#android中有哪几种解析xml的类-官方推荐哪种？以及它们的原理和区别" class="headerlink" title="android中有哪几种解析xml的类,官方推荐哪种？以及它们的原理和区别"></a>android中有哪几种解析xml的类,官方推荐哪种？以及它们的原理和区别</h2><ul>
+<li>DOM:加载内存 生成一个树状结构,消耗内存大</li>
+<li>SAM:基于事件的方式,速度快,效率高 不能倒退</li>
+<li>PULL:解析器的运行方式和SAX类似，都是基于事件的模式,区别我们需要自己获取产生的事件然后做相应的操作，而不像SAX那样由处理器触发一种事件的方法，执行我们的代码小巧轻便，非常适合在Android移动设备中使用，Android系统内部在解析各种XML时也是用PULL解析器。</li>
+</ul>
+<blockquote>
+<p>pull比sax更简明,而且不需要扫描完整个流.</p>
+</blockquote>
+<h2 id="双缓冲技术原理以及优缺点："><a href="#双缓冲技术原理以及优缺点：" class="headerlink" title="双缓冲技术原理以及优缺点："></a>双缓冲技术原理以及优缺点：</h2><p>创建一幅后台图像，将每一帧画入图像，然后调用drawImage()方法将整个后台图像一次画到屏幕上去。<br>优点：双缓冲技术的优点在于大部分绘制是离屏的。<br>            将离屏图像一次绘至屏幕上，比直接在屏幕上绘制要有效得多。<br>            双缓冲技术可以使动画平滑。<br>缺点：要分配一个后台图像的缓冲，如果图像相当大，这将占用很大一块内存。</p>
+<h2 id="GridView-ListView出现的问题"><a href="#GridView-ListView出现的问题" class="headerlink" title="GridView 　ListView出现的问题"></a>GridView 　ListView出现的问题</h2><ul>
+<li><p>ListView的吨卡现象</p>
+<ul>
+<li>getView中　耗时操作了</li>
+<li>view复用</li>
+<li>优化布局  清理布局中不用的 view  尽量减少</li>
+<li>列表滑动的时候停止夹在图片　</li>
+<li>启用硬件加速</li>
+</ul>
+</li>
+<li><p>图片错位</p>
+<ul>
+<li>图片先加载了这个任务然后快速滑动　　此控件又被复用了　然后又加载另一个图片<br>解决方法：　完成时判断view的url和任务url是否相同然后决定是否加载</li>
+</ul>
+</li>
+</ul>
+<h2 id="Touch事件的传递机制"><a href="#Touch事件的传递机制" class="headerlink" title="Touch事件的传递机制"></a>Touch事件的传递机制</h2><p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fchzqo0yjij30qt0hrmy2.jpg" alt=""></p>
+<blockquote>
+<p>Activity－＞Window－＞View 如果所有人都不消耗最后会在activity中的onTouchEvent上处理<br>执行顺序:onTouchListener &gt; onTouchEvent &gt; onLongClickListener &gt; onClickListener</p>
+</blockquote>
+<h2 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h2><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk2v4H3m2F5QkL2AMzrJ2dUJlA" target="_blank" rel="external">http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk2v4H3m2F5QkL2AMzrJ2dUJlA</a></p>
+<h2 id="在View比较重要的回调方法"><a href="#在View比较重要的回调方法" class="headerlink" title="在View比较重要的回调方法"></a>在View比较重要的回调方法</h2><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk1s1fj02XCkI92r2-813nZxDP" target="_blank" rel="external">http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk1s1fj02XCkI92r2-813nZxDP</a></p>
+<h2 id="View生命周期的官方文档"><a href="#View生命周期的官方文档" class="headerlink" title="View生命周期的官方文档"></a>View生命周期的官方文档</h2><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk0aznMy2WZ4bz26V5Sj17kjFI" target="_blank" rel="external">http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk0aznMy2WZ4bz26V5Sj17kjFI</a></p>
+<h2 id="设计一套图片异步加载缓存方案"><a href="#设计一套图片异步加载缓存方案" class="headerlink" title="设计一套图片异步加载缓存方案"></a>设计一套图片异步加载缓存方案</h2><p><a href="http://blog.csdn.net/boyupeng/article/details/47127605" target="_blank" rel="external">http://blog.csdn.net/boyupeng/article/details/47127605</a></p>
+<h2 id="Fragment的那些坑"><a href="#Fragment的那些坑" class="headerlink" title="Fragment的那些坑"></a>Fragment的那些坑</h2><p><a href="http://www.jianshu.com/p/d9143a92ad94" target="_blank" rel="external">http://www.jianshu.com/p/d9143a92ad94</a><br><a href="http://www.jianshu.com/p/fd71d65f0ec6" target="_blank" rel="external">http://www.jianshu.com/p/fd71d65f0ec6</a><br><a href="http://www.jianshu.com/p/38f7994faa6b" target="_blank" rel="external">http://www.jianshu.com/p/38f7994faa6b</a></p>
+<h2 id="Http-Https"><a href="#Http-Https" class="headerlink" title="Http Https"></a>Http Https</h2><p><a href="http://www.jianshu.com/p/93fdebe5fef1" target="_blank" rel="external">http://www.jianshu.com/p/93fdebe5fef1</a></p>
+<h2 id="网络请求优化"><a href="#网络请求优化" class="headerlink" title="网络请求优化"></a>网络请求优化</h2><p><a href="http://www.jianshu.com/p/3141d4e46240" target="_blank" rel="external">http://www.jianshu.com/p/3141d4e46240</a></p>
+<h2 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h2><p><a href="http://www.jianshu.com/p/5bb8c01e2bc7" target="_blank" rel="external">http://www.jianshu.com/p/5bb8c01e2bc7</a></p>
+<h2 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h2><p><a href="http://www.jianshu.com/p/a956024629cb" target="_blank" rel="external">http://www.jianshu.com/p/a956024629cb</a></p>
+<h1 id="额外的了解"><a href="#额外的了解" class="headerlink" title="额外的了解"></a>额外的了解</h1><h2 id="一条最长的短信息约占多少byte"><a href="#一条最长的短信息约占多少byte" class="headerlink" title="一条最长的短信息约占多少byte?"></a>一条最长的短信息约占多少byte?</h2><p>中文70(包括标点)，英文160个字节。</p>
+<h2 id="什么是嵌入式实时操作系统-Android-操作系统属于实时操作系统吗"><a href="#什么是嵌入式实时操作系统-Android-操作系统属于实时操作系统吗" class="headerlink" title="什么是嵌入式实时操作系统, Android 操作系统属于实时操作系统吗?"></a>什么是嵌入式实时操作系统, Android 操作系统属于实时操作系统吗?</h2><p>嵌入式实时操作系统是指当外界事件或数据产生时，能够接受并以足够快的速度予以处理，其处理的结果又能在规定的时间之内来控制生产过程或对处理系统作出快速响应，并控制所有实时任务协调一致运行的嵌入式操作系统。主要用于工业控制、 军事设备、 航空航天等领域对系统的响应时间有苛刻的要求，这就需要使用实时系统。又可分为软实时和硬实时两种，而android是基于Linux内核的，因此属于软实时</p>
+<h2 id="android中线程与线程，进程与进程之间如何通信"><a href="#android中线程与线程，进程与进程之间如何通信" class="headerlink" title="android中线程与线程，进程与进程之间如何通信"></a>android中线程与线程，进程与进程之间如何通信</h2><p>binder跨进程 handler跨线程。主要是防止耗时线程阻塞UI线程;   </p>
+<h2 id="Android-dvm的进程和Linux的进程-应用程序的进程是否为同一个概念"><a href="#Android-dvm的进程和Linux的进程-应用程序的进程是否为同一个概念" class="headerlink" title="Android dvm的进程和Linux的进程, 应用程序的进程是否为同一个概念"></a>Android dvm的进程和Linux的进程, 应用程序的进程是否为同一个概念</h2><p>DVM指dalivk的虚拟机。每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟机实例。而每一个DVM都是在Linux 中的一个进程，所以说可以认为是同一个概念</p>
+<h2 id="sim卡的EF-文件有何作用"><a href="#sim卡的EF-文件有何作用" class="headerlink" title="sim卡的EF 文件有何作用"></a>sim卡的EF 文件有何作用</h2><p>sim卡的文件系统有自己规范，主要是为了和手机通讯，sim本 身可以有自己的操作系统，EF就是作存储并和手机通讯用的</p>
+<h1 id="收集的面试-非本人"><a href="#收集的面试-非本人" class="headerlink" title="收集的面试(非本人)"></a>收集的面试(非本人)</h1><p><a href="http://www.jianshu.com/p/dc8ce6db2f6f" target="_blank" rel="external">蘑菇街内推Android面试</a></p>
+<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><h2 id="热修复的原理"><a href="#热修复的原理" class="headerlink" title="热修复的原理"></a>热修复的原理</h2><h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://www.jianshu.com/p/a22450882af2" target="_blank" rel="external">http://www.jianshu.com/p/a22450882af2</a><br><a href="http://blog.csdn.net/superjunjin/article/details/7853546" target="_blank" rel="external">http://blog.csdn.net/superjunjin/article/details/7853546</a><br><a href="http://blog.csdn.net/superjunjin/article/details/7855995" target="_blank" rel="external">http://blog.csdn.net/superjunjin/article/details/7855995</a><br><a href="http://blog.csdn.net/superjunjin/article/details/7862182" target="_blank" rel="external">http://blog.csdn.net/superjunjin/article/details/7862182</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2017面试题整理&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
+    
+      <category term="面试题" scheme="https://luhaoaimama1.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Camera的研究与封装</title>
@@ -318,13 +576,168 @@
   </entry>
   
   <entry>
+    <title>深入理解Java虚拟机总结---类初始化过程</title>
+    <link href="https://luhaoaimama1.github.io/2016/12/07/JVM-%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B/"/>
+    <id>https://luhaoaimama1.github.io/2016/12/07/JVM-类初始化过程/</id>
+    <published>2016-12-07T05:19:37.000Z</published>
+    <updated>2017-03-10T02:39:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<h1 id="类的初始化过程"><a href="#类的初始化过程" class="headerlink" title="类的初始化过程"></a>类的初始化过程</h1><p><img src="http://images0.cnblogs.com/blog2015/544748/201505/251937420687138.jpg" alt=""></p>
+<h2 id="非法向前引用"><a href="#非法向前引用" class="headerlink" title="非法向前引用"></a>非法向前引用</h2><p>编译器手机的顺序是由语句在源文件中出现的顺序决定的,静态语句块中只能访问到定义在静态语句之前的变量,定义它之后的变量,可以赋值,但不能访问</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span>&#123;</div><div class="line">    <span class="keyword">static</span>&#123;</div><div class="line">         i=<span class="number">0</span>;</div><div class="line">         system.<span class="keyword">out</span>.print(i);<span class="comment">//非法向前引用</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i=<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><clinit>(类构造器方法):在jvm第一次加载class文件时调用,如果类或者接口没有静态语句块,也没有对变量的赋值,那么编译器可以不为这个类生成<clinit>方法并且他被加锁了,既不能做耗时操作。</clinit></clinit></p>
+<p>Tips:如果在此方法中耗时很长,就可能造成多个进程阻塞;</p>
+</blockquote>
+<h2 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h2><ul>
+<li>加载<blockquote>
+<p>加载与连接阶段的验证动作是交叉进行的</p>
+</blockquote>
+</li>
+<li><p>连接</p>
+<ul>
+<li>验证<ul>
+<li>文件格式验证。是否符合Class文件格式的规范</li>
+<li>语义分析。父类,抽象类,接口等。</li>
+<li>字节码验证</li>
+<li>符号引用验证  </li>
+</ul>
+</li>
+<li><p>准备</p>
+<blockquote>
+<p>正式为类变量分配内存并设置类变量初始值的阶段</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">value</span>=<span class="number">123</span>;</div><div class="line"><span class="comment">//final的话  准备阶段既123;</span></div><div class="line"><span class="comment">//非常量的 static 则准备阶段是0;&lt;clinit&gt;类构造方法执行才会变成123</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>解析</p>
+<blockquote>
+<p>可选的,loadClass第二个参数来判定是否需要解释。这里的解释是根据勒种的符号引用查找相应的实体,在把符号引用替换成一个直接引用的过程。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>初始化</li>
+<li>使用</li>
+<li>卸载</li>
+</ul>
+<h2 id="类什么时候才被初始化"><a href="#类什么时候才被初始化" class="headerlink" title="类什么时候才被初始化"></a>类什么时候才被初始化</h2><ul>
+<li><p>只有这6中情况才会导致类的类的初始化</p>
+<ul>
+<li>创建类的实例，也就是new一个对象</li>
+<li>访问某个类或接口的静态变量，或者对该静态变量赋值</li>
+<li>调用类的静态方法</li>
+<li>反射（Class.forName(“com.lyj.load”)）</li>
+<li>初始化一个类的子类（会首先初始化子类的父类）</li>
+<li>JVM启动时标明的启动类，即文件名和类名相同的那个类</li>
+</ul>
+</li>
+<li><p>所有引用类的方法都不会触发初始化,称为被动引用。</p>
+<blockquote>
+<p>类引用父类的静态字段,不会导致该类被初始化</p>
+</blockquote>
+</li>
+<li><p>类的初始化步骤：</p>
+<ul>
+<li>如果这个类还没有被加载和链接，那先进行加载和链接</li>
+<li>假如这个类存在直接父类，并且这个类还没有被初始化（注意：在一个类加载器中，类只能初始化一次），那就初始化直接的父类（不适用于接口）</li>
+<li>加入类中存在初始化语句（如static变量和static块），那就依次执行这些初始化语句。</li>
+</ul>
+</li>
+</ul>
+<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><p>Java虚拟器角度仅仅有两种不同的类加载器:</p>
+<p>一种启动类加载器(Bootstrap ClassLoader):C++语言实现是虚拟器自身的一部分;</p>
+<p>另一种是所有其他的类加载器(java语言,JVM之外 继承ClassLoader)</p>
+<blockquote>
+<p>更详细:</p>
+</blockquote>
+<p>!<img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb917dq0h0j30hs0cd775.jpg" alt=""></p>
+<p>Bootstrap ClassLoader:负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class既核心API(ExtClassLoader和AppClassLoader也在此时被加载)，由C++实现，不是ClassLoader子类</p>
+<p>Extension ClassLoader:负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/*.jar或-Djava.ext.dirs指定目录下的jar包</p>
+<p>App ClassLoader:负责记载classpath中指定的jar包及目录中class.可以通过getSystemClassLoader()方法获得</p>
+<p>Custom ClassLoader:属于应用程序根据自身需要自定义的ClassLoader，如tomcat、jboss都会根据j2ee规范自行实现ClassLoader</p>
+<blockquote>
+<p>加载过程中会先检查类是否被已加载，检查顺序是自底向上，从Custom ClassLoader到BootStrap ClassLoader逐层检查，只要某个classloader已加载就视为已加载此类，保证此类只所有ClassLoader加载一次。而加载的顺序是自顶向下，也就是由上层来逐层尝试加载此类。</p>
+</blockquote>
+<h3 id="为什么这么设计"><a href="#为什么这么设计" class="headerlink" title="为什么这么设计?"></a>为什么这么设计?</h3><p>类加载器:任何一个类都需要加载它的类加载器和这个类一同确立其在java虚拟机唯一性。每个类加载器都有类名称空间。</p>
+<blockquote>
+<p>两个类是否相同,是由同一个类加载器为前提下才有意义.相同是指equals、instanceof isAssignalbeFrom isIntance等;</p>
+</blockquote>
+<p>例如类java.lang.Object,他存放在rt.jar中,无论哪个类加载器加载这个类,最终都是委派给魔性最顶端的启动类加载器进行加载。因此Object类在程序的各种类加载器环境中都是<strong>同一个类</strong>。<br>相反如果没有使用,各个类加载自行加载的话。那么系统将出现多个不同的Object类,那么java类型体系中最基本的行为也无法保证;</p>
+<p>以下是ClassLoader的源码,实现很简单<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">rotected synchronized <span class="class"><span class="keyword">Class</span>&lt;?&gt; <span class="title">loadClass</span>(<span class="title">String</span> <span class="title">name</span>, <span class="title">boolean</span> <span class="title">resolve</span>)</span></div><div class="line">	throws ClassNotFoundException</div><div class="line">    &#123;</div><div class="line">	// First, check <span class="keyword">if</span> the <span class="class"><span class="keyword">class</span> <span class="title">has</span> <span class="title">already</span> <span class="title">been</span> <span class="title">loaded</span></span></div><div class="line">	<span class="class"><span class="keyword">Class</span> <span class="title">c</span> = <span class="title">findLoadedClass</span>(<span class="title">name</span>);</span></div><div class="line">	<span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</div><div class="line">	    <span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">if</span> (parent != <span class="literal">null</span>) &#123;</div><div class="line">		    //从父加载器加载</div><div class="line">		    c = parent.loadClass(name, <span class="literal">false</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    //从bootstrap loader加载</div><div class="line">		    c = findBootstrapClassOrNull(name);</div><div class="line">		&#125;</div><div class="line">	    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">                // ClassNotFoundException thrown <span class="keyword">if</span> <span class="class"><span class="keyword">class</span> <span class="title">not</span> <span class="title">found</span></span></div><div class="line">                // from the non-<span class="literal">null</span> parent <span class="class"><span class="keyword">class</span> <span class="title">loader</span></span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</div><div class="line">	        // <span class="keyword">If</span> still <span class="keyword">not</span> found, <span class="keyword">then</span> invoke findClass in order</div><div class="line">	        // <span class="keyword">to</span> find the <span class="class"><span class="keyword">class</span>.</span></div><div class="line">	        c = findClass(name);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (resolve) &#123;</div><div class="line">	    resolveClass(c);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>其他思考的问题    </p>
+<ul>
+<li>类加载的逻辑应该在哪里写?<blockquote>
+<p>jdk 1.2之后 已经不提倡用户覆盖loadClass方法了,而是应当在自己的类加载逻辑写到findClass()中。因为loadClass()方法如果加载失败就会调用自己的findClass()去加载。这样就能保证 写出来的类加载器是符合双亲委派模式的</p>
+</blockquote>
+</li>
+<li><p>如果依赖特定的扩展包,需要继承特定的classLoader吗?</p>
+<blockquote>
+<p>下面的默认构造器, 要在父亲是AppClassLoader的基础上 加载自己的类。不然会破坏双亲的<br>总结:新的ClassLoader需要旧的去委托。如果不这样就会导致在同一个类出现在不同的ClassLoader中。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="title">ClassLoader</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//getSystemClassLoader()其实就是AppClassLoader</span></div><div class="line">    <span class="keyword">this</span>(checkCreateClassLoader(), getSystemClassLoader());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>如果类已经 加载过了,那么应该在哪里存储 下一次去验证是否加载过呢?</p>
+<blockquote>
+<p>可以通过该ClassLoader中 <code>protect</code> findLoadedClass(name)方法找到。</p>
+</blockquote>
+</li>
+<li>resolveClass 什么时候使用</li>
+</ul>
+</li>
+<li><p>类加载过程总结</p>
+<ul>
+<li>得到类的原始字节数组byte[]。</li>
+<li>findClass里通过defineClass(name, buf, 0, buf.length) 完成类加载。    </li>
+</ul>
+</li>
+</ul>
+<h3 id="举例分析流程"><a href="#举例分析流程" class="headerlink" title="举例分析流程"></a>举例分析流程</h3><p>如果一个非ClassPath目录下的新的数据流类通过新的ClassLoader(NewClassLoader)去加载。</p>
+<p>Parent:</p>
+<blockquote>
+<p>NewClassLoader-AppClassLoader-&gt;ExtClassLoader</p>
+</blockquote>
+<p>第一次初始化</p>
+<blockquote>
+<p>loadClass:每次findLoadedClass都找不到</p>
+<p>NewClassLoader-AppClassLoader-&gt;ExtClassLoader</p>
+</blockquote>
+<p>findClass:(loadClass的逆序)</p>
+<blockquote>
+<p>ExtClassLoader-&gt;AppClassLoader-&gt;NewClassLoader(最后在此define 生成类后loadClass一次)</p>
+</blockquote>
+<p>第二次初始化</p>
+<blockquote>
+<p>loadClass:第一个NewClassLoader中findLoadedClass就找到了</p>
+</blockquote>
+<p>NB技巧:子类可以公开父类中的protected的方法;</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">findClass_</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.findClass();<span class="comment">//protected</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;类的初始化过程&quot;&gt;&lt;a href=&quot;#类的初始化过程&quot; class=&quot;headerlink&quot; title=&quot;类的初始化过程&quot;&gt;&lt;/a&gt;类的初始化过程&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://images0.cnblogs
+    
+    </summary>
+    
+      <category term="jvm" scheme="https://luhaoaimama1.github.io/categories/jvm/"/>
+    
+    
+      <category term="jvm" scheme="https://luhaoaimama1.github.io/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>深入理解Java虚拟机总结</title>
     <link href="https://luhaoaimama1.github.io/2016/12/05/JVM/"/>
     <id>https://luhaoaimama1.github.io/2016/12/05/JVM/</id>
     <published>2016-12-05T05:19:37.000Z</published>
-    <updated>2016-12-30T12:10:50.000Z</updated>
+    <updated>2017-03-14T07:30:56.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><ul>
+<li>Java 程序的执行过程：Java 源代码文件（.Java文件）-&gt; Java Compiler（Java编译器）-&gt;Java 字节码文件（.class文件）-&gt;类加载器（Class Loader）-&gt;Runtime Data Area（运行时数据）-&gt; Execution Engine（执行引擎）</li>
 <li>各种基本类型:boolean、byte、char、short、int、float、long、double;</li>
 <li>对象引用:reference类型 不等于对象本身,可能是对象的句柄也可能对象的引用指针</li>
 <li>局部变量默认没有初始值,不赋值是不可以使用的。和类变量(默认是有的)不一样;</li>
@@ -351,8 +764,7 @@
 <p>Instance Data:类型指针,既对象只想他的类元数据的指针;</p>
 <p>Padding:因为对象的大小必须是8字节的整数倍。如果数据没有对齐。需要Padding来补全</p>
 </blockquote>
-<p>#垃圾收集器与内存分配策略</p>
-<ul>
+<h2 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h2><ul>
 <li>主要思考的问题:<ul>
 <li>标记-那些内存(那些死,那些活着)需要回收?</li>
 <li>什么时候回收?</li>
@@ -481,62 +893,7 @@
 <p><a id="way4-3"></a></p>
 <h2 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb9170p4unj30b5087gm9.jpg" alt=""></p>
 <p><a id="way4-4"></a></p>
-<h2 id="虚拟机参数设置"><a href="#虚拟机参数设置" class="headerlink" title="虚拟机参数设置;"></a>虚拟机参数设置;</h2><p>代码的运行参数设置为： -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8<br><img src="http://images2015.cnblogs.com/blog/616953/201602/616953-20160226111115693-1490327308.png" alt=""></p>
-<h1 id="类的初始化过程"><a href="#类的初始化过程" class="headerlink" title="类的初始化过程"></a>类的初始化过程</h1><p><img src="http://images0.cnblogs.com/blog2015/544748/201505/251937420687138.jpg" alt=""></p>
-<p><a id="way5-1"></a></p>
-<h2 id="非法向前引用"><a href="#非法向前引用" class="headerlink" title="非法向前引用"></a>非法向前引用</h2><p>编译器手机的顺序是由语句在源文件中出现的顺序决定的,静态语句块中只能访问到定义在静态语句之前的变量,定义它之后的变量,可以赋值,但不能访问</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span>&#123;</div><div class="line">    <span class="keyword">static</span>&#123;</div><div class="line">         i=<span class="number">0</span>;</div><div class="line">         system.<span class="keyword">out</span>.print(i);<span class="comment">//非法向前引用</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i=<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p><clinit>(类构造器方法):如果类或者接口没有静态语句块,也没有对变量的赋值,那么编译器可以不为这个类生成<clinit>方法并且他被加锁了 </clinit></clinit></p>
-<p>Tips:如果在此方法中耗时很长,就可能造成多个进程阻塞;</p>
-</blockquote>
-<p><a id="way5-2"></a></p>
-<h2 id="类什么时候才被初始化"><a href="#类什么时候才被初始化" class="headerlink" title="类什么时候才被初始化"></a>类什么时候才被初始化</h2><ul>
-<li>只有这6中情况才会导致类的类的初始化<ul>
-<li>1创建类的实例，也就是new一个对象</li>
-<li>2访问某个类或接口的静态变量，或者对该静态变量赋值</li>
-<li>3调用类的静态方法</li>
-<li>4反射（Class.forName(“com.lyj.load”)）</li>
-<li>5初始化一个类的子类（会首先初始化子类的父类）</li>
-<li>6JVM启动时标明的启动类，即文件名和类名相同的那个类</li>
-</ul>
-</li>
-<li>类的初始化步骤：<ul>
-<li>1如果这个类还没有被加载和链接，那先进行加载和链接</li>
-<li>2假如这个类存在直接父类，并且这个类还没有被初始化（注意：在一个类加载器中，类只能初始化一次），那就初始化直接的父类（不适用于接口）</li>
-<li>3加入类中存在初始化语句（如static变量和static块），那就依次执行这些初始化语句。</li>
-</ul>
-</li>
-</ul>
-<p><a id="way5-3"></a>         </p>
-<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><p>Java虚拟器角度仅仅有两种不同的类加载器:</p>
-<p>一种启动类加载器(Bootstrap ClassLoader):C++语言实现是虚拟器自身的一部分;</p>
-<p>另一种是所有其他的类加载器(java语言,JVM之外 继承ClassLoader)</p>
-<blockquote>
-<p>更详细:</p>
-</blockquote>
-<p>!<img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb917dq0h0j30hs0cd775.jpg" alt=""></p>
-<p>Bootstrap ClassLoader:负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class，由C++实现，不是ClassLoader子类</p>
-<p>Extension ClassLoader:负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/*.jar或-Djava.ext.dirs指定目录下的jar包</p>
-<p>App ClassLoader:负责记载classpath中指定的jar包及目录中class</p>
-<p>Custom ClassLoader:属于应用程序根据自身需要自定义的ClassLoader，如tomcat、jboss都会根据j2ee规范自行实现ClassLoader</p>
-<blockquote>
-<p>加载过程中会先检查类是否被已加载，检查顺序是自底向上，从Custom ClassLoader到BootStrap ClassLoader逐层检查，只要某个classloader已加载就视为已加载此类，保证此类只所有ClassLoader加载一次。而加载的顺序是自顶向下，也就是由上层来逐层尝试加载此类。</p>
-</blockquote>
-<p><a id="way5-3-1"></a></p>
-<p>###为什么这么设计?</p>
-<p>类加载器:任何一个类都需要加载它的类加载器和这个类一同确立其在java虚拟机唯一性。每个类加载器都有类名称空间。</p>
-<blockquote>
-<p>两个类是否相同,是由同一个类加载器为前提下才有意义.相同是指equals、instanceof isAssignalbeFrom isIntance等;</p>
-</blockquote>
-<p>例如类java.lang.Object,他存放在rt.jar中,无论哪个类加载器加载这个类,最终都是委派给魔性最顶端的启动类加载器进行加载。因此Object类在程序的各种类加载器环境中都是<strong>同一个类</strong>。<br>相反如果没有使用,各个类加载自行加载的话。那么系统将出现多个不同的Object类,那么java类型体系中最基本的行为也无法保证;</p>
-<p>以下是ClassLoader的源码,实现很简单<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">rotected synchronized <span class="class"><span class="keyword">Class</span>&lt;?&gt; <span class="title">loadClass</span>(<span class="title">String</span> <span class="title">name</span>, <span class="title">boolean</span> <span class="title">resolve</span>)</span></div><div class="line">	throws ClassNotFoundException</div><div class="line">    &#123;</div><div class="line">	// First, check <span class="keyword">if</span> the <span class="class"><span class="keyword">class</span> <span class="title">has</span> <span class="title">already</span> <span class="title">been</span> <span class="title">loaded</span></span></div><div class="line">	<span class="class"><span class="keyword">Class</span> <span class="title">c</span> = <span class="title">findLoadedClass</span>(<span class="title">name</span>);</span></div><div class="line">	<span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</div><div class="line">	    <span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">if</span> (parent != <span class="literal">null</span>) &#123;</div><div class="line">		    //从父加载器加载</div><div class="line">		    c = parent.loadClass(name, <span class="literal">false</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    //从bootstrap loader加载</div><div class="line">		    c = findBootstrapClassOrNull(name);</div><div class="line">		&#125;</div><div class="line">	    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">                // ClassNotFoundException thrown <span class="keyword">if</span> <span class="class"><span class="keyword">class</span> <span class="title">not</span> <span class="title">found</span></span></div><div class="line">                // from the non-<span class="literal">null</span> parent <span class="class"><span class="keyword">class</span> <span class="title">loader</span></span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (c == <span class="literal">null</span>) &#123;</div><div class="line">	        // <span class="keyword">If</span> still <span class="keyword">not</span> found, <span class="keyword">then</span> invoke findClass in order</div><div class="line">	        // <span class="keyword">to</span> find the <span class="class"><span class="keyword">class</span>.</span></div><div class="line">	        c = findClass(name);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (resolve) &#123;</div><div class="line">	    resolveClass(c);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>1.2以后,应当把自己的类逻辑写到findClass()(protected)方法中;</p>
-<blockquote>
-<p>热部署:OSGI(类加载器精髓);</p>
-<p>NB技巧:子类可以公开父类中的protected的方法;</p>
-</blockquote>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">findClass_</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.findClass();<span class="comment">//protected</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="虚拟机参数设置"><a href="#虚拟机参数设置" class="headerlink" title="虚拟机参数设置;"></a>虚拟机参数设置;</h2><p>代码的运行参数设置为： -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8<br><img src="http://images2015.cnblogs.com/blog/616953/201602/616953-20160226111115693-1490327308.png" alt="">  </p>
 <h1 id="静态分派与动态分派"><a href="#静态分派与动态分派" class="headerlink" title="静态分派与动态分派"></a>静态分派与动态分派</h1><p><a id="way6-1"></a>  </p>
 <h2 id="静态分派"><a href="#静态分派" class="headerlink" title="静态分派"></a>静态分派</h2><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Map</span> <span class="built_in">map</span>=<span class="literal">new</span> HashMap();</div></pre></td></tr></table></figure>
 <p>Map(静态类型,外观类型接口类型(我习惯叫)):其变化仅在使用时发生，变量本身的静态类型不会改变，并且最终的静态类型是在编译期可知的。</p>
@@ -594,11 +951,13 @@
 <p>额外知识 ++不是原子性,AtomicInteger CAS(原子性)来避免阻塞同步;</p>
 </blockquote>
 <h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://www.cnblogs.com/leesf456/p/5218594.html" target="_blank" rel="external">http://www.cnblogs.com/leesf456/p/5218594.html</a></p>
+<p><a href="http://itfeifei.win/2017/03/13/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3Java%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98/#0-sqq-1-86202-9737f6f9e09dfaf5d3fd14d775bfee85" target="_blank" rel="external">http://itfeifei.win/2017/03/13/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3Java%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98/#0-sqq-1-86202-9737f6f9e09dfaf5d3fd14d775bfee85</a></p>
 ]]></content>
     
     <summary type="html">
     
       &lt;h1 id=&quot;基础了解&quot;&gt;&lt;a href=&quot;#基础了解&quot; class=&quot;headerlink&quot; title=&quot;基础了解&quot;&gt;&lt;/a&gt;基础了解&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Java 程序的执行过程：Java 源代码文件（.Java文件）-&amp;gt; Java Compiler（Java编译器）-&amp;gt;Java 字节码文件（.class文件）-&amp;gt;类加载器（Class Loader）-&amp;gt;Runtime Data Area（运行时数据）-&amp;gt; Execution Engine（执行引擎）&lt;/li&gt;
 &lt;li&gt;各种基本类型:boolean、byte、char、short、int、float、long、double;&lt;/li&gt;
 &lt;li&gt;对象引用:reference类型 不等于对象本身,可能是对象的句柄也可能对象的引用指针&lt;/li&gt;
 &lt;li&gt;局部变量默认没有初始值,不赋值是不可以使用的。和类变量(默认是有的)不一样;&lt;/li&gt;
@@ -1215,14 +1574,19 @@
     <link href="https://luhaoaimama1.github.io/2016/07/13/Java%E7%96%91%E9%9A%BE%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
     <id>https://luhaoaimama1.github.io/2016/07/13/Java疑难问题汇总/</id>
     <published>2016-07-13T05:19:37.000Z</published>
-    <updated>2016-12-30T13:56:37.000Z</updated>
+    <updated>2017-03-14T07:14:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
 <a id="more"></a>
 <ul>
-<li>当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递? <blockquote>
-<p>答:是值传递。Java 编程语言只有值传递参数。当一个对象实例作为一个参数被传递到方法中时，参数的值就是该对象的引用一个副本。指向同一个对象,对象的内容可以在被调用的方法中改变，但对象的引用(不是引用的副本)是永远不会改变的。<br>参考:<a href="http://guhanjie.iteye.com/blog/1683637" target="_blank" rel="external">http://guhanjie.iteye.com/blog/1683637</a></p>
-</blockquote>
+<li><p>当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递? </p>
+<ul>
+<li>基本类型: 按值传递。既传递值的副本。实际两个对象  </li>
+<li>对象数组: 按值传递。传递 引用的副本。实际一个对象<blockquote>
+<p>Tips:数组需要注意的地方</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">handValue(<span class="keyword">sort</span>[<span class="number">1</span>]);<span class="comment">//传递的是sort[1]值的副本</span></div><div class="line">handValue2(<span class="keyword">sort</span>);<span class="comment">//传递的是sort的引用的副本</span></div></pre></td></tr></table></figure></blockquote>
+</li>
+</ul>
 </li>
 </ul>
 ]]></content>
@@ -1448,7 +1812,7 @@
     <link href="https://luhaoaimama1.github.io/2016/05/18/Canvas/"/>
     <id>https://luhaoaimama1.github.io/2016/05/18/Canvas/</id>
     <published>2016-05-18T05:19:37.000Z</published>
-    <updated>2017-01-19T06:37:19.000Z</updated>
+    <updated>2017-02-08T09:02:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>以我个人主观推断的Canvas工作原理</p>
 <blockquote>
@@ -1474,7 +1838,7 @@
 <p>Tips:自己弄的Canvas 注意一定要restore 把离屏缓存 不然 layer绘制的不会显示!</p>
 <p><strong>所以我们要养成习惯restore,这样代码在哪都不会错</strong></p>
 </blockquote>
-<h2 id="为什么第一次saveLayer的值是1？而不是0"><a href="#为什么第一次saveLayer的值是1？而不是0" class="headerlink" title="为什么第一次saveLayer的值是1？而不是0?"></a>为什么第一次saveLayer的值是1？而不是0?</h2><p>因为canvas.save() 返回的值 是上个图层的值。而且Canvas提供了图层（Layer）支持，缺省情况可以看作是只有一个图 层Layer。</p>
+<h2 id="为什么第一次saveLayer的值是1-？而不是0"><a href="#为什么第一次saveLayer的值是1-？而不是0" class="headerlink" title="为什么第一次saveLayer的值是1 ？而不是0 ?"></a>为什么第一次saveLayer的值是1 ？而不是0 ?</h2><p>因为canvas.save() 返回的值 是上个图层的值。而且Canvas提供了图层（Layer）支持，缺省情况可以看作是只有一个图 层Layer。</p>
 <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
 <li>layer图层必须 <strong>出栈</strong>才能将本层绘制的图像“绘制”到上层或是Canvas上</li>
 <li><p>Tips:想要Canvas显示正确的图像，不是随意出栈即可。例如：saveLayer4次 即 现在栈中为 1-&gt;2-&gt;3-&gt;4-&gt;5  </p>
@@ -1506,58 +1870,47 @@
   </entry>
   
   <entry>
-    <title>Android-2017面试题整理</title>
-    <link href="https://luhaoaimama1.github.io/2016/05/18/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>https://luhaoaimama1.github.io/2016/05/18/面试题/</id>
-    <published>2016-05-18T05:19:37.000Z</published>
-    <updated>2017-02-07T06:25:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>2017面试题整理</p>
-<a id="more"></a>
-<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>1.Activity的生命周期的理解<br><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt=""><br>onCreate()【创建基本的UI元素】：当 activity 第一次创建时会被调用。</p>
-<p>onRestart()：在 activity 被停止后重新启动时会调用该方法。其后续会调用 onStart 方法。</p>
-<p>onStart():交互之前 不可见，位图从新加载；</p>
-<p>onResume()【从新初始化资源 例如Camera、sensor】：交互之前 可见不可操作 ；</p>
-<p>onPause()【清除资源 避免浪费  例如Camera、sensor】：交互之后 可见 不可操作 ；。</p>
-<p>onStop()：交互之后  不可见，位图回收 不可再pause回收那样会造成 正在使用已经回收的位图错误;</p>
-<p>onDestroy()【因为引用会在Activity销毁的时候销毁，而线程不会，所以清楚开启的线程】：在 activity 被销毁前会调用该方法</p>
-<p>onWindowFocusChanged(boolean hasFocus)：hasFocus true就是可见，false就是不可见；官方意思:这个Activity得到或者失去焦点的时候 就会call。</p>
-<ul>
-<li>扩展<blockquote>
-<p>今天又听说有同学遭遇了更变态的问题：什么情况下Activity走了onCreat()，而不走onStart()，这简直就是脑筋急转弯嘛。</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/51317746</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2017面试题整理&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
-    
-      <category term="面试题" scheme="https://luhaoaimama1.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</title>
     <link href="https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/"/>
     <id>https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/</id>
     <published>2016-04-25T05:19:37.000Z</published>
-    <updated>2016-12-30T12:12:18.000Z</updated>
+    <updated>2017-02-08T08:55:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>已经测试我一般用 <a href="#way2">方案1</a></p>
 <a id="more"></a>
+<h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><p>如果在手机对应的目录没有找到图片，就会按照一定的策略去其他目录找，那找到了以后就原图显示么？ 非也。<br>对于放在不同目录下的图片， 系统会按照一定比例对原始的图片进行放大或者缩小， 具体的放大缩小比例可参考下表， 图片所在目录和对应的屏幕密度是相同时图片缩放比例为1，也就是原图显示，而横向的比例表示分别放在该密度手机上运行时图片被缩放的比例。<br>对原始图片的缩放倍数。<br><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fcj5r2ltxqj30nn0c474l.jpg" alt=""></p>
+<ul>
+<li>dpi的运算方式是：<ul>
+<li>dp = √（长度像素数² + 宽度像素数²） / 屏幕对角线英寸数</li>
+<li>dp：Density-independent pixels，以160PPI屏幕为标准，则1dp=1px，</li>
+<li>sp：Scale-independent pixels，它是安卓的字体单位，以160PPI屏幕为标准，当字体大小为 100%时， 1sp=1px。</li>
+</ul>
+</li>
+<li>sp 与 px 的换算公式：<ul>
+<li>sp*dpi/160 = px</li>
+</ul>
+</li>
+<li>px 与 dp的换算公式：<ul>
+<li>px = dp*dpi/160</li>
+<li>dp = px / (dpi / 160)</li>
+</ul>
+</li>
+<li>px 与 sp的换算公式：<ul>
+<li>px = sp*dpi/160</li>
+<li>sp = px / (dpi / 160)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>总结：dp=sp?</p>
+</blockquote>
 <p><a id="way2"></a></p>
 <h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Dp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成DP</a><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Sp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成SP</a><br>主要代码就是下面的<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ldpi</span>(<span class="string">"values-ldpi"</span>,<span class="number">0.75</span>F),<span class="selector-tag">mdpi</span>(<span class="string">"values-mdpi"</span>,<span class="number">1.0</span>F),<span class="selector-tag">hdpi</span>(<span class="string">"values-hdpi"</span>,<span class="number">1.5</span>F),<span class="selector-tag">xhdpi</span>(<span class="string">"values-xhdpi"</span>,<span class="number">2</span>F),<span class="selector-tag">xxhdpi</span>(<span class="string">"values-xxhdpi"</span>,<span class="number">3</span>F);</div></pre></td></tr></table></figure></p>
 <h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_AccurateSize.java" target="_blank" rel="external">如果想支持多种像素文件夹那种 看这个</a></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p> [无线手册-4] dp、sp、px傻傻分不清楚[完整]<br> <a href="http://zhuanlan.zhihu.com/zhezhexiong/19565895" target="_blank" rel="external">http://zhuanlan.zhihu.com/zhezhexiong/19565895</a></p>
+<p> Supporting Different Screens | Android Developers<br> <a href="http://developer.android.com/training/basics/supporting-devices/screens.html#create-bitmaps" target="_blank" rel="external">http://developer.android.com/training/basics/supporting-devices/screens.html#create-bitmaps</a></p>
+<p> Iconography | Android Developers<br> <a href="http://developer.android.com/design/style/iconography.html" target="_blank" rel="external">http://developer.android.com/design/style/iconography.html</a></p>
+<p> Devices and Displays | Android Developers<br> <a href="http://developer.android.com/design/style/devices-displays.html" target="_blank" rel="external">http://developer.android.com/design/style/devices-displays.html</a></p>
 ]]></content>
     
     <summary type="html">
