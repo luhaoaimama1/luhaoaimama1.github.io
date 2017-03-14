@@ -220,82 +220,15 @@
     <div class="post-content">
       
         
+          
+        
 
         
-          <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdmkir64xbj30xi0yrt9r.jpg" alt=""><br><a href="https://www.processon.com/view/link/58c7cef4e4b0337115d577a9" target="_blank" rel="external">图片项目地址 可以复制下来 进行修改</a></p>
-<p><a href="https://github.com/luhaoaimama1/JavaZone/tree/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/io" target="_blank" rel="external">IO’s Demos Code</a></p>
-<blockquote>
-<p>编码乱码原因: 机器中的编码都是 二进制编码 显示的时候 为了让人看懂 从而设置了各种字符集 ,如果与原来的编码不一致则会导致看不懂既乱码 。机器的二进制码没有变化 ,仅仅是 对照的字符集 不一致 导致的</p>
-</blockquote>
-<h1 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h1><blockquote>
-<p>字符流的由来： 因为数据编码的不同，而有了对字符进行高效操作的流对象。本质其实就是基于字节流读取时，去查了指定的码表。 字节流和字符流的区别：</p>
-</blockquote>
-<ul>
-<li>读写单位不同<ul>
-<li>字节流以字节（8bit）为单位，字符流以字符为单位，根据码表映射字符，一次可能读多个字节。</li>
-</ul>
-</li>
-<li>处理对象不同<ul>
-<li>字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据。Java中字符是采用Unicode标准，一个字符是16位，即一个字符使用两个字节来表示。为此，JAVA中引入了处理字符的流 </li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>结论：只要是处理纯文本数据，就优先考虑使用字符流。 除此之外都使用字节流。</p>
-</blockquote>
-<h1 id="常用的处理流类型"><a href="#常用的处理流类型" class="headerlink" title="常用的处理流类型"></a>常用的处理流类型</h1><p>该类型是对一个已存在的流的连接和封装，通过所封装的流的功能调用实现数据读写，处理流的构造方法总是要带一个其他流对象作为参数，一个流对象进过其他流的多次包装，叫做流的链接。主要可以分为以下几种：</p>
-<h2 id="缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）"><a href="#缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）" class="headerlink" title="缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）"></a>缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）</h2><ul>
-<li>功能<ul>
-<li>提高对流的操作效率 </li>
-<li>readLine()<br>一次读一行，到行标记时，将行标记之前的字符数据作为字符串返回，当读到末尾时，返回null，其原理还是与缓冲区关联的流对象的read方法，只不过每一次读取到一个字符，先不进行具体操作，先进行临时储存，当读取到回车标记时，将临时容器中储存的数据一次性返回。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BufferedWriter bufw=<span class="keyword">new</span> <span class="type">BufferedWriter</span>(<span class="keyword">new</span> <span class="type">FileWriter</span>(<span class="string">"buf.txt"</span>));<span class="comment">//读取缓冲区对象：        </span></div><div class="line">BufferedReader bufr=<span class="keyword">new</span> <span class="type">BufferedReader</span>(<span class="keyword">new</span> <span class="type">FileReader</span>(<span class="string">"buf.txt"</span>));</div></pre></td></tr></table></figure>
-<h2 id="转换流（InputStreamReader-OutputStreamWriter）"><a href="#转换流（InputStreamReader-OutputStreamWriter）" class="headerlink" title="转换流（InputStreamReader/OutputStreamWriter）"></a>转换流（InputStreamReader/OutputStreamWriter）</h2><p>该类型时字节流和字符流之间的桥梁，</p>
-<ul>
-<li>功能<ul>
-<li>该类型时字节流和字符流之间的桥梁<br>该流对象中可以对读取到的字节数据进行指定编码的编码转换。</li>
-</ul>
-</li>
-</ul>
-<p>构造函数主要有：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">InputStreamReader</span>(InputStream);        <span class="comment">//通过构造函数初始化，使用的是本系统默认的编码表GBK。  </span></div><div class="line"><span class="selector-tag">InputStreamWriter</span>(InputStream,String charSet);   <span class="comment">//通过该构造函数初始化，可以指定编码表。  </span></div><div class="line"><span class="selector-tag">OutputStreamWriter</span>(OutputStream);      <span class="comment">//通过该构造函数初始化，使用的是本系统默认的编码表GBK。  </span></div><div class="line"><span class="selector-tag">OutputStreamwriter</span>(OutputStream,String charSet);   <span class="comment">//通过该构造函数初始化，可以指定编码表。</span></div></pre></td></tr></table></figure></p>
-<p>这里看下 FileReader类的构造器 </p>
-<ul>
-<li>相当于 new InputStreamReader(new FileInputStream(“a.txt”))</li>
-<li>并且该对象使用的时默认的编码表<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">FileReader</span> <span class="keyword">extends</span> <span class="title">InputStreamReader</span> </span>&#123;</div><div class="line"> public <span class="type">FileReader</span>(<span class="type">String</span> fileName) <span class="keyword">throws</span> <span class="type">FileNotFoundException</span> &#123;</div><div class="line">        <span class="comment">//相当于 new InputStreamReader(new FileInputStream("a.txt"));</span></div><div class="line">        <span class="keyword">super</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(fileName));<span class="comment">//该对象使用的时默认的编码表</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>即如果a.txt中的文件中的字符数据是通过utf-8的形式编码，那么在读取时，就必须指定编码表，那么转换流时必须的。即：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">InputStreamReader isr=<span class="keyword">new</span> <span class="type">InputStreamReader</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"a.txt"</span>),utf<span class="number">-8</span>);</div></pre></td></tr></table></figure>
-<h2 id="数据流（DataInputStream-DataOutputStream）"><a href="#数据流（DataInputStream-DataOutputStream）" class="headerlink" title="数据流（DataInputStream/DataOutputStream）"></a>数据流（DataInputStream/DataOutputStream）</h2><p>该数据流可以方便地对一些基本类型数据进行直接的存储和读取，不需要再进一步进行转换，通常只要操作基本数据类型的数据，就需要通过DataStream进行包装。</p>
-<p>构造方法：        </p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DataInputStreamReader（<span class="keyword">InputStream</span>）；  </div><div class="line"> DataInputStreamWriter（<span class="keyword">OutputStream</span>）</div></pre></td></tr></table></figure>
-<p>方法举例：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">int</span> <span class="selector-tag">readInt</span>()；<span class="comment">//一次读取四个字节，并将其转成int值  </span></div><div class="line"><span class="selector-tag">writeInt</span>(int)；<span class="comment">//一次写入四个字节，注意和write(int)不同，write(int)只将该整数的最低一个8位写入，剩余三个8为丢失  </span></div><div class="line"><span class="selector-tag">hort</span> <span class="selector-tag">readShort</span>();  </div><div class="line"><span class="selector-tag">writeShort</span>(short);  </div><div class="line"><span class="selector-tag">String</span> <span class="selector-tag">readUTF</span>();<span class="comment">//按照utf-8修改版读取字符，注意，它只能读writeUTF()写入的字符数据。  </span></div><div class="line"><span class="selector-tag">writeUTF</span>(String);<span class="comment">//按照utf-8修改版将字符数据进行存储，只能通过readUTF读取。 </span></div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>注意：在使用数据流读/存数据的时候，需要有一定的顺序，即某个类型的数据先写入就必须先读出，服从先进先出的原则。</p>
-<h2 id="打印流（PrintStream-PrintWriter）"><a href="#打印流（PrintStream-PrintWriter）" class="headerlink" title="打印流（PrintStream/PrintWriter）"></a>打印流（PrintStream/PrintWriter）</h2><p>PrintStream是一个字节打印流，System.out对应的类型就是PrintStream</p>
-<ul>
-<li>它的构造函数可以接受数据类型：<ul>
-<li>字符串路径</li>
-<li>File对象 </li>
-<li>OutputStream</li>
-</ul>
-</li>
-</ul>
-<p>PrintStream是一个字符打印流</p>
-<ul>
-<li>它的构造函数可以接受数据类型：<ul>
-<li>字符串路径</li>
-<li>File对象</li>
-<li>OutputStream  </li>
-<li>Writer </li>
-</ul>
-</li>
-</ul>
-<p>对于1、2类型的数据，可以指定编码表，也就是字符集，对于3、4类型的数据，可以指定自动刷新，当该自动刷新为True时，只有3个方法可以用：println,printf,format。 </p>
-<h2 id="对象流（ObjectInputStream-ObjectOutputStream）"><a href="#对象流（ObjectInputStream-ObjectOutputStream）" class="headerlink" title="对象流（ObjectInputStream/ObjectOutputStream）"></a>对象流（ObjectInputStream/ObjectOutputStream）</h2><p>该类型的流可以把类作为一个整体进行存取，主要方法有：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span> readObject();该方法抛出异常：ClassNotFountException。</div><div class="line"></div><div class="line"><span class="keyword">void</span> writeObject(<span class="built_in">Object</span>)：被写入的对象必须实现一个接口：Serializable，否则就会抛出：NotSerializableException</div></pre></td></tr></table></figure></p>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/zzp_403184692/article/details/8057693" target="_blank" rel="external">http://blog.csdn.net/zzp_403184692/article/details/8057693</a></p>
-
+          <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdmkir64xbj30xi0yrt9r.jpg" alt=""><br><a href="https://www.processon.com/view/link/58c7cef4e4b0337115d577a9">图片项目地址 可以复制下来 进行修改</a></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/tree/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/io">IO’s Demos Code</a></p>
+          <div class="read-more">
+            <a href="/2017/03/14/IO/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -525,8 +458,8 @@
         
 
         
-          <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1fdmd05t9trj30ex06274e.jpg" alt=""></p>
-<p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/%E6%8E%92%E5%BA%8F/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.java">查看Code</a></p>
+          <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdmkir64xbj30xi0yrt9r.jpg" alt=""><br><a href="https://www.processon.com/view/link/58c7cef4e4b0337115d577a9">图片项目地址 可以复制下来 进行修改</a></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/tree/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/io">IO’s Demos Code</a></p>
           <div class="read-more">
             <a href="/2016/12/07/JVM-类初始化过程/" class="read-more-link">阅读更多</a>
           </div>
