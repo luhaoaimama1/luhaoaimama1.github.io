@@ -84,6 +84,18 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Handler、Looper、Message、MessageQueue基础流程分析图解]]></title>
+      <url>https://luhaoaimama1.github.io/2017/03/14/Handler%7CLooper%7CMessage%7CMessageQueue/</url>
+      <content type="html"><![CDATA[<h1 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h1><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg" alt=""><br><a href="https://www.processon.com/view/link/58c8dffde4b01c1b4ab8b2ad" target="_blank" rel="external">图片项目地址 可以复制下来 进行修改</a></p>
+<blockquote>
+<p>ThreadLocal定义：不同线程存取　不会相互影响　而且用到的是一个变量！！<br>ThreadLocal：解释了为什么 线程里用的时候要prepare()和loop()<br>还有Activity创建的时候已经默认调用了prepare()与loop() 所以不需要你去弄.</p>
+</blockquote>
+<h1 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h1><p>老司机们都知道，Android的线程间通信就靠Handler、Looper、Message、MessageQueue这四个麻瓜兄弟了，那么，他们是怎么运作的呢？下面做一个基于主要源代码的大学生水平的分析。 <a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">原文链接</a></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[常用排序图解]]></title>
       <url>https://luhaoaimama1.github.io/2017/03/14/%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1fdmd05t9trj30ex06274e.jpg" alt=""></p>

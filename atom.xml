@@ -113,6 +113,34 @@
   </entry>
   
   <entry>
+    <title>Handler、Looper、Message、MessageQueue基础流程分析图解</title>
+    <link href="https://luhaoaimama1.github.io/2017/03/14/Handler%7CLooper%7CMessage%7CMessageQueue/"/>
+    <id>https://luhaoaimama1.github.io/2017/03/14/Handler|Looper|Message|MessageQueue/</id>
+    <published>2017-03-14T12:19:37.000Z</published>
+    <updated>2017-03-15T06:40:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h1><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg" alt=""><br><a href="https://www.processon.com/view/link/58c8dffde4b01c1b4ab8b2ad" target="_blank" rel="external">图片项目地址 可以复制下来 进行修改</a></p>
+<blockquote>
+<p>ThreadLocal定义：不同线程存取　不会相互影响　而且用到的是一个变量！！<br>ThreadLocal：解释了为什么 线程里用的时候要prepare()和loop()<br>还有Activity创建的时候已经默认调用了prepare()与loop() 所以不需要你去弄.</p>
+</blockquote>
+<h1 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h1><p>老司机们都知道，Android的线程间通信就靠Handler、Looper、Message、MessageQueue这四个麻瓜兄弟了，那么，他们是怎么运作的呢？下面做一个基于主要源代码的大学生水平的分析。 <a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">原文链接</a></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;图解&quot;&gt;&lt;a href=&quot;#图解&quot; class=&quot;headerlink&quot; title=&quot;图解&quot;&gt;&lt;/a&gt;图解&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmx
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
     <title>常用排序图解</title>
     <link href="https://luhaoaimama1.github.io/2017/03/14/%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3/"/>
     <id>https://luhaoaimama1.github.io/2017/03/14/排序图解/</id>
@@ -1964,65 +1992,6 @@
       <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
       <category term="canvas" scheme="https://luhaoaimama1.github.io/tags/canvas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android-屏幕适配终极解决方案（包含生成程序dp/sp与解决方案）</title>
-    <link href="https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/"/>
-    <id>https://luhaoaimama1.github.io/2016/04/25/ScreenAdapter/</id>
-    <published>2016-04-25T05:19:37.000Z</published>
-    <updated>2017-02-08T08:55:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>已经测试我一般用 <a href="#way2">方案1</a></p>
-<a id="more"></a>
-<h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><p>如果在手机对应的目录没有找到图片，就会按照一定的策略去其他目录找，那找到了以后就原图显示么？ 非也。<br>对于放在不同目录下的图片， 系统会按照一定比例对原始的图片进行放大或者缩小， 具体的放大缩小比例可参考下表， 图片所在目录和对应的屏幕密度是相同时图片缩放比例为1，也就是原图显示，而横向的比例表示分别放在该密度手机上运行时图片被缩放的比例。<br>对原始图片的缩放倍数。<br><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fcj5r2ltxqj30nn0c474l.jpg" alt=""></p>
-<ul>
-<li>dpi的运算方式是：<ul>
-<li>dp = √（长度像素数² + 宽度像素数²） / 屏幕对角线英寸数</li>
-<li>dp：Density-independent pixels，以160PPI屏幕为标准，则1dp=1px，</li>
-<li>sp：Scale-independent pixels，它是安卓的字体单位，以160PPI屏幕为标准，当字体大小为 100%时， 1sp=1px。</li>
-</ul>
-</li>
-<li>sp 与 px 的换算公式：<ul>
-<li>sp*dpi/160 = px</li>
-</ul>
-</li>
-<li>px 与 dp的换算公式：<ul>
-<li>px = dp*dpi/160</li>
-<li>dp = px / (dpi / 160)</li>
-</ul>
-</li>
-<li>px 与 sp的换算公式：<ul>
-<li>px = sp*dpi/160</li>
-<li>sp = px / (dpi / 160)</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>总结：dp=sp?</p>
-</blockquote>
-<p><a id="way2"></a></p>
-<h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Dp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成DP</a><br><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_Sp.java" target="_blank" rel="external">ldpi,mdip,hdpi,xhdip,xxhdpi生成SP</a><br>主要代码就是下面的<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ldpi</span>(<span class="string">"values-ldpi"</span>,<span class="number">0.75</span>F),<span class="selector-tag">mdpi</span>(<span class="string">"values-mdpi"</span>,<span class="number">1.0</span>F),<span class="selector-tag">hdpi</span>(<span class="string">"values-hdpi"</span>,<span class="number">1.5</span>F),<span class="selector-tag">xhdpi</span>(<span class="string">"values-xhdpi"</span>,<span class="number">2</span>F),<span class="selector-tag">xxhdpi</span>(<span class="string">"values-xxhdpi"</span>,<span class="number">3</span>F);</div></pre></td></tr></table></figure></p>
-<h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><a href="https://github.com/luhaoaimama1/JavaZone/blob/master/JavaTest_Zone/src/%E9%80%82%E9%85%8D/MakeXml_AccurateSize.java" target="_blank" rel="external">如果想支持多种像素文件夹那种 看这个</a></p>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p> [无线手册-4] dp、sp、px傻傻分不清楚[完整]<br> <a href="http://zhuanlan.zhihu.com/zhezhexiong/19565895" target="_blank" rel="external">http://zhuanlan.zhihu.com/zhezhexiong/19565895</a></p>
-<p> Supporting Different Screens | Android Developers<br> <a href="http://developer.android.com/training/basics/supporting-devices/screens.html#create-bitmaps" target="_blank" rel="external">http://developer.android.com/training/basics/supporting-devices/screens.html#create-bitmaps</a></p>
-<p> Iconography | Android Developers<br> <a href="http://developer.android.com/design/style/iconography.html" target="_blank" rel="external">http://developer.android.com/design/style/iconography.html</a></p>
-<p> Devices and Displays | Android Developers<br> <a href="http://developer.android.com/design/style/devices-displays.html" target="_blank" rel="external">http://developer.android.com/design/style/devices-displays.html</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;已经测试我一般用 &lt;a href=&quot;#way2&quot;&gt;方案1&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
-    
-      <category term="适配" scheme="https://luhaoaimama1.github.io/tags/%E9%80%82%E9%85%8D/"/>
     
   </entry>
   
