@@ -11,12 +11,10 @@
 
 
 
-  <meta name="description" content="Handler、Looper、Message、MessageQueue基础流程分析图解"/>
+  <meta name="description" content="Zone ‘s Blog"/>
 
 
 
-
-  <meta name="keywords" content="android," />
 
 
 
@@ -30,21 +28,18 @@
 
 
 
-<link rel="canonical" href="https://luhaoaimama1.github.io/2017/03/15/Handler|Looper|Message|MessageQueue/"/>
+<link rel="canonical" href="https://luhaoaimama1.github.io/categories/源码分析/android/动画/"/>
 
 
-<meta name="description" content="图解">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Handler、Looper、Message、MessageQueue基础流程分析图解">
-<meta property="og:url" content="https://luhaoaimama1.github.io/2017/03/15/Handler|Looper|Message|MessageQueue/index.html">
+<meta name="description" content="Zone ‘s Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zone">
+<meta property="og:url" content="https://luhaoaimama1.github.io/categories/源码分析/android/动画/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="图解">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg">
-<meta property="og:updated_time" content="2017-03-16T02:26:13.000Z">
+<meta property="og:description" content="Zone ‘s Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Handler、Looper、Message、MessageQueue基础流程分析图解">
-<meta name="twitter:description" content="图解">
-<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg">
+<meta name="twitter:title" content="Zone">
+<meta name="twitter:description" content="Zone ‘s Blog">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -70,7 +65,11 @@
 
 
 
-    <title> Handler、Looper、Message、MessageQueue基础流程分析图解 · Zone </title>
+    <title>
+  
+    动画 · Zone
+  
+</title>
   </head>
 
   <body>
@@ -203,85 +202,43 @@
           <div id="content" class="content">
             
   
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          Handler、Looper、Message、MessageQueue基础流程分析图解
-        
-      </h1>
+  <section id="archive" class="archive">
+    
+      
+        <div class="archive-title category">
+          <h2 class="archive-name">动画</h2>
+        </div>
+      
+    
 
-      <div class="post-meta">
-        <span class="post-time">
-          2017年3月15日
+    
+      
+      
+      <div class="archive-post">
+        <span class="archive-post-time">
+          
+            2016-11-20
+          
+        </span>
+        <span class="archive-post-title">
+          <a href="/2016/11/20/Rebound/" class="archive-post-link">
+            Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析
+          </a>
         </span>
       </div>
-    </header>
+    
+  </section>
 
+  
+  <nav class="pagination">
     
-      <div class="post-toc" id="post-toc">
-        <h2 class="post-toc-title">文章目录</h2>
-        <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#图解"><span class="toc-text">图解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码分析："><span class="toc-text">源码分析：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
-        </div>
-      </div>
-    
-
-    <div class="post-content">
-      
-        <h1 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h1><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg" alt=""></p>
-<a id="more"></a>
-<p><a href="https://www.processon.com/view/link/58c8dffde4b01c1b4ab8b2ad" target="_blank" rel="external">图片项目地址 可以复制下来 进行修改</a></p>
-<blockquote>
-<p>ThreadLocal定义：不同线程存取　不会相互影响　而且用到的是一个变量！！<br>ThreadLocal：解释了为什么 线程里用的时候要prepare()和loop()<br>还有Activity创建的时候已经默认调用了prepare()与loop() 所以不需要你去弄.</p>
-</blockquote>
-<h1 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h1><p>老司机们都知道，Android的线程间通信就靠Handler、Looper、Message、MessageQueue这四个麻瓜兄弟了，那么，他们是怎么运作的呢？下面做一个基于主要源代码的大学生水平的分析。 <a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">原文链接</a></p>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90</a></p>
-
-      
-    </div>
-
-    
-      <footer class="post-footer">
-        <div class="post-tags">
-          
-            <a href="/tags/android/">android</a>
-          
-        </div>
-
-        
-  <nav class="post-nav">
-    
-      <a class="prev" href="/2017/03/16/RecycleBin/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">图解解析ListView中的RecycleBin</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
-    
-    
-      <a class="next" href="/2017/03/14/IO/">
-        <span class="next-text nav-default">了解Java中的I/O系统</span>
-        <span class="prev-text nav-mobile">下一篇</span>
-        <i class="iconfont icon-right"></i>
-      </a>
     
   </nav>
 
-      </footer>
-    
-  </article>
 
 
           </div>
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/03/15/Handler|Looper|Message|MessageQueue/"
-           data-title="Handler、Looper、Message、MessageQueue基础流程分析图解" data-url="https://luhaoaimama1.github.io/2017/03/15/Handler|Looper|Message|MessageQueue/">
-      </div>
-    
-  </div>
-
         </div>  
       </main>
 
