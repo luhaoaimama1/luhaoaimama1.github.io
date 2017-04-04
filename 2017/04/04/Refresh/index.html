@@ -11,7 +11,7 @@
 
 
 
-  <meta name="description" content="Handler、Looper、Message、MessageQueue基础流程分析图解"/>
+  <meta name="description" content="原型模式-下拉刷新的全局设置"/>
 
 
 
@@ -30,21 +30,30 @@
 
 
 
-<link rel="canonical" href="https://luhaoaimama1.github.io/2017/03/15/Handler|Looper|Message|MessageQueue/"/>
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/04/04/Refresh/"/>
 
 
-<meta name="description" content="图解">
+<meta name="description" content="目的全局替换刷新头部
+头部可拔插:需要应用策略模式(组合与接口的方式set get)；全局替换:就是原型模式 
+
+设置一个全局头部,那么每次使用的下拉刷新 都是全局头部的深拷贝对象。当然可以随意生成想要拷贝的特性；">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Handler、Looper、Message、MessageQueue基础流程分析图解">
-<meta property="og:url" content="https://luhaoaimama1.github.io/2017/03/15/Handler|Looper|Message|MessageQueue/index.html">
+<meta property="og:title" content="原型模式-下拉刷新的全局设置">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2017/04/04/Refresh/index.html">
 <meta property="og:site_name" content="Zone">
-<meta property="og:description" content="图解">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg">
-<meta property="og:updated_time" content="2017-03-16T02:26:13.000Z">
+<meta property="og:description" content="目的全局替换刷新头部
+头部可拔插:需要应用策略模式(组合与接口的方式set get)；全局替换:就是原型模式 
+
+设置一个全局头部,那么每次使用的下拉刷新 都是全局头部的深拷贝对象。当然可以随意生成想要拷贝的特性；">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fbthspgg0qj31kw0xrdjz.jpg">
+<meta property="og:updated_time" content="2017-04-04T07:05:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Handler、Looper、Message、MessageQueue基础流程分析图解">
-<meta name="twitter:description" content="图解">
-<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg">
+<meta name="twitter:title" content="原型模式-下拉刷新的全局设置">
+<meta name="twitter:description" content="目的全局替换刷新头部
+头部可拔插:需要应用策略模式(组合与接口的方式set get)；全局替换:就是原型模式 
+
+设置一个全局头部,那么每次使用的下拉刷新 都是全局头部的深拷贝对象。当然可以随意生成想要拷贝的特性；">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fbthspgg0qj31kw0xrdjz.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
@@ -70,7 +79,7 @@
 
 
 
-    <title> Handler、Looper、Message、MessageQueue基础流程分析图解 · Zone </title>
+    <title> 原型模式-下拉刷新的全局设置 · Zone </title>
   </head>
 
   <body>
@@ -207,13 +216,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Handler、Looper、Message、MessageQueue基础流程分析图解
+          原型模式-下拉刷新的全局设置
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2017年3月15日
+          2017年4月4日
         </span>
       </div>
     </header>
@@ -222,21 +231,36 @@
       <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">文章目录</h2>
         <div class="post-toc-content">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#图解"><span class="toc-text">图解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码分析："><span class="toc-text">源码分析：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&Thanks：</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#范例"><span class="toc-text">范例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实践项目："><span class="toc-text">实践项目：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#特点与功能实现"><span class="toc-text">特点与功能实现</span></a></li></ol>
         </div>
       </div>
     
 
     <div class="post-content">
       
-        <h1 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h1><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fdnifh0enlj30to0phmxn.jpg" alt=""></p>
-<a id="more"></a>
-<p><a href="https://www.processon.com/view/link/58c8dffde4b01c1b4ab8b2ad" target="_blank" rel="external">图片项目地址 可以复制下来 进行修改</a></p>
+        <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>全局替换刷新头部</p>
+<p><code>头部可拔插</code>:需要应用策略模式(组合与接口的方式set get)；<br><code>全局替换</code>:就是原型模式 </p>
 <blockquote>
-<p>ThreadLocal定义：不同线程存取　不会相互影响　而且用到的是一个变量！！<br>ThreadLocal：解释了为什么 线程里用的时候要prepare()和loop()<br>还有Activity创建的时候已经默认调用了prepare()与loop() 所以不需要你去弄.</p>
+<p>设置一个全局头部,那么每次使用的下拉刷新 都是全局头部的深拷贝对象。当然可以随意生成想要拷贝的特性；</p>
 </blockquote>
-<h1 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h1><p>老司机们都知道，Android的线程间通信就靠Handler、Looper、Message、MessageQueue这四个麻瓜兄弟了，那么，他们是怎么运作的呢？下面做一个基于主要源代码的大学生水平的分析。 <a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">原文链接</a></p>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90" target="_blank" rel="external">http://anangryant.leanote.com/post/Handler%E3%80%81Looper%E3%80%81Message%E3%80%81MessageQueue%E5%88%86%E6%9E%90</a></p>
+<a id="more"></a>
+<h1 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h1><p>头部接口<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IHeaderView</span> &#123;</div><div class="line"></div><div class="line">    中间省略.....</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 全局更换头的配置</div><div class="line">     * 主要是为了复制头部对象，复制想要复制的属性</div><div class="line">     * 注意:返回null时候，默认就是新浪头了</div><div class="line">     */</div><div class="line">    <span class="function">IHeaderView <span class="title">clone_</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>全局设置<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="type">WaveHead</span> waveHead=<span class="function"><span class="keyword">new</span> <span class="title">WaveHead</span>();</span></div><div class="line"> <span class="title">waveHead</span>.<span class="title">setResourceId</span>(<span class="type">R</span>.drawable.aaaaaaaaaaaab);</div><div class="line"> <span class="title">Config</span>.<span class="title">build</span>()</div><div class="line">         .<span class="title">setHeader</span>(waveHead)</div><div class="line">         .<span class="title">setFooter</span>(new <span class="type">MeterialFooter</span>())</div><div class="line">         .<span class="title">setResistance</span>(new <span class="type">Damping2Head8per</span>())</div><div class="line">         .<span class="title">writeLog</span>(true)</div><div class="line">         .<span class="title">perform</span>();</div></pre></td></tr></table></figure></p>
+<h1 id="实践项目："><a href="#实践项目：" class="headerlink" title="实践项目："></a>实践项目：</h1><p><a href="https://github.com/luhaoaimama1/ZRefreshLayout" target="_blank" rel="external">https://github.com/luhaoaimama1/ZRefreshLayout</a></p>
+<blockquote>
+<p>欢迎Star 自恋的宣传一下 (*&gt;∀&lt;)ﾉ))★</p>
+</blockquote>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fbthspgg0qj31kw0xrdjz.jpg" alt=""></p>
+<h1 id="特点与功能实现"><a href="#特点与功能实现" class="headerlink" title="特点与功能实现"></a>特点与功能实现</h1><ul>
+<li>[x] 支持添加下拉刷新与上拉加载</li>
+<li>[x] 支持所有的View:ImageView,FrameLayout,ListView, GridView, ScrollView, WebView…</li>
+<li>[x] 全局配置(头部配置都在这里,所以没有xml属性~),与独立更改</li>
+<li>[x] 自动刷新 延时刷新(如果刷新完毕有动画的话 需要用到延时刷新 ,<a href="https://github.com/luhaoaimama1/ZRefreshLayout/blob/master/app/src/main/java/zone/com/zrefreshlayoutdemo/header/CircleRefresh.java" target="_blank" rel="external">延时demo</a>)</li>
+<li>[x] 头部是否固定</li>
+<li>[x] 刷新出发位置</li>
+<li>[x] 下拉位置映射，既resistance阻力</li>
+<li>[x] 因为是继承FrameLayout,可以添加多个child。(我没有控制必须一个,感觉更灵活吧)</li>
+</ul>
 
       
     </div>
@@ -252,15 +276,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2017/03/16/RecycleBin/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">图解解析ListView中的RecycleBin</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
     
-    
-      <a class="next" href="/2017/03/14/IO/">
-        <span class="next-text nav-default">了解Java中的I/O系统</span>
+      <a class="next" href="/2017/03/16/RecycleBin/">
+        <span class="next-text nav-default">图解解析ListView中的RecycleBin</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -276,8 +294,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/15/Handler|Looper|Message|MessageQueue/"
-           data-title="Handler、Looper、Message、MessageQueue基础流程分析图解" data-url="https://luhaoaimama1.github.io/2017/03/15/Handler|Looper|Message|MessageQueue/">
+      <div class="ds-thread" data-thread-key="2017/04/04/Refresh/"
+           data-title="原型模式-下拉刷新的全局设置" data-url="https://luhaoaimama1.github.io/2017/04/04/Refresh/">
       </div>
     
   </div>

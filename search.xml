@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title><![CDATA[原型模式-下拉刷新的全局设置]]></title>
+      <url>https://luhaoaimama1.github.io/2017/04/04/Refresh/</url>
+      <content type="html"><![CDATA[<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>全局替换刷新头部</p>
+<p><code>头部可拔插</code>:需要应用策略模式(组合与接口的方式set get)；<br><code>全局替换</code>:就是原型模式 </p>
+<blockquote>
+<p>设置一个全局头部,那么每次使用的下拉刷新 都是全局头部的深拷贝对象。当然可以随意生成想要拷贝的特性；</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h1><p>头部接口<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IHeaderView</span> &#123;</div><div class="line"></div><div class="line">    中间省略.....</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 全局更换头的配置</div><div class="line">     * 主要是为了复制头部对象，复制想要复制的属性</div><div class="line">     * 注意:返回null时候，默认就是新浪头了</div><div class="line">     */</div><div class="line">    <span class="function">IHeaderView <span class="title">clone_</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>全局设置<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="type">WaveHead</span> waveHead=<span class="function"><span class="keyword">new</span> <span class="title">WaveHead</span>();</span></div><div class="line"> <span class="title">waveHead</span>.<span class="title">setResourceId</span>(<span class="type">R</span>.drawable.aaaaaaaaaaaab);</div><div class="line"> <span class="title">Config</span>.<span class="title">build</span>()</div><div class="line">         .<span class="title">setHeader</span>(waveHead)</div><div class="line">         .<span class="title">setFooter</span>(new <span class="type">MeterialFooter</span>())</div><div class="line">         .<span class="title">setResistance</span>(new <span class="type">Damping2Head8per</span>())</div><div class="line">         .<span class="title">writeLog</span>(true)</div><div class="line">         .<span class="title">perform</span>();</div></pre></td></tr></table></figure></p>
+<h1 id="实践项目："><a href="#实践项目：" class="headerlink" title="实践项目："></a>实践项目：</h1><p><a href="https://github.com/luhaoaimama1/ZRefreshLayout" target="_blank" rel="external">https://github.com/luhaoaimama1/ZRefreshLayout</a></p>
+<blockquote>
+<p>欢迎Star 自恋的宣传一下 (*&gt;∀&lt;)ﾉ))★</p>
+</blockquote>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fbthspgg0qj31kw0xrdjz.jpg" alt=""></p>
+<h1 id="特点与功能实现"><a href="#特点与功能实现" class="headerlink" title="特点与功能实现"></a>特点与功能实现</h1><ul>
+<li>[x] 支持添加下拉刷新与上拉加载</li>
+<li>[x] 支持所有的View:ImageView,FrameLayout,ListView, GridView, ScrollView, WebView…</li>
+<li>[x] 全局配置(头部配置都在这里,所以没有xml属性~),与独立更改</li>
+<li>[x] 自动刷新 延时刷新(如果刷新完毕有动画的话 需要用到延时刷新 ,<a href="https://github.com/luhaoaimama1/ZRefreshLayout/blob/master/app/src/main/java/zone/com/zrefreshlayoutdemo/header/CircleRefresh.java" target="_blank" rel="external">延时demo</a>)</li>
+<li>[x] 头部是否固定</li>
+<li>[x] 刷新出发位置</li>
+<li>[x] 下拉位置映射，既resistance阻力</li>
+<li>[x] 因为是继承FrameLayout,可以添加多个child。(我没有控制必须一个,感觉更灵活吧)</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[图解解析ListView中的RecycleBin]]></title>
       <url>https://luhaoaimama1.github.io/2017/03/16/RecycleBin/</url>
       <content type="html"><![CDATA[<h1 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h1><p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fdoguk5a9ij31fw1arn20.jpg" alt=""></p>
