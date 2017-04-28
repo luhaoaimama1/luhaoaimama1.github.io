@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2017-04-04T07:05:12.000Z</updated>
+  <updated>2017-04-28T17:28:48.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -16,11 +16,121 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>继承与链式调用的结合</title>
+    <link href="https://luhaoaimama1.github.io/2017/04/29/chain/"/>
+    <id>https://luhaoaimama1.github.io/2017/04/29/chain/</id>
+    <published>2017-04-28T17:40:37.000Z</published>
+    <updated>2017-04-28T17:28:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="父类-返回值是泛型；"><a href="#父类-返回值是泛型；" class="headerlink" title="父类:返回值是泛型；"></a>父类:返回值是泛型；</h1><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Helper&lt;T</span> <span class="keyword">extends</span> <span class="title">Helper&gt;</span> </span>&#123;</div><div class="line">     <span class="keyword">protected</span> <span class="type">T</span> child;</div><div class="line">     public <span class="type">Helper</span>() &#123;</div><div class="line">            child = (<span class="type">T</span>) <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">     public <span class="type">T</span> setText(<span class="meta">@IdRes</span> int viewId,<span class="type">String</span> textStr) &#123;</div><div class="line">            ...</div><div class="line">            checkChild();</div><div class="line">            <span class="keyword">return</span> child;</div><div class="line">        &#125;</div><div class="line">     <span class="keyword">protected</span> void checkChild() &#123;</div><div class="line">            <span class="keyword">if</span> (child == <span class="literal">null</span>)</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">IllegalStateException</span>(<span class="string">"child must be set in child's Constructor!"</span> +</div><div class="line">                        <span class="string">"not method:initDefaultValueAnimator"</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="子类-制定泛型-继承父类"><a href="#子类-制定泛型-继承父类" class="headerlink" title="子类:制定泛型 + 继承父类"></a>子类:制定泛型 + 继承父类</h1><ul>
+<li>光继承，就已经包含扩展能力了。</li>
+<li>warpper方法其实装饰器模式<blockquote>
+<p>用到的地方:例如一个方法的参数是Helper类型，并且无法改变参数的类型。继而用装饰器扩展其功能</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExtraHelper</span> <span class="keyword">extends</span> <span class="title">Helper</span>&lt;<span class="title">ExtraHelper</span>&gt; </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ExtraHelper</span><span class="params">(Helper helper)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        child = <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExtraHelper <span class="title">wrapper</span><span class="params">(Helper helper)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ExtraHelper(helper);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ExtraHelper <span class="title">heihei</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"heihei!"</span>);</div><div class="line">        checkChild();</div><div class="line">        <span class="keyword">return</span> child;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ExtraHelper <span class="title">heihei2</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"heihei2!"</span>);</div><div class="line">        checkChild();</div><div class="line">        <span class="keyword">return</span> child;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="最后的使用"><a href="#最后的使用" class="headerlink" title="最后的使用"></a>最后的使用</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ExtraHelper</span><span class="selector-class">.wrapper</span>(<span class="selector-tag">helper</span>)<span class="selector-class">.setText</span>(<span class="selector-tag">R</span><span class="selector-class">.id</span><span class="selector-class">.tv</span>, <span class="selector-tag">data</span>)<span class="selector-class">.heihei</span>()<span class="selector-class">.heihei2</span>()</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/luhaoaimama1/ZAdapter3/blob/master/app/src/main/java/zone/com/zadapter3/helper/ExtraHelper.java" target="_blank" rel="external">Demo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;父类-返回值是泛型；&quot;&gt;&lt;a href=&quot;#父类-返回值是泛型；&quot; class=&quot;headerlink&quot; title=&quot;父类:返回值是泛型；&quot;&gt;&lt;/a&gt;父类:返回值是泛型；&lt;/h1&gt;&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;t
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ZAdapter3的分析与撸库</title>
+    <link href="https://luhaoaimama1.github.io/2017/04/29/Adapter3/"/>
+    <id>https://luhaoaimama1.github.io/2017/04/29/Adapter3/</id>
+    <published>2017-04-28T16:19:37.000Z</published>
+    <updated>2017-04-28T17:29:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="分析时候的思路"><a href="#分析时候的思路" class="headerlink" title="分析时候的思路"></a>分析时候的思路</h1><ul>
+<li>adapter里面的viewhold可以被复用<blockquote>
+<p>所以需要重写一个方法通过位置获取layoutStyle，addviewHolder顺便传递一个layoutStyle,也可不传为默认值；</p>
+</blockquote>
+</li>
+<li>layoutID要在viewhold的类方法中,而不是构造器中 <blockquote>
+<p>  因为resID与viewHold本就是一个整体。方法构造中的话表示resID是可变的，并且看到这个viewhold类的时候布局文件看不到 容易蒙蔽</p>
+</blockquote>
+</li>
+<li>helper类与ButterKnife的取舍?<blockquote>
+<p>helper比ButterKnife好,原因:可定制封装逻辑，不强转，可连写,可通过泛型+继承+装饰模式达到扩展的目的；</p>
+</blockquote>
+</li>
+<li><p>adapter 可扩展+链式调用  是用 泛型+继承 还是 同一个接口呢？</p>
+<blockquote>
+<p>泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg" alt=""><br>所以退而求其次 选择同一个接口</p>
+</blockquote>
+</li>
+<li><p>基础功能 </p>
+<blockquote>
+<p>addViewHold(ViewHolder)//为default<br>addViewHold(style,viewHolder)<br>addHeaderHold(ViewHolder/resId)<br>addFooterHold(ViewHolder/resId)<br>addEmptyHold(ViewHolder/resId)<br>notify系列<br>notifyEx系列(这里的位置对应为数据集的位置。包括header/footer)<br>relaeList(rv) 故事的开始。很多逻辑可以在这里完成  </p>
+</blockquote>
+</li>
+</ul>
+<h1 id="书写类型初稿："><a href="#书写类型初稿：" class="headerlink" title="书写类型初稿："></a>书写类型初稿：</h1><p>Adapter<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">Adatper</span>(context,data)&#123;</span></div><div class="line">	<span class="title">o</span>.<span class="title">getStyle</span>()&lt;——可不写</div><div class="line">&#125;</div><div class="line">.<span class="title">addViewHold</span>(<span class="type">ViewHolder</span>)<span class="comment">//为default</span></div><div class="line">.<span class="title">addViewHold</span>(style,viewHolder)</div><div class="line">.<span class="title">addFooterHold</span>(<span class="type">ViewHolder</span>/resId)</div><div class="line">.<span class="title">addHeaderHold</span>(<span class="type">ViewHolder</span>/resId)</div><div class="line">.<span class="title">addEmptyHold</span>(<span class="type">ViewHolder</span>/resId)<span class="comment">//支持emptyHold</span></div><div class="line">.<span class="title">add</span>上啦<span class="title">Hold</span>(<span class="type">ViewHolder</span>)<span class="comment">//貌似应该放入 zrfresh的逻辑中.  ZRefresh loadMore可以和他联动？</span></div><div class="line">.<span class="title">notify</span>系列<span class="comment">//notify之间 自动计算动画？ 看看diffuitl工具</span></div><div class="line">.<span class="title">relaeList</span>(rv)</div></pre></td></tr></table></figure></p>
+<p>ViewHolder<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ViewHolder</div><div class="line"><span class="keyword">public</span> itemView</div><div class="line"><span class="built_in">int</span> getLayoutId()</div><div class="line">update(postion,<span class="keyword">data</span> ,helper)</div></pre></td></tr></table></figure></p>
+<h1 id="封装后的简单实用"><a href="#封装后的简单实用" class="headerlink" title="封装后的简单实用"></a>封装后的简单实用</h1><h2 id="QuickRcvAdapter范例"><a href="#QuickRcvAdapter范例" class="headerlink" title="QuickRcvAdapter范例"></a>QuickRcvAdapter范例</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">IAdapter&lt;String&gt; muliAdapter = <span class="keyword">new</span> QuickRcvAdapter(<span class="keyword">this</span>, mDatas)&#123;</div><div class="line">               <span class="meta">@Override</span></div><div class="line">               <span class="keyword">protected</span> <span class="function"><span class="keyword">int</span> <span class="title">getItemViewType2</span><span class="params">(<span class="keyword">int</span> dataPosition)</span> </span>&#123;</div><div class="line">               <span class="comment">//此方法可以默认 设置不写, 默认值返回Wrapper.DEFAULT_VALUE(-1)</span></div><div class="line">                   <span class="keyword">return</span> dataPosition % <span class="number">2</span>;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           .addViewHolder(<span class="keyword">new</span> LeftDelegates())<span class="comment">//默认</span></div><div class="line">           .addViewHolder(<span class="number">0</span>, <span class="keyword">new</span> LeftDelegates()) <span class="comment">//多布局</span></div><div class="line">           .addViewHolder(<span class="number">1</span>, <span class="keyword">new</span> RightDelegates())<span class="comment">//多布局</span></div><div class="line">           .addHeaderHolder(R.layout.header_simple)<span class="comment">//资源</span></div><div class="line">           .addHeaderHolder(ViewDelegates footer)<span class="comment">//也可以的</span></div><div class="line">           .addFooterHolder(R.layout.footer_simple)<span class="comment">//资源</span></div><div class="line">           .addFooterHolder(ViewDelegates footer)<span class="comment">//也可以的</span></div><div class="line">           .addEmptyHold(R.layout.empty)<span class="comment">//也支持empty 资源</span></div><div class="line">           .addEmptyHold(ViewDelegates emtpy)<span class="comment">//也支持empty</span></div><div class="line">           .setOnItemClickListener(<span class="keyword">new</span> IAdapter.OnItemClickListener() &#123;</div><div class="line">               <span class="meta">@Override</span></div><div class="line">               <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(ViewGroup parent, View view, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">                   System.out.println(<span class="string">"被点击-&gt;onItemClick"</span> + position);</div><div class="line">               &#125;</div><div class="line">           &#125;)</div><div class="line">           .setOnItemLongClickListener(<span class="keyword">new</span> IAdapter.OnItemLongClickListener() &#123;</div><div class="line">               <span class="meta">@Override</span></div><div class="line">               <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onItemLongClick</span><span class="params">(ViewGroup parent, View view, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">                   System.out.println(<span class="string">"被点击-&gt;onItemLongClick:"</span> + position);</div><div class="line">                   <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">               &#125;</div><div class="line">           &#125;)</div><div class="line">           .addOnScrollListener(scroller = <span class="keyword">new</span> OnScrollRcvListenerEx(<span class="keyword">new</span> OnScrollRcvListenerEx.LoadMoreCallback() &#123;</div><div class="line">               <span class="meta">@Override</span></div><div class="line">               <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">loadMore</span><span class="params">()</span> </span>&#123;</div><div class="line">               <span class="comment">//这个类主要是为了和我的ZRefresh库兼容。我会委托上啦加载在这里处理!</span></div><div class="line">               &#125;</div><div class="line">           &#125;))</div><div class="line">           .relatedList(rv)</div></pre></td></tr></table></figure>
+<h2 id="ViewDelegates范例"><a href="#ViewDelegates范例" class="headerlink" title="ViewDelegates范例"></a>ViewDelegates范例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeftDelegates</span> <span class="keyword">extends</span> <span class="title">ViewDelegates</span>&lt;<span class="title">String</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLayoutId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> R.layout.item_left;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fillData</span><span class="params">(<span class="keyword">int</span> postion, String data, Helper helper)</span> </span>&#123;</div><div class="line">        ExtraHelper.wrapper(helper).setText(R.id.tv, data).heihei().heihei2()</div><div class="line">                .setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                        System.out.println(<span class="string">"helper click测试 "</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;, <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;R.id.tv, R.id.ll_main&#125;);</div><div class="line">        ;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Helper的扩展技巧-扩展技巧是-装饰模式-链式调用-泛型"><a href="#Helper的扩展技巧-扩展技巧是-装饰模式-链式调用-泛型" class="headerlink" title="Helper的扩展技巧:扩展技巧是 装饰模式+链式调用+泛型"></a>Helper的扩展技巧:扩展技巧是 装饰模式+链式调用+泛型</h2><blockquote>
+<p>使用起来:ExtraHelper.wrapper(helper).setText(R.id.tv, data).heihei().heihei2();</p>
+</blockquote>
+<p>实现方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExtraHelper</span> <span class="keyword">extends</span> <span class="title">Helper</span>&lt;<span class="title">ExtraHelper</span>&gt; </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ExtraHelper</span><span class="params">(Helper helper)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(helper.getContext(), helper.getHolder(),helper.getAdapter());</div><div class="line">        child = <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExtraHelper <span class="title">wrapper</span><span class="params">(Helper helper)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ExtraHelper(helper);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ExtraHelper <span class="title">heihei</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"heihei!"</span>);</div><div class="line">        checkChild();</div><div class="line">        <span class="keyword">return</span> child;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ExtraHelper <span class="title">heihei2</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"heihei2!"</span>);</div><div class="line">        checkChild();</div><div class="line">        <span class="keyword">return</span> child;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h2><blockquote>
+<p>新裤暂时就支持这点~<br>(原型模式-下拉刷新的全局设置)[<a href="https://luhaoaimama1.github.io/2017/04/04/Refresh/">https://luhaoaimama1.github.io/2017/04/04/Refresh/</a>]</p>
+</blockquote>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//全局替换加载更多</span></div><div class="line"><span class="selector-tag">QuickConfig</span><span class="selector-class">.build</span>()<span class="selector-class">.setLoadMoreDelegates</span>(ILoadMoreDelegates iLoadMoreDelegates)<span class="selector-class">.perform</span>();</div></pre></td></tr></table></figure>
+<h2 id="加载更多联动ZRefresh库"><a href="#加载更多联动ZRefresh库" class="headerlink" title="加载更多联动ZRefresh库"></a>加载更多联动ZRefresh库</h2><blockquote>
+<p>其实是ZRefresh把加载更多的功能委托出去而已</p>
+</blockquote>
+<p><a href="https://github.com/luhaoaimama1/ZAdapter3/blob/master/app/src/main/java/zone/com/zadapter3/Recycler2ZRefreshActivity.java" target="_blank" rel="external">参考范例</a></p>
+<h1 id="最后建议看看"><a href="#最后建议看看" class="headerlink" title="最后建议看看"></a>最后建议看看</h1><p>很美观一个库 <a href="https://github.com/GcsSloop/diycode" target="_blank" rel="external">https://github.com/GcsSloop/diycode</a></p>
+<h2 id="看完Diycode的总结："><a href="#看完Diycode的总结：" class="headerlink" title="看完Diycode的总结："></a>看完Diycode的总结：</h2><h2 id="adapter重构-因为我原来写了adapter-看完这个库后推到重写adapter3"><a href="#adapter重构-因为我原来写了adapter-看完这个库后推到重写adapter3" class="headerlink" title="adapter重构(因为我原来写了adapter,看完这个库后推到重写adapter3)"></a>adapter重构(因为我原来写了adapter,看完这个库后推到重写adapter3)</h2><p>headerFooterView功能<br>单独分离出一个类，既多类型复用。<br>数据并用helper定制图片加载等其他的逻辑<br>特点： 可复用，绑定数据</p>
+<h2 id="刷新控件与fragment的结合-，布局结合-？"><a href="#刷新控件与fragment的结合-，布局结合-？" class="headerlink" title="刷新控件与fragment的结合 ，布局结合 ？"></a>刷新控件与fragment的结合 ，布局结合 ？</h2><p>这样有点耦合了  怎么才能 不耦合的处理？</p>
+<h2 id="刷新加载逻辑和网络请求-基类统一处理。"><a href="#刷新加载逻辑和网络请求-基类统一处理。" class="headerlink" title="刷新加载逻辑和网络请求 基类统一处理。"></a>刷新加载逻辑和网络请求 基类统一处理。</h2><blockquote>
+<p><a href="https://github.com/luhaoaimama1/Http_Rflist_Helper" target="_blank" rel="external">有点类似我这个库,一直很少维护就是纠结啊,Ps:并且可以全局更换网络请求库</a></p>
+</blockquote>
+<h2 id="给我以灵感-网络请求-是-通过请求-异步-eventbus？"><a href="#给我以灵感-网络请求-是-通过请求-异步-eventbus？" class="headerlink" title="给我以灵感:网络请求 是 通过请求 异步+eventbus？"></a>给我以灵感:网络请求 是 通过请求 异步+eventbus？</h2><p>这样多个注册了Subscribe的页面同时存活，其中一个请求。另一个页面也会处理相同的数据，会不会凌乱呢？</p>
+<blockquote>
+<p>不过这个确实很美观。我很喜欢 可以有一点缺憾,如果eventBus多支持一个方法,只在本类分发接受就好了~<br><img src="https://ww4.sinaimg.cn/large/006tNc79gy1ff2vqpvwczj30eo07uwel.jpg" alt=""></p>
+</blockquote>
+<h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><p>DataCache，FileUtil，DataCleanManager，UrlUtil，ACache，CacheUtil，UUIDGenerator<br>SpeedyLinearLayoutManager</p>
+<h2 id="灵感，不错的方法"><a href="#灵感，不错的方法" class="headerlink" title="灵感，不错的方法"></a>灵感，不错的方法</h2><p>public void setOnClickListener(View.OnClickListener l, int… ids)</p>
+<h2 id="复杂的书写格式"><a href="#复杂的书写格式" class="headerlink" title="复杂的书写格式"></a>复杂的书写格式</h2><p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1ff2wct9y99j30dc05gdg1.jpg" alt=""></p>
+<p>非与或非的符号则用此格式</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String </span>a,</div><div class="line"><span class="keyword">String </span><span class="keyword">b,</span></div><div class="line"><span class="keyword">String </span>c,</div><div class="line"><span class="keyword">String </span>d,</div></pre></td></tr></table></figure>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/GcsSloop/diycode" target="_blank" rel="external">https://github.com/GcsSloop/diycode</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;分析时候的思路&quot;&gt;&lt;a href=&quot;#分析时候的思路&quot; class=&quot;headerlink&quot; title=&quot;分析时候的思路&quot;&gt;&lt;/a&gt;分析时候的思路&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;adapter里面的viewhold可以被复用&lt;blockquote&gt;
+&lt;p&gt;所以需要重
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="adapter" scheme="https://luhaoaimama1.github.io/tags/adapter/"/>
+    
+  </entry>
+  
+  <entry>
     <title>原型模式-下拉刷新的全局设置</title>
     <link href="https://luhaoaimama1.github.io/2017/04/04/Refresh/"/>
     <id>https://luhaoaimama1.github.io/2017/04/04/Refresh/</id>
     <published>2017-04-04T05:19:37.000Z</published>
-    <updated>2017-04-04T07:05:12.000Z</updated>
+    <updated>2017-04-04T07:14:30.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>全局替换刷新头部</p>
 <p><code>头部可拔插</code>:需要应用策略模式(组合与接口的方式set get)；<br><code>全局替换</code>:就是原型模式 </p>
@@ -1576,12 +1686,26 @@
     <link href="https://luhaoaimama1.github.io/2016/09/17/EventPass/"/>
     <id>https://luhaoaimama1.github.io/2016/09/17/EventPass/</id>
     <published>2016-09-17T05:19:37.000Z</published>
-    <updated>2016-12-30T14:24:02.000Z</updated>
+    <updated>2017-04-12T14:02:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>研究分发流程,总结为伪代码便于理解,然后研究源码,最后探究Method之requestDisallowInterceptTouchEvent</p>
 <a id="more"></a>
 <h1 id="dispatchTouchEvent"><a href="#dispatchTouchEvent" class="headerlink" title="dispatchTouchEvent"></a>dispatchTouchEvent</h1><h2 id="View总结"><a href="#View总结" class="headerlink" title="View总结:"></a>View总结:</h2><blockquote>
-<p>onTouchListener &gt; onTouchEvent &gt; onLongClickListener &gt; onClickListener</p>
+<p>onTouchListener -&gt; onTouchEvent -&gt; onLongClickListener -&gt; onClickListener</p>
+</blockquote>
+<ul>
+<li>View: <ul>
+<li>onTouchListener如果设置了 就不会走onTouchEvent了</li>
+<li>super.onTouchEvent():包含了 onLongClickListener onClickListener 的事件处理;</li>
+<li>但是onTouchEvent()是由dispatchTouchEvent()传递过来的</li>
+</ul>
+</li>
+</ul>
+<h2 id="处理特殊图形点击事件的几种方式"><a href="#处理特殊图形点击事件的几种方式" class="headerlink" title="处理特殊图形点击事件的几种方式 :"></a>处理特殊图形点击事件的几种方式 :</h2><p>通过path绘制特殊的点击范围, 放入Region中 然后通过contains是否包含即可</p>
+<h3 id="兼容onClick1"><a href="#兼容onClick1" class="headerlink" title="兼容onClick1:"></a>兼容onClick1:</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> @<span class="function">Override</span></div><div class="line">    <span class="keyword">public</span> boolean <span class="title">dispatchTouchEvent</span>(<span class="params">MotionEvent <span class="keyword">event</span></span>) &#123;</div><div class="line">        <span class="keyword">return</span> isEventInPath(<span class="keyword">event</span>)?super.dispatchTouchEvent(<span class="keyword">event</span>);</div><div class="line">    &#125;</div><div class="line">参考：http:<span class="comment">//blog.csdn.net/qibin0506/article/details/52676670</span></div></pre></td></tr></table></figure>
+<h3 id="兼容onClick2"><a href="#兼容onClick2" class="headerlink" title="兼容onClick2:"></a>兼容onClick2:</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> isEventInPath(event)?<span class="keyword">super</span>.onTouchEvent(event):<span class="keyword">false</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="自己的回调监听"><a href="#自己的回调监听" class="headerlink" title="自己的回调监听:"></a>自己的回调监听:</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> @<span class="function">Override</span></div><div class="line">    <span class="keyword">public</span> boolean <span class="title">onTouchEvent</span>(<span class="params">MotionEvent <span class="keyword">event</span></span>) &#123;</div><div class="line">    <span class="keyword">switch</span> (<span class="keyword">event</span>.getActionMasked()) &#123;</div><div class="line">        mListener.onCenterCliched();<span class="comment">//</span></div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">   	<span class="comment">// 点击事件监听器</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">MenuListener</span> &#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCenterCliched</span>(<span class="params"></span>)</span>;</div><div class="line">        &#125;</div><div class="line">参考：http:<span class="comment">//www.gcssloop.com/customview/touch-matrix-region</span></div></pre></td></tr></table></figure>
+<h2 id="伪代码分析"><a href="#伪代码分析" class="headerlink" title="伪代码分析"></a>伪代码分析</h2><blockquote>
 <p>上述伪代码总结为下； 基本关键点已经还原~</p>
 </blockquote>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">     <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</div><div class="line">     <span class="keyword">if</span> (onTouchListener != <span class="keyword">null</span>)</div><div class="line">         result = onTouch();</div><div class="line">     <span class="keyword">if</span> (!result) &#123;</div><div class="line">         result = onTouchEvent(e) &#123;</div><div class="line">             <span class="comment">// 检查各种 clickable 如果有一个会 是true就会走</span></div><div class="line">             <span class="keyword">if</span> (((viewFlags &amp; CLICKABLE) == CLICKABLE ||</div><div class="line">                     (viewFlags &amp; LONG_CLICKABLE) == LONG_CLICKABLE) ||</div><div class="line">                     (viewFlags &amp; CONTEXT_CLICKABLE) == CONTEXT_CLICKABLE) &#123;</div><div class="line">                 </div><div class="line">                 <span class="keyword">case</span>:down</div><div class="line">                 mHasPerformedLongPress = <span class="keyword">false</span>;<span class="comment">//设置标识</span></div><div class="line">                 postDelay（mPendingCheckForTap, ViewConfiguration.getLongPressTimeout()）</div><div class="line">                 <span class="comment">//mPendingCheckForTap线程执行后更改为true; 并执行onLongClickListener</span></div><div class="line">                 </div><div class="line">                 <span class="keyword">case</span>:up</div><div class="line">                 <span class="keyword">if</span> (!mHasPerformedLongPress) &#123;</div><div class="line">                     removeLongPressCallback();  <span class="comment">// 移除长按</span></div><div class="line">                     执行onClickListener</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">             <span class="keyword">return</span> <span class="keyword">true</span>;                        <span class="comment">// ◀︎表示事件被消费</span></div><div class="line">         &#125;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1808,89 +1932,6 @@
 </li>
 </ul>
 ]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;持续收集ing 敬请留言~&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几何原理图</title>
-    <link href="https://luhaoaimama1.github.io/2016/07/06/%E5%87%A0%E4%BD%95%E5%8E%9F%E7%90%86%E5%9B%BE/"/>
-    <id>https://luhaoaimama1.github.io/2016/07/06/几何原理图/</id>
-    <published>2016-07-06T05:19:37.000Z</published>
-    <updated>2016-12-30T14:25:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
-<a id="more"></a>
-<h1 id="圆角矩形"><a href="#圆角矩形" class="headerlink" title="圆角矩形"></a>圆角矩形</h1><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb959ssrczj30a408q3yk.jpg" width="200"></p>
-<h1 id="心的制作"><a href="#心的制作" class="headerlink" title="心的制作"></a>心的制作</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb95a213lag308w08w77l" alt=""></p>
-<h1 id="Path-‘s-CornerPathEffect"><a href="#Path-‘s-CornerPathEffect" class="headerlink" title="Path ‘s CornerPathEffect"></a>Path ‘s CornerPathEffect</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb95a6vun5j311m0gkdg7.jpg" alt=""></p>
-<blockquote>
-<p><a href="http://blog.csdn.net/harvic880925/article/details/51010839" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/51010839</a></p>
-</blockquote>
-<h1 id="手绘lineTo的优化技巧"><a href="#手绘lineTo的优化技巧" class="headerlink" title="手绘lineTo的优化技巧)"></a>手绘lineTo的优化技巧)</h1><blockquote>
-<p>仅仅扩充思维即可  不如直接用CornerPathEffect来的实在;</p>
-</blockquote>
-<p><img src="http://img.blog.csdn.net/20160328210009658" alt=""></p>
-<blockquote>
-<p><a href="http://blog.csdn.net/harvic880925/article/details/50995587" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/50995587</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;持续收集ing 敬请留言~&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数学" scheme="https://luhaoaimama1.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-      <category term="数学" scheme="https://luhaoaimama1.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-      <category term="math" scheme="https://luhaoaimama1.github.io/tags/math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android-奇淫技巧</title>
-    <link href="https://luhaoaimama1.github.io/2016/06/19/%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/"/>
-    <id>https://luhaoaimama1.github.io/2016/06/19/奇淫技巧/</id>
-    <published>2016-06-19T05:19:37.000Z</published>
-    <updated>2016-12-30T14:00:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
-<a id="more"></a>
-<h1 id="view-bringToFront"><a href="#view-bringToFront" class="headerlink" title="view.bringToFront();"></a>view.bringToFront();</h1><blockquote>
-<p>把这个view放在最前面显示,会更改位置；</p>
-</blockquote>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">I/System.<span class="keyword">ou</span><span class="variable">t:</span>  before <span class="built_in">index</span>:<span class="number">0</span></div><div class="line">I/System.<span class="keyword">ou</span><span class="variable">t:</span> after <span class="built_in">index</span>:<span class="number">2</span></div></pre></td></tr></table></figure>
-<h1 id="颜色过渡"><a href="#颜色过渡" class="headerlink" title="颜色过渡"></a>颜色过渡</h1><blockquote>
-<p>注意容易犯错 的float </p>
-</blockquote>
-<figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">ArgbEvaluator</span>().<span class="title">evaluate</span>((float) <span class="title">i</span> / (float) <span class="title">total</span>, <span class="title">startColor</span>, <span class="title">endColor</span>);</span></div></pre></td></tr></table></figure>
-<h1 id="资源xml格式"><a href="#资源xml格式" class="headerlink" title="资源xml格式"></a>资源xml格式</h1><blockquote>
-<p>因为简单啊</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">bitmap</span></span></div><div class="line">  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">  <span class="attr">android:src</span>=<span class="string">"@drawable/rebound_icon"</span></div><div class="line">  <span class="attr">android:tileMode</span>=<span class="string">"repeat"</span></div><div class="line">  <span class="attr">android:dither</span>=<span class="string">"true"</span> /&gt;</div></pre></td></tr></table></figure>
-<h1 id="通过字符串查找资源名称"><a href="#通过字符串查找资源名称" class="headerlink" title="通过字符串查找资源名称"></a>通过字符串查找资源名称</h1><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">getResources</span>()<span class="selector-class">.getIdentifier</span>(<span class="string">"d"</span> + (i % <span class="number">11</span> + <span class="number">1</span>), <span class="string">"drawable"</span>, context.getPackageName());</div></pre></td></tr></table></figure>
-<h1 id="gif加载"><a href="#gif加载" class="headerlink" title="gif加载"></a>gif加载</h1><ul>
-<li>帧动画</li>
-<li>第三方库</li>
-<li>Movie类去实现</li>
-</ul>
-<h1 id="泛型推断"><a href="#泛型推断" class="headerlink" title="泛型推断"></a>泛型推断</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb95xxkb3ej312e0dit9w.jpg" alt=""></p>
-<h1 id="matrix"><a href="#matrix" class="headerlink" title="matrix"></a>matrix</h1><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Matrix</span> <span class="keyword">matrix</span> = <span class="keyword">new</span> <span class="keyword">Matrix</span>();  </div><div class="line"><span class="comment">// 生成倒影图  而不是用rotation</span></div><div class="line"><span class="keyword">matrix</span>.setScale(<span class="number">1</span>F, <span class="number">-1</span>F);</div></pre></td></tr></table></figure>
-<h1 id="自定义ViewGroup获取dispatchDraw里的图形方法"><a href="#自定义ViewGroup获取dispatchDraw里的图形方法" class="headerlink" title="自定义ViewGroup获取dispatchDraw里的图形方法"></a>自定义ViewGroup获取dispatchDraw里的图形方法</h1><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">       <span class="comment">//canvas 在这里面绘的图才可以在界面显示出来</span></div><div class="line">       Bitmap  maskBitmap= BitmapUtils.createBitmapAndGcIfNecessary(getWidth(),getHeight());</div><div class="line">       canvas.save();</div><div class="line">       canvas.translate(<span class="number">300</span>,<span class="number">0</span>);</div><div class="line">       <span class="keyword">super</span>.dispatchDraw(<span class="keyword">new</span> Canvas(maskBitmap));<span class="comment">//这部只是为了 子布局的绘制 绘制在bitmap上</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
