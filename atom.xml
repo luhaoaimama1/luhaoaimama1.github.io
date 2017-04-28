@@ -50,7 +50,7 @@
     <link href="https://luhaoaimama1.github.io/2017/04/29/Adapter3/"/>
     <id>https://luhaoaimama1.github.io/2017/04/29/Adapter3/</id>
     <published>2017-04-28T16:19:37.000Z</published>
-    <updated>2017-04-28T17:31:39.000Z</updated>
+    <updated>2017-04-28T17:35:08.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="分析时候的思路"><a href="#分析时候的思路" class="headerlink" title="分析时候的思路"></a>分析时候的思路</h1><ul>
 <li>adapter里面的viewhold可以被复用<blockquote>
@@ -95,20 +95,29 @@
 </blockquote>
 <p><a href="https://github.com/luhaoaimama1/ZAdapter3/blob/master/app/src/main/java/zone/com/zadapter3/Recycler2ZRefreshActivity.java" target="_blank" rel="external">参考范例</a></p>
 <h1 id="最后建议看看"><a href="#最后建议看看" class="headerlink" title="最后建议看看"></a>最后建议看看</h1><p>很美观一个库 <a href="https://github.com/GcsSloop/diycode" target="_blank" rel="external">https://github.com/GcsSloop/diycode</a></p>
-<h2 id="看完Diycode的总结："><a href="#看完Diycode的总结：" class="headerlink" title="看完Diycode的总结："></a>看完Diycode的总结：</h2><h2 id="adapter重构-因为我原来写了adapter-看完这个库后推到重写adapter3"><a href="#adapter重构-因为我原来写了adapter-看完这个库后推到重写adapter3" class="headerlink" title="adapter重构(因为我原来写了adapter,看完这个库后推到重写adapter3)"></a>adapter重构(因为我原来写了adapter,看完这个库后推到重写adapter3)</h2><p>headerFooterView功能<br>单独分离出一个类，既多类型复用。<br>数据并用helper定制图片加载等其他的逻辑<br>特点： 可复用，绑定数据</p>
-<h2 id="刷新控件与fragment的结合-，布局结合-？"><a href="#刷新控件与fragment的结合-，布局结合-？" class="headerlink" title="刷新控件与fragment的结合 ，布局结合 ？"></a>刷新控件与fragment的结合 ，布局结合 ？</h2><p>这样有点耦合了  怎么才能 不耦合的处理？</p>
-<h2 id="刷新加载逻辑和网络请求-基类统一处理。"><a href="#刷新加载逻辑和网络请求-基类统一处理。" class="headerlink" title="刷新加载逻辑和网络请求 基类统一处理。"></a>刷新加载逻辑和网络请求 基类统一处理。</h2><blockquote>
+<h2 id="看完Diycode的总结："><a href="#看完Diycode的总结：" class="headerlink" title="看完Diycode的总结："></a>看完Diycode的总结：</h2><ul>
+<li><p>adapter重构(因为我原来写了adapter,看完这个库后推到重写adapter3)<br>headerFooterView功能<br>单独分离出一个类，既多类型复用。<br>数据并用helper定制图片加载等其他的逻辑<br>特点： 可复用，绑定数据</p>
+</li>
+<li><p>刷新控件与fragment的结合 ，布局结合 ？<br>这样有点耦合了  怎么才能 不耦合的处理？</p>
+</li>
+<li><p>刷新加载逻辑和网络请求 基类统一处理。  </p>
+<blockquote>
 <p><a href="https://github.com/luhaoaimama1/Http_Rflist_Helper" target="_blank" rel="external">有点类似我这个库,一直很少维护就是纠结啊,Ps:并且可以全局更换网络请求库</a></p>
 </blockquote>
-<h2 id="给我以灵感-网络请求-是-通过请求-异步-eventbus？"><a href="#给我以灵感-网络请求-是-通过请求-异步-eventbus？" class="headerlink" title="给我以灵感:网络请求 是 通过请求 异步+eventbus？"></a>给我以灵感:网络请求 是 通过请求 异步+eventbus？</h2><p>这样多个注册了Subscribe的页面同时存活，其中一个请求。另一个页面也会处理相同的数据，会不会凌乱呢？</p>
+</li>
+<li><p>给我以灵感:网络请求 是 通过请求 异步+eventbus？<br>这样多个注册了Subscribe的页面同时存活，其中一个请求。另一个页面也会处理相同的数据，会不会凌乱呢？</p>
 <blockquote>
 <p>不过这个确实很美观。我很喜欢 可以有一点缺憾,如果eventBus多支持一个方法,只在本类分发接受就好了~<br><img src="https://ww4.sinaimg.cn/large/006tNc79gy1ff2vqpvwczj30eo07uwel.jpg" alt=""></p>
 </blockquote>
-<h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><p>DataCache，FileUtil，DataCleanManager，UrlUtil，ACache，CacheUtil，UUIDGenerator<br>SpeedyLinearLayoutManager</p>
-<h2 id="灵感，不错的方法"><a href="#灵感，不错的方法" class="headerlink" title="灵感，不错的方法"></a>灵感，不错的方法</h2><p>public void setOnClickListener(View.OnClickListener l, int… ids)</p>
-<h2 id="复杂的书写格式"><a href="#复杂的书写格式" class="headerlink" title="复杂的书写格式"></a>复杂的书写格式</h2><p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1ff2wct9y99j30dc05gdg1.jpg" alt=""></p>
-<p>非与或非的符号则用此格式</p>
+</li>
+<li><p>工具类<br>DataCache，FileUtil，DataCleanManager，UrlUtil，ACache，CacheUtil，UUIDGenerator<br>SpeedyLinearLayoutManager</p>
+</li>
+<li><p>灵感，不错的方法<br>public void setOnClickListener(View.OnClickListener l, int… ids)</p>
+</li>
+<li><p>复杂的书写格式<br><img src="https://ww1.sinaimg.cn/large/006tNc79gy1ff2wct9y99j30dc05gdg1.jpg" alt=""><br>非与或非的符号则用此格式</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String </span>a,</div><div class="line"><span class="keyword">String </span><span class="keyword">b,</span></div><div class="line"><span class="keyword">String </span>c,</div><div class="line"><span class="keyword">String </span>d,</div></pre></td></tr></table></figure>
+</li>
+</ul>
 <h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/GcsSloop/diycode" target="_blank" rel="external">https://github.com/GcsSloop/diycode</a></p>
 ]]></content>
     
