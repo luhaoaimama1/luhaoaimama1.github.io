@@ -50,7 +50,7 @@
     <link href="https://luhaoaimama1.github.io/2017/04/29/Adapter3/"/>
     <id>https://luhaoaimama1.github.io/2017/04/29/Adapter3/</id>
     <published>2017-04-28T16:19:37.000Z</published>
-    <updated>2017-04-28T17:35:08.000Z</updated>
+    <updated>2017-04-28T17:37:25.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="分析时候的思路"><a href="#分析时候的思路" class="headerlink" title="分析时候的思路"></a>分析时候的思路</h1><ul>
 <li>adapter里面的viewhold可以被复用<blockquote>
@@ -67,7 +67,7 @@
 </li>
 <li><p>adapter 可扩展+链式调用  是用 泛型+继承 还是 同一个接口呢？</p>
 <blockquote>
-<p>泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg" alt=""><br>所以退而求其次 选择同一个接口</p>
+<p>泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了,估计不会吊我~<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg" alt=""><br>所以退而求其次 选择同一个接口</p>
 </blockquote>
 </li>
 <li><p>基础功能 </p>
@@ -138,7 +138,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;adapter 可扩展+链式调用  是用 泛型+继承 还是 同一个接口呢？&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了&lt;br&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;所以退而求其次 选择同一个接口&lt;/p&gt;
+&lt;p&gt;泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了,估计不会吊我~&lt;br&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;所以退而求其次 选择同一个接口&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;基础功能 &lt;/p&gt;

@@ -39,7 +39,7 @@
 </li>
 <li><p>adapter 可扩展+链式调用  是用 泛型+继承 还是 同一个接口呢？</p>
 <blockquote>
-<p>泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg" alt=""><br>所以退而求其次 选择同一个接口</p>
+<p>泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了,估计不会吊我~<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg" alt=""><br>所以退而求其次 选择同一个接口</p>
 </blockquote>
 </li>
 <li><p>基础功能 </p>
