@@ -37,7 +37,7 @@
 <meta property="og:url" content="https://luhaoaimama1.github.io/2017/04/29/chain/index.html">
 <meta property="og:site_name" content="Zone">
 <meta property="og:description" content="父类:返回值是泛型；12345678910111213141516public class Helper&amp;lt;T extends Helper&amp;gt; &amp;#123;     protected T child;     public Helper() &amp;#123;            child = (T) this;        &amp;#125;     public T setText(@I">
-<meta property="og:updated_time" content="2017-04-28T17:28:48.000Z">
+<meta property="og:updated_time" content="2017-04-28T17:31:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="继承与链式调用的结合">
 <meta name="twitter:description" content="父类:返回值是泛型；12345678910111213141516public class Helper&amp;lt;T extends Helper&amp;gt; &amp;#123;     protected T child;     public Helper() &amp;#123;            child = (T) this;        &amp;#125;     public T setText(@I">
@@ -226,6 +226,7 @@
     <div class="post-content">
       
         <h1 id="父类-返回值是泛型；"><a href="#父类-返回值是泛型；" class="headerlink" title="父类:返回值是泛型；"></a>父类:返回值是泛型；</h1><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Helper&lt;T</span> <span class="keyword">extends</span> <span class="title">Helper&gt;</span> </span>&#123;</div><div class="line">     <span class="keyword">protected</span> <span class="type">T</span> child;</div><div class="line">     public <span class="type">Helper</span>() &#123;</div><div class="line">            child = (<span class="type">T</span>) <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">     public <span class="type">T</span> setText(<span class="meta">@IdRes</span> int viewId,<span class="type">String</span> textStr) &#123;</div><div class="line">            ...</div><div class="line">            checkChild();</div><div class="line">            <span class="keyword">return</span> child;</div><div class="line">        &#125;</div><div class="line">     <span class="keyword">protected</span> void checkChild() &#123;</div><div class="line">            <span class="keyword">if</span> (child == <span class="literal">null</span>)</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">IllegalStateException</span>(<span class="string">"child must be set in child's Constructor!"</span> +</div><div class="line">                        <span class="string">"not method:initDefaultValueAnimator"</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="子类-制定泛型-继承父类"><a href="#子类-制定泛型-继承父类" class="headerlink" title="子类:制定泛型 + 继承父类"></a>子类:制定泛型 + 继承父类</h1><ul>
 <li>光继承，就已经包含扩展能力了。</li>
 <li>warpper方法其实装饰器模式<blockquote>
