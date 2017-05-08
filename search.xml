@@ -663,6 +663,8 @@
 <p>groupingBy等方法内包含Collector参数的含义，因为这个设计的时候就是不能连用只能通过传递参数更改泛型之类的。外部的collector会传递到新的collector中;</p>
 </blockquote>
 <h2 id="自定义收集器"><a href="#自定义收集器" class="headerlink" title="自定义收集器"></a>自定义收集器</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/collectors/StringCollector.java" target="_blank" rel="external">演示范例</a></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://tangpj.com/2017/04/24/java8-inAndroid/" target="_blank" rel="external">http://tangpj.com/2017/04/24/java8-inAndroid/</a></p>
+<p><a href="http://www.jianshu.com/p/c0d5c3094324" target="_blank" rel="external">http://www.jianshu.com/p/c0d5c3094324</a></p>
 ]]></content>
     </entry>
     
