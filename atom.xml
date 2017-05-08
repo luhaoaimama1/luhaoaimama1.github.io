@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2017-04-28T18:27:43.000Z</updated>
+  <updated>2017-05-08T09:17:20.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,6 +14,695 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java8函数式编程读书总结</title>
+    <link href="https://luhaoaimama1.github.io/2017/05/05/java8/"/>
+    <id>https://luhaoaimama1.github.io/2017/05/05/java8/</id>
+    <published>2017-05-05T04:40:37.000Z</published>
+    <updated>2017-05-08T09:17:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><ul>
+<li>Lambda表达式的类型:函数接口是<code>只有一个抽象</code>方法的接口</li>
+<li>@FunctionalInterface:是否仅仅一个抽象方法！不然编译错误，主要为了lambda提供方便;<blockquote>
+<p>有些多抽象方法的接口不必使用此注解！</p>
+</blockquote>
+</li>
+<li>interface <ul>
+<li>default(<code>注意有方法体!</code>)：符合多态 子类如果覆盖,既用自己的行为；<blockquote>
+<p>事件原因：Java8中Collection接口增加stream方法，意味所有子类都需要增加。</p>
+</blockquote>
+</li>
+<li>static default：未构造即可使用,一般用于构造 例如Stream.rang()方法构造流；</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="快捷键提示"><a href="#快捷键提示" class="headerlink" title="快捷键提示"></a>快捷键提示</h2><p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1ffbnfxt95bj30zk0j4wgl.jpg" alt=""></p>
+<h2 id="lambda简单使用"><a href="#lambda简单使用" class="headerlink" title="lambda简单使用"></a>lambda简单使用</h2><blockquote>
+<p>Tips:Lambda中的引用值是既成事实的final而不是变量。如果用的变量的话。编译器会告诉你的</p>
+</blockquote>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//无参数</span></div><div class="line">R<span class="function"><span class="title">unnable</span> runnable = () -&gt;</span> <span class="built_in">log</span>();</div><div class="line"></div><div class="line"><span class="comment">//单个参数</span></div><div class="line">P<span class="function"><span class="title">redicate</span>&lt;String&gt; p=o -&gt;</span> o.isEmpty();</div><div class="line"></div><div class="line"><span class="comment">//两个参数 不能省略括号！</span></div><div class="line">B<span class="function"><span class="title">iConsumer</span>&lt;String,String&gt; biFunction=(o, o2) -&gt;</span> <span class="built_in">log</span>();</div><div class="line"></div><div class="line"><span class="comment">//有返回值的Lambda.一句逻辑既是的时候可以省略return!</span></div><div class="line">C<span class="function"><span class="title">allback</span> callback = a -&gt;</span> <span class="number">1</span>==<span class="number">1</span>?<span class="string">"Lambda"</span>:<span class="string">"Java8"</span>;</div><div class="line"></div><div class="line">public interface Callback &#123;</div><div class="line">    String a(String a);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h2><p>这种方法很普遍<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">artist</span> -&gt;</span> artist.getName()</div></pre></td></tr></table></figure></p>
+<p>java8为其提供简化语法，叫做方法引用 去重用已有方法；<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Artist:</span>getName</div></pre></td></tr></table></figure></p>
+<p>标准语法为 Classname::methodName</p>
+<blockquote>
+<p>凡是使用Lambda表达式的地方都可以使用方引用</p>
+</blockquote>
+<p>特殊 构造<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(name,age)-&gt; <span class="keyword">new</span> <span class="type">Artist</span>(name,age)</div><div class="line">Artist:<span class="type"></span>:<span class="keyword">new</span><span class="type"></span></div><div class="line">数组的话</div><div class="line"><span class="keyword">String</span>[]:<span class="type"></span>:<span class="keyword">new</span><span class="type"></span></div></pre></td></tr></table></figure></p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//老方法</span></div><div class="line"><span class="keyword">String</span>[] <span class="keyword">array</span> = <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;<span class="string">"hello"</span>, <span class="string">"world"</span>&#125;;</div><div class="line"><span class="comment">//lambda 数组新写法；根据上下文推断类型信息；</span></div><div class="line"><span class="keyword">String</span>[] array2 = &#123;<span class="string">"hello"</span>, <span class="string">"world"</span>&#125;;</div></pre></td></tr></table></figure>
+<h2 id="default多重继承。碰到相同签名的方法"><a href="#default多重继承。碰到相同签名的方法" class="headerlink" title="default多重继承。碰到相同签名的方法"></a>default多重继承。碰到相同签名的方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Juckbox</span></span>&#123;</div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> String <span class="title">rock</span><span class="params">()</span></span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">"...all over the world!"</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Carriage</span></span>&#123;</div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> String <span class="title">rock</span><span class="params">()</span></span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">"...from side to side!"</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">implements</span> <span class="title">Juckbox</span>,<span class="title">Carriage</span></span>&#123;</div><div class="line"></div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">rock</span><span class="params">()</span> </span>&#123;</div><div class="line">           <span class="keyword">return</span> Carriage.<span class="keyword">super</span>.rock();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h1 id="Java8中重要的函数接口"><a href="#Java8中重要的函数接口" class="headerlink" title="Java8中重要的函数接口"></a>Java8中重要的函数接口</h1><blockquote>
+<p>英文翻译是有道的翻译~</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口</th>
+<th style="text-align:center">英文含义</th>
+<th style="text-align:center">函数描述符</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Predicate&lt;T&gt;</td>
+<td style="text-align:center">断言</td>
+<td style="text-align:center">T -&gt; boolean</td>
+<td style="text-align:center">Predicate&lt;String&gt; p=o -&gt; o.isEmpty()</td>
+</tr>
+<tr>
+<td style="text-align:center">Consumer&lt;T&gt;</td>
+<td style="text-align:center">消费</td>
+<td style="text-align:center">T -&gt; void</td>
+<td style="text-align:center">Consumer&lt;String&gt; consumer=s -&gt; log();</td>
+</tr>
+<tr>
+<td style="text-align:center">Function&lt;T&gt;</td>
+<td style="text-align:center">功能/函数</td>
+<td style="text-align:center">T -&gt; R</td>
+<td style="text-align:center">转换成另一个对象:Function&lt;String,File&gt; f= s -&gt; new File(s);</td>
+</tr>
+<tr>
+<td style="text-align:center">Supplier&lt;T&gt;</td>
+<td style="text-align:center">功能</td>
+<td style="text-align:center">None -&gt; T</td>
+<td style="text-align:center">供应者:Supplier&lt;String&gt; s=() -&gt; “heihei”;</td>
+</tr>
+<tr>
+<td style="text-align:center">UnaryOperator&lt;T&gt;</td>
+<td style="text-align:center">一元运算</td>
+<td style="text-align:center">T -&gt; T</td>
+<td style="text-align:center">UnaryOperator&lt;String&gt; s=s1 -&gt; s1+”,” ;</td>
+</tr>
+<tr>
+<td style="text-align:center">BinaryOperator&lt;T&gt;</td>
+<td style="text-align:center">二元运算</td>
+<td style="text-align:center">T,T -&gt; T</td>
+<td style="text-align:center">BinaryOperator&lt;String&gt; a=(s, s2) -&gt; s+s2;）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Bi系列"><a href="#Bi系列" class="headerlink" title="Bi系列"></a>Bi系列</h2><p>BiConsumer,BiFunction,BiPredicate:从一个参数值,扩展支持到两个参数；<br>范例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BiConsumer</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;</span>&#123;</div><div class="line"> <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t, U u)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="基本类型系列"><a href="#基本类型系列" class="headerlink" title="基本类型系列"></a>基本类型系列</h2><p>为了减小装箱拆箱而消耗的性能；</p>
+<blockquote>
+<p>Double/Int/Long 简称 <em>DIL</em></p>
+</blockquote>
+<ul>
+<li><em>DIL</em>XXX：代表参数值泛型</li>
+<li>To<em>DIL</em>XXX：代表返回值泛型</li>
+<li><em>DIL</em>To<em>DIL</em>XXX：To前面代表参数值泛型 ,To后边代表返回值泛型</li>
+<li>Obj<em>DIL</em>Consumer(<code>特殊</code>) :相当于BiConsumer, 代表的第二个参数类型的泛型</li>
+</ul>
+<p>范例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LongToIntFunction</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Applies this function to the given argument.</div><div class="line">     * <span class="doctag">@param</span> value the function argument</div><div class="line">     * <span class="doctag">@return</span> the function result</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">applyAsInt</span><span class="params">(<span class="keyword">long</span> value)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="流"><a href="#流" class="headerlink" title="流"></a>流</h1><blockquote>
+<p>Double/Int/Long 简称 <em>DIL</em></p>
+</blockquote>
+<p>集合stream的方法简介；</p>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">Arrays</span>.asList(<span class="string">"a"</span>,<span class="string">"b"</span>).stream();</div><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">HashSet</span>&lt;&gt;().<span class="title">stream</span>();</span></div><div class="line"><span class="title">new</span> <span class="title">HashMap</span>&lt;&gt;().<span class="title">entrySet</span>().<span class="title">stream</span>()</div></pre></td></tr></table></figure>
+<h2 id="Stream终结符"><a href="#Stream终结符" class="headerlink" title="Stream终结符"></a>Stream终结符</h2><p><a href="http://www.concretepage.com/java/jdk-8/" target="_blank" rel="external">官方演示范例</a></p>
+<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/EndSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">return</th>
+<th style="text-align:center">函数接口</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">all/any/none Match</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">Predicate&lt;T&gt;</td>
+<td style="text-align:center">筛选</td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">同list.size()</td>
+</tr>
+<tr>
+<td style="text-align:center">max/min</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">Optional&lt;T&gt;</td>
+<td style="text-align:center">Comparator&lt;T&gt;</td>
+<td style="text-align:center">返回一个最大/最小元素</td>
+</tr>
+<tr>
+<td style="text-align:center">findFirst</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">Optional&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">返回流中第一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">findAny</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">Optional&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">返回流中任意元素<br> <code>实测还是第一个元素</code></td>
+</tr>
+<tr>
+<td style="text-align:center">collect</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">R</td>
+<td style="text-align:center">Collector&lt;T, A, R&gt;</td>
+<td style="text-align:center">流中的元素收集到R中</td>
+</tr>
+<tr>
+<td style="text-align:center">collect</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">R</td>
+<td style="text-align:center">Supplier&lt;R&gt; supplier,<br>BiConsumer&lt;R,T&gt; ,<br>BiConsumer&lt;R, R&gt;</td>
+<td style="text-align:center">流中的元素收集到R中</td>
+</tr>
+<tr>
+<td style="text-align:center">reduce</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">Optional&lt;T&gt;</td>
+<td style="text-align:center">BinaryOperator&lt;T&gt;</td>
+<td style="text-align:center">累加运算: 求和,求积等</td>
+</tr>
+<tr>
+<td style="text-align:center">reduce</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">Optional&lt;T&gt;</td>
+<td style="text-align:center">T identity,<br>BinaryOperator&lt;T&gt;</td>
+<td style="text-align:center">累加运算: 求和,求积等</td>
+</tr>
+<tr>
+<td style="text-align:center">reduce</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">U</td>
+<td style="text-align:center">U,<br>BiFunction&lt;U,T, U&gt;,<br>BinaryOperator&lt;U&gt;</td>
+<td style="text-align:center">累加运算: 求和,求积等</td>
+</tr>
+<tr>
+<td style="text-align:center">forEach</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">Consumer&lt;T&gt;</td>
+<td style="text-align:center">遍历流中元素</td>
+</tr>
+<tr>
+<td style="text-align:center">forEachOrdered</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">Consumer&lt;T&gt;</td>
+<td style="text-align:center">顺序遍历流中元素</td>
+</tr>
+<tr>
+<td style="text-align:center">isParallel</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">是并行？</td>
+</tr>
+<tr>
+<td style="text-align:center">close</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">手动关闭流</td>
+</tr>
+<tr>
+<td style="text-align:center">spliterator</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">Spliterator&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">？？？</td>
+</tr>
+<tr>
+<td style="text-align:center">toArray</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Object/A[]</td>
+<td style="text-align:center">None/IntFunction&lt;A[]&gt;</td>
+<td style="text-align:center">流转换成数组</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Stream中间符"><a href="#Stream中间符" class="headerlink" title="Stream中间符"></a>Stream中间符</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/CenterSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">return</th>
+<th style="text-align:center">函数接口</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">filter</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Predicate&lt;T&gt;</td>
+<td style="text-align:center">筛选</td>
+</tr>
+<tr>
+<td style="text-align:center">peek</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Consumer&lt;T&gt;</td>
+<td style="text-align:center">查看流元素</td>
+</tr>
+<tr>
+<td style="text-align:center">distinct</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">去掉重复元素</td>
+</tr>
+<tr>
+<td style="text-align:center">skip</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">扔掉前面n个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">limit</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">返回不超过跟定长度n的流</td>
+</tr>
+<tr>
+<td style="text-align:center">map</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Function&lt;T,R&gt;</td>
+<td style="text-align:center">原来的流转换成新流:方形过渡到圆形</td>
+</tr>
+<tr>
+<td style="text-align:center">mapTo<em>DIL</em></td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center"><em>DIL</em>Stream</td>
+<td style="text-align:center">To<em>DIL</em>Function&lt;T&gt;</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">flatMap</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Function&lt;T,R&gt;</td>
+<td style="text-align:center">合并流</td>
+</tr>
+<tr>
+<td style="text-align:center">flatMapTo<em>DIL</em></td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center"><em>DIL</em> Stream</td>
+<td style="text-align:center">To<em>DIL</em>Function&lt;T&gt;</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">sort</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Comparator&lt;T&gt;/None</td>
+<td style="text-align:center">排序</td>
+</tr>
+<tr>
+<td style="text-align:center">sequential</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">串行</td>
+</tr>
+<tr>
+<td style="text-align:center">parallel</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">并行</td>
+</tr>
+<tr>
+<td style="text-align:center">unordered</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">返回一个无序的流<br><code>实际测试无效</code></td>
+</tr>
+<tr>
+<td style="text-align:center">onClose</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Runnable</td>
+<td style="text-align:center">流关闭会执行这个任务</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>parallel 不一定并行就是最快的。与数据还有多核处理器有关. 例如(本意是并行不一定快的。范例仅仅是个大概 请当看着玩)：如果处理10个元素，串行代码速度是并行的8倍。如果数量增至100则速度相等。如果增至10000 则并行是串行的2.5倍；</p>
+</blockquote>
+<h2 id="Stream静态起始符"><a href="#Stream静态起始符" class="headerlink" title="Stream静态起始符"></a>Stream静态起始符</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/StartSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">return</th>
+<th style="text-align:center">函数接口</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">concat</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Stream&lt;T&gt; a, Stream&lt;T&gt; b</td>
+<td style="text-align:center">合并流</td>
+</tr>
+<tr>
+<td style="text-align:center">generate</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">Supplier&lt;T&gt;</td>
+<td style="text-align:center">while循环</td>
+</tr>
+<tr>
+<td style="text-align:center">iterate</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">final T , final UnaryOperator&lt;T&gt;</td>
+<td style="text-align:center">while循环+累加器</td>
+</tr>
+<tr>
+<td style="text-align:center">of</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">T/T…</td>
+<td style="text-align:center">转成流</td>
+</tr>
+<tr>
+<td style="text-align:center">empty</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Stream&lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">返回一个空的流</td>
+</tr>
+<tr>
+<td style="text-align:center">builder</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">Builder &lt;T&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">通过add.build一个流</td>
+</tr>
+</tbody>
+</table>
+<h2 id="IntStream多出来的方法"><a href="#IntStream多出来的方法" class="headerlink" title="IntStream多出来的方法"></a>IntStream多出来的方法</h2><h3 id="IntStream-中间符-终结符"><a href="#IntStream-中间符-终结符" class="headerlink" title="IntStream  中间符/终结符"></a>IntStream  中间符/终结符</h3><blockquote>
+<p>DoubleStream,LongStream与之相同；</p>
+</blockquote>
+<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/dil/IntExtraTest.java" target="_blank" rel="external">演示范例</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">return</th>
+<th style="text-align:center">函数接口</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">asDoubleStream</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">DoubleStream</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">转换成DoubleStream</td>
+</tr>
+<tr>
+<td style="text-align:center">asLongStream</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">LongStream</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">转换成LongStream</td>
+</tr>
+<tr>
+<td style="text-align:center">boxed</td>
+<td style="text-align:center">中间符</td>
+<td style="text-align:center">Stream:Integer</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">装箱操作,int编程Integer</td>
+</tr>
+<tr>
+<td style="text-align:center">average</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">OptionalDouble</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">平均值</td>
+</tr>
+<tr>
+<td style="text-align:center">sum</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">求和</td>
+</tr>
+<tr>
+<td style="text-align:center">summaryStatistics</td>
+<td style="text-align:center">终结符</td>
+<td style="text-align:center">IntSummaryStatistics</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">简易的统计</td>
+</tr>
+</tbody>
+</table>
+<h3 id="IntStream-静态起始符"><a href="#IntStream-静态起始符" class="headerlink" title="IntStream 静态起始符"></a>IntStream 静态起始符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">return</th>
+<th style="text-align:center">函数接口</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">range</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">IntStream</td>
+<td style="text-align:center">int startInclusive, int endExclusive</td>
+<td style="text-align:center">不包括后边界</td>
+</tr>
+<tr>
+<td style="text-align:center">rangeClosed</td>
+<td style="text-align:center">起始符</td>
+<td style="text-align:center">IntStream</td>
+<td style="text-align:center">int startInclusive, int endExclusive</td>
+<td style="text-align:center">包括后边界</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">IntStream.range(<span class="number">1</span>,<span class="number">3</span>)<span class="comment">//流为:1,2</span></div><div class="line">IntStream.rangeClosed(<span class="number">1</span>,<span class="number">3</span>)<span class="comment">//流为:1,2,3</span></div></pre></td></tr></table></figure>
+<h3 id="IntSummaryStatistics简介"><a href="#IntSummaryStatistics简介" class="headerlink" title="IntSummaryStatistics简介"></a>IntSummaryStatistics简介</h3><ul>
+<li>IntSummaryStatistics（ Summary:简易的 Statistics：统计）<ul>
+<li>accept(int） 添加一个值</li>
+<li>combine(IntSummaryStatistics)与另一个合并成一个</li>
+<li>getAverage 平均数</li>
+<li>getCount 元素的个数</li>
+<li>getSum 求和</li>
+<li>getMin 最小的值</li>
+<li>getMax 最大的值</li>
+<li>toString </li>
+</ul>
+</li>
+</ul>
+<h1 id="收集器"><a href="#收集器" class="headerlink" title="收集器"></a>收集器</h1><p>Steam类会为你自动挑选合适的类型；<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Stream</span><span class="selector-class">.of</span>(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>)<span class="selector-class">.collect</span>(Collectors.toSet());</div></pre></td></tr></table></figure></p>
+<p>如果你想制定类型用toCollection他接受一个参数来创建集合<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Stream</span><span class="selector-class">.of</span>(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>)<span class="selector-class">.collect</span>(Collectors.toCollection(<span class="attribute">TreeSet</span>::new));</div></pre></td></tr></table></figure></p>
+<p>Collectors </p>
+<ul>
+<li>Collector<t, a,="" r=""><ul>
+<li>T 流中的元素类型</li>
+<li>A 中间类型</li>
+<li>R Stream.collect返回的类型</li>
+</ul>
+</t,></li>
+</ul>
+<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/collectors/SymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">return</th>
+<th style="text-align:center">函数接口</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">counting</td>
+<td style="text-align:center">Collector&lt;T, ?, Long&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">同list.size()</td>
+</tr>
+<tr>
+<td style="text-align:center">max/minBy</td>
+<td style="text-align:center">Collector&lt;T, ?, Optional&lt;T&gt;&gt;</td>
+<td style="text-align:center">Comparator&lt;T&gt;</td>
+<td style="text-align:center">对比器中最大/小元素</td>
+</tr>
+<tr>
+<td style="text-align:center">averaging<em>DIL</em></td>
+<td style="text-align:center">Collector&lt;T, ?, <em>DIL</em>&gt;</td>
+<td style="text-align:center">To<em>DIL</em>Function&gt;T&gt;</td>
+<td style="text-align:center">平均值</td>
+</tr>
+<tr>
+<td style="text-align:center">summing<em>DIL</em></td>
+<td style="text-align:center">Collector&lt;T, ?, <em>DIL</em>&gt;</td>
+<td style="text-align:center">To<em>DIL</em>Function&lt;T&gt;</td>
+<td style="text-align:center">求和</td>
+</tr>
+<tr>
+<td style="text-align:center">summarizing<em>DIL</em></td>
+<td style="text-align:center">Collector&lt;T, ?, <em>DIL</em>SummaryStatistics&gt;</td>
+<td style="text-align:center">To<em>DIL</em>Function&lt;T&gt;</td>
+<td style="text-align:center">简易的统计</td>
+</tr>
+<tr>
+<td style="text-align:center">collectingAndThen</td>
+<td style="text-align:center">Collector&lt;T,A,RR&gt;</td>
+<td style="text-align:center">Collector&lt;T,A,R&gt;,<br>Function&lt;R,RR&gt;</td>
+<td style="text-align:center">收集之后装起来</td>
+</tr>
+<tr>
+<td style="text-align:center">mapping</td>
+<td style="text-align:center">Collector&lt;T, ?, R&gt;</td>
+<td style="text-align:center">Function&lt;T,U&gt;,<br>Collector&lt;U, A, R&gt;</td>
+<td style="text-align:center">原来的流转换成新流:方形过渡到圆形</td>
+</tr>
+<tr>
+<td style="text-align:center">toCollection</td>
+<td style="text-align:center">Collector&lt;T, ?, C&gt;</td>
+<td style="text-align:center">Supplier&lt;C&gt;</td>
+<td style="text-align:center">制定一个集合去装载进来的流元素</td>
+</tr>
+<tr>
+<td style="text-align:center">toList</td>
+<td style="text-align:center">Collector&lt;T, ?,  List&lt;T&gt;&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">用List去收集,<br>Array/Linked等会选优</td>
+</tr>
+<tr>
+<td style="text-align:center">toSet</td>
+<td style="text-align:center">Collector&lt;T, ?,  Set&lt;T&gt;&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">用Set去收集,<br>Hash/Tree等会选优</td>
+</tr>
+<tr>
+<td style="text-align:center">toMap<br>toConcurrentMap</td>
+<td style="text-align:center">Collector&lt;T, ?, Map&lt;K,U&gt;&gt;</td>
+<td style="text-align:center">Function&lt;T, K&gt;,<br>Function&lt;T,U&gt;</td>
+<td style="text-align:center">Hash/ConcurrentMap去收集</td>
+</tr>
+<tr>
+<td style="text-align:center">joining</td>
+<td style="text-align:center">Collector&lt;CharSequence, ?, String&gt;</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">流连起来</td>
+</tr>
+<tr>
+<td style="text-align:center">joining</td>
+<td style="text-align:center">Collector&lt;CharSequence, ?, String&gt;</td>
+<td style="text-align:center">CharSequence delimiter</td>
+<td style="text-align:center">流连起来<br>delimiter:连接符</td>
+</tr>
+<tr>
+<td style="text-align:center">joining</td>
+<td style="text-align:center">Collector&lt;CharSequence, ?, String&gt;</td>
+<td style="text-align:center">CharSequence delimiter,<br>CharSequence prefix,<br>CharSequence suffix</td>
+<td style="text-align:center">流连起来<br>delimiter:连接符 <br>prefix:开始字符<br>suffix:结尾字符</td>
+</tr>
+<tr>
+<td style="text-align:center">groupingBy<br>groupingByConcurrent</td>
+<td style="text-align:center">Collector&lt;T, ?, Map&lt;K, List&lt;T&gt;&gt;&gt;</td>
+<td style="text-align:center">Function&lt;T, K&gt;</td>
+<td style="text-align:center">类型分组</td>
+</tr>
+<tr>
+<td style="text-align:center">groupingBy<br>groupingByConcurrent</td>
+<td style="text-align:center">Collector&lt;T, ?, Map&lt;K, D&lt;T&gt;&gt;&gt;</td>
+<td style="text-align:center">Function&lt;T, K&gt;,<br>Collector&lt;T, A, D&gt;</td>
+<td style="text-align:center">类型分组</td>
+</tr>
+<tr>
+<td style="text-align:center">groupingBy<br>groupingByConcurrent</td>
+<td style="text-align:center">Collector&lt;T, ?, M &gt;</td>
+<td style="text-align:center">Function&lt;T, K&gt;,<br>Supplier&lt;M&gt;,<br>Collector&lt;T, A, D&gt;</td>
+<td style="text-align:center">类型分组</td>
+</tr>
+<tr>
+<td style="text-align:center">partitioningBy</td>
+<td style="text-align:center">Collector&lt;T, ?, Map&lt;Boolean, List&lt;T&gt;&gt;&gt;</td>
+<td style="text-align:center">Predicate&lt;T&gt;</td>
+<td style="text-align:center">groupingBy的简化<br>仅有两种分组类型true,false</td>
+</tr>
+<tr>
+<td style="text-align:center">partitioningBy</td>
+<td style="text-align:center">Collector&lt;T, ?, Map&lt;Boolean, D&gt;&gt;</td>
+<td style="text-align:center">Predicate&lt;T&gt;,<br>Collector&lt;T, A, D&gt;</td>
+<td style="text-align:center">groupingBy的简化<br>仅有两种分组类型true,false</td>
+</tr>
+<tr>
+<td style="text-align:center">reducing</td>
+<td style="text-align:center">Collector&lt;T, ?, Optional&lt;T&gt;&gt;</td>
+<td style="text-align:center">BinaryOperator&lt;T&gt;</td>
+<td style="text-align:center">累加器</td>
+</tr>
+<tr>
+<td style="text-align:center">reducing</td>
+<td style="text-align:center">Collector&lt;T, ?, T&gt;</td>
+<td style="text-align:center">T identity,<br>BinaryOperator&lt;T&gt;</td>
+<td style="text-align:center">累加器</td>
+</tr>
+<tr>
+<td style="text-align:center">reducing</td>
+<td style="text-align:center">Collector&lt;T, ?, U&gt;</td>
+<td style="text-align:center">T identity,<br>Function&lt;T, U&gt; ,<br>BinaryOperator&lt;T&amp;gt</td>
+<td style="text-align:center">累加器<br><code>这个就不需要并行了请注意</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>groupingBy等方法内包含Collector参数的含义，因为这个设计的时候就是不能连用只能通过传递参数更改泛型之类的。外部的collector会传递到新的collector中;</p>
+</blockquote>
+<h2 id="自定义收集器"><a href="#自定义收集器" class="headerlink" title="自定义收集器"></a>自定义收集器</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/collectors/StringCollector.java" target="_blank" rel="external">演示范例</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Lambda表达式&quot;&gt;&lt;a href=&quot;#Lambda表达式&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式&quot;&gt;&lt;/a&gt;Lambda表达式&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Lambda表达式的类型:函数接口是&lt;code&gt;只有一个抽象&lt;/code&gt;方法的接口&lt;/li&gt;
+&lt;li&gt;@FunctionalInterface:是否仅仅一个抽象方法！不然编译错误，主要为了lambda提供方便;&lt;blockquote&gt;
+&lt;p&gt;有些多抽象方法的接口不必使用此注解！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;interface &lt;ul&gt;
+&lt;li&gt;default(&lt;code&gt;注意有方法体!&lt;/code&gt;)：符合多态 子类如果覆盖,既用自己的行为；&lt;blockquote&gt;
+&lt;p&gt;事件原因：Java8中Collection接口增加stream方法，意味所有子类都需要增加。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;static default：未构造即可使用,一般用于构造 例如Stream.rang()方法构造流；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>继承与链式调用的结合</title>
@@ -1940,41 +2629,6 @@
       <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
       <category term="PorterDuffXfermode" scheme="https://luhaoaimama1.github.io/tags/PorterDuffXfermode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android疑难问题汇总</title>
-    <link href="https://luhaoaimama1.github.io/2016/07/13/Java%E7%96%91%E9%9A%BE%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
-    <id>https://luhaoaimama1.github.io/2016/07/13/Java疑难问题汇总/</id>
-    <published>2016-07-13T05:19:37.000Z</published>
-    <updated>2017-03-14T07:14:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>持续收集ing 敬请留言~</p>
-<a id="more"></a>
-<ul>
-<li><p>当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递? </p>
-<ul>
-<li>基本类型: 按值传递。既传递值的副本。实际两个对象  </li>
-<li>对象数组: 按值传递。传递 引用的副本。实际一个对象<blockquote>
-<p>Tips:数组需要注意的地方</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">handValue(<span class="keyword">sort</span>[<span class="number">1</span>]);<span class="comment">//传递的是sort[1]值的副本</span></div><div class="line">handValue2(<span class="keyword">sort</span>);<span class="comment">//传递的是sort的引用的副本</span></div></pre></td></tr></table></figure></blockquote>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;持续收集ing 敬请留言~&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
   </entry>
   
