@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2017-05-08T09:20:27.000Z</updated>
+  <updated>2017-07-12T03:06:00.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Recycler下Adapter的HeaderFooter多个添加方式</title>
+    <link href="https://luhaoaimama1.github.io/2017/07/12/Adapter3HF/"/>
+    <id>https://luhaoaimama1.github.io/2017/07/12/Adapter3HF/</id>
+    <published>2017-07-11T16:19:37.000Z</published>
+    <updated>2017-07-12T03:06:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Header-Footer添加的问题"><a href="#Header-Footer添加的问题" class="headerlink" title="Header Footer添加的问题"></a>Header Footer添加的问题</h1><p>因为要撸库 所有参考了很多adapter库的代码 但是都发现一个问题 star前5的的Recycler Adapter库的Header Footer要么只能添加一次(在这里面添加删除view),要么添加之后删除会错位</p>
+<blockquote>
+<p>为什么会错位呢?因为他们用List<viewdelegates> mHeaderViews的position 映射后当getType的值。<br>当删除一个headView的时候postion则会错位。如果做这样的以一个操作 删除头部然后添加另一个头部。布局不同。那么会发现视图根本不会改变还是原来的头部布局。因为getType的没变的缘故。<br>当然可以通过其他的方式 让position不错位。具体可看 <a href="https://github.com/luhaoaimama1/ZAdapter3" target="_blank" rel="external">ZAdapter3</a>的1.0分支。但是还是有问题 滚动动画会出现奇怪的问题。所以弃用!</viewdelegates></p>
+</blockquote>
+<p>怎么改变这一现状能让添加头部和尾部如同listView一样呢。参考了ListView发现所有类型都是一个;而后我有想到 viewHold的机制其实就是复用。那我给头部和尾部都添加一个空的FrameLayout。然后在bindView是头尾的时候 removeAllViews,和addView(header/footer) 不就可以了吗?</p>
+<h1 id="这里我给出关键性代码"><a href="#这里我给出关键性代码" class="headerlink" title="这里我给出关键性代码:"></a>这里我给出关键性代码:</h1><p><a href="https://github.com/luhaoaimama1/ZAdapter3/blob/master/zadapter3/src/main/java/com/zone/adapter3/base/Header2FooterRcvAdapter.java" target="_blank" rel="external">完整代码</a></p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">int</span> ITEM_VIEW_TYPE_HEADER_OR_FOOTER = <span class="number">-3</span>;</div><div class="line"></div><div class="line"> <span class="comment">//Limit one thousand</span></div><div class="line"> <span class="keyword">private</span> List&lt;ViewDelegates&gt; mHeaderViews = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"> <span class="keyword">private</span> List&lt;ViewDelegates&gt; mFooterViews = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line"></div><div class="line">@Override</div><div class="line"> <span class="keyword">public</span> Holder onCreateViewHolder(final ViewGroup parent, <span class="keyword">int</span> viewType) &#123;</div><div class="line">     <span class="built_in">if</span> (viewType == ITEM_VIEW_TYPE_HEADER_OR_FOOTER) &#123;</div><div class="line">         QuickConfig.e(<span class="string">"onCreateViewHolder header or footer :"</span> + viewType);</div><div class="line">         <span class="built_in">return</span> <span class="keyword">new</span> Holder(setFullspan(LayoutInflater.from(context)</div><div class="line">                 .inflate(R.layout.base_vp, mRecyclerView, false)));</div><div class="line">     &#125;</div><div class="line">     ...</div><div class="line"> &#125;</div><div class="line"> <span class="comment">/**</span></div><div class="line">  * @return layoutid</div><div class="line">  * 因为getItemViewType不同 导致 头部底部view不会被重用!</div><div class="line">  */</div><div class="line"> @Override</div><div class="line"> <span class="keyword">public</span> <span class="keyword">int</span> getItemViewType(<span class="keyword">int</span> <span class="built_in">position</span>) &#123;</div><div class="line">     ...</div><div class="line">     <span class="built_in">if</span> (<span class="built_in">position</span> &gt;= getHeaderViewsCount() &amp;&amp; <span class="built_in">position</span> &lt; getHeaderViewsCount() + data.<span class="built_in">size</span>()) &#123;</div><div class="line">         QuickConfig.e(<span class="string">"getItemViewType views:"</span> + <span class="built_in">position</span>);</div><div class="line">         <span class="keyword">int</span> result = getItemViewType2(getDataPosition(<span class="built_in">position</span>));</div><div class="line">         <span class="built_in">if</span> (result == ITEM_VIEW_TYPE_HEADER_OR_FOOTER)</div><div class="line">             <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"layoutType is must not be"</span> + ITEM_VIEW_TYPE_HEADER_OR_FOOTER);</div><div class="line">         <span class="built_in">return</span> result;</div><div class="line">     &#125; <span class="built_in">else</span> &#123;</div><div class="line">         QuickConfig.e(<span class="string">"getItemViewType healder or footer:"</span> + <span class="built_in">position</span>);</div><div class="line">         <span class="built_in">return</span> ITEM_VIEW_TYPE_HEADER_OR_FOOTER;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> @Override</div><div class="line"> <span class="keyword">public</span> <span class="keyword">void</span> onBindViewHolder(Holder holder, <span class="keyword">int</span> <span class="built_in">position</span>) &#123;</div><div class="line">     <span class="built_in">if</span> (isEmptyData())</div><div class="line">         <span class="built_in">return</span>;</div><div class="line">     <span class="built_in">if</span> (<span class="built_in">position</span> &gt;= mHeaderViews.<span class="built_in">size</span>() &amp;&amp; <span class="built_in">position</span> &lt; mHeaderViews.<span class="built_in">size</span>() + data.<span class="built_in">size</span>()) &#123;</div><div class="line">         <span class="built_in">if</span> (holder.wrapper != null)</div><div class="line">             holder.wrapper.getViewDelegates().fillData(</div><div class="line">                     <span class="built_in">position</span>, data.<span class="built_in">get</span>(getDataPosition(<span class="built_in">position</span>)),</div><div class="line">                     holder.helper);</div><div class="line">     &#125; <span class="built_in">else</span> <span class="built_in">if</span> (<span class="built_in">position</span> &lt; mHeaderViews.<span class="built_in">size</span>()) &#123;</div><div class="line">         QuickConfig.e(<span class="string">"bind header position:"</span> + <span class="built_in">position</span>);</div><div class="line">         bindHFView((ViewGroup) holder.itemView, mHeaderViews.<span class="built_in">get</span>(<span class="built_in">position</span>).getItemView());</div><div class="line">     &#125; <span class="built_in">else</span> &#123;</div><div class="line">         QuickConfig.e(<span class="string">"bind footer position:"</span> + <span class="built_in">position</span>);</div><div class="line">         bindHFView((ViewGroup) holder.itemView, mFooterViews.<span class="built_in">get</span>(<span class="built_in">position</span> - getHeaderViewsCount() - data.<span class="built_in">size</span>()).getItemView());</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">void</span> bindHFView(ViewGroup parent, View child) &#123;</div><div class="line">     parent.removeAllViews();</div><div class="line">     ViewGroup vp = (ViewGroup) child.getParent();</div><div class="line">     <span class="built_in">if</span> (vp != null)</div><div class="line">         vp.removeAllViews();</div><div class="line">     parent.addView(child);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Header-Footer添加的问题&quot;&gt;&lt;a href=&quot;#Header-Footer添加的问题&quot; class=&quot;headerlink&quot; title=&quot;Header Footer添加的问题&quot;&gt;&lt;/a&gt;Header Footer添加的问题&lt;/h1&gt;&lt;p&gt;因为要撸库 
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="adapter" scheme="https://luhaoaimama1.github.io/tags/adapter/"/>
+    
+  </entry>
   
   <entry>
     <title>Java8函数式编程读书总结</title>
@@ -2510,127 +2539,6 @@
       <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
       <category term="事件传递" scheme="https://luhaoaimama1.github.io/tags/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android-PorterDuffXfermode的正确使用方式</title>
-    <link href="https://luhaoaimama1.github.io/2016/08/28/Xfermode/"/>
-    <id>https://luhaoaimama1.github.io/2016/08/28/Xfermode/</id>
-    <published>2016-08-28T05:19:37.000Z</published>
-    <updated>2016-12-30T14:24:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
-<a id="more"></a>
-<h1 id="官方合成图"><a href="#官方合成图" class="headerlink" title="官方合成图"></a>官方合成图</h1><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb8yigv0rqj30m80f8my1.jpg" alt=""></p>
-<blockquote>
-<p>如正确姿势的图，首先要明白的</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名字</th>
-<th style="text-align:center">解释2</th>
-<th style="text-align:center">名字</th>
-<th style="text-align:center">解释2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">黄色</td>
-<td style="text-align:center">先画,下层(dst)</td>
-<td style="text-align:center">in</td>
-<td style="text-align:center">交集</td>
-</tr>
-<tr>
-<td style="text-align:center">蓝色</td>
-<td style="text-align:center">后画,上层(src)</td>
-<td style="text-align:center">out</td>
-<td style="text-align:center">不相交的</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>举例：PorterDuff.Mode.SRC_IN参数，表示的显示的是 SRC层 IN交集的部分(注意 <code>这其实是DST层</code> 下面有解释)；</p>
-</blockquote>
-<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yipzxu1j30rs0c13yr.jpg" alt=""></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名字</th>
-<th style="text-align:center">解释2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">图2</td>
-<td style="text-align:center"><code>创建两个Bitmap</code> <code>手机宽高</code> <code>bitmap上绘制圆</code> <code>如果看不懂看下面的代码</code></td>
-</tr>
-<tr>
-<td style="text-align:center">图1</td>
-<td style="text-align:center"><code>绘两个圆</code> <code>如果看不懂看下面的代码</code></td>
-</tr>
-</tbody>
-</table>
-<h1 id="核心原理-边界-："><a href="#核心原理-边界-：" class="headerlink" title="核心原理(边界)："></a>核心原理(边界)：</h1><blockquote>
-<p>Xfermode效果:作用在 <code>两个边界之内</code>；<code>边界之外</code> <code>没有Xfermode效果</code>；</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">图</th>
-<th style="text-align:center">边界</th>
-<th style="text-align:center">SRC_IN</th>
-<th style="text-align:center">SRC_OUT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>图2</code> <code>正确姿势</code></td>
-<td style="text-align:center">每个都是手机的宽高</td>
-<td style="text-align:center">正确姿势图中的SRC_IN</td>
-<td style="text-align:center">如正确姿势图中的 SRC_OUT</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>图1</code> <code>平时的误解</code></td>
-<td style="text-align:center">每个都是绘的圆那么大</td>
-<td style="text-align:center">如 <code>正确姿势图中的SRC_IN</code> <code>多出黄色的部分</code></td>
-<td style="text-align:center">如 <code>正确姿势图中的SRC_OUT</code> <code>多出黄色的部分</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>正确姿势图 是官方给的图；</p>
-<p>Tips:为什么多出黄色的部分？ 因为这个部分是 边界未相交的部分,那么不会有Xfermode的效果 所以剩下；</p>
-<p><code>那么大家会很疑惑，为什么DST剩下了,SRC边界之外为何不剩下？</code></p>
-<p>因为DST先绘制的 就是底图.SRC是为了给DST添加叠加模式的效果的.</p>
-<p><code>最终显示的都是DST只是变成有叠加效果的DST；</code></p>
-</blockquote>
-<p><code>demo效果：动画、surfaceView、绘图方面的研究-&gt;Xfermode;然后选择模式；</code><br><a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/animal/viewa/XfermodeView.java" target="_blank" rel="external">xfermode代码</a></p>
-<p>图1的代码：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">canvas.saveLayerAlpha(<span class="number">0</span>, <span class="number">0</span>, getWidth(), getHeight(), <span class="number">255</span>,</div><div class="line">            Canvas.ALL_SAVE_FLAG);</div><div class="line"></div><div class="line">    paint.setColor(Color.YELLOW);</div><div class="line">    canvas.drawCircle(getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, <span class="number">200</span>, paint);</div><div class="line">    paint.setXfermode(new PorterDuffXfermode(mode));</div><div class="line">    paint.setColor(Color.BLUE);</div><div class="line">    canvas.drawCircle(getWidth() / <span class="number">2</span> + <span class="number">200</span>, getHeight() / <span class="number">2</span> + <span class="number">200</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure></p>
-<p>图2的代码：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//画黄色的圆 满屏幕那种 <span class="keyword">bitmap</span></div><div class="line"><span class="keyword">Bitmap </span><span class="keyword">bt </span>= <span class="keyword">Bitmap.createBitmap(getWidth(), </span>getHeight(), <span class="keyword">Bitmap.Config.ARGB_4444);</span></div><div class="line"><span class="symbol">canvas2.setBitmap</span>(<span class="keyword">bt);</span></div><div class="line"><span class="symbol">paint.setColor</span>(Color.YELLOW)<span class="comment">;</span></div><div class="line"><span class="symbol">canvas2.drawCircle</span>(getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, <span class="number">200</span>, paint)<span class="comment">;</span></div><div class="line">//画蓝色的圆 满屏幕那种 <span class="keyword">bitmap</span></div><div class="line"><span class="keyword">Bitmap </span><span class="keyword">bt2 </span>= <span class="keyword">Bitmap.createBitmap(getWidth(), </span>getHeight(), <span class="keyword">Bitmap.Config.ARGB_4444);</span></div><div class="line"><span class="symbol">canvas2.setBitmap</span>(<span class="keyword">bt2);</span></div><div class="line"><span class="symbol">paint.setColor</span>(Color.<span class="keyword">BLUE);</span></div><div class="line"><span class="symbol">canvas2.drawCircle</span>(getWidth() / <span class="number">2</span> + <span class="number">200</span>, getHeight() / <span class="number">2</span> + <span class="number">200</span>, <span class="number">200</span>, paint)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
-<h1 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h1><h2 id="为什么-不用saveLayerAlpha有时候就不好使"><a href="#为什么-不用saveLayerAlpha有时候就不好使" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使"></a>为什么 不用saveLayerAlpha有时候就不好使</h2><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="external">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int layerID = canvas.saveLayer(<span class="number">0</span>, <span class="number">0</span>, width * <span class="number">2</span>, height * <span class="number">2</span>, mPaint, Canvas.ALL_SAVE_FLAG);</div><div class="line">canvas.drawBitmap(dstBmp, <span class="number">0</span>, <span class="number">0</span>, mPaint);</div><div class="line">mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));</div><div class="line">canvas.drawBitmap(srcBmp, width / <span class="number">2</span>, height / <span class="number">2</span>, mPaint);</div></pre></td></tr></table></figure>
-<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8ygjcf7ij30uy092mx6.jpg" alt=""></p>
-<h2 id="有saveLayer的绘图流程"><a href="#有saveLayer的绘图流程" class="headerlink" title="有saveLayer的绘图流程"></a><strong>有saveLayer的绘图流程</strong></h2><p>这是因为在调用saveLayer时，会生成了一个全新的bitmap，这个bitmap的大小就是我们指定的保存区域的大小，新生成的bitmap是全透明的，在调用saveLayer后所有的绘图操作都是在这个bitmap上进行的。<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yiwcm8bj30f008umx5.jpg" alt=""></p>
-<h2 id="没有saveLayer的绘图流程"><a href="#没有saveLayer的绘图流程" class="headerlink" title="没有saveLayer的绘图流程"></a><strong>没有saveLayer的绘图流程</strong></h2><p>由于我们先把整个画布给染成了绿色，然后再画上了一个圆形，所以在应用xfermode来画源图像的时候，目标图像当前Bitmap上的所有图像了，也就是整个绿色的屏幕和一个圆形了。所以这时候源图像的相交区域是没有透明像素的，透明度全是100%，这也就不难解释结果是这样的原因了。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yj3233oj30fu09ga9z.jpg" alt=""></p>
-<blockquote>
-<p>总结就是  saveLayer为了区分，哪一步的图形,应该与合成模式的bitmap去合成 运算；</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;看这篇文章请确保看过本站的&lt;strong&gt;Android-Canvas&lt;/strong&gt;这篇文章,主要理解其工作模式后会更容易理解;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
-    
-      <category term="PorterDuffXfermode" scheme="https://luhaoaimama1.github.io/tags/PorterDuffXfermode/"/>
     
   </entry>
   
