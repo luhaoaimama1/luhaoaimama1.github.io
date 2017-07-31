@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[Rxjava总结]]></title>
+      <title><![CDATA[Rxjava2总结]]></title>
       <url>https://luhaoaimama1.github.io/2017/07/31/rxjava/</url>
       <content type="html"><![CDATA[<h2 id="Rxjava2基础认知"><a href="#Rxjava2基础认知" class="headerlink" title="Rxjava2基础认知"></a>Rxjava2基础认知</h2><ul>
 <li><p>形式正确的有限Observable<br>调用观察者的onCompleted正好一次或者它的onError正好一次，而且此后不能再调用观察者的任何其它方法。如果onComplete 或者 onError 走任何一个 都会 主动解除订阅关系；</p>
