@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="ZAdapter3断头吸附效果"/>
+
+
+
+
+  <meta name="keywords" content="adapter," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Zone">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+
+
+
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/08/11/Adapter3Absorb/"/>
+
+
+<meta name="description" content="几种方案是选择
+外层一个显示的断头和内部的布局一样,但不是同一个  因为涉及到选择状态和 横向滚动 而导致的复杂性 放弃！
+
+自定义recyclerView布局,这样解决了是同一个的view的问题。但是因为getTop而导致 刷新监听的不兼容 放弃！
+
+既然想要用同一个View的话可以用李代桃僵的方式去实现，既用一个空view去代替RecyclerView的Itemview站位。然后吧itemVi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZAdapter3断头吸附效果">
+<meta property="og:url" content="https://luhaoaimama1.github.io/2017/08/11/Adapter3Absorb/index.html">
+<meta property="og:site_name" content="Zone">
+<meta property="og:description" content="几种方案是选择
+外层一个显示的断头和内部的布局一样,但不是同一个  因为涉及到选择状态和 横向滚动 而导致的复杂性 放弃！
+
+自定义recyclerView布局,这样解决了是同一个的view的问题。但是因为getTop而导致 刷新监听的不兼容 放弃！
+
+既然想要用同一个View的话可以用李代桃僵的方式去实现，既用一个空view去代替RecyclerView的Itemview站位。然后吧itemVi">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fifdm9jzucg307i0dcal7.gif">
+<meta property="og:updated_time" content="2017-08-10T22:25:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ZAdapter3断头吸附效果">
+<meta name="twitter:description" content="几种方案是选择
+外层一个显示的断头和内部的布局一样,但不是同一个  因为涉及到选择状态和 横向滚动 而导致的复杂性 放弃！
+
+自定义recyclerView布局,这样解决了是同一个的view的问题。但是因为getTop而导致 刷新监听的不兼容 放弃！
+
+既然想要用同一个View的话可以用李代桃僵的方式去实现，既用一个空view去代替RecyclerView的Itemview站位。然后吧itemVi">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fifdm9jzucg307i0dcal7.gif">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?luhaoaimama1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+    <title> ZAdapter3断头吸附效果 · Zone </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/message">
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/github">
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks">
+            外联
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">Zone</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      
+      <a class="mobile-menu-item" href="/">
+        首页
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/archives/">
+        归档
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/categories">
+        分类
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/about">
+        关于
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/message">
+        留言
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/github">
+        项目
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/friendlinks">
+        外联
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ZAdapter3断头吸附效果
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年8月11日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#几种方案是选择"><span class="toc-text">几种方案是选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果图"><span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#demo"><span class="toc-text">demo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ZAdapter3-github地址-欢迎star"><span class="toc-text">ZAdapter3 github地址 欢迎star~</span></a></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <h1 id="几种方案是选择"><a href="#几种方案是选择" class="headerlink" title="几种方案是选择"></a>几种方案是选择</h1><ul>
+<li><p>外层一个显示的断头和内部的布局一样,但不是同一个  因为涉及到选择状态和 横向滚动 而导致的复杂性 放弃！</p>
+</li>
+<li><p>自定义recyclerView布局,这样解决了是同一个的view的问题。但是因为getTop而导致 刷新监听的不兼容 放弃！</p>
+</li>
+<li><p>既然想要用同一个View的话可以用李代桃僵的方式去实现，既用一个空view去代替RecyclerView的Itemview站位。然后吧itemView显示在断头上即可！</p>
+</li>
+</ul>
+<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fifdm9jzucg307i0dcal7.gif" alt=""></p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsorbOnScrollListener</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">OnScrollListener</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FrameLayout vpShow;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] absorbPos;</div><div class="line">    <span class="keyword">private</span> View[] absorbViews;</div><div class="line">    <span class="keyword">private</span> FrameLayout[] itemViews;</div><div class="line">    <span class="keyword">private</span> View placeholderView;</div><div class="line">    <span class="keyword">private</span> View contentView;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbsorbOnScrollListener</span><span class="params">(FrameLayout vpShow, <span class="keyword">int</span>... absorbPos)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (absorbPos == <span class="keyword">null</span> || absorbPos.length == <span class="number">0</span>)</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"absorbPos is not null or empty"</span>);</div><div class="line">        <span class="keyword">this</span>.absorbPos = absorbPos;</div><div class="line">        <span class="keyword">this</span>.vpShow = vpShow;</div><div class="line">        absorbViews = <span class="keyword">new</span> View[absorbPos.length];</div><div class="line">        itemViews = <span class="keyword">new</span> FrameLayout[absorbPos.length];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> newState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> pos = <span class="number">0</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//GridLayoutManager 继承LinearLayoutManager 所以也支持GridLayoutManager</span></div><div class="line">            pos = ((LinearLayoutManager) (recyclerView.getLayoutManager())).findFirstVisibleItemPosition();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"仅仅支持继承LinearLayoutManager的布局!"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//缓存list中断头view</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; absorbPos.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (pos == absorbPos[i] &amp;&amp; itemViews[i] == <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    itemViews[i] = (FrameLayout) recyclerView.findViewHolderForLayoutPosition(pos).itemView;</div><div class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"断头的itemView必须是FrameLayout!"</span>);</div><div class="line">                &#125;</div><div class="line">                absorbViews[i] = itemViews[i].getChildAt(<span class="number">0</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> showPos = findShowPos(pos);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (showPos == -<span class="number">1</span>) &#123;<span class="comment">//啥也不显示</span></div><div class="line">            <span class="keyword">if</span> (placeholderView != <span class="keyword">null</span> &amp;&amp; placeholderView.getParent() != <span class="keyword">null</span>) &#123;</div><div class="line">                restoreItemView(<span class="number">0</span>);</div><div class="line">                contentView = <span class="keyword">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (placeholderView == <span class="keyword">null</span>)</div><div class="line">                placeholderView = <span class="keyword">new</span> View(recyclerView.getContext());</div><div class="line"></div><div class="line">            <span class="comment">//找到对应的位置</span></div><div class="line">            <span class="keyword">int</span> arrayPos = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; absorbPos.length; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (showPos == absorbPos[i]) &#123;</div><div class="line">                    arrayPos = i;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (!(contentView != <span class="keyword">null</span> &amp;&amp; contentView == absorbViews[arrayPos])) &#123;</div><div class="line">                <span class="comment">//如果断头view不改变的话仅仅更改位置  主要是节省了操作</span></div><div class="line"></div><div class="line">                <span class="comment">//找到之前那个itemView 还原了</span></div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; absorbViews.length; i++) &#123;</div><div class="line">                    <span class="keyword">if</span> (absorbViews[i] != <span class="keyword">null</span> &amp;&amp; absorbViews[i] == contentView) &#123;</div><div class="line">                        restoreItemView(i);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="comment">//ItemView的狸猫换太子 显示在VP中</span></div><div class="line">                itemViews[arrayPos].removeView(absorbViews[arrayPos]);</div><div class="line">                placeholderView.setLayoutParams(absorbViews[arrayPos].getLayoutParams());</div><div class="line">                placeholderView.getLayoutParams().height = absorbViews[arrayPos].getHeight();</div><div class="line">                itemViews[arrayPos].addView(placeholderView);</div><div class="line">                addContentView(absorbViews[arrayPos]);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">//位移计算!</span></div><div class="line">            <span class="keyword">if</span> (showPos != absorbPos[absorbPos.length - <span class="number">1</span>]) &#123;<span class="comment">//最后的那个不进行位移</span></div><div class="line">                <span class="keyword">int</span> next = absorbPos[arrayPos + <span class="number">1</span>];</div><div class="line">                <span class="keyword">if</span> (recyclerView.findViewHolderForLayoutPosition(next) == <span class="keyword">null</span>)</div><div class="line">                    absorbViews[arrayPos].setTranslationY(<span class="number">0</span>);</div><div class="line">                <span class="keyword">else</span> &#123;</div><div class="line">                    View targetView = recyclerView.findViewHolderForLayoutPosition(next).itemView;</div><div class="line">                    <span class="keyword">if</span> (targetView.getTop() &lt;= absorbViews[arrayPos].getHeight())</div><div class="line">                        absorbViews[arrayPos].setTranslationY(targetView.getTop() - absorbViews[arrayPos].getHeight());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">restoreItemView</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</div><div class="line">        itemViews[i].removeView(placeholderView);</div><div class="line">        vpShow.removeView(absorbViews[i]);</div><div class="line">        absorbViews[i].setTranslationY(<span class="number">0</span>);</div><div class="line">        itemViews[i].addView(absorbViews[i]);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addContentView</span><span class="params">(View absorbView)</span> </span>&#123;</div><div class="line">        vpShow.addView(absorbView);</div><div class="line">        contentView = absorbView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 3,6,9为例  [1,3)show 无 ,[3,6)show 3,[6,9)show 6,&gt;=9 show 9,</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findShowPos</span><span class="params">(<span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; absorbPos.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (pos &lt; absorbPos[i]) &#123;</div><div class="line">                <span class="keyword">if</span> (i == <span class="number">0</span>)<span class="comment">//[1,3)show 无</span></div><div class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">                <span class="comment">//[3,6)show 3,[6,9)show 6</span></div><div class="line">                System.out.println(<span class="string">"Absorb_ i:"</span> + i + <span class="string">"\t itemViews[i-1].getTop()"</span> + itemViews[i - <span class="number">1</span>].getTop());</div><div class="line">                <span class="keyword">return</span> findWithOutDecTop(i, <span class="string">"Absorb_显示:"</span> + (i - <span class="number">1</span>), <span class="string">"Absorb_显示:无"</span>, <span class="string">"Absorb_显示:"</span> + (i - <span class="number">2</span>));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// &gt;=9 show 9</span></div><div class="line">        <span class="keyword">return</span> findWithOutDecTop(absorbPos.length, <span class="string">"Absorb_显示  Last:"</span> + (absorbPos.length - <span class="number">1</span>), <span class="string">"Absorb_显示  Last:无"</span>, <span class="string">"Absorb_显示  Last:"</span> + (absorbPos.length - <span class="number">2</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findWithOutDecTop</span><span class="params">(<span class="keyword">int</span> i, String x, String x2, String x3)</span> </span>&#123;</div><div class="line">        <span class="comment">// getTop如果&lt;=0的时候 才显示这个位置的断头</span></div><div class="line">        <span class="keyword">if</span> (itemViews[i - <span class="number">1</span>].getTop() &lt;= <span class="number">0</span>) &#123;<span class="comment">//注意:getTop不包括 dector</span></div><div class="line">            QuickConfig.i(x);</div><div class="line">            <span class="keyword">return</span> absorbPos[i - <span class="number">1</span>];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//不然还是显示上一个位置的断头</span></div><div class="line">            <span class="keyword">if</span> (i - <span class="number">2</span> &lt; <span class="number">0</span>) &#123;<span class="comment">//上一个位置是无的情况</span></div><div class="line">                QuickConfig.i(x2);</div><div class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            QuickConfig.i(x3);</div><div class="line">            <span class="keyword">return</span> absorbPos[i - <span class="number">2</span>];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdsorbActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; mDatas = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">    <span class="keyword">private</span> RecyclerView rv;</div><div class="line">    <span class="keyword">private</span> IAdapter&lt;String&gt; muliAdapter;</div><div class="line">    <span class="keyword">private</span> FrameLayout vp;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.a_recycler_absorb);</div><div class="line">        rv = (RecyclerView) findViewById(R.id.rv);</div><div class="line">        vp = (FrameLayout) findViewById(R.id.vp);</div><div class="line">        rv.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;</div><div class="line">            mDatas.add(<span class="string">""</span> + i);</div><div class="line">        &#125;</div><div class="line">        rv.addOnScrollListener(<span class="keyword">new</span> AbsorbOnScrollListener(vp, <span class="number">3</span>, <span class="number">6</span>, <span class="number">9</span>));</div><div class="line"></div><div class="line">        muliAdapter = <span class="keyword">new</span> QuickRcvAdapter(<span class="keyword">this</span>, mDatas) &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">getItemViewType2</span><span class="params">(<span class="keyword">int</span> dataPosition)</span> </span>&#123;</div><div class="line">                <span class="keyword">if</span> (dataPosition == <span class="number">3</span>)</div><div class="line">                    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (dataPosition == <span class="number">6</span>)</div><div class="line">                    <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (dataPosition == <span class="number">9</span>)</div><div class="line">                    <span class="keyword">return</span> <span class="number">3</span>;</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        muliAdapter</div><div class="line">                .addViewHolder(<span class="keyword">new</span> LeftDelegates())<span class="comment">//默认</span></div><div class="line">                .addViewHolder(<span class="number">0</span>, <span class="keyword">new</span> LeftDelegates()) <span class="comment">//多部剧 注释开启即可</span></div><div class="line">                .addViewHolder(<span class="number">1</span>, <span class="keyword">new</span> AbsorbDelegates())<span class="comment">//多部剧 注释开启即可</span></div><div class="line">                .addViewHolder(<span class="number">2</span>, <span class="keyword">new</span> AbsorbDelegates2())<span class="comment">//多部剧 注释开启即可</span></div><div class="line">                .addViewHolder(<span class="number">3</span>, <span class="keyword">new</span> AbsorbDelegates())<span class="comment">//多部剧 注释开启即可</span></div><div class="line"><span class="comment">//                .addHeaderHolder(R.layout.header_simple)</span></div><div class="line"><span class="comment">//                .addFooterHolder(R.layout.footer_simple)</span></div><div class="line">                .addEmptyHold(R.layout.empty)</div><div class="line">                .relatedList(rv)</div><div class="line">                .addItemDecoration(<span class="number">70</span>)</div><div class="line">                .setOnItemClickListener(<span class="keyword">new</span> IAdapter.OnItemClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(ViewGroup parent, View view, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">                        System.out.println(<span class="string">"被点击-&gt;onItemClick"</span> + position);</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .setOnItemLongClickListener(<span class="keyword">new</span> IAdapter.OnItemLongClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onItemLongClick</span><span class="params">(ViewGroup parent, View view, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">                        System.out.println(<span class="string">"被点击-&gt;onItemLongClick:"</span> + position);</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="ZAdapter3-github地址-欢迎star"><a href="#ZAdapter3-github地址-欢迎star" class="headerlink" title="ZAdapter3 github地址 欢迎star~"></a>ZAdapter3 github地址 欢迎star~</h1><p><a href="https://github.com/luhaoaimama1/ZAdapter3" target="_blank" rel="external">https://github.com/luhaoaimama1/ZAdapter3</a></p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/adapter/">adapter</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/07/31/rxjava/">
+        <span class="next-text nav-default">Rxjava2总结</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/11/Adapter3Absorb/"
+           data-title="ZAdapter3断头吸附效果" data-url="https://luhaoaimama1.github.io/2017/08/11/Adapter3Absorb/">
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://juejin.im/user/5880867f8d6d810058b1c0a1" class="iconfont icon-coding" title="coding"></a>
+        
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luhaoaimama1"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+
+  </body>
+</html>
