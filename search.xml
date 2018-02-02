@@ -2698,7 +2698,7 @@
       <title><![CDATA[Android-事件传递的学习]]></title>
       <url>https://luhaoaimama1.github.io/2016/09/17/EventPass/</url>
       <content type="html"><![CDATA[<p>事件传递的总结图</p>
-<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo26mfjwz5j319r10cwgb.jpg" alt=""></p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo26sk3xr9j319r10cabx.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="处理特殊图形点击事件的几种方式"><a href="#处理特殊图形点击事件的几种方式" class="headerlink" title="处理特殊图形点击事件的几种方式 :"></a>处理特殊图形点击事件的几种方式 :</h2><p>通过path绘制特殊的点击范围, 放入Region中 然后通过contains是否包含即可</p>
 <h3 id="兼容onClick1"><a href="#兼容onClick1" class="headerlink" title="兼容onClick1:"></a>兼容onClick1:</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> @<span class="function">Override</span></div><div class="line">    <span class="keyword">public</span> boolean <span class="title">dispatchTouchEvent</span>(<span class="params">MotionEvent <span class="keyword">event</span></span>) &#123;</div><div class="line">        <span class="keyword">return</span> isEventInPath(<span class="keyword">event</span>)?super.dispatchTouchEvent(<span class="keyword">event</span>);</div><div class="line">    &#125;</div><div class="line">参考：http:<span class="comment">//blog.csdn.net/qibin0506/article/details/52676670</span></div></pre></td></tr></table></figure>
