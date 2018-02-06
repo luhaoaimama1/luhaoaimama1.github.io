@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2017-08-10T22:51:42.000Z</updated>
+  <updated>2018-02-06T06:21:19.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于View的三大流程与自定义一些方法的总结</title>
+    <link href="https://luhaoaimama1.github.io/2018/02/26/CustomView/"/>
+    <id>https://luhaoaimama1.github.io/2018/02/26/CustomView/</id>
+    <published>2018-02-25T16:19:37.000Z</published>
+    <updated>2018-02-06T06:21:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="View树图"><a href="#View树图" class="headerlink" title="View树图"></a>View树图</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6oxez6q4j30t40keq35.jpg" alt=""></p>
+<h1 id="简易流程总结"><a href="#简易流程总结" class="headerlink" title="简易流程总结"></a>简易流程总结</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6ozil4d5j30u40ms0th.jpg" alt=""></p>
+<h1 id="View的三大流程"><a href="#View的三大流程" class="headerlink" title="View的三大流程"></a>View的三大流程</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fo6p2fnfzbj31kw0khjtk.jpg" alt=""></p>
+<h2 id="request与ViewRootImpl的关系"><a href="#request与ViewRootImpl的关系" class="headerlink" title="request与ViewRootImpl的关系"></a>request与ViewRootImpl的关系</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p11ggfxj30qw0rmq3n.jpg" alt=""></p>
+<h2 id="invalidate与ViewRootImpl的关系"><a href="#invalidate与ViewRootImpl的关系" class="headerlink" title="invalidate与ViewRootImpl的关系"></a>invalidate与ViewRootImpl的关系</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p1vadyjj31720ycq5b.jpg" alt=""></p>
+<h1 id="测量与布局的详细了解"><a href="#测量与布局的详细了解" class="headerlink" title="测量与布局的详细了解"></a>测量与布局的详细了解</h1><h2 id="MeasureSpec的了解"><a href="#MeasureSpec的了解" class="headerlink" title="MeasureSpec的了解"></a>MeasureSpec的了解</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p38tlodj30t809yaa8.jpg" alt=""></p>
+<h2 id="ViewGroup的测量"><a href="#ViewGroup的测量" class="headerlink" title="ViewGroup的测量"></a>ViewGroup的测量</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p448q78j31dy0osgns.jpg" alt=""></p>
+<h2 id="onLayout的了解"><a href="#onLayout的了解" class="headerlink" title="onLayout的了解"></a>onLayout的了解</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p4y9wv6j31800aqaas.jpg" alt=""></p>
+<h2 id="测量相关方法"><a href="#测量相关方法" class="headerlink" title="测量相关方法"></a>测量相关方法</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p6ln1i8j314g0j8gnw.jpg" alt=""><br><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p682yp8j31060k8wgz.jpg" alt=""><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p7bs37yj31fi0h6dh3.jpg" alt=""></p>
+<p>##Padding与Margin的概念 通过FrameLayout研究padding matchParent和weight的实现<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fo6p7uvww5j31hi10an2v.jpg" alt=""></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p>Android开发艺术探索(书)<br>Android View 测量流程(Measure)完全解析 <a href="http://blog.csdn.net/a553181867/article/details/51494058" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51494058</a><br>Android View 布局流程(Layout)完全解析 <a href="http://blog.csdn.net/a553181867/article/details/51524527" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51524527</a><br>Android View 绘制流程(Draw) 完全解析 <a href="http://blog.csdn.net/a553181867/article/details/51570854" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51570854</a><br>Android View 深度分析requestLayout、invalidate与postInvalidate <a href="http://blog.csdn.net/a553181867/article/details/51583060" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51583060</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;View树图&quot;&gt;&lt;a href=&quot;#View树图&quot; class=&quot;headerlink&quot; title=&quot;View树图&quot;&gt;&lt;/a&gt;View树图&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006tKfTcly1fo6o
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+      <category term="View三大流程" scheme="https://luhaoaimama1.github.io/categories/android/View%E4%B8%89%E5%A4%A7%E6%B5%81%E7%A8%8B/"/>
+    
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
+    
+      <category term="View三大流程" scheme="https://luhaoaimama1.github.io/tags/View%E4%B8%89%E5%A4%A7%E6%B5%81%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>ZAdapter3断头吸附效果</title>
@@ -2924,149 +2961,6 @@
       <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
     
       <category term="drawing" scheme="https://luhaoaimama1.github.io/tags/drawing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android-CoordinateSystem</title>
-    <link href="https://luhaoaimama1.github.io/2016/11/05/CoordinateSystem/"/>
-    <id>https://luhaoaimama1.github.io/2016/11/05/CoordinateSystem/</id>
-    <published>2016-11-05T05:19:37.000Z</published>
-    <updated>2016-12-30T14:23:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>主要讲述关于View中坐标系系统~</p>
-<a id="more"></a>
-<blockquote>
-<p><strong>可视区域</strong>：如果view，上半显示，下半超出屏幕不显示，那么可视区域是<strong>上半</strong>，而不是整个；</p>
-</blockquote>
-<h1 id="View中方法"><a href="#View中方法" class="headerlink" title="View中方法"></a>View中方法</h1><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">坐标系</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">getX/Y</td>
-<td style="text-align:center">parent</td>
-<td style="text-align:center">mLeft/mTop + getTranslationX/Y()</td>
-</tr>
-<tr>
-<td style="text-align:center">getWidth,getHeight</td>
-<td style="text-align:center">自己</td>
-<td style="text-align:center">获取宽高</td>
-</tr>
-<tr>
-<td style="text-align:center">getLeft,getTop,getRight,getBottom</td>
-<td style="text-align:center">parent</td>
-<td style="text-align:center">view到parent某一方向的距离</td>
-</tr>
-<tr>
-<td style="text-align:center">getLocalVisibleRect</td>
-<td style="text-align:center">自己</td>
-<td style="text-align:center">可视区域</td>
-</tr>
-<tr>
-<td style="text-align:center">getGlobalVisibleRect</td>
-<td style="text-align:center">srceen</td>
-<td style="text-align:center">可视区域</td>
-</tr>
-<tr>
-<td style="text-align:center">getDrawingRect</td>
-<td style="text-align:center">自己</td>
-<td style="text-align:center">自身滚动后的Rect</td>
-</tr>
-<tr>
-<td style="text-align:center">getHitRect</td>
-<td style="text-align:center">parent</td>
-<td style="text-align:center">相当于getLeft/Top等值放入Rect</td>
-</tr>
-<tr>
-<td style="text-align:center">getLocationOnScreen</td>
-<td style="text-align:center">srceen</td>
-<td style="text-align:center">获取左上角的点在srceen的位置</td>
-</tr>
-<tr>
-<td style="text-align:center">getLocationInWindow</td>
-<td style="text-align:center">window(Activity为Dialog的时候和 screen不一样大)</td>
-<td style="text-align:center">获取左上角的点在window的位置</td>
-</tr>
-<tr>
-<td style="text-align:center">getWindowVisibleDisplayFrame</td>
-<td style="text-align:center">screen</td>
-<td style="text-align:center">获取到程序显示的区域，包括标题栏，但不包括状态栏。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Event中方法"><a href="#Event中方法" class="headerlink" title="Event中方法"></a>Event中方法</h1><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">坐标系</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">getX/Y</td>
-<td style="text-align:center">自己</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">getRawX/Y</td>
-<td style="text-align:center">Srceen</td>
-</tr>
-</tbody>
-</table>
-<h1 id="View的滑动方法"><a href="#View的滑动方法" class="headerlink" title="View的滑动方法"></a>View的滑动方法</h1><blockquote>
-<p>坐标系均为  <strong>自己</strong></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">View的滑动方法</th>
-<th style="text-align:center">效果及描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">offsetLeftAndRight/offsetTopAndBottom(int offset)</td>
-<td style="text-align:center">水平/竖直方向挪动View,getLeft()/getTop会变的.<code>注意:requestLayout后一些值丢失</code></td>
-</tr>
-<tr>
-<td style="text-align:center">scrollTo(int x, int y)</td>
-<td style="text-align:center">将View中内容滑动到相应的位置，x，y为正则向xy轴反方向移动。</td>
-</tr>
-<tr>
-<td style="text-align:center">scrollBy(int x, int y)</td>
-<td style="text-align:center">在scrollTo()的基础上继续滑动xy。</td>
-</tr>
-<tr>
-<td style="text-align:center">setScrollX/setScrollY(int value)</td>
-<td style="text-align:center">实质为scrollTo()，只是只改变X/Y轴滑动。</td>
-</tr>
-<tr>
-<td style="text-align:center">getScrollX()/getScrollY()</td>
-<td style="text-align:center">获取当前滑动位置偏移量。</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;主要讲述关于View中坐标系系统~&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
-    
-      <category term="坐标系" scheme="https://luhaoaimama1.github.io/tags/%E5%9D%90%E6%A0%87%E7%B3%BB/"/>
     
   </entry>
   
