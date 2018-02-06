@@ -220,21 +220,14 @@
     <div class="post-content">
       
         
+          
+        
 
         
           <h1 id="View树图"><a href="#View树图" class="headerlink" title="View树图"></a>View树图</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6oxez6q4j30t40keq35.jpg" alt=""></p>
-<h1 id="简易流程总结"><a href="#简易流程总结" class="headerlink" title="简易流程总结"></a>简易流程总结</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6ozil4d5j30u40ms0th.jpg" alt=""></p>
-<h1 id="View的三大流程"><a href="#View的三大流程" class="headerlink" title="View的三大流程"></a>View的三大流程</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fo6p2fnfzbj31kw0khjtk.jpg" alt=""></p>
-<h2 id="request与ViewRootImpl的关系"><a href="#request与ViewRootImpl的关系" class="headerlink" title="request与ViewRootImpl的关系"></a>request与ViewRootImpl的关系</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p11ggfxj30qw0rmq3n.jpg" alt=""></p>
-<h2 id="invalidate与ViewRootImpl的关系"><a href="#invalidate与ViewRootImpl的关系" class="headerlink" title="invalidate与ViewRootImpl的关系"></a>invalidate与ViewRootImpl的关系</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p1vadyjj31720ycq5b.jpg" alt=""></p>
-<h1 id="测量与布局的详细了解"><a href="#测量与布局的详细了解" class="headerlink" title="测量与布局的详细了解"></a>测量与布局的详细了解</h1><h2 id="MeasureSpec的了解"><a href="#MeasureSpec的了解" class="headerlink" title="MeasureSpec的了解"></a>MeasureSpec的了解</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p38tlodj30t809yaa8.jpg" alt=""></p>
-<h2 id="ViewGroup的测量"><a href="#ViewGroup的测量" class="headerlink" title="ViewGroup的测量"></a>ViewGroup的测量</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p448q78j31dy0osgns.jpg" alt=""></p>
-<h2 id="onLayout的了解"><a href="#onLayout的了解" class="headerlink" title="onLayout的了解"></a>onLayout的了解</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p4y9wv6j31800aqaas.jpg" alt=""></p>
-<h2 id="测量相关方法"><a href="#测量相关方法" class="headerlink" title="测量相关方法"></a>测量相关方法</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p6ln1i8j314g0j8gnw.jpg" alt=""><br><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fo6p682yp8j31060k8wgz.jpg" alt=""><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fo6p7bs37yj31fi0h6dh3.jpg" alt=""></p>
-<p>##Padding与Margin的概念 通过FrameLayout研究padding matchParent和weight的实现<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fo6p7uvww5j31hi10an2v.jpg" alt=""></p>
-<p>最后附上上面所有的流程图<br><a href="https://www.processon.com/view/link/5a742abce4b0615ac048b7f5" target="_blank" rel="external">https://www.processon.com/view/link/5a742abce4b0615ac048b7f5</a></p>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p>Android开发艺术探索(书)<br>Android View 测量流程(Measure)完全解析 <a href="http://blog.csdn.net/a553181867/article/details/51494058" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51494058</a><br>Android View 布局流程(Layout)完全解析 <a href="http://blog.csdn.net/a553181867/article/details/51524527" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51524527</a><br>Android View 绘制流程(Draw) 完全解析 <a href="http://blog.csdn.net/a553181867/article/details/51570854" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51570854</a><br>Android View 深度分析requestLayout、invalidate与postInvalidate <a href="http://blog.csdn.net/a553181867/article/details/51583060" target="_blank" rel="external">http://blog.csdn.net/a553181867/article/details/51583060</a></p>
-
+          <div class="read-more">
+            <a href="/2018/02/26/CustomView/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -364,15 +357,7 @@
         
 
         
-          <h1 id="几种方案是选择"><a href="#几种方案是选择" class="headerlink" title="几种方案是选择"></a>几种方案是选择</h1><ul>
-<li><p>外层一个显示的断头和内部的布局一样,但不是同一个  因为涉及到选择状态和 横向滚动 而导致的复杂性 放弃！</p>
-</li>
-<li><p>自定义recyclerView布局,这样解决了是同一个的view的问题。但是因为getTop而导致 刷新监听的不兼容 放弃！</p>
-</li>
-<li><p>既然想要用同一个View的话可以用李代桃僵的方式去实现，既用一个空view去代替RecyclerView的Itemview站位。然后吧itemView显示在断头上即可！</p>
-</li>
-</ul>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fifdm9jzucg307i0dcal7.gif" alt=""></p>
+          <h1 id="View树图"><a href="#View树图" class="headerlink" title="View树图"></a>View树图</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6oxez6q4j30t40keq35.jpg" alt=""></p>
           <div class="read-more">
             <a href="/2017/07/12/Adapter3HF/" class="read-more-link">阅读更多</a>
           </div>
@@ -906,15 +891,7 @@
         
 
         
-          <h1 id="几种方案是选择"><a href="#几种方案是选择" class="headerlink" title="几种方案是选择"></a>几种方案是选择</h1><ul>
-<li><p>外层一个显示的断头和内部的布局一样,但不是同一个  因为涉及到选择状态和 横向滚动 而导致的复杂性 放弃！</p>
-</li>
-<li><p>自定义recyclerView布局,这样解决了是同一个的view的问题。但是因为getTop而导致 刷新监听的不兼容 放弃！</p>
-</li>
-<li><p>既然想要用同一个View的话可以用李代桃僵的方式去实现，既用一个空view去代替RecyclerView的Itemview站位。然后吧itemView显示在断头上即可！</p>
-</li>
-</ul>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fifdm9jzucg307i0dcal7.gif" alt=""></p>
+          <h1 id="View树图"><a href="#View树图" class="headerlink" title="View树图"></a>View树图</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6oxez6q4j30t40keq35.jpg" alt=""></p>
           <div class="read-more">
             <a href="/2016/12/07/JVM-类初始化过程/" class="read-more-link">阅读更多</a>
           </div>
