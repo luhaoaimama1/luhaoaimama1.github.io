@@ -804,7 +804,7 @@
 <p>集合stream的方法简介；</p>
 <figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">Arrays</span>.asList(<span class="string">"a"</span>,<span class="string">"b"</span>).stream();</div><div class="line"><span class="function"><span class="keyword">new</span> <span class="title">HashSet</span>&lt;&gt;().<span class="title">stream</span>();</span></div><div class="line"><span class="title">new</span> <span class="title">HashMap</span>&lt;&gt;().<span class="title">entrySet</span>().<span class="title">stream</span>()</div></pre></td></tr></table></figure>
 <h2 id="Stream终结符"><a href="#Stream终结符" class="headerlink" title="Stream终结符"></a>Stream终结符</h2><p><a href="http://www.concretepage.com/java/jdk-8/" target="_blank" rel="external">官方演示范例</a></p>
-<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/EndSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/java8/test/EndSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
 <table>
 <thead>
 <tr>
@@ -930,7 +930,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Stream中间符"><a href="#Stream中间符" class="headerlink" title="Stream中间符"></a>Stream中间符</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/CenterSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<h2 id="Stream中间符"><a href="#Stream中间符" class="headerlink" title="Stream中间符"></a>Stream中间符</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/java8/test/CenterSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
 <table>
 <thead>
 <tr>
@@ -1045,7 +1045,7 @@
 <blockquote>
 <p>parallel 不一定并行就是最快的。与数据还有多核处理器有关. 例如(本意是并行不一定快的。范例仅仅是个大概 请当看着玩)：如果处理10个元素，串行代码速度是并行的8倍。如果数量增至100则速度相等。如果增至10000 则并行是串行的2.5倍；</p>
 </blockquote>
-<h2 id="Stream静态起始符"><a href="#Stream静态起始符" class="headerlink" title="Stream静态起始符"></a>Stream静态起始符</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/StartSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<h2 id="Stream静态起始符"><a href="#Stream静态起始符" class="headerlink" title="Stream静态起始符"></a>Stream静态起始符</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/java8/test/StartSymbolTest.java" target="_blank" rel="external">演示范例</a></p>
 <table>
 <thead>
 <tr>
@@ -1104,7 +1104,7 @@
 <h2 id="IntStream多出来的方法"><a href="#IntStream多出来的方法" class="headerlink" title="IntStream多出来的方法"></a>IntStream多出来的方法</h2><h3 id="IntStream-中间符-终结符"><a href="#IntStream-中间符-终结符" class="headerlink" title="IntStream  中间符/终结符"></a>IntStream  中间符/终结符</h3><blockquote>
 <p>DoubleStream,LongStream与之相同；</p>
 </blockquote>
-<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/test/dil/IntExtraTest.java" target="_blank" rel="external">演示范例</a></p>
+<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/java8/test/dil/IntExtraTest.java" target="_blank" rel="external">演示范例</a></p>
 <table>
 <thead>
 <tr>
@@ -1213,7 +1213,7 @@
 </ul>
 </t,></li>
 </ul>
-<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/collectors/SymbolTest.java" target="_blank" rel="external">演示范例</a></p>
+<p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/java8/collectors/SymbolTest.java" target="_blank" rel="external">演示范例</a></p>
 <table>
 <thead>
 <tr>
@@ -1361,7 +1361,7 @@
 <blockquote>
 <p>groupingBy等方法内包含Collector参数的含义，因为这个设计的时候就是不能连用只能通过传递参数更改泛型之类的。外部的collector会传递到新的collector中;</p>
 </blockquote>
-<h2 id="自定义收集器"><a href="#自定义收集器" class="headerlink" title="自定义收集器"></a>自定义收集器</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/collectors/StringCollector.java" target="_blank" rel="external">演示范例</a></p>
+<h2 id="自定义收集器"><a href="#自定义收集器" class="headerlink" title="自定义收集器"></a>自定义收集器</h2><p><a href="https://github.com/luhaoaimama1/Java8Study/blob/master/app/src/main/java/zone/com/java8study/java8/collectors/StringCollector.java" target="_blank" rel="external">演示范例</a></p>
 <h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://tangpj.com/2017/04/24/java8-inAndroid/" target="_blank" rel="external">http://tangpj.com/2017/04/24/java8-inAndroid/</a></p>
 <p><a href="http://www.jianshu.com/p/c0d5c3094324" target="_blank" rel="external">http://www.jianshu.com/p/c0d5c3094324</a></p>
 ]]></content>
