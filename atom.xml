@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2018-06-10T07:33:46.000Z</updated>
+  <updated>2018-02-06T12:18:40.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,31 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>ZAdapter3的分析与撸库</title>
-    <link href="https://luhaoaimama1.github.io/2019/04/29/uptest/"/>
-    <id>https://luhaoaimama1.github.io/2019/04/29/uptest/</id>
-    <published>2019-04-28T16:19:37.000Z</published>
-    <updated>2018-06-10T07:33:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>test__&amp;&amp;&amp;</p>
-<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/GcsSloop/diycode" target="_blank" rel="external">https://github.com/GcsSloop/diycode</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;test__&amp;amp;&amp;amp;&amp;amp;&lt;/p&gt;
-&lt;h1 id=&quot;Reference-amp-Thanks：&quot;&gt;&lt;a href=&quot;#Reference-amp-Thanks：&quot; class=&quot;headerlink&quot; title=&quot;Reference&amp;amp;Thanks：
-    
-    </summary>
-    
-      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
-    
-    
-      <category term="adapter" scheme="https://luhaoaimama1.github.io/tags/adapter/"/>
-    
-  </entry>
   
   <entry>
     <title>关于View的三大流程与自定义一些方法的总结</title>
@@ -2943,6 +2918,66 @@
       <category term="动画" scheme="https://luhaoaimama1.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
     
       <category term="Rebound" scheme="https://luhaoaimama1.github.io/tags/Rebound/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android-View的drawing缓存系统</title>
+    <link href="https://luhaoaimama1.github.io/2016/11/10/CacheSystem/"/>
+    <id>https://luhaoaimama1.github.io/2016/11/10/CacheSystem/</id>
+    <published>2016-11-10T05:19:37.000Z</published>
+    <updated>2016-12-30T14:21:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要讲述关于View中关键词Drawing的方法~</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>可视区域</strong>：如果view，上半显示，下半超出屏幕不显示，那么可视区域是<strong>上半</strong>，而不是整个</p>
+</blockquote>
+<h1 id="View中方法"><a href="#View中方法" class="headerlink" title="View中方法"></a>View中方法</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">setDrawingCacheEnabled(boolean enabled)</td>
+<td style="text-align:center">是否开启缓存，如果开启 绘制会快点,关闭的话 缓存会清除</td>
+</tr>
+<tr>
+<td style="text-align:center">isDrawingCacheEnabled()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">getDrawingCache(boolean autoScale)</td>
+<td style="text-align:center">包含buildDrawingCache</td>
+</tr>
+<tr>
+<td style="text-align:center">buildDrawingCache(boolean autoScale)</td>
+<td style="text-align:center">autoScale false(<strong>常用</strong>)为view大小,true会缩放；getDrawingCacheBackgroundColor会修改位图的config</td>
+</tr>
+<tr>
+<td style="text-align:center">destroyDrawingCache()</td>
+<td style="text-align:center">清除缓存</td>
+</tr>
+</tbody>
+</table>
+<p>获取cache通常会占用一定的内存，所以通常不需要的时候有必要对其进行清理，通过destroyDrawingCache或setDrawingCacheEnabled(false)实现。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要讲述关于View中关键词Drawing的方法~&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/tags/android/"/>
+    
+      <category term="drawing" scheme="https://luhaoaimama1.github.io/tags/drawing/"/>
     
   </entry>
   
