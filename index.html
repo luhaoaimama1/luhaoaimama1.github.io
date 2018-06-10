@@ -204,39 +204,6 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2018/06/10/uptest/"></a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018年6月10日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-
-        
-          <p>[‘—\n’, ‘title: ZAdapter3的分析与撸库 ##文章标题\n’, ‘date: 2017-4-29 00:19:37\n’, ‘## updated: 2017-3-14 13:19:37\n’, ‘comments: true ##开启评论 false关闭\n’, ‘tags:\n’, ‘    - adapter\n’, ‘categories:\n’, ‘    - android\n’, ‘—\n’, ‘test&amp;1\n’, ‘\n’, ‘# Reference&amp;Thanks：\n’, ‘\n’, ‘<a href="https://github.com/GcsSloop/diycode\n" target="_blank" rel="external">https://github.com/GcsSloop/diycode\n</a>‘]</p>
-
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
           <a class="post-link" href="/2018/02/06/CustomView/">关于View的三大流程与自定义一些方法的总结</a>
         
       </h1>
@@ -481,6 +448,41 @@
           <h1 id="父类-返回值是泛型；"><a href="#父类-返回值是泛型；" class="headerlink" title="父类:返回值是泛型；"></a>父类:返回值是泛型；</h1><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Helper&lt;T</span> <span class="keyword">extends</span> <span class="title">Helper&gt;</span> </span>&#123;</div><div class="line">     <span class="keyword">protected</span> <span class="type">T</span> child;</div><div class="line">     public <span class="type">Helper</span>() &#123;</div><div class="line">            child = (<span class="type">T</span>) <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">     public <span class="type">T</span> setText(<span class="meta">@IdRes</span> int viewId,<span class="type">String</span> textStr) &#123;</div><div class="line">            ...</div><div class="line">            checkChild();</div><div class="line">            <span class="keyword">return</span> child;</div><div class="line">        &#125;</div><div class="line">     <span class="keyword">protected</span> void checkChild() &#123;</div><div class="line">            <span class="keyword">if</span> (child == <span class="literal">null</span>)</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">IllegalStateException</span>(<span class="string">"child must be set in child's Constructor!"</span> +</div><div class="line">                        <span class="string">"not method:initDefaultValueAnimator"</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="read-more">
             <a href="/2017/04/29/chain/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/04/29/uptest/">ZAdapter3的分析与撸库</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年4月29日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="View树图"><a href="#View树图" class="headerlink" title="View树图"></a>View树图</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fo6oxez6q4j30t40keq35.jpg" alt=""></p>
+          <div class="read-more">
+            <a href="/2017/04/29/uptest/" class="read-more-link">阅读更多</a>
           </div>
         
       

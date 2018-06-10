@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luhaoaimama1.github.io/"/>
-  <updated>2018-06-10T05:38:01.000Z</updated>
+  <updated>2018-02-06T12:18:40.000Z</updated>
   <id>https://luhaoaimama1.github.io/</id>
   
   <author>
@@ -14,25 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://luhaoaimama1.github.io/2018/06/10/uptest/"/>
-    <id>https://luhaoaimama1.github.io/2018/06/10/uptest/</id>
-    <published>2018-06-10T05:33:03.000Z</published>
-    <updated>2018-06-10T05:38:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>[‘—\n’, ‘title: ZAdapter3的分析与撸库 ##文章标题\n’, ‘date: 2017-4-29 00:19:37\n’, ‘## updated: 2017-3-14 13:19:37\n’, ‘comments: true ##开启评论 false关闭\n’, ‘tags:\n’, ‘    - adapter\n’, ‘categories:\n’, ‘    - android\n’, ‘—\n’, ‘test&amp;1\n’, ‘\n’, ‘# Reference&amp;Thanks：\n’, ‘\n’, ‘<a href="https://github.com/GcsSloop/diycode\n" target="_blank" rel="external">https://github.com/GcsSloop/diycode\n</a>‘]</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;[‘—\n’, ‘title: ZAdapter3的分析与撸库 ##文章标题\n’, ‘date: 2017-4-29 00:19:37\n’, ‘## updated: 2017-3-14 13:19:37\n’, ‘comments: true ##开启评论 false
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>关于View的三大流程与自定义一些方法的总结</title>
@@ -1539,6 +1520,31 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>ZAdapter3的分析与撸库</title>
+    <link href="https://luhaoaimama1.github.io/2017/04/29/uptest/"/>
+    <id>https://luhaoaimama1.github.io/2017/04/29/uptest/</id>
+    <published>2017-04-28T16:19:37.000Z</published>
+    <updated>2018-06-10T05:43:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>test&amp;&amp;&amp;</p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/GcsSloop/diycode" target="_blank" rel="external">https://github.com/GcsSloop/diycode</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;test&amp;amp;&amp;amp;&amp;amp;&lt;/p&gt;
+&lt;h1 id=&quot;Reference-amp-Thanks：&quot;&gt;&lt;a href=&quot;#Reference-amp-Thanks：&quot; class=&quot;headerlink&quot; title=&quot;Reference&amp;amp;Thanks：&quot;&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="https://luhaoaimama1.github.io/categories/android/"/>
+    
+    
+      <category term="adapter" scheme="https://luhaoaimama1.github.io/tags/adapter/"/>
     
   </entry>
   
