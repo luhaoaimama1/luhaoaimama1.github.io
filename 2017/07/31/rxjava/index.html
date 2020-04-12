@@ -151,7 +151,7 @@
         <span class="post-time">
           2017-07-31
         </span><span class="post-visits" data-url="/2017/07/31/rxjava/" data-title="Rxjava2总结">
-          阅读次数 0
+          Visits 0
         </span>
         </div>
     </header>
@@ -187,7 +187,7 @@
 <blockquote>
 <p>timer() alt+点击timer可查看 关于timer的方法 可以看到时候有这个参数的变体!</p>
 </blockquote>
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fhyjg4qv2fj30v204ot9a.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1fhyjg4qv2fj30v204ot9a.jpg" alt></p>
 <ul>
 <li>Callable<u> bufferSupplier:自定义装载的容器</u></li>
 </ul>
@@ -627,7 +627,7 @@
 <ul>
 <li>join:任何时候，只要在另一个Observable发射的数据定义的时间窗口内，这个Observable发射了。一条数据，就结合两个Observable发射的数据</li>
 </ul>
-<p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fhzely2zzjj31am0r2go8.jpg" alt></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcgy1fhzely2zzjj31am0r2go8.jpg" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 此demo 好使但是未让能理解透彻  仅仅想测试能结果的任用  想明白的话 此demo无效 --&gt;</span><br><span class="line">Observable.intervalRange(10, 4, 0, 300, TimeUnit.MILLISECONDS)</span><br><span class="line">           .join(Observable.interval(100, TimeUnit.MILLISECONDS)</span><br><span class="line">                           .take(7)</span><br><span class="line">                   , aLong -&gt; &#123;</span><br><span class="line">                       System.out.println(&quot;开始收集：&quot;+aLong);</span><br><span class="line">                       return Observable.just(aLong);</span><br><span class="line">                   &#125;</span><br><span class="line">                   , aLong -&gt; Observable.timer(200, TimeUnit.MILLISECONDS)</span><br><span class="line">                   , (aLong, aLong2) -&gt; &#123;</span><br><span class="line">                       System.out.print(&quot;aLong:&quot; + aLong + &quot;\t aLong2:&quot; + aLong2 + &quot;\t&quot;);</span><br><span class="line">                       return aLong + aLong2;</span><br><span class="line">                   &#125;</span><br><span class="line">           )</span><br><span class="line">           .subscribe(aLong -&gt; System.out.println(aLong));</span><br></pre></td></tr></table></figure>
 
 <h2 id="条件操作"><a href="#条件操作" class="headerlink" title="条件操作"></a>条件操作</h2><ul>
@@ -841,7 +841,7 @@
 <h2 id="自定义操作符"><a href="#自定义操作符" class="headerlink" title="自定义操作符"></a>自定义操作符</h2><ul>
 <li>lift 原理图</li>
 </ul>
-<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fi33z4i9jlj30mi0gp74i.jpg" alt></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcgy1fi33z4i9jlj30mi0gp74i.jpg" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">    public void lift()&#123;</span><br><span class="line">            Observable.just(1,2)</span><br><span class="line">                    //也是代理模式  observer是真正订阅</span><br><span class="line">                    .lift(observer -&gt; new Observer&lt;Integer&gt;() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void onSubscribe(Disposable d) &#123;</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onNext(Integer integer) &#123;</span><br><span class="line">                            observer.onNext(integer+&quot;?&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onError(Throwable e) &#123;</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onComplete() &#123;</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .subscribe(o -&gt; System.out.println(o));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    日志:</span><br><span class="line">    1?</span><br><span class="line">    2?</span><br></pre></td></tr></table></figure>
 
 <h2 id="实用技巧"><a href="#实用技巧" class="headerlink" title="实用技巧"></a>实用技巧</h2><p>flatMap 与 zip 配合的实用范例:</p>

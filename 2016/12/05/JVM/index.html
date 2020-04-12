@@ -154,7 +154,7 @@
             <a href="/categories/jvm/">jvm</a>
             </span>
         <span class="post-visits" data-url="/2016/12/05/JVM/" data-title="深入理解Java虚拟机总结">
-          阅读次数 0
+          Visits 0
         </span>
         </div>
     </header>
@@ -173,14 +173,14 @@
 </ul>
 <a id="more"></a>
 
-<h1 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h1><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb913k1wc0j30f50a53zv.jpg" alt></p>
+<h1 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h1><p><img src="http://ww1.sinaimg.cn/large/006tKfTcgw1fb913k1wc0j30f50a53zv.jpg" alt></p>
 <blockquote>
 <p>本地方法栈和虚拟机栈有的虚拟机是不分的;</p>
 </blockquote>
 <p><a id="way1-1"></a></p>
-<h2 id="jvm各个区域的概要"><a href="#jvm各个区域的概要" class="headerlink" title="jvm各个区域的概要"></a>jvm各个区域的概要</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb91bux68qj31f016w41s.jpg" alt></p>
+<h2 id="jvm各个区域的概要"><a href="#jvm各个区域的概要" class="headerlink" title="jvm各个区域的概要"></a>jvm各个区域的概要</h2><p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb91bux68qj31f016w41s.jpg" alt></p>
 <p><a id="way1-2"></a></p>
-<h2 id="对象访问定位"><a href="#对象访问定位" class="headerlink" title="对象访问定位"></a>对象访问定位</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb913u4clkj317k0h6abh.jpg" alt></p>
+<h2 id="对象访问定位"><a href="#对象访问定位" class="headerlink" title="对象访问定位"></a>对象访问定位</h2><p><img src="http://ww3.sinaimg.cn/large/006tKfTcgw1fb913u4clkj317k0h6abh.jpg" alt></p>
 <blockquote>
 <p>句柄优势:reference本身不需要修改,只会改变句柄中的实例数据指针</p>
 </blockquote>
@@ -216,7 +216,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ReferenceCountingGC &#123;</span><br><span class="line"></span><br><span class="line">    public Object instance=null;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ReferenceCountingGC objA=  new ReferenceCountingGC();</span><br><span class="line">        ReferenceCountingGC objB=  new ReferenceCountingGC();</span><br><span class="line">        objA.instance=objB;</span><br><span class="line">        objB.instance=objA;</span><br><span class="line">        objA=null;</span><br><span class="line">        objB=null;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>2)可达性分析算法:<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb9143ha08j30cx08zmx7.jpg" alt></p>
+<p>2)可达性分析算法:<br><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb9143ha08j30cx08zmx7.jpg" alt></p>
 <ul>
 <li>Java 语言中,可作为GC Roots的对象包括下面几种;<ul>
 <li>虚拟机栈中(栈帧中的本地变量表)的引用对象</li>
@@ -247,13 +247,13 @@
 <blockquote>
 <p>不足1:效率问题,标记和清除效率都不高;<br>不足2:空间问题,产生大量的不连续的内存碎片</p>
 </blockquote>
-<p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb914owdnxj30ii0c2t9t.jpg" alt><br><a id="way3-2"></a></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcgw1fb914owdnxj30ii0c2t9t.jpg" alt><br><a id="way3-2"></a></p>
 <h2 id="复制-Copying-算法"><a href="#复制-Copying-算法" class="headerlink" title="复制(Copying)算法"></a>复制(Copying)算法</h2><p>内存容量划分两个大小相等的两块,每次使用其中的一块。这块用完了复制存活的对象到另一块,在把这块清理掉</p>
 <blockquote>
 <p>不足:代价太高 把内存缩小为原来的一半;</p>
 </blockquote>
-<p>现代的商用虚拟街都采用这种算法来回收新生代;因为新生代都是 <strong>朝生暮死</strong> 所以不需要1:1来划分<br>而将内存分为一块较大的Eden 和两个较小的Survivor 默认大小比;8:1, 每次新生代中可用的内存空间是整个新生代容量的90=(Eden+Survivor),<br>“浪费” 10 因为没办法保证回收只有不多于10的存活,Survivor空间不够需要老年代进行 担保;<br><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb915j8lkhj30ik0bi0tt.jpg" alt><br><a id="way3-3"></a></p>
-<h2 id="标记-整理-Mark-Compact-算法-老年代常用"><a href="#标记-整理-Mark-Compact-算法-老年代常用" class="headerlink" title="标记-整理(Mark-Compact)算法(老年代常用)"></a>标记-整理(Mark-Compact)算法(老年代常用)</h2><p>标记和以前一样,后续步骤不是直接回收,而是存活对象向一端移动,然后清理边界以外的内存;<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb915o8c50j30in0bcab3.jpg" alt><br><a id="way3-4"></a></p>
+<p>现代的商用虚拟街都采用这种算法来回收新生代;因为新生代都是 <strong>朝生暮死</strong> 所以不需要1:1来划分<br>而将内存分为一块较大的Eden 和两个较小的Survivor 默认大小比;8:1, 每次新生代中可用的内存空间是整个新生代容量的90=(Eden+Survivor),<br>“浪费” 10 因为没办法保证回收只有不多于10的存活,Survivor空间不够需要老年代进行 担保;<br><img src="http://ww1.sinaimg.cn/large/006tKfTcgw1fb915j8lkhj30ik0bi0tt.jpg" alt><br><a id="way3-3"></a></p>
+<h2 id="标记-整理-Mark-Compact-算法-老年代常用"><a href="#标记-整理-Mark-Compact-算法-老年代常用" class="headerlink" title="标记-整理(Mark-Compact)算法(老年代常用)"></a>标记-整理(Mark-Compact)算法(老年代常用)</h2><p>标记和以前一样,后续步骤不是直接回收,而是存活对象向一端移动,然后清理边界以外的内存;<br><img src="http://ww3.sinaimg.cn/large/006tKfTcgw1fb915o8c50j30in0bcab3.jpg" alt><br><a id="way3-4"></a></p>
 <h2 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h2><p>根据对象存活周期将内存划分不同的几块。一般堆分为 新生代 和老年代。这样根据年代的特点采用最适当的收集算法</p>
 <p>新生代:少量存活 选择复制算法</p>
 <p>老年代:存活率高,没有额外空间担保,必须使用 标记清理 或者标记整理;</p>
@@ -270,7 +270,7 @@
 <p>抢先式中断(Preemptive Suspension)(现在几乎都这种方案):不需要线程的执行代码主动配合,GC发生时候先把线程全部中断,如果有线程不在安全点,就回复线程让它跑到安全点。</p>
 <p>主动式中断(Voluntary Suspension):当GC需要中断线程的时候,不对线程造作,仅仅简单地设置一个标志位,各个线程执行的时候主动去轮询这个标志位,发现中断标志位真就挂起,轮询标志的地方安全点重合。<br>而对于不执行的线程,任何时间都是安全的也称为安全区;</p>
 <h1 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h1><p><a id="way4-1"></a></p>
-<h2 id="7种垃圾收集器的介绍"><a href="#7种垃圾收集器的介绍" class="headerlink" title="7种垃圾收集器的介绍"></a>7种垃圾收集器的介绍</h2><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb9166bymyj30e00b5wfn.jpg" alt><br><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb9160tldaj31kw0jgacz.jpg" alt></p>
+<h2 id="7种垃圾收集器的介绍"><a href="#7种垃圾收集器的介绍" class="headerlink" title="7种垃圾收集器的介绍"></a>7种垃圾收集器的介绍</h2><p><img src="http://ww2.sinaimg.cn/large/006tKfTcgw1fb9166bymyj30e00b5wfn.jpg" alt><br><img src="http://ww1.sinaimg.cn/large/006tKfTcgw1fb9160tldaj31kw0jgacz.jpg" alt></p>
 <blockquote>
 <p>G1收集器因为没有商用的就不写了;</p>
 </blockquote>
@@ -322,7 +322,7 @@
 <li>0.0011969 secs，表示GC所占用的时间，单位为秒。</li>
 <li>[Times: user=0.00 sys=0.00, real=0.00 secs]，表示GC的更具体的时间，user代表用户态消耗的CPU时间，sys代表内核态消耗的CPU时间，real代表操作从开始到结束所经过的墙钟时间。CPU时间与墙钟时间的区别是，墙钟时间包括各种非运算的等待耗时，如等待磁盘IO，等待线程阻塞，CPU时间则不包含这些耗时。当系统有多CPU或者多核时，多线程操作会叠加这些CPU时间，所以读者看到user或者sys时间超过real时间也是很正常的</li>
 </ol>
-<p><img src="https://ww1.sinaimg.cn/large/006tKfTcgw1fb916pqo7bj30lm09taas.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcgw1fb916pqo7bj30lm09taas.jpg" alt></p>
 <ul>
 <li>GC类型<ul>
 <li>Minor GC:指发生在新生代的垃圾收集动作，非常频繁，速度较快。</li>
@@ -338,7 +338,7 @@
 <p>Tips:研究代码对象到底怎么回收请看Page:93(深入理解JVM虚拟机第二版)</p>
 </blockquote>
 <p><a id="way4-3"></a></p>
-<h2 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb9170p4unj30b5087gm9.jpg" alt></p>
+<h2 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h2><p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb9170p4unj30b5087gm9.jpg" alt></p>
 <p><a id="way4-4"></a></p>
 <h2 id="虚拟机参数设置"><a href="#虚拟机参数设置" class="headerlink" title="虚拟机参数设置;"></a>虚拟机参数设置;</h2><p>代码的运行参数设置为： -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8<br><img src="http://images2015.cnblogs.com/blog/616953/201602/616953-20160226111115693-1490327308.png" alt>  </p>
 <h1 id="静态分派与动态分派"><a href="#静态分派与动态分派" class="headerlink" title="静态分派与动态分派"></a>静态分派与动态分派</h1><p><a id="way6-1"></a>  </p>

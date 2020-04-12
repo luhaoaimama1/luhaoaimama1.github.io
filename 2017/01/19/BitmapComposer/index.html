@@ -154,7 +154,7 @@
             <a href="/categories/android/">android</a>
             </span>
         <span class="post-visits" data-url="/2017/01/19/BitmapComposer/" data-title="Android-BitmapComposer(类似于AE的合成模式)">
-          阅读次数 0
+          Visits 0
         </span>
         </div>
     </header>
@@ -165,7 +165,7 @@
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#封装后的使用方式"><span class="toc-text">封装后的使用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码范例"><span class="toc-text">代码范例:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&amp;Thanks：</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>灵感来源于AE,参考AE合成图的步骤;</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg" alt></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg" alt></p>
 <a id="more"></a>
 
 <h1 id="封装后的使用方式"><a href="#封装后的使用方式" class="headerlink" title="封装后的使用方式"></a>封装后的使用方式</h1><ul>
@@ -179,7 +179,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BitmapComposer.newComposition(bt.getWidth(), bt.getHeight(), Bitmap.Config.ARGB_8888)</span><br><span class="line">.clear()</span><br><span class="line">.newLayer(BitmapComposer.Layer.bitmap(bt)</span><br><span class="line">                   .colorFilter(new ColorMatrixColorFilter(colorMatrix))</span><br><span class="line">                    .matrix(matrix)  )</span><br><span class="line">.newLayer(BitmapComposer.Layer.bitmap(bt)</span><br><span class="line">          .colorFilter(new ColorMatrixColorFilter(colorMatrix))</span><br><span class="line">          .mask(wave, PorterDuff.Mode.DST_IN)</span><br><span class="line">           .matrix(matrix)    )</span><br><span class="line">.render();</span><br></pre></td></tr></table></figure>
 
 <p><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="noopener">zone-sdk项目</a>运行后:-&gt;动画、surfaceView、绘图方面的研究-&gt;波浪 进入即可看到;</p>
-<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fbvyespt80g307i0dcax1.gif" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNbRwly1fbvyespt80g307i0dcax1.gif" alt></p>
 <blockquote>
 <p>demo原理:第一层是 <strong>黑白图片</strong>,第二层是加过 <strong>波浪Mask(遮罩的-既android的PorterDuff)</strong>的<strong>原图</strong></p>
 </blockquote>

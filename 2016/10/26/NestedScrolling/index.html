@@ -154,7 +154,7 @@
             <a href="/categories/android/">android</a>
             </span>
         <span class="post-visits" data-url="/2016/10/26/NestedScrolling/" data-title="Android-NestedScrolling Child与Parent的实例学习">
-          阅读次数 0
+          Visits 0
         </span>
         </div>
     </header>
@@ -210,14 +210,14 @@
 </blockquote>
 <h1 id="Child"><a href="#Child" class="headerlink" title="Child"></a>Child</h1><p><a href="http://fromwiz.com/share/s/3Hsjaq1-lQ9Q2SChN02Hkyvk0hpNyB0-1QGL2Fj4sK1tPrPG" target="_blank" rel="noopener"><code>child流程接入</code></a>  <a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/touch/NestedScrollingActivity_Child.java" target="_blank" rel="noopener"><code>child代码实例</code></a> </p>
 <h2 id="方法的使用时机"><a href="#方法的使用时机" class="headerlink" title="方法的使用时机:"></a>方法的使用时机:</h2><p>startNestedScroll,stopNestedScroll；</p>
-<p><img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb8yykhy0yj30m808i76m.jpg" alt></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcgw1fb8yykhy0yj30m808i76m.jpg" alt></p>
 <p>dispatchNestedPreScroll使用时机  此例为RecyclerView的内容；<br>(因为是子view消耗钱 父消耗 )  所以 用if判断 父亲是否消耗；</p>
-<p><img src="https://ww2.sinaimg.cn/large/006tKfTcgw1fb8yyf39tvj30jg04y402.jpg" alt></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcgw1fb8yyf39tvj30jg04y402.jpg" alt></p>
 <p>dispatchNestedScroll  则和上边不同；是child先消耗了；在吧剩下的给NestedParent；看他消耗不；</p>
 <blockquote>
 <p>参考RecyclerView</p>
 </blockquote>
-<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb8yy026faj30m80hgjxf.jpg" alt></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb8yy026faj30m80hgjxf.jpg" alt></p>
 <h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>1.抖动问题：offsetInWindow 如果不加这个参数会出现抖动，</p>
 <blockquote>
 <p>因为父亲消耗后，布局会偏移导致  每次的触摸事件e 其实也跟着偏移了(偏移量是上一次的布局的位移)所以e需要修正；</p>

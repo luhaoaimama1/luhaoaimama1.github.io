@@ -154,7 +154,7 @@
             <a href="/categories/android/">android</a>
             </span>
         <span class="post-visits" data-url="/2017/02/09/面试题/" data-title="Android-2017面试题整理(未整理完)">
-          阅读次数 0
+          Visits 0
         </span>
         </div>
     </header>
@@ -167,7 +167,7 @@
   </div><div class="post-content"><p>2017面试题整理</p>
 <a id="more"></a>
 
-<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Activity的生命周期的理解"><a href="#Activity的生命周期的理解" class="headerlink" title="Activity的生命周期的理解"></a>Activity的生命周期的理解</h2><p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt></p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Activity的生命周期的理解"><a href="#Activity的生命周期的理解" class="headerlink" title="Activity的生命周期的理解"></a>Activity的生命周期的理解</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt></p>
 <table>
 <thead>
 <tr>
@@ -244,7 +244,7 @@
 <li>Message Queue(消息队列):用来存放线程放入的消息。</li>
 <li>线程：UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。</li>
 </ul>
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchwjv65jhj30sg0fgjtw.jpg" alt><br>需要注意的地方：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fchwjv65jhj30sg0fgjtw.jpg" alt><br>需要注意的地方：</p>
 <ul>
 <li>prepareMainLooper ：为ActivityThread特殊准备的</li>
 <li>handler对象只能添加到有消息队列的线程中 否则会发生异常 其实Activity被构造前已经.prepare了 而且不能.prepare两次</li>
@@ -347,7 +347,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Touch事件的传递机制"><a href="#Touch事件的传递机制" class="headerlink" title="Touch事件的传递机制"></a>Touch事件的传递机制</h2><p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fchzqo0yjij30qt0hrmy2.jpg" alt></p>
+<h2 id="Touch事件的传递机制"><a href="#Touch事件的传递机制" class="headerlink" title="Touch事件的传递机制"></a>Touch事件的传递机制</h2><p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fchzqo0yjij30qt0hrmy2.jpg" alt></p>
 <blockquote>
 <p>Activity－＞Window－＞View 如果所有人都不消耗最后会在activity中的onTouchEvent上处理<br>执行顺序:onTouchListener &gt; onTouchEvent &gt; onLongClickListener &gt; onClickListener</p>
 </blockquote>

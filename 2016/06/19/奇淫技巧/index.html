@@ -154,7 +154,7 @@
             <a href="/categories/android/">android</a>
             </span>
         <span class="post-visits" data-url="/2016/06/19/奇淫技巧/" data-title="Android-奇淫技巧">
-          阅读次数 0
+          Visits 0
         </span>
         </div>
     </header>
@@ -189,7 +189,7 @@
 <li>第三方库</li>
 <li>Movie类去实现</li>
 </ul>
-<h1 id="泛型推断"><a href="#泛型推断" class="headerlink" title="泛型推断"></a>泛型推断</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgw1fb95xxkb3ej312e0dit9w.jpg" alt></p>
+<h1 id="泛型推断"><a href="#泛型推断" class="headerlink" title="泛型推断"></a>泛型推断</h1><p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb95xxkb3ej312e0dit9w.jpg" alt></p>
 <h1 id="matrix"><a href="#matrix" class="headerlink" title="matrix"></a>matrix</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Matrix matrix = new Matrix();  </span><br><span class="line">// 生成倒影图  而不是用rotation</span><br><span class="line">matrix.setScale(1F, -1F);</span><br></pre></td></tr></table></figure>
 
 <h1 id="自定义ViewGroup获取dispatchDraw里的图形方法"><a href="#自定义ViewGroup获取dispatchDraw里的图形方法" class="headerlink" title="自定义ViewGroup获取dispatchDraw里的图形方法"></a>自定义ViewGroup获取dispatchDraw里的图形方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   protected void dispatchDraw(Canvas canvas) &#123;</span><br><span class="line">       //canvas 在这里面绘的图才可以在界面显示出来</span><br><span class="line">       Bitmap  maskBitmap= BitmapUtils.createBitmapAndGcIfNecessary(getWidth(),getHeight());</span><br><span class="line">       canvas.save();</span><br><span class="line">       canvas.translate(300,0);</span><br><span class="line">       super.dispatchDraw(new Canvas(maskBitmap));//这部只是为了 子布局的绘制 绘制在bitmap上</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
