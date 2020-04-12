@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Android-BitmapComposer(类似于AE的合成模式)"><meta name="keywords" content="android, bitmap, Zone"><link rel="alternate" href="https://luhaoaimama1.github.io/archives/" title="Zone"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/01/19/BitmapComposer/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6d26901ed1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz",
+      appKey: "JNC93ECkxxvdiy69B2LJmWy9"
+    });
+  </script><script>
+  window.config = {"leancloud":{"app_id":"sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz","app_key":"JNC93ECkxxvdiy69B2LJmWy9"},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>Android-BitmapComposer(类似于AE的合成模式) - Zone</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Zone</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">归档
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/introduce/">
+        <li class="mobile-menu-item">项目简介
+          </li>
+      </a><a href="/friendlinks/">
+        <li class="mobile-menu-item">外联
+          </li>
+      </a><a href="/message/">
+        <li class="mobile-menu-item">留言
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            标签
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/introduce/">
+            项目简介
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks/">
+            外联
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/message/">
+            留言
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Android-BitmapComposer(类似于AE的合成模式)
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-01-19
+        </span><span class="post-category">
+            <a href="/categories/android/">android</a>
+            </span>
+        <span class="post-visits" data-url="/2017/01/19/BitmapComposer/" data-title="Android-BitmapComposer(类似于AE的合成模式)">
+          Visits 0
+        </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#封装后的使用方式"><span class="toc-text">封装后的使用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码范例"><span class="toc-text">代码范例:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&amp;Thanks：</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>灵感来源于AE,参考AE合成图的步骤;</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fbvy8lrq8fj31h80ayt9l.jpg" alt></p>
+<a id="more"></a>
+
+<h1 id="封装后的使用方式"><a href="#封装后的使用方式" class="headerlink" title="封装后的使用方式"></a>封装后的使用方式</h1><ul>
+<li>可以无限newLayer,并且每个layer对应的bitmap都有以下特征<ul>
+<li>mask   PorterDuff.Mode 造作</li>
+<li>colorFilter  滤镜操作</li>
+<li>matrix  矩阵操作 既 位置,旋转缩放等。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BitmapComposer.newComposition(bt.getWidth(), bt.getHeight(), Bitmap.Config.ARGB_8888)</span><br><span class="line">.clear()</span><br><span class="line">.newLayer(BitmapComposer.Layer.bitmap(bt)</span><br><span class="line">                   .colorFilter(new ColorMatrixColorFilter(colorMatrix))</span><br><span class="line">                    .matrix(matrix)  )</span><br><span class="line">.newLayer(BitmapComposer.Layer.bitmap(bt)</span><br><span class="line">          .colorFilter(new ColorMatrixColorFilter(colorMatrix))</span><br><span class="line">          .mask(wave, PorterDuff.Mode.DST_IN)</span><br><span class="line">           .matrix(matrix)    )</span><br><span class="line">.render();</span><br></pre></td></tr></table></figure>
+
+<p><strong>实例demo</strong>:<a href="https://github.com/luhaoaimama1/zone-sdk" target="_blank" rel="noopener">zone-sdk项目</a>运行后:-&gt;动画、surfaceView、绘图方面的研究-&gt;波浪 进入即可看到;</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fbvyespt80g307i0dcax1.gif" alt></p>
+<blockquote>
+<p>demo原理:第一层是 <strong>黑白图片</strong>,第二层是加过 <strong>波浪Mask(遮罩的-既android的PorterDuff)</strong>的<strong>原图</strong></p>
+</blockquote>
+<h1 id="代码范例"><a href="#代码范例" class="headerlink" title="代码范例:"></a>代码范例:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">image2.post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                Bitmap bt = SampleUtils.load(WaveActivity.this, R.drawable.aaaaaaaaaaaab)</span><br><span class="line">                        .bitmap();</span><br><span class="line"></span><br><span class="line">                ColorMatrix colorMatrix = new ColorMatrix();</span><br><span class="line">                colorMatrix.setSaturation(0);</span><br><span class="line"></span><br><span class="line">                BitmapComposer bitmapComposer = BitmapComposer.newComposition(bt.getWidth(), bt.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">                Matrix first = new Matrix();</span><br><span class="line">                first.postTranslate(0, -20);</span><br><span class="line">                new WaveHelper(bt.getWidth(), bt.getHeight(), new WaveHelper.RefreshCallback() &#123;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void refresh(Bitmap wave) &#123;</span><br><span class="line">                        Bitmap render = bitmapComposer.clear()</span><br><span class="line">                                .newLayer(BitmapComposer.Layer.bitmap(bt)</span><br><span class="line">                                        .colorFilter(new ColorMatrixColorFilter(colorMatrix)))</span><br><span class="line">                                .newLayer(</span><br><span class="line">                                        BitmapComposer.Layer.bitmap(bt)</span><br><span class="line">//                                              .colorFilter(new ColorMatrixColorFilter(colorMatrix))</span><br><span class="line">                                                .mask(wave, PorterDuff.Mode.DST_IN)</span><br><span class="line">//                                              .matrix(first)</span><br><span class="line">                                )</span><br><span class="line">                                .render();</span><br><span class="line">                        image2.setImageBitmap(render);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/race604/WaveLoading" target="_blank" rel="noopener">https://github.com/race604/WaveLoading</a></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://luhaoaimama1.github.io">Zone</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://luhaoaimama1.github.io/2017/01/19/BitmapComposer/">https://luhaoaimama1.github.io/2017/01/19/BitmapComposer/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden>
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code"><label class="qr-code-image" for="reward">
+          <img class="image" src="/weixin.png" title="wechat">
+        </label>
+      </div>
+  </div><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/android/">android</a>
+            <a href="/tags/bitmap/">bitmap</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/01/23/Camera调研/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Camera的研究与封装</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2016/12/18/drawText/">
+        <span class="next-text nav-default">Android-drawText()详解</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5My8yMzM5NA==">
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>  
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        <a href="https://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        <a href="https://luhaoaimama1.github.io/archives/" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript">
+	(function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

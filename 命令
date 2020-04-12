@@ -1,0 +1,12 @@
+cd blog
+
+hexo c
+
+hexo g
+
+hexo s
+
+hexo s --debug
+
+hexo d
+
