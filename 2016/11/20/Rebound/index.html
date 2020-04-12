@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析"><meta name="keywords" content="android, 动画, Rebound, Zone"><link rel="alternate" href="https://luhaoaimama1.github.io/archives/" title="Zone"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/11/20/Rebound/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6d26901ed1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz",
+      appKey: "JNC93ECkxxvdiy69B2LJmWy9"
+    });
+  </script><script>
+  window.config = {"leancloud":{"app_id":"sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz","app_key":"JNC93ECkxxvdiy69B2LJmWy9"},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析 - Zone</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Zone</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">归档
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/introduce/">
+        <li class="mobile-menu-item">项目简介
+          </li>
+      </a><a href="/friendlinks/">
+        <li class="mobile-menu-item">外联
+          </li>
+      </a><a href="/message/">
+        <li class="mobile-menu-item">留言
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            标签
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/introduce/">
+            项目简介
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks/">
+            外联
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/message/">
+            留言
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-11-20
+        </span><span class="post-category">
+            <a href="/categories/源码分析/">源码分析</a>
+            <a href="/categories/源码分析/android/">android</a>
+            <a href="/categories/源码分析/android/动画/">动画</a>
+            </span>
+        <span class="post-visits" data-url="/2016/11/20/Rebound/" data-title="Android-Rebound(弹簧系统-让动画不再僵硬)的简单使用与源码分析">
+          Visits 0
+        </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单独使用"><span class="toc-text">单独使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#监听"><span class="toc-text">监听</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#setEndValue与setCurrentValue的区别"><span class="toc-text">setEndValue与setCurrentValue的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#连锁动画"><span class="toc-text">连锁动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#官方小球demo解析"><span class="toc-text">官方小球demo解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的源码流程分析图"><span class="toc-text">简单的源码流程分析图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&amp;Thanks：</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><blockquote>
+<p>综述：Rebound 通过胡克定律，实现的一个类似“弹簧”动画效果的第三方工具包。</p>
+</blockquote>
+<a id="more"></a>
+
+<p><a href="https://github.com/luhaoaimama1/ReboundDemo" target="_blank" rel="noopener">官方demo摘出</a></p>
+<h1 id="单独使用"><a href="#单独使用" class="headerlink" title="单独使用"></a>单独使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Spring spring =  SpringSystem.create().createSpring();</span><br><span class="line">spring.addListener(new SimpleSpringListener() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void onSpringUpdate(Spring spring) &#123;</span><br><span class="line">                   super.onSpringUpdate(spring);</span><br><span class="line">                   double currentValue = spring.getCurrentValue();</span><br><span class="line">                   double valueMap = SpringUtil.mapValueFromRangeToRange(currentValue, 0, 1, 1, 0.5);</span><br><span class="line">                   ViewHelper.setScaleX(siv, (float) valueMap);</span><br><span class="line">                   ViewHelper.setScaleY(siv, (float) valueMap);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">spring.setEndValue(1);//默认endValue是0；</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Ps:SpringUtil.mapValueFromRangeToRange(currentValue, 0, 1, 1, 0.5);</p>
+</blockquote>
+<blockquote>
+<p>是映射工具类 0-&gt;1的转映射到1-&gt;0.5</p>
+</blockquote>
+<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><blockquote>
+<p>SimpleSpringListener实现了SpringListener</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public interface SpringListener &#123;</span><br><span class="line">  // 在首次开始运动时候调用。</span><br><span class="line">  void onSpringActivate(Spring spring);</span><br><span class="line">  //在advance后调用，表示状态更新。</span><br><span class="line">  void onSpringUpdate(Spring spring);</span><br><span class="line">  //在进入rest状态后调用。</span><br><span class="line">  void onSpringAtRest(Spring spring);</span><br><span class="line">  //则略有不同，仅在setEndValue中被调用，且该Spring需要在运动中且新的endValue不等于原endValue。</span><br><span class="line">  void onSpringEndStateChange(Spring spring);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><blockquote>
+<p>拉力(tension) default:40—&gt;拉力越大，弹簧效果越明显</p>
+</blockquote>
+<blockquote>
+<p>摩擦力(friction) default:7–&gt;弹框效果阻力越大、越不明显</p>
+</blockquote>
+<blockquote>
+<p>Ps:如果这个摩擦力的值设置为0，就像真实世界中处于真空状态，一点摩擦力都没有，这个弹簧效果会一直无限制重复下去，根本停不下来</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.setSpringConfig(new SpringConfig(tensionValue, frictionValue));</span><br></pre></td></tr></table></figure>
+
+<h1 id="setEndValue与setCurrentValue的区别"><a href="#setEndValue与setCurrentValue的区别" class="headerlink" title="setEndValue与setCurrentValue的区别"></a>setEndValue与setCurrentValue的区别</h1><blockquote>
+<p>end是一个值变化的过程,currentValue是表示插入一个值，表示一个瞬间(因为reset了~)；</p>
+</blockquote>
+<blockquote>
+<p>Ps:setAtRest()会让他停止动画；</p>
+</blockquote>
+<img src="http://ww2.sinaimg.cn/large/006tKfTcgw1fb91ocxcvsj30l40guq4f.jpg" width="500">
+
+<h1 id="连锁动画"><a href="#连锁动画" class="headerlink" title="连锁动画"></a>连锁动画</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SpringChain mSpringChain = SpringChain.create();</span><br><span class="line">mSpringChain.addSpring(new SimpleSpringListener()&#123;&#125;);</span><br><span class="line">mSpringChain.setControlSpringIndex(2).getControlSpring().setEndValue(0);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>SpringChain这个类，创建它有两个create方法：</p>
+<ul>
+<li><p>默认无参数create()</p>
+</li>
+<li><p>有参数的create(int mainTension,int mainFriction,int attachmentTension,int attachmentFriction)</p>
+<blockquote>
+<p>mainTension:主导spring的拉力系数，mainFriction:主导Spring的摩擦力系数，</p>
+</blockquote>
+<blockquote>
+<p>attachmentTensio,attachmentFriction:表示附属的拉力和摩擦力系数</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>SpringChain</code>需要设置一个起主导控制作用的Spring，通过setControlSpringIndex方法来设置</p>
+</blockquote>
+<blockquote>
+<p><code>getControlSpring()</code>代表 获得主导的Spring</p>
+</blockquote>
+<blockquote>
+<p><code>addSpring里</code>其实直接new了.  通过mSpringChain.getAllSprings()可以获取到注册到mSpringChain里的所有Spring</p>
+</blockquote>
+<img src="https://ww3.sinaimg.cn/large/006tKfTcgw1fb91okt78nj30oq09udgk.jpg" width="500">
+
+<h1 id="官方小球demo解析"><a href="#官方小球demo解析" class="headerlink" title="官方小球demo解析"></a>官方小球demo解析</h1><ul>
+<li><p>setVelocity</p>
+<blockquote>
+<p>会根据当前的速度计算剩下的位置；类似setEndValue 是一个值的变化 而不是瞬间；</p>
+</blockquote>
+<blockquote>
+<p>Ps:根据官方小球demo,setVelocity之前 会把拉力设置为0 可能是为了拉力不影响速度的值吧；</p>
+</blockquote>
+<blockquote>
+<p>Tip:setEndValue 则是和拉力有关系没速度没关系。所以下面代码在setEndValue使用之前 把拉力从0改成20</p>
+</blockquote>
+</li>
+<li><p>SpringSystemListener（SpringSystem.addListener）</p>
+<ul>
+<li>onBeforeIntegrate 每次计算之前</li>
+<li>onAfterIntegrate  每次计算之后</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>为什么在onAfterIntegrate里写 而不是onBeforeIntegrate 因为如果出界后可以马上放回来。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">springSystem = SpringSystem.create();</span><br><span class="line">springSystem.addListener(this);</span><br><span class="line">xSpring = springSystem.createSpring();</span><br><span class="line">ySpring = springSystem.createSpring();</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onBeforeIntegrate(BaseSpringSystem springSystem) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onAfterIntegrate(BaseSpringSystem springSystem) &#123;</span><br><span class="line">    //x就不写了 同y</span><br><span class="line">    if (y + radius &gt;= getHeight()) &#123;</span><br><span class="line">        //球碰到或出边界  吧速度返过来 然后setCurrentValue注意后边有个false 是让动画继续的意思；</span><br><span class="line">       ySpring.setVelocity(-ySpring.getVelocity());</span><br><span class="line">        //ySpring.getCurrentValue() - (y + radius - getHeight()) 表示如果出界 就把他放回界内；</span><br><span class="line">       ySpring.setCurrentValue(ySpring.getCurrentValue() - (y + radius - getHeight()), false);</span><br><span class="line">     &#125;</span><br><span class="line">     if (y - radius &lt;= 0) &#123;</span><br><span class="line">        //同上</span><br><span class="line">       ySpring.setVelocity(-ySpring.getVelocity());</span><br><span class="line">       ySpring.setCurrentValue(ySpring.getCurrentValue() - (y - radius), false);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     for (PointF point : points) &#123;</span><br><span class="line">       if (dist(x, y, point.x, point.y) &lt; attractionThreshold &amp;&amp;</span><br><span class="line">           Math.abs(xSpring.getVelocity()) &lt; 900 &amp;&amp;</span><br><span class="line">           Math.abs(ySpring.getVelocity()) &lt; 900 &amp;&amp;</span><br><span class="line">           !dragging) &#123;</span><br><span class="line">           //如果速度小于某个值 并且在某个圆的一定范围内 并且手没有拖拽,则用setEndValue平滑过渡到某一点；</span><br><span class="line">         xSpring.setSpringConfig(CONVERGING);</span><br><span class="line">         xSpring.setEndValue(point.x);</span><br><span class="line">         //CONVERGING=SpringConfig.fromOrigamiTensionAndFriction(20, 3); </span><br><span class="line">         //这里为什么把拉力弄成20？因为setEndValue和速度没关系和拉力有关系被；</span><br><span class="line">         ySpring.setSpringConfig(CONVERGING);</span><br><span class="line">         ySpring.setEndValue(point.y);</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="简单的源码流程分析图"><a href="#简单的源码流程分析图" class="headerlink" title="简单的源码流程分析图"></a>简单的源码流程分析图</h1><p><img src="http://ww1.sinaimg.cn/large/006tKfTcgw1fb91oqry1sj31jq0wa78w.jpg" alt></p>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/hanhailong726188/article/details/50687466" target="_blank" rel="noopener">http://blog.csdn.net/hanhailong726188/article/details/50687466</a></p>
+<p><a href="http://www.jianshu.com/p/9d56d92d337c" target="_blank" rel="noopener">http://www.jianshu.com/p/9d56d92d337c</a></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://luhaoaimama1.github.io">Zone</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://luhaoaimama1.github.io/2016/11/20/Rebound/">https://luhaoaimama1.github.io/2016/11/20/Rebound/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden>
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code"><label class="qr-code-image" for="reward">
+          <img class="image" src="/weixin.png" title="wechat">
+        </label>
+      </div>
+  </div><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/android/">android</a>
+            <a href="/tags/动画/">动画</a>
+            <a href="/tags/Rebound/">Rebound</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2016/12/05/JVM/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">深入理解Java虚拟机总结</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2016/11/10/CacheSystem/">
+        <span class="next-text nav-default">Android-View的drawing缓存系统</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5My8yMzM5NA==">
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>  
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        <a href="https://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        <a href="https://luhaoaimama1.github.io/archives/" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript">
+	(function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

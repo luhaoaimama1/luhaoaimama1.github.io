@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Android-PorterDuffXfermode的正确使用方式"><meta name="keywords" content="android, PorterDuffXfermode, Zone"><link rel="alternate" href="https://luhaoaimama1.github.io/archives/" title="Zone"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://luhaoaimama1.github.io/2016/08/28/Xfermode/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6d26901ed1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz",
+      appKey: "JNC93ECkxxvdiy69B2LJmWy9"
+    });
+  </script><script>
+  window.config = {"leancloud":{"app_id":"sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz","app_key":"JNC93ECkxxvdiy69B2LJmWy9"},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>Android-PorterDuffXfermode的正确使用方式 - Zone</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Zone</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">归档
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/introduce/">
+        <li class="mobile-menu-item">项目简介
+          </li>
+      </a><a href="/friendlinks/">
+        <li class="mobile-menu-item">外联
+          </li>
+      </a><a href="/message/">
+        <li class="mobile-menu-item">留言
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            标签
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/introduce/">
+            项目简介
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks/">
+            外联
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/message/">
+            留言
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Android-PorterDuffXfermode的正确使用方式
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-08-28
+        </span><span class="post-category">
+            <a href="/categories/android/">android</a>
+            </span>
+        <span class="post-visits" data-url="/2016/08/28/Xfermode/" data-title="Android-PorterDuffXfermode的正确使用方式">
+          Visits 0
+        </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#官方合成图"><span class="toc-text">官方合成图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心原理-边界-："><span class="toc-text">核心原理(边界)：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题延伸"><span class="toc-text">问题延伸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么-不用saveLayerAlpha有时候就不好使"><span class="toc-text">为什么 不用saveLayerAlpha有时候就不好使</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有saveLayer的绘图流程"><span class="toc-text">有saveLayer的绘图流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有saveLayer的绘图流程"><span class="toc-text">没有saveLayer的绘图流程</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
+<a id="more"></a>
+<h1 id="官方合成图"><a href="#官方合成图" class="headerlink" title="官方合成图"></a>官方合成图</h1><blockquote>
+<p>如正确姿势的图，首先要明白的</p>
+</blockquote>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcgw1fb8yigv0rqj30m80f8my1.jpg" alt></p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7lz5u1zw6j313e0m8n1g.jpg" alt><br> 查看PorterDuff类 。 官方先draw 黄色的 然后draw 蓝色的 ，</p>
+<ul>
+<li>dst:Destination image</li>
+<li>src:Source image </li>
+</ul>
+<blockquote>
+<p>我的理解是 对于Xfermode  src 是对当前层的图案，而dst是 作用目标层</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">名字</th>
+<th align="center">解释2</th>
+<th align="center">名字</th>
+<th align="center">解释2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">黄色</td>
+<td align="center">先画</td>
+<td align="center">in</td>
+<td align="center">交集</td>
+</tr>
+<tr>
+<td align="center">蓝色</td>
+<td align="center">后画</td>
+<td align="center">out</td>
+<td align="center">不相交的</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>举例：PorterDuff.Mode.SRC_IN参数 显示 是交集部分 图像为SRC部分</p>
+</blockquote>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb8yipzxu1j30rs0c13yr.jpg" alt></p>
+<table>
+<thead>
+<tr>
+<th align="center">名字</th>
+<th align="center">解释2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">图2</td>
+<td align="center"><code>创建两个Bitmap</code> <code>手机宽高</code> <code>bitmap上绘制圆</code> <code>如果看不懂看下面的代码</code></td>
+</tr>
+<tr>
+<td align="center">图1</td>
+<td align="center"><code>绘两个圆</code> <code>如果看不懂看下面的代码</code></td>
+</tr>
+</tbody></table>
+<h1 id="核心原理-边界-："><a href="#核心原理-边界-：" class="headerlink" title="核心原理(边界)："></a>核心原理(边界)：</h1><blockquote>
+<p>Xfermode效果:作用在 <code>两个边界之内</code>；<code>边界之外</code> <code>没有Xfermode效果</code>；</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">图</th>
+<th align="center">边界</th>
+<th align="center">SRC_IN</th>
+<th align="center">SRC_OUT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>图2</code> <code>正确姿势</code></td>
+<td align="center">每个都是手机的宽高</td>
+<td align="center">正确姿势图中的SRC_IN</td>
+<td align="center">如正确姿势图中的 SRC_OUT</td>
+</tr>
+<tr>
+<td align="center"><code>图1</code> <code>平时的误解</code></td>
+<td align="center">每个都是绘的圆那么大</td>
+<td align="center">如 <code>正确姿势图中的SRC_IN</code> <code>但多出黄色的部分</code></td>
+<td align="center">如 <code>正确姿势图中的SRC_OUT</code> <code>但多出黄色的部分</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>正确姿势图 是官方给的图；</p>
+</blockquote>
+<blockquote>
+<p>Tips:为什么多出黄色的部分？ 因为这个部分是 边界未相交的部分,那么不会有Xfermode的效果 所以剩下；</p>
+</blockquote>
+<blockquote>
+<p><code>那么大家会很疑惑，为什么DST剩下了,SRC边界之外为何不剩下？</code></p>
+</blockquote>
+<blockquote>
+<p>因为DST先绘制的 就是底图.SRC是为了给DST添加叠加模式的效果的.</p>
+</blockquote>
+<blockquote>
+<p><code>最终显示的都是DST只是变成有叠加效果的DST；</code></p>
+</blockquote>
+<p><code>demo效果：动画、surfaceView、绘图方面的研究-&gt;Xfermode;然后选择模式；</code><br><a href="https://github.com/luhaoaimama1/zone-sdk/blob/master/Android_Zone_Test/src/com/example/mylib_test/activity/animal/viewa/XfermodeView.java" target="_blank" rel="noopener">xfermode代码</a></p>
+<p>图1的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">canvas.saveLayerAlpha(0, 0, getWidth(), getHeight(), 255,</span><br><span class="line">            Canvas.ALL_SAVE_FLAG);</span><br><span class="line"></span><br><span class="line">    paint.setColor(Color.YELLOW);</span><br><span class="line">    canvas.drawCircle(getWidth() / 2, getHeight() / 2, 200, paint);</span><br><span class="line">    paint.setXfermode(new PorterDuffXfermode(mode));</span><br><span class="line">    paint.setColor(Color.BLUE);</span><br><span class="line">    canvas.drawCircle(getWidth() / 2 + 200, getHeight() / 2 + 200, 200, paint);</span><br></pre></td></tr></table></figure>
+
+<p>图2的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//画黄色的圆 满屏幕那种 bitmap</span><br><span class="line">Bitmap bt = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);</span><br><span class="line">canvas2.setBitmap(bt);</span><br><span class="line">paint.setColor(Color.YELLOW);</span><br><span class="line">canvas2.drawCircle(getWidth() / 2, getHeight() / 2, 200, paint);</span><br><span class="line">//画蓝色的圆 满屏幕那种 bitmap</span><br><span class="line">Bitmap bt2 = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);</span><br><span class="line">canvas2.setBitmap(bt2);</span><br><span class="line">paint.setColor(Color.BLUE);</span><br><span class="line">canvas2.drawCircle(getWidth() / 2 + 200, getHeight() / 2 + 200, 200, paint);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips:如果用到  canvas.saveLayer（，paint，） 图层的方式进行xfermode 最好给图层一个单独的paint。不要和 图层内部draw的paint的xfermode混淆. 这里被坑过<br>Tips2: 叠加模式的paint和绘制的paint不要用一个, 因为会混乱.因为很重要所以还要重复~</p>
+</blockquote>
+<h1 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h1><h2 id="为什么-不用saveLayerAlpha有时候就不好使"><a href="#为什么-不用saveLayerAlpha有时候就不好使" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使"></a>为什么 不用saveLayerAlpha有时候就不好使</h2><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="noopener">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int layerID = canvas.saveLayer(0, 0, width * 2, height * 2, mPaint, Canvas.ALL_SAVE_FLAG);</span><br><span class="line">canvas.drawBitmap(dstBmp, 0, 0, mPaint);</span><br><span class="line">mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));</span><br><span class="line">canvas.drawBitmap(srcBmp, width / 2, height / 2, mPaint);</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb8ygjcf7ij30uy092mx6.jpg" alt></p>
+<h2 id="有saveLayer的绘图流程"><a href="#有saveLayer的绘图流程" class="headerlink" title="有saveLayer的绘图流程"></a><strong>有saveLayer的绘图流程</strong></h2><p>这是因为在调用saveLayer时，会生成了一个全新的bitmap，这个bitmap的大小就是我们指定的保存区域的大小，新生成的bitmap是全透明的，在调用saveLayer后所有的绘图操作都是在这个bitmap上进行的。<br><img src="http://ww3.sinaimg.cn/large/006tKfTcgw1fb8yiwcm8bj30f008umx5.jpg" alt></p>
+<h2 id="没有saveLayer的绘图流程"><a href="#没有saveLayer的绘图流程" class="headerlink" title="没有saveLayer的绘图流程"></a><strong>没有saveLayer的绘图流程</strong></h2><p>由于我们先把整个画布给染成了绿色，然后再画上了一个圆形，所以在应用xfermode来画源图像的时候，目标图像当前Bitmap上的所有图像了，也就是整个绿色的屏幕和一个圆形了。所以这时候源图像的相交区域是没有透明像素的，透明度全是100%，这也就不难解释结果是这样的原因了。<br><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb8yj3233oj30fu09ga9z.jpg" alt></p>
+<blockquote>
+<p>总结就是  saveLayer为了区分，哪一步的图形,应该与合成模式的bitmap去合成 运算；</p>
+</blockquote>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://luhaoaimama1.github.io">Zone</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://luhaoaimama1.github.io/2016/08/28/Xfermode/">https://luhaoaimama1.github.io/2016/08/28/Xfermode/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden>
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code"><label class="qr-code-image" for="reward">
+          <img class="image" src="/weixin.png" title="wechat">
+        </label>
+      </div>
+  </div><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/android/">android</a>
+            <a href="/tags/PorterDuffXfermode/">PorterDuffXfermode</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2016/09/17/EventPass/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android-事件传递的学习</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2016/07/13/Java疑难问题汇总/">
+        <span class="next-text nav-default">Android疑难问题汇总</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5My8yMzM5NA==">
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>  
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        <a href="https://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        <a href="https://luhaoaimama1.github.io/archives/" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript">
+	(function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
