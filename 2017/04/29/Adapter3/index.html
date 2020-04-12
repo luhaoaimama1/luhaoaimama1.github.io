@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="ZAdapter3的分析与撸库"><meta name="keywords" content="adapter, Zone"><link rel="alternate" href="https://luhaoaimama1.github.io/archives/" title="Zone"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/04/29/Adapter3/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6d26901ed1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz",
+      appKey: "JNC93ECkxxvdiy69B2LJmWy9"
+    });
+  </script><script>
+  window.config = {"leancloud":{"app_id":"sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz","app_key":"JNC93ECkxxvdiy69B2LJmWy9"},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>ZAdapter3的分析与撸库 - Zone</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Zone</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">归档
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/introduce/">
+        <li class="mobile-menu-item">项目简介
+          </li>
+      </a><a href="/friendlinks/">
+        <li class="mobile-menu-item">外联
+          </li>
+      </a><a href="/message/">
+        <li class="mobile-menu-item">留言
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            标签
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/introduce/">
+            项目简介
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks/">
+            外联
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/message/">
+            留言
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">ZAdapter3的分析与撸库
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-04-29
+        </span><span class="post-category">
+            <a href="/categories/android/">android</a>
+            </span>
+        <span class="post-visits" data-url="/2017/04/29/Adapter3/" data-title="ZAdapter3的分析与撸库">
+          阅读次数 0
+        </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分析时候的思路"><span class="toc-text">分析时候的思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#书写类型初稿："><span class="toc-text">书写类型初稿：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#封装后的简单实用"><span class="toc-text">封装后的简单实用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#QuickRcvAdapter范例"><span class="toc-text">QuickRcvAdapter范例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewDelegates范例"><span class="toc-text">ViewDelegates范例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Helper的扩展技巧-扩展技巧是-装饰模式-链式调用-泛型"><span class="toc-text">Helper的扩展技巧:扩展技巧是 装饰模式+链式调用+泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局配置"><span class="toc-text">全局配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载更多联动ZRefresh库"><span class="toc-text">加载更多联动ZRefresh库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后建议看看"><span class="toc-text">最后建议看看</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#看完Diycode的总结："><span class="toc-text">看完Diycode的总结：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&amp;Thanks：</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="分析时候的思路"><a href="#分析时候的思路" class="headerlink" title="分析时候的思路"></a>分析时候的思路</h1><ul>
+<li><p>adapter里面的viewhold可以被复用</p>
+<blockquote>
+<p>所以需要重写一个方法通过位置获取layoutStyle，addviewHolder顺便传递一个layoutStyle,也可不传为默认值；</p>
+</blockquote>
+</li>
+<li><p>layoutID要在viewhold的类方法中,而不是构造器中 </p>
+<blockquote>
+<p>  因为resID与viewHold本就是一个整体。方法构造中的话表示resID是可变的，并且看到这个viewhold类的时候布局文件看不到 容易蒙蔽</p>
+</blockquote>
+</li>
+<li><p>helper类与ButterKnife的取舍?</p>
+<blockquote>
+<p>helper比ButterKnife好,原因:可定制封装逻辑，不强转，可连写,可通过泛型+继承+装饰模式达到扩展的目的；</p>
+</blockquote>
+</li>
+<li><p>adapter 可扩展+链式调用  是用 泛型+继承 还是 同一个接口呢？</p>
+<blockquote>
+<p>泛型+继承 :在IDEA中是可以的。但是AS中出现了bug。我已经向google提意见了,估计不会吊我~<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1ff2v3z7mq0j31a20cewg6.jpg" alt><br>所以退而求其次 选择同一个接口</p>
+</blockquote>
+</li>
+<li><p>基础功能 </p>
+<blockquote>
+<p>addViewHold(ViewHolder)//为default<br>addViewHold(style,viewHolder)<br>addHeaderHold(ViewHolder/resId)<br>addFooterHold(ViewHolder/resId)<br>addEmptyHold(ViewHolder/resId)<br>notify系列<br>notifyEx系列(这里的位置对应为数据集的位置。包括header/footer)<br>relaeList(rv) 故事的开始。很多逻辑可以在这里完成  </p>
+</blockquote>
+</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="书写类型初稿："><a href="#书写类型初稿：" class="headerlink" title="书写类型初稿："></a>书写类型初稿：</h1><p>Adapter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">new Adatper(context,data)&#123;</span><br><span class="line">	o.getStyle()&lt;——可不写</span><br><span class="line">&#125;</span><br><span class="line">.addViewHold(ViewHolder)//为default</span><br><span class="line">.addViewHold(style,viewHolder)</span><br><span class="line">.addFooterHold(ViewHolder/resId)</span><br><span class="line">.addHeaderHold(ViewHolder/resId)</span><br><span class="line">.addEmptyHold(ViewHolder/resId)//支持emptyHold</span><br><span class="line">.add上啦Hold(ViewHolder)//貌似应该放入 zrfresh的逻辑中.  ZRefresh loadMore可以和他联动？</span><br><span class="line">.notify系列//notify之间 自动计算动画？ 看看diffuitl工具</span><br><span class="line">.relaeList(rv)</span><br></pre></td></tr></table></figure>
+
+<p>ViewHolder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ViewHolder</span><br><span class="line">public itemView</span><br><span class="line">int getLayoutId()</span><br><span class="line">update(postion,data ,helper)</span><br></pre></td></tr></table></figure>
+
+<h1 id="封装后的简单实用"><a href="#封装后的简单实用" class="headerlink" title="封装后的简单实用"></a>封装后的简单实用</h1><h2 id="QuickRcvAdapter范例"><a href="#QuickRcvAdapter范例" class="headerlink" title="QuickRcvAdapter范例"></a>QuickRcvAdapter范例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">IAdapter&lt;String&gt; muliAdapter = new QuickRcvAdapter(this, mDatas)&#123;</span><br><span class="line">               @Override</span><br><span class="line">               protected int getItemViewType2(int dataPosition) &#123;</span><br><span class="line">               //此方法可以默认 设置不写, 默认值返回Wrapper.DEFAULT_VALUE(-1)</span><br><span class="line">                   return dataPosition % 2;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           .addViewHolder(new LeftDelegates())//默认</span><br><span class="line">           .addViewHolder(0, new LeftDelegates()) //多布局</span><br><span class="line">           .addViewHolder(1, new RightDelegates())//多布局</span><br><span class="line">           .addHeaderHolder(R.layout.header_simple)//资源</span><br><span class="line">           .addHeaderHolder(ViewDelegates footer)//也可以的</span><br><span class="line">           .addFooterHolder(R.layout.footer_simple)//资源</span><br><span class="line">           .addFooterHolder(ViewDelegates footer)//也可以的</span><br><span class="line">           .addEmptyHold(R.layout.empty)//也支持empty 资源</span><br><span class="line">           .addEmptyHold(ViewDelegates emtpy)//也支持empty</span><br><span class="line">           .setOnItemClickListener(new IAdapter.OnItemClickListener() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void onItemClick(ViewGroup parent, View view, int position) &#123;</span><br><span class="line">                   System.out.println(&quot;被点击-&gt;onItemClick&quot; + position);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">           .setOnItemLongClickListener(new IAdapter.OnItemLongClickListener() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public boolean onItemLongClick(ViewGroup parent, View view, int position) &#123;</span><br><span class="line">                   System.out.println(&quot;被点击-&gt;onItemLongClick:&quot; + position);</span><br><span class="line">                   return true;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">           .addOnScrollListener(scroller = new OnScrollRcvListenerEx(new OnScrollRcvListenerEx.LoadMoreCallback() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void loadMore() &#123;</span><br><span class="line">               //这个类主要是为了和我的ZRefresh库兼容。我会委托上啦加载在这里处理!</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;))</span><br><span class="line">           .relatedList(rv)</span><br></pre></td></tr></table></figure>
+
+<h2 id="ViewDelegates范例"><a href="#ViewDelegates范例" class="headerlink" title="ViewDelegates范例"></a>ViewDelegates范例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class LeftDelegates extends ViewDelegates&lt;String&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getLayoutId() &#123;</span><br><span class="line">        return R.layout.item_left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void fillData(int postion, String data, Helper helper) &#123;</span><br><span class="line">        ExtraHelper.wrapper(helper).setText(R.id.tv, data).heihei().heihei2()</span><br><span class="line">                .setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onClick(View view) &#123;</span><br><span class="line">                        System.out.println(&quot;helper click测试 &quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, new int[]&#123;R.id.tv, R.id.ll_main&#125;);</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Helper的扩展技巧-扩展技巧是-装饰模式-链式调用-泛型"><a href="#Helper的扩展技巧-扩展技巧是-装饰模式-链式调用-泛型" class="headerlink" title="Helper的扩展技巧:扩展技巧是 装饰模式+链式调用+泛型"></a>Helper的扩展技巧:扩展技巧是 装饰模式+链式调用+泛型</h2><blockquote>
+<p>使用起来:ExtraHelper.wrapper(helper).setText(R.id.tv, data).heihei().heihei2();</p>
+</blockquote>
+<p>实现方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class ExtraHelper extends Helper&lt;ExtraHelper&gt; &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private ExtraHelper(Helper helper) &#123;</span><br><span class="line">        super(helper.getContext(), helper.getHolder(),helper.getAdapter());</span><br><span class="line">        child = this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static ExtraHelper wrapper(Helper helper)&#123;</span><br><span class="line">        return new ExtraHelper(helper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ExtraHelper heihei() &#123;</span><br><span class="line">        System.out.println(&quot;heihei!&quot;);</span><br><span class="line">        checkChild();</span><br><span class="line">        return child;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ExtraHelper heihei2() &#123;</span><br><span class="line">        System.out.println(&quot;heihei2!&quot;);</span><br><span class="line">        checkChild();</span><br><span class="line">        return child;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h2><blockquote>
+<p>新裤暂时就支持这点~<br>(原型模式-下拉刷新的全局设置)[<a href="https://luhaoaimama1.github.io/2017/04/04/Refresh/]">https://luhaoaimama1.github.io/2017/04/04/Refresh/]</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//全局替换加载更多</span><br><span class="line">QuickConfig.build().setLoadMoreDelegates(ILoadMoreDelegates iLoadMoreDelegates).perform();</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载更多联动ZRefresh库"><a href="#加载更多联动ZRefresh库" class="headerlink" title="加载更多联动ZRefresh库"></a>加载更多联动ZRefresh库</h2><blockquote>
+<p>其实是ZRefresh把加载更多的功能委托出去而已</p>
+</blockquote>
+<p><a href="https://github.com/luhaoaimama1/ZAdapter3/blob/master/app/src/main/java/zone/com/zadapter3/Recycler2ZRefreshActivity.java" target="_blank" rel="noopener">参考范例</a></p>
+<h1 id="最后建议看看"><a href="#最后建议看看" class="headerlink" title="最后建议看看"></a>最后建议看看</h1><p>很美观一个库 <a href="https://github.com/GcsSloop/diycode" target="_blank" rel="noopener">https://github.com/GcsSloop/diycode</a></p>
+<h2 id="看完Diycode的总结："><a href="#看完Diycode的总结：" class="headerlink" title="看完Diycode的总结："></a>看完Diycode的总结：</h2><ul>
+<li><p>adapter重构(因为我原来写了adapter,看完这个库后推到重写adapter3)<br>headerFooterView功能<br>单独分离出一个类，既多类型复用。<br>数据并用helper定制图片加载等其他的逻辑<br>特点： 可复用，绑定数据</p>
+</li>
+<li><p>刷新控件与fragment的结合 ，布局结合 ？<br>这样有点耦合了  怎么才能 不耦合的处理？</p>
+</li>
+<li><p>刷新加载逻辑和网络请求 基类统一处理。  </p>
+<blockquote>
+<p><a href="https://github.com/luhaoaimama1/Http_Rflist_Helper" target="_blank" rel="noopener">有点类似我这个库,一直很少维护就是纠结啊,Ps:并且可以全局更换网络请求库</a></p>
+</blockquote>
+</li>
+<li><p>给我以灵感:网络请求 是 通过请求 异步+eventbus？<br>这样多个注册了Subscribe的页面同时存活，其中一个请求。另一个页面也会处理相同的数据，会不会凌乱呢？</p>
+<blockquote>
+<p>不过这个确实很美观。我很喜欢 可以有一点缺憾,如果eventBus多支持一个方法,只在本类分发接受就好了~<br><img src="https://ww4.sinaimg.cn/large/006tNc79gy1ff2vqpvwczj30eo07uwel.jpg" alt></p>
+</blockquote>
+</li>
+<li><p>工具类<br>DataCache，FileUtil，DataCleanManager，UrlUtil，ACache，CacheUtil，UUIDGenerator<br>SpeedyLinearLayoutManager</p>
+</li>
+<li><p>灵感，不错的方法<br>public void setOnClickListener(View.OnClickListener l, int… ids)</p>
+</li>
+<li><p>复杂的书写格式<br><img src="https://ww1.sinaimg.cn/large/006tNc79gy1ff2wct9y99j30dc05gdg1.jpg" alt><br>非与或非的符号则用此格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a,</span><br><span class="line">String b,</span><br><span class="line">String c,</span><br><span class="line">String d,</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="https://github.com/GcsSloop/diycode" target="_blank" rel="noopener">https://github.com/GcsSloop/diycode</a></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://luhaoaimama1.github.io">Zone</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://luhaoaimama1.github.io/2017/04/29/Adapter3/">https://luhaoaimama1.github.io/2017/04/29/Adapter3/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden>
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code"><label class="qr-code-image" for="reward">
+          <img class="image" src="/weixin.png" title="wechat">
+        </label>
+      </div>
+  </div><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/adapter/">adapter</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/04/29/chain/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">继承与链式调用的结合</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2017/04/04/Refresh/">
+        <span class="next-text nav-default">原型模式-下拉刷新的全局设置</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5My8yMzM5NA==">
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>  
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        <a href="https://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        <a href="https://luhaoaimama1.github.io/archives/" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript">
+	(function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

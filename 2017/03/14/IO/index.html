@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="了解Java中的I/O系统"><meta name="keywords" content="I/O, Zone"><link rel="alternate" href="https://luhaoaimama1.github.io/archives/" title="Zone"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/03/14/IO/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6d26901ed1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz",
+      appKey: "JNC93ECkxxvdiy69B2LJmWy9"
+    });
+  </script><script>
+  window.config = {"leancloud":{"app_id":"sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz","app_key":"JNC93ECkxxvdiy69B2LJmWy9"},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>了解Java中的I/O系统 - Zone</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Zone</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">归档
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/introduce/">
+        <li class="mobile-menu-item">项目简介
+          </li>
+      </a><a href="/friendlinks/">
+        <li class="mobile-menu-item">外联
+          </li>
+      </a><a href="/message/">
+        <li class="mobile-menu-item">留言
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            标签
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/introduce/">
+            项目简介
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks/">
+            外联
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/message/">
+            留言
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">了解Java中的I/O系统
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-03-14
+        </span><span class="post-category">
+            <a href="/categories/源码分析/">源码分析</a>
+            <a href="/categories/源码分析/android/">android</a>
+            <a href="/categories/源码分析/android/I-O/">I/O</a>
+            </span>
+        <span class="post-visits" data-url="/2017/03/14/IO/" data-title="了解Java中的I/O系统">
+          阅读次数 0
+        </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概览"><span class="toc-text">概览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符流和字节流"><span class="toc-text">字符流和字节流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用的处理流类型"><span class="toc-text">常用的处理流类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）"><span class="toc-text">缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转换流（InputStreamReader-OutputStreamWriter）"><span class="toc-text">转换流（InputStreamReader/OutputStreamWriter）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据流（DataInputStream-DataOutputStream）"><span class="toc-text">数据流（DataInputStream/DataOutputStream）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打印流（PrintStream-PrintWriter）"><span class="toc-text">打印流（PrintStream/PrintWriter）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象流（ObjectInputStream-ObjectOutputStream）"><span class="toc-text">对象流（ObjectInputStream/ObjectOutputStream）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&amp;Thanks：</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdmkir64xbj30xi0yrt9r.jpg" alt><br><a href="https://www.processon.com/view/link/58c7cef4e4b0337115d577a9" target="_blank" rel="noopener">图片项目地址 可以复制下来 进行修改</a></p>
+<p><a href="https://github.com/luhaoaimama1/JavaZone/tree/master/JavaTest_Zone/src/a%E9%9D%A2%E8%AF%95/io" target="_blank" rel="noopener">IO’s Demos Code</a></p>
+<a id="more"></a>
+
+<blockquote>
+<p>编码乱码原因: 机器中的编码都是 二进制编码 显示的时候 为了让人看懂 从而设置了各种字符集 ,如果与原来的编码不一致则会导致看不懂既乱码 。机器的二进制码没有变化 ,仅仅是 对照的字符集 不一致 导致的</p>
+</blockquote>
+<h1 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h1><blockquote>
+<p>字符流的由来： 因为数据编码的不同，而有了对字符进行高效操作的流对象。本质其实就是基于字节流读取时，去查了指定的码表。 字节流和字符流的区别：</p>
+</blockquote>
+<ul>
+<li>读写单位不同<ul>
+<li>字节流以字节（8bit）为单位，字符流以字符为单位，根据码表映射字符，一次可能读多个字节。</li>
+</ul>
+</li>
+<li>处理对象不同<ul>
+<li>字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据。Java中字符是采用Unicode标准，一个字符是16位，即一个字符使用两个字节来表示。为此，JAVA中引入了处理字符的流 </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>结论：只要是处理纯文本数据，就优先考虑使用字符流。 除此之外都使用字节流。</p>
+</blockquote>
+<h1 id="常用的处理流类型"><a href="#常用的处理流类型" class="headerlink" title="常用的处理流类型"></a>常用的处理流类型</h1><p>该类型是对一个已存在的流的连接和封装，通过所封装的流的功能调用实现数据读写，处理流的构造方法总是要带一个其他流对象作为参数，一个流对象进过其他流的多次包装，叫做流的链接。主要可以分为以下几种：</p>
+<h2 id="缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）"><a href="#缓冲流（BufferedInPutStream-BufferedOutPutStream和BufferedWriter-BufferedReader）" class="headerlink" title="缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）"></a>缓冲流（BufferedInPutStream/BufferedOutPutStream和BufferedWriter/BufferedReader）</h2><ul>
+<li>功能<ul>
+<li>提高对流的操作效率 </li>
+<li>readLine()<br>一次读一行，到行标记时，将行标记之前的字符数据作为字符串返回，当读到末尾时，返回null，其原理还是与缓冲区关联的流对象的read方法，只不过每一次读取到一个字符，先不进行具体操作，先进行临时储存，当读取到回车标记时，将临时容器中储存的数据一次性返回。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedWriter bufw=new BufferedWriter(new FileWriter(&quot;buf.txt&quot;));//读取缓冲区对象：        </span><br><span class="line">BufferedReader bufr=new BufferedReader(new FileReader(&quot;buf.txt&quot;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="转换流（InputStreamReader-OutputStreamWriter）"><a href="#转换流（InputStreamReader-OutputStreamWriter）" class="headerlink" title="转换流（InputStreamReader/OutputStreamWriter）"></a>转换流（InputStreamReader/OutputStreamWriter）</h2><p>该类型时字节流和字符流之间的桥梁，</p>
+<ul>
+<li>功能<ul>
+<li>该类型时字节流和字符流之间的桥梁<br>该流对象中可以对读取到的字节数据进行指定编码的编码转换。</li>
+</ul>
+</li>
+</ul>
+<p>构造函数主要有：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InputStreamReader(InputStream);        //通过构造函数初始化，使用的是本系统默认的编码表GBK。  </span><br><span class="line">InputStreamWriter(InputStream,String charSet);   //通过该构造函数初始化，可以指定编码表。  </span><br><span class="line">OutputStreamWriter(OutputStream);      //通过该构造函数初始化，使用的是本系统默认的编码表GBK。  </span><br><span class="line">OutputStreamwriter(OutputStream,String charSet);   //通过该构造函数初始化，可以指定编码表。</span><br></pre></td></tr></table></figure>
+
+<p>这里看下 FileReader类的构造器 </p>
+<ul>
+<li>相当于 new InputStreamReader(new FileInputStream(“a.txt”))</li>
+<li>并且该对象使用的时默认的编码表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class FileReader extends InputStreamReader &#123;</span><br><span class="line"> public FileReader(String fileName) throws FileNotFoundException &#123;</span><br><span class="line">        //相当于 new InputStreamReader(new FileInputStream(&quot;a.txt&quot;));</span><br><span class="line">        super(new FileInputStream(fileName));//该对象使用的时默认的编码表</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>即如果a.txt中的文件中的字符数据是通过utf-8的形式编码，那么在读取时，就必须指定编码表，那么转换流时必须的。即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStreamReader isr=new InputStreamReader(new FileInputStream(&quot;a.txt&quot;),utf-8);</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据流（DataInputStream-DataOutputStream）"><a href="#数据流（DataInputStream-DataOutputStream）" class="headerlink" title="数据流（DataInputStream/DataOutputStream）"></a>数据流（DataInputStream/DataOutputStream）</h2><p>该数据流可以方便地对一些基本类型数据进行直接的存储和读取，不需要再进一步进行转换，通常只要操作基本数据类型的数据，就需要通过DataStream进行包装。</p>
+<p>构造方法：        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataInputStreamReader（InputStream）；  </span><br><span class="line"> DataInputStreamWriter（OutputStream）</span><br></pre></td></tr></table></figure>
+
+<p>方法举例：          </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int readInt()；//一次读取四个字节，并将其转成int值  </span><br><span class="line">writeInt(int)；//一次写入四个字节，注意和write(int)不同，write(int)只将该整数的最低一个8位写入，剩余三个8为丢失  </span><br><span class="line">hort readShort();  </span><br><span class="line">writeShort(short);  </span><br><span class="line">String readUTF();//按照utf-8修改版读取字符，注意，它只能读writeUTF()写入的字符数据。  </span><br><span class="line">writeUTF(String);//按照utf-8修改版将字符数据进行存储，只能通过readUTF读取。 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>注意：在使用数据流读/存数据的时候，需要有一定的顺序，即某个类型的数据先写入就必须先读出，服从先进先出的原则。</p>
+<h2 id="打印流（PrintStream-PrintWriter）"><a href="#打印流（PrintStream-PrintWriter）" class="headerlink" title="打印流（PrintStream/PrintWriter）"></a>打印流（PrintStream/PrintWriter）</h2><p>PrintStream是一个字节打印流，System.out对应的类型就是PrintStream</p>
+<ul>
+<li>它的构造函数可以接受数据类型：<ul>
+<li>字符串路径</li>
+<li>File对象 </li>
+<li>OutputStream</li>
+</ul>
+</li>
+</ul>
+<p>PrintStream是一个字符打印流</p>
+<ul>
+<li>它的构造函数可以接受数据类型：<ul>
+<li>字符串路径</li>
+<li>File对象</li>
+<li>OutputStream  </li>
+<li>Writer </li>
+</ul>
+</li>
+</ul>
+<p>对于1、2类型的数据，可以指定编码表，也就是字符集，对于3、4类型的数据，可以指定自动刷新，当该自动刷新为True时，只有3个方法可以用：println,printf,format。 </p>
+<h2 id="对象流（ObjectInputStream-ObjectOutputStream）"><a href="#对象流（ObjectInputStream-ObjectOutputStream）" class="headerlink" title="对象流（ObjectInputStream/ObjectOutputStream）"></a>对象流（ObjectInputStream/ObjectOutputStream）</h2><p>该类型的流可以把类作为一个整体进行存取，主要方法有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object readObject();该方法抛出异常：ClassNotFountException。</span><br><span class="line"></span><br><span class="line">void writeObject(Object)：被写入的对象必须实现一个接口：Serializable，否则就会抛出：NotSerializableException</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://blog.csdn.net/zzp_403184692/article/details/8057693" target="_blank" rel="noopener">http://blog.csdn.net/zzp_403184692/article/details/8057693</a></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://luhaoaimama1.github.io">Zone</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://luhaoaimama1.github.io/2017/03/14/IO/">https://luhaoaimama1.github.io/2017/03/14/IO/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden>
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code"><label class="qr-code-image" for="reward">
+          <img class="image" src="/weixin.png" title="wechat">
+        </label>
+      </div>
+  </div><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/I-O/">I/O</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/03/15/Handler|Looper|Message|MessageQueue/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Handler、Looper、Message、MessageQueue基础流程分析图解</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2017/03/14/排序图解/">
+        <span class="next-text nav-default">常用排序图解</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5My8yMzM5NA==">
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>  
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        <a href="https://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        <a href="https://luhaoaimama1.github.io/archives/" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript">
+	(function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
