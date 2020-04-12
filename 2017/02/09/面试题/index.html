@@ -1,106 +1,170 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <title>Android-2017面试题整理(未整理完) | Zone</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2017面试题整理">
-<meta name="keywords" content="android,面试题">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android-2017面试题整理(未整理完)">
-<meta property="og:url" content="https://luhaoaimama1.github.io/2017/02/09/面试题/index.html">
-<meta property="og:site_name" content="Zone">
-<meta property="og:description" content="2017面试题整理">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1187237-4cbfd0f464cd5313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fchwjv65jhj30sg0fgjtw.jpg">
-<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fchzqo0yjij30qt0hrmy2.jpg">
-<meta property="og:updated_time" content="2019-10-01T03:43:58.089Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android-2017面试题整理(未整理完)">
-<meta name="twitter:description" content="2017面试题整理">
-<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="Zone" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Zone</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">ZoneSub</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://luhaoaimama1.github.io"></form>
-      </div>
-    </div>
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Android-2017面试题整理(未整理完)"><meta name="keywords" content="android, 面试题, Zone"><link rel="alternate" href="https://luhaoaimama1.github.io/archives/" title="Zone"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://luhaoaimama1.github.io/2017/02/09/面试题/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6d26901ed1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz",
+      appKey: "JNC93ECkxxvdiy69B2LJmWy9"
+    });
+  </script><script>
+  window.config = {"leancloud":{"app_id":"sR4k6iKUohMuLBnjFbpeGbKg-gzGzoHsz","app_key":"JNC93ECkxxvdiy69B2LJmWy9"},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>Android-2017面试题整理(未整理完) - Zone</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Zone</a>
   </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">归档
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/introduce/">
+        <li class="mobile-menu-item">项目简介
+          </li>
+      </a><a href="/friendlinks/">
+        <li class="mobile-menu-item">外联
+          </li>
+      </a><a href="/message/">
+        <li class="mobile-menu-item">留言
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Zone</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            标签
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/introduce/">
+            项目简介
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/friendlinks/">
+            外联
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/message/">
+            留言
+            </a>
+        </li>
+      </ul></nav>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/09/面试题/" class="article-date">
-  <time datetime="2017-02-09T05:19:37.000Z" itemprop="datePublished">2017-02-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/android/">android</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Android-2017面试题整理(未整理完)
-    </h1>
-  
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Android-2017面试题整理(未整理完)
+        </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2017面试题整理</p>
+      <div class="post-meta">
+        <span class="post-time">
+          2017-02-09
+        </span><span class="post-category">
+            <a href="/categories/android/">android</a>
+            </span>
+        <span class="post-visits" data-url="/2017/02/09/面试题/" data-title="Android-2017面试题整理(未整理完)">
+          Visits 0
+        </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity的生命周期的理解"><span class="toc-text">Activity的生命周期的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service生命周期？"><span class="toc-text">service生命周期？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何理解Activity，View，Window三者之间的关系？"><span class="toc-text">如何理解Activity，View，Window三者之间的关系？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity的几种LaunchMode"><span class="toc-text">Activity的几种LaunchMode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#横竖屏切换时候activity的生命周期"><span class="toc-text">横竖屏切换时候activity的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android中的动画有哪几类，它们的特点和区别是什么"><span class="toc-text">android中的动画有哪几类，它们的特点和区别是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#handler机制的原理"><span class="toc-text">handler机制的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让Activity变成一个窗口：Activity属性设定"><span class="toc-text">让Activity变成一个窗口：Activity属性设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何将SQLite数据库-dictionary-db文件-与apk文件一起发布"><span class="toc-text">如何将SQLite数据库(dictionary.db文件)与apk文件一起发布?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何将打开res-raw目录中的数据库文件"><span class="toc-text">如何将打开res raw目录中的数据库文件?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC-MVVM-MVP"><span class="toc-text">MVC MVVM  MVP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是ANR-如何避免它"><span class="toc-text">什么是ANR 如何避免它?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果后台的Activity由于某原因被系统回收了，如何在被系统回收之前保存当前状态"><span class="toc-text">如果后台的Activity由于某原因被系统回收了，如何在被系统回收之前保存当前状态?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谈谈android数据存储方式。"><span class="toc-text">谈谈android数据存储方式。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android中Activity-Intent-Content-Provider-Service各有什么区别。"><span class="toc-text">Android中Activity, Intent, Content Provider, Service各有什么区别。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View-surfaceView-GLSurfaceView有什么区别。"><span class="toc-text">View, surfaceView, GLSurfaceView有什么区别。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manifest-xml文件中主要包括哪些信息？"><span class="toc-text">Manifest.xml文件中主要包括哪些信息？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据自己的理解描述下Android数字签名"><span class="toc-text">根据自己的理解描述下Android数字签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-gravity与android-layout-gravity的区别"><span class="toc-text">android:gravity与android:layout_gravity的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册广播接收者两种方式的区别，及优缺点"><span class="toc-text">注册广播接收者两种方式的区别，及优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android中有哪几种解析xml的类-官方推荐哪种？以及它们的原理和区别"><span class="toc-text">android中有哪几种解析xml的类,官方推荐哪种？以及它们的原理和区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双缓冲技术原理以及优缺点："><span class="toc-text">双缓冲技术原理以及优缺点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GridView-ListView出现的问题"><span class="toc-text">GridView 　ListView出现的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Touch事件的传递机制"><span class="toc-text">Touch事件的传递机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View的绘制流程"><span class="toc-text">View的绘制流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在View比较重要的回调方法"><span class="toc-text">在View比较重要的回调方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View生命周期的官方文档"><span class="toc-text">View生命周期的官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计一套图片异步加载缓存方案"><span class="toc-text">设计一套图片异步加载缓存方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fragment的那些坑"><span class="toc-text">Fragment的那些坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Http-Https"><span class="toc-text">Http Https</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络请求优化"><span class="toc-text">网络请求优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片优化"><span class="toc-text">图片优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例"><span class="toc-text">单例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#额外的了解"><span class="toc-text">额外的了解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一条最长的短信息约占多少byte"><span class="toc-text">一条最长的短信息约占多少byte?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是嵌入式实时操作系统-Android-操作系统属于实时操作系统吗"><span class="toc-text">什么是嵌入式实时操作系统, Android 操作系统属于实时操作系统吗?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android中线程与线程，进程与进程之间如何通信"><span class="toc-text">android中线程与线程，进程与进程之间如何通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-dvm的进程和Linux的进程-应用程序的进程是否为同一个概念"><span class="toc-text">Android dvm的进程和Linux的进程, 应用程序的进程是否为同一个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sim卡的EF-文件有何作用"><span class="toc-text">sim卡的EF 文件有何作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#收集的面试-非本人"><span class="toc-text">收集的面试(非本人)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#未完成"><span class="toc-text">未完成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#热修复的原理"><span class="toc-text">热修复的原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference-amp-Thanks："><span class="toc-text">Reference&amp;Thanks：</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>2017面试题整理</p>
 <a id="more"></a>
 
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Activity的生命周期的理解"><a href="#Activity的生命周期的理解" class="headerlink" title="Activity的生命周期的理解"></a>Activity的生命周期的理解</h2><p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fchvt46g5aj30fx0kbwf0.jpg" alt></p>
@@ -304,147 +368,92 @@
 <h1 id="收集的面试-非本人"><a href="#收集的面试-非本人" class="headerlink" title="收集的面试(非本人)"></a>收集的面试(非本人)</h1><p><a href="http://www.jianshu.com/p/dc8ce6db2f6f" target="_blank" rel="noopener">蘑菇街内推Android面试</a></p>
 <h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><h2 id="热修复的原理"><a href="#热修复的原理" class="headerlink" title="热修复的原理"></a>热修复的原理</h2><h1 id="Reference-amp-Thanks："><a href="#Reference-amp-Thanks：" class="headerlink" title="Reference&amp;Thanks："></a>Reference&amp;Thanks：</h1><p><a href="http://www.jianshu.com/p/a22450882af2" target="_blank" rel="noopener">http://www.jianshu.com/p/a22450882af2</a><br><a href="http://blog.csdn.net/superjunjin/article/details/7853546" target="_blank" rel="noopener">http://blog.csdn.net/superjunjin/article/details/7853546</a><br><a href="http://blog.csdn.net/superjunjin/article/details/7855995" target="_blank" rel="noopener">http://blog.csdn.net/superjunjin/article/details/7855995</a><br><a href="http://blog.csdn.net/superjunjin/article/details/7862182" target="_blank" rel="noopener">http://blog.csdn.net/superjunjin/article/details/7862182</a></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://luhaoaimama1.github.io/2017/02/09/面试题/" data-id="ck8wxzcui002mbd6korp35df9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/03/14/排序图解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          常用排序图解
-        
       </div>
-    </a>
-  
-  
-    <a href="/2017/01/23/Camera调研/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Camera的研究与封装</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/View三大流程/">View三大流程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jvm/">jvm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/排序/">排序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/源码分析/">源码分析</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/源码分析/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/源码分析/android/I-O/">I/O</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/源码分析/android/RecycleBin/">RecycleBin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/源码分析/android/动画/">动画</a></li></ul></li></ul></li></ul>
-    </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://luhaoaimama1.github.io">Zone</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://luhaoaimama1.github.io/2017/02/09/面试题/">https://luhaoaimama1.github.io/2017/02/09/面试题/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/I-O/">I/O</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NestedScrolling/">NestedScrolling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PorterDuffXfermode/">PorterDuffXfermode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rebound/">Rebound</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecycleBin/">RecycleBin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View三大流程/">View三大流程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/adapter/">adapter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitmap/">bitmap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/camera/">camera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawText/">drawText</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/drawing/">drawing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事件传递/">事件传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坐标系/">坐标系</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/I-O/" style="font-size: 10px;">I/O</a> <a href="/tags/NestedScrolling/" style="font-size: 10px;">NestedScrolling</a> <a href="/tags/PorterDuffXfermode/" style="font-size: 10px;">PorterDuffXfermode</a> <a href="/tags/Rebound/" style="font-size: 10px;">Rebound</a> <a href="/tags/RecycleBin/" style="font-size: 10px;">RecycleBin</a> <a href="/tags/View三大流程/" style="font-size: 10px;">View三大流程</a> <a href="/tags/adapter/" style="font-size: 16.67px;">adapter</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bitmap/" style="font-size: 10px;">bitmap</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/canvas/" style="font-size: 13.33px;">canvas</a> <a href="/tags/drawText/" style="font-size: 10px;">drawText</a> <a href="/tags/drawing/" style="font-size: 10px;">drawing</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/事件传递/" style="font-size: 13.33px;">事件传递</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/坐标系/" style="font-size: 10px;">坐标系</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数学/" style="font-size: 10px;">数学</a> <a href="/tags/适配/" style="font-size: 10px;">适配</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/02/06/CustomView/">关于View的三大流程与自定义一些方法的总结</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/11/Adapter3Absorb/">ZAdapter3断头吸附效果</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/31/rxjava/">Rxjava2总结</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/12/Adapter3HF/">Recycler下Adapter的HeaderFooter多个添加方式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/05/java8/">Java8函数式编程读书总结</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden>
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code"><label class="qr-code-image" for="reward">
+          <img class="image" src="/weixin.png" title="wechat">
+        </label>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Zone<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+  </div><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/android/">android</a>
+            <a href="/tags/面试题/">面试题</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/03/14/排序图解/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">常用排序图解</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2017/01/23/Camera调研/">
+        <span class="next-text nav-default">Camera的研究与封装</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5My8yMzM5NA==">
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>  
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1149324777@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/luhaoaimama1" class="iconfont icon-github" title="github"></a>
+        <a href="https://weibo.com/u/2193119237" class="iconfont icon-weibo" title="weibo"></a>
+        <a href="https://luhaoaimama1.github.io/archives/" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Zone</span>
+  </span>
+</div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript">
+	(function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
+       if (typeof LivereTower === 'function') { return; }
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
 
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
 </body>
 </html>
