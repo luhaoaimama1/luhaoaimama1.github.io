@@ -12,3 +12,6 @@ hexo d
 
 也可以这样 hexo clean & hexo  d
 
+hexo g -d
+
+
