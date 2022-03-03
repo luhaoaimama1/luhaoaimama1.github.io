@@ -162,19 +162,20 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#官方合成图"><span class="toc-text">官方合成图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心原理-边界-："><span class="toc-text">核心原理(边界)：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题延伸"><span class="toc-text">问题延伸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么-不用saveLayerAlpha有时候就不好使"><span class="toc-text">为什么 不用saveLayerAlpha有时候就不好使</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有saveLayer的绘图流程"><span class="toc-text">有saveLayer的绘图流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有saveLayer的绘图流程"><span class="toc-text">没有saveLayer的绘图流程</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#官方合成图"><span class="toc-text">官方合成图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心原理-边界-："><span class="toc-text">核心原理(边界)：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题延伸"><span class="toc-text">问题延伸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么-不用saveLayerAlpha有时候就不好使-其实就是边界-混合区域"><span class="toc-text">为什么 不用saveLayerAlpha有时候就不好使 其实就是边界 混合区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有saveLayer的绘图流程"><span class="toc-text">有saveLayer的绘图流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有saveLayer的绘图流程"><span class="toc-text">没有saveLayer的绘图流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#layer入栈出栈的理解"><span class="toc-text">layer入栈出栈的理解</span></a></li></ol></li></ol>
     </div>
   </div><div class="post-content"><p>看这篇文章请确保看过本站的<strong>Android-Canvas</strong>这篇文章,主要理解其工作模式后会更容易理解;</p>
 <a id="more"></a>
 <h1 id="官方合成图"><a href="#官方合成图" class="headerlink" title="官方合成图"></a>官方合成图</h1><blockquote>
 <p>如正确姿势的图，首先要明白的<br><img src="https://tva1.sinaimg.cn/large/008eGmZEly1goqpnb4fc6j30m80f8my1.jpg" alt> </p>
 </blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7lz5u1zw6j313e0m8n1g.jpg" alt></p>
-<p> 查看PorterDuff类 。 官方先draw 黄色的 然后draw 蓝色的 ，</p>
-<ul>
-<li>dst:Destination image</li>
-<li>src:Source image </li>
-</ul>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7lz5u1zw6j313e0m8n1g.jpg" alt><br>官方文档带图:<a href="https://developer.android.com/reference/android/graphics/PorterDuff.Mode" target="_blank" rel="noopener">https://developer.android.com/reference/android/graphics/PorterDuff.Mode</a></p>
+<blockquote>
+<p>粉红色就是上面的黄色<br><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1gzws7ixd59j211w0h2jrw.jpg" alt></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//dst:Destination image  </span><br><span class="line">//src:Source image </span><br><span class="line"> Paint paint = new Paint();</span><br><span class="line"> canvas.drawBitmap(destinationImage, 0, 0, paint);</span><br><span class="line"></span><br><span class="line"> PorterDuff.Mode mode = // choose a mode</span><br><span class="line"> paint.setXfermode(new PorterDuffXfermode(mode));</span><br><span class="line"></span><br><span class="line"> canvas.drawBitmap(sourceImage, 0, 0, paint);</span><br></pre></td></tr></table></figure>
+
+<p>当需要清空图像时，使用Mode.CLEAR</p>
 <blockquote>
 <p>我的理解是 对于Xfermode  src 是对当前层的图案，而dst是 作用目标层</p>
 </blockquote>
@@ -188,14 +189,14 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">黄色</td>
-<td align="center">先画</td>
+<td align="center">DST黄色</td>
+<td align="center">先画 就是Ps蒙版中的底层</td>
 <td align="center">in</td>
 <td align="center">交集</td>
 </tr>
 <tr>
-<td align="center">蓝色</td>
-<td align="center">后画</td>
+<td align="center">SOURCE蓝色</td>
+<td align="center">后画 就是Ps蒙版中的上层</td>
 <td align="center">out</td>
 <td align="center">不相交的</td>
 </tr>
@@ -270,7 +271,7 @@
 <blockquote>
 <p>Tips:如果用到  canvas.saveLayer（，paint，） 图层的方式进行xfermode 最好给图层一个单独的paint。不要和 图层内部draw的paint的xfermode混淆. 这里被坑过<br>Tips2: 叠加模式的paint和绘制的paint不要用一个, 因为会混乱.因为很重要所以还要重复~</p>
 </blockquote>
-<h1 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h1><h2 id="为什么-不用saveLayerAlpha有时候就不好使"><a href="#为什么-不用saveLayerAlpha有时候就不好使" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使"></a>为什么 不用saveLayerAlpha有时候就不好使</h2><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="noopener">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
+<h1 id="问题延伸"><a href="#问题延伸" class="headerlink" title="问题延伸"></a>问题延伸</h1><h2 id="为什么-不用saveLayerAlpha有时候就不好使-其实就是边界-混合区域"><a href="#为什么-不用saveLayerAlpha有时候就不好使-其实就是边界-混合区域" class="headerlink" title="为什么 不用saveLayerAlpha有时候就不好使 其实就是边界 混合区域"></a>为什么 不用saveLayerAlpha有时候就不好使 其实就是边界 混合区域</h2><p><a href="http://blog.csdn.net/harvic880925/article/details/51317746" target="_blank" rel="noopener">harvic博客解释了为什么不用saveLayerAlpha有时候就不好使?</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int layerID = canvas.saveLayer(0, 0, width * 2, height * 2, mPaint, Canvas.ALL_SAVE_FLAG);</span><br><span class="line">canvas.drawBitmap(dstBmp, 0, 0, mPaint);</span><br><span class="line">mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));</span><br><span class="line">canvas.drawBitmap(srcBmp, width / 2, height / 2, mPaint);</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://ww4.sinaimg.cn/large/006tKfTcgw1fb8ygjcf7ij30uy092mx6.jpg" alt></p>
@@ -279,6 +280,7 @@
 <blockquote>
 <p>总结就是  saveLayer为了区分，哪一步的图形,应该与合成模式的bitmap去合成 运算；</p>
 </blockquote>
+<h2 id="layer入栈出栈的理解"><a href="#layer入栈出栈的理解" class="headerlink" title="layer入栈出栈的理解"></a>layer入栈出栈的理解</h2><p>这个出栈：restore,restoreToCount但Layer入栈时，后续的DrawXXX操作都发生在这个Layer上，而Layer退栈时，就会把本层绘制的图像“绘制”到上层或是Canvas上<br><img src="file:///private/var/folders/jp/7dw76d5d4fz9k7shjzpcgmrc0000gn/T/WizNote/eb340748-e2c3-4712-9d49-a24832cd2b89/index_files/8644c722-f8e3-4624-95ce-4f2ff0d477aa.png" alt></p>
 
       </div>
       <div class="post-copyright">
@@ -338,7 +340,7 @@
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
-  <span class="copyright-year">&copy;2016 - 2021<span class="heart">
+  <span class="copyright-year">&copy;2016 - 2022<span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
     <span class="author">Zone</span>
